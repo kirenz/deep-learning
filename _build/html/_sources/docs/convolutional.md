@@ -1,5 +1,8 @@
 # Convolutional
 
+In part three of Machine Learning Zero to Hero, AI Advocate Laurence Moroney discusses convolutional neural networks and why they are so powerful in Computer vision scenarios. 
+
+A convolution is a filter that passes over an image, processes it, and extracts features that show a commonality in the image. In the video below you'll see how they work, by processing an image to see if you can extract features from it.
 
 <br>
 
@@ -12,3 +15,7 @@
 :class: tip
 - [Download slides](https://docs.google.com/presentation/d/13vGVcapsaNU0be6-Gt_fFkRgo64hsJ6kCV8PfGS7Oq4/export/pdf)
 ```
+
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/x_VrgWTKkiM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

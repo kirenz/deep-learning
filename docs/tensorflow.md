@@ -16,8 +16,17 @@ Built on top of TensorFlow 2, [Keras](https://keras.io) is an industry-strength 
 
 Keras is used by CERN (and yes, Keras is used at the [LHC](https://blog.tensorflow.org/2021/04/reconstructing-thousands-of-particles-in-one-go-at-cern-lhc.html)), NASA and many more scientific organizations around the world. Furthermore, it is the most used deep learning framework among top-5 winning teams on [Kaggle](https://www.kaggle.com). 
 
+Note that Keras offers many [code examples](https://keras.io/examples/) with short (less than 300 lines of code), focused demonstrations of deep learning workflows. All of the examples are written as Jupyter notebooks and can be run in one click in Google Colab.
 
-Next, we take a look at how to build a deep neural network model using TensorFlow 2 and Keras:
+## Code example
+
+Next, we take a look at how to build a deep neural network model using TensorFlow 2 and Keras. 
+
+The content is based on Laurence Moroney's excellent Tutorial "Intro to Machine Learning" (see the video below): 
+
+:::{Note}
+You'll find the Jupyter Notebook for this example in the next section.
+:::
 
 <br>
 
@@ -30,6 +39,6 @@ Next, we take a look at how to build a deep neural network model using TensorFlo
 - [Download slides](https://docs.google.com/presentation/d/17paB63OQX_GU7ldbRwduYevAHWqJVGJkV4NZdXPpKjY/export/pdf)
 ```
 
-:::{Note}
-You'll find the Jupyter Notebook for this example in the next section.
-:::
+Google'S AI Advocate Laurence Moroney walks you through the code provided in the presentation: 
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/KNAWp2S3w94" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
