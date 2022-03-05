@@ -4,8 +4,11 @@ parts:
   - caption: Introduction
     chapters:
     - file: docs/deep-learning.md  
+    - file: docs/intro-deep-learning.ipynb
+  - caption: Computer vision
+    chapters:
     - file: docs/computer-vision.md
-    - file: docs/convolutional.md  
+    - file: docs/convolutional.md      
   - caption: References
     chapters:
     - file: docs/reference.md

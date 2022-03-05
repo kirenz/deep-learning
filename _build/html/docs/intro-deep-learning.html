@@ -54,6 +54,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Computer vision" href="computer-vision.html" />
+    <link rel="prev" title="Deep Learning" href="deep-learning.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -102,12 +104,24 @@
   Introduction
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="deep-learning.html">
    Deep Learning
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction to Deep Learning
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="computer-vision.html">
    Computer vision
@@ -409,7 +423,8 @@ You probably think that y equals 3 times x plus or minus something. Then, you’
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y = 3x + 1
 </pre></div>
 </div>
-<img alt="../_images/intro-deep-learning_7_1.svg" src="../_images/intro-deep-learning_7_1.svg" /></div>
+<img alt="../_images/intro-deep-learning_7_1.png" src="../_images/intro-deep-learning_7_1.png" />
+</div>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="neural-network">
@@ -441,6 +456,12 @@ You probably think that y equals 3 times x plus or minus something. Then, you’
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define neural network</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-05 13:16:23.316110: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </pre></div>
 </div>
 </div>
@@ -491,108 +512,108 @@ By the time the training is done, the loss is extremely small, showing that our 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
-1/1 [==============================] - 0s 214ms/step - loss: 107.8431
+1/1 [==============================] - 0s 168ms/step - loss: 40.4891
 Epoch 2/50
-1/1 [==============================] - 0s 2ms/step - loss: 84.8585
+1/1 [==============================] - 0s 2ms/step - loss: 31.8584
 Epoch 3/50
-1/1 [==============================] - 0s 2ms/step - loss: 66.7750
+1/1 [==============================] - 0s 2ms/step - loss: 25.0681
 Epoch 4/50
-1/1 [==============================] - 0s 2ms/step - loss: 52.5476
+1/1 [==============================] - 0s 2ms/step - loss: 19.7257
 Epoch 5/50
-1/1 [==============================] - 0s 1ms/step - loss: 41.3539
+1/1 [==============================] - 0s 2ms/step - loss: 15.5225
 Epoch 6/50
-1/1 [==============================] - 0s 1ms/step - loss: 32.5470
+1/1 [==============================] - 0s 2ms/step - loss: 12.2156
 Epoch 7/50
-1/1 [==============================] - 0s 2ms/step - loss: 25.6179
+1/1 [==============================] - 0s 2ms/step - loss: 9.6138
 Epoch 8/50
-1/1 [==============================] - 0s 1ms/step - loss: 20.1662
+1/1 [==============================] - 0s 2ms/step - loss: 7.5668
 Epoch 9/50
-1/1 [==============================] - 0s 1ms/step - loss: 15.8768
+1/1 [==============================] - 0s 2ms/step - loss: 5.9562
 Epoch 10/50
-1/1 [==============================] - 0s 1ms/step - loss: 12.5019
+1/1 [==============================] - 0s 2ms/step - loss: 4.6890
 Epoch 11/50
-1/1 [==============================] - 0s 1ms/step - loss: 9.8465
+1/1 [==============================] - 0s 2ms/step - loss: 3.6920
 Epoch 12/50
-1/1 [==============================] - 0s 1ms/step - loss: 7.7571
+1/1 [==============================] - 0s 2ms/step - loss: 2.9075
 Epoch 13/50
-1/1 [==============================] - 0s 2ms/step - loss: 6.1130
+1/1 [==============================] - 0s 2ms/step - loss: 2.2903
 Epoch 14/50
-1/1 [==============================] - 0s 2ms/step - loss: 4.8194
+1/1 [==============================] - 0s 2ms/step - loss: 1.8046
 Epoch 15/50
-1/1 [==============================] - 0s 1ms/step - loss: 3.8014
+1/1 [==============================] - 0s 2ms/step - loss: 1.4224
 Epoch 16/50
-1/1 [==============================] - 0s 2ms/step - loss: 3.0003
+1/1 [==============================] - 0s 2ms/step - loss: 1.1217
 Epoch 17/50
-1/1 [==============================] - 0s 2ms/step - loss: 2.3698
+1/1 [==============================] - 0s 2ms/step - loss: 0.8851
 Epoch 18/50
-1/1 [==============================] - 0s 2ms/step - loss: 1.8736
+1/1 [==============================] - 0s 2ms/step - loss: 0.6988
 Epoch 19/50
-1/1 [==============================] - 0s 3ms/step - loss: 1.4830
+1/1 [==============================] - 0s 2ms/step - loss: 0.5523
 Epoch 20/50
-1/1 [==============================] - 0s 2ms/step - loss: 1.1755
+1/1 [==============================] - 0s 2ms/step - loss: 0.4369
 Epoch 21/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.9334
+1/1 [==============================] - 0s 2ms/step - loss: 0.3461
 Epoch 22/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.7428
+1/1 [==============================] - 0s 2ms/step - loss: 0.2746
 Epoch 23/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.5926
+1/1 [==============================] - 0s 2ms/step - loss: 0.2183
 Epoch 24/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.4743
+1/1 [==============================] - 0s 2ms/step - loss: 0.1740
 Epoch 25/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.3811
+1/1 [==============================] - 0s 2ms/step - loss: 0.1390
 Epoch 26/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.3076
+1/1 [==============================] - 0s 2ms/step - loss: 0.1115
 Epoch 27/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.2496
+1/1 [==============================] - 0s 9ms/step - loss: 0.0898
 Epoch 28/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.2038
-Epoch 29/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.1676
-Epoch 30/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.1390
-Epoch 31/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.1163
-Epoch 32/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0984
-Epoch 33/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0841
-Epoch 34/50
 1/1 [==============================] - 0s 2ms/step - loss: 0.0727
+Epoch 29/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0592
+Epoch 30/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0485
+Epoch 31/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0401
+Epoch 32/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0334
+Epoch 33/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0281
+Epoch 34/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0239
 Epoch 35/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0636
+1/1 [==============================] - 0s 2ms/step - loss: 0.0206
 Epoch 36/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0564
+1/1 [==============================] - 0s 2ms/step - loss: 0.0179
 Epoch 37/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0505
+1/1 [==============================] - 0s 2ms/step - loss: 0.0158
 Epoch 38/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0458
+1/1 [==============================] - 0s 2ms/step - loss: 0.0141
 Epoch 39/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0419
+1/1 [==============================] - 0s 2ms/step - loss: 0.0127
 Epoch 40/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0388
+1/1 [==============================] - 0s 2ms/step - loss: 0.0116
 Epoch 41/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0362
+1/1 [==============================] - 0s 2ms/step - loss: 0.0107
 Epoch 42/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0340
+1/1 [==============================] - 0s 2ms/step - loss: 0.0099
 Epoch 43/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0322
+1/1 [==============================] - 0s 2ms/step - loss: 0.0093
 Epoch 44/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0307
+1/1 [==============================] - 0s 2ms/step - loss: 0.0088
 Epoch 45/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0294
+1/1 [==============================] - 0s 1ms/step - loss: 0.0083
 Epoch 46/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0282
+1/1 [==============================] - 0s 2ms/step - loss: 0.0080
 Epoch 47/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0272
+1/1 [==============================] - 0s 2ms/step - loss: 0.0076
 Epoch 48/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0263
+1/1 [==============================] - 0s 2ms/step - loss: 0.0074
 Epoch 49/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0255
+1/1 [==============================] - 0s 2ms/step - loss: 0.0071
 Epoch 50/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0248
+1/1 [==============================] - 0s 2ms/step - loss: 0.0069
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7f8e9984e590&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fbe11836670&gt;
 </pre></div>
 </div>
 </div>
@@ -611,7 +632,7 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[30.441984]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[31.170954]]
 </pre></div>
 </div>
 </div>
@@ -646,7 +667,7 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[31.550713]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[31.005653]]
 </pre></div>
 </div>
 </div>
@@ -663,22 +684,36 @@ Epoch 50/50
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-tf-py"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "conda-env-tf-py",
+            kernelName: "python3",
             path: "./docs"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-tf-py'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="deep-learning.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Deep Learning</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="computer-vision.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Computer vision</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>

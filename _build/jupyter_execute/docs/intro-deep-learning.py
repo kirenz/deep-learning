@@ -37,7 +37,7 @@
 # 1. Import the library ``numpy`` as ``np`` and 
 # 2. specify the values for *x* and *y* as an array in NumPy with ``np.array[]``. We use datatype *float*.
 
-# In[4]:
+# In[1]:
 
 
 # Create some data
@@ -65,7 +65,7 @@ y = np.array([-2.0, 1.0, 4.0, 7.0, 10.0, 13.0], dtype=float)
 # 
 # But before we train our model, let`s first use the Python library **seaborn** to visualize the realtionship between x and y.
 
-# In[5]:
+# In[3]:
 
 
 # Plot relationship with scatterplot
@@ -82,7 +82,7 @@ print("y = 3x + 1")
 # - We import **TensorFlow** and calling it ``tf`` for ease of use. 
 # - The framework for defining a neural network as a set of sequential layers is called ``keras``, so import that, too.
 
-# In[6]:
+# In[4]:
 
 
 # Import TensorFlow and Keras 
@@ -99,7 +99,7 @@ from tensorflow import keras
 # - that layer has one neuron (``units=1``), 
 # - and the input shape to it is only one value (``input_shape=[1]``).
 
-# In[7]:
+# In[5]:
 
 
 # Define neural network
@@ -117,7 +117,7 @@ model = tf.keras.Sequential([keras.layers.Dense(units=1, input_shape=[1])])
 # - We use **mean_squared_error** for the loss and **stochastic gradient descent (sgd)** for the optimizer.   
 # - You don't need to understand the math for those yet, but you can see that they work!
 
-# In[8]:
+# In[6]:
 
 
 # Compile neural network
@@ -145,7 +145,7 @@ model.compile(optimizer='sgd', loss='mean_squared_error')
 # By the time the training is done, the loss is extremely small, showing that our model is doing a great job of inferring the relationship between the numbers.
 # 
 
-# In[9]:
+# In[7]:
 
 
 # Train neural network
@@ -159,7 +159,7 @@ model.fit(x, y, epochs=50)
 # 
 # For example, if x is 10, what do you think y will be? Take a guess before you run the following code:
 
-# In[10]:
+# In[8]:
 
 
 # Make a prediction
@@ -175,7 +175,7 @@ print(model.predict([10.0]))
 # 
 # ---
 
-# In[11]:
+# In[9]:
 
 
 # Summary
