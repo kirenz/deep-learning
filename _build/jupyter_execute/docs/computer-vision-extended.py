@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# *The content of this notebook is based on the official TensorFlow tutorial "Basic classification: Classify images of clothing". Here is the original source code:*
+# # TensorFlow MNIST III
 
-# # Basic classification: Classify images of clothing
+# *The content of this notebook is based on the official TensorFlow tutorial "Basic classification: Classify images of clothing". Here is the original source code:*
 
 # <table class="tfo-notebook-buttons" align="left">
 #   <td>
@@ -37,7 +37,7 @@ import matplotlib.pyplot as plt
 print(tf.__version__)
 
 
-# ## Import the Fashion MNIST dataset
+# ## Import data
 
 # This guide uses the [Fashion MNIST](https://github.com/zalandoresearch/fashion-mnist) dataset which contains 70,000 grayscale images in 10 categories. The images show individual articles of clothing at low resolution (28 by 28 pixels), as seen here:
 # 
@@ -196,7 +196,7 @@ test_images = test_images / 255.0
 
 # To verify that the data is in the correct format and that you're ready to build and train the network, let's display the first 25 images from the *training set* and display the class name below each image.
 
-# In[13]:
+# In[11]:
 
 
 plt.figure(figsize=(10,10))
@@ -220,7 +220,7 @@ plt.show()
 # 
 # Most of deep learning consists of chaining together simple layers. Most layers, such as `tf.keras.layers.Dense`, have parameters that are learned during training.
 
-# In[14]:
+# In[12]:
 
 
 model = tf.keras.Sequential([
@@ -242,7 +242,7 @@ model = tf.keras.Sequential([
 # * [*Optimizer*](https://www.tensorflow.org/api_docs/python/tf/keras/optimizers) —This is how the model is updated based on the data it sees and its loss function.
 # * [*Metrics*](https://www.tensorflow.org/api_docs/python/tf/keras/metrics) —Used to monitor the training and testing steps. The following example uses *accuracy*, the fraction of the images that are correctly classified.
 
-# In[15]:
+# In[13]:
 
 
 model.compile(optimizer='adam',
@@ -250,7 +250,7 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 
-# ## Train the model
+# ### Train the model
 # 
 # Training the neural network model requires the following steps:
 # 
@@ -260,11 +260,10 @@ model.compile(optimizer='adam',
 # 4. Verify that the predictions match the labels from the `test_labels` array.
 # 
 
-# ### Feed the model
 # 
 # To start training,  call the [`model.fit`](https://www.tensorflow.org/api_docs/python/tf/keras/Model#fit) method—so called because it "fits" the model to the training data:
 
-# In[16]:
+# In[14]:
 
 
 model.fit(train_images, train_labels, epochs=10)
@@ -276,7 +275,7 @@ model.fit(train_images, train_labels, epochs=10)
 # 
 # Next, compare how the model performs on the test dataset:
 
-# In[18]:
+# In[15]:
 
 
 test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
@@ -291,14 +290,14 @@ print('\nTest accuracy:', test_acc)
 # With the model trained, you can use it to make predictions about some images.
 # The model's linear outputs, [logits](https://developers.google.com/machine-learning/glossary#logits). Attach a softmax layer to convert the logits to probabilities, which are easier to interpret. 
 
-# In[19]:
+# In[16]:
 
 
 probability_model = tf.keras.Sequential([model, 
                                          tf.keras.layers.Softmax()])
 
 
-# In[20]:
+# In[17]:
 
 
 predictions = probability_model.predict(test_images)
@@ -306,7 +305,7 @@ predictions = probability_model.predict(test_images)
 
 # Here, the model has predicted the label for each image in the testing set. Let's take a look at the first prediction:
 
-# In[21]:
+# In[18]:
 
 
 predictions[0]
@@ -314,7 +313,7 @@ predictions[0]
 
 # A prediction is an array of 10 numbers. They represent the model's "confidence" that the image corresponds to each of the 10 different articles of clothing. You can see which label has the highest confidence value:
 
-# In[22]:
+# In[19]:
 
 
 np.argmax(predictions[0])
@@ -322,7 +321,7 @@ np.argmax(predictions[0])
 
 # So, the model is most confident that this image is an ankle boot, or `class_names[9]`. Examining the test label shows that this classification is correct:
 
-# In[23]:
+# In[20]:
 
 
 test_labels[0]
@@ -330,7 +329,7 @@ test_labels[0]
 
 # Let's write functions to graph the full set of 10 class predictions.
 
-# In[25]:
+# In[21]:
 
 
 def plot_image(i, predictions_array, true_label, img):
@@ -371,7 +370,7 @@ def plot_value_array(i, predictions_array, true_label):
 
 # Let's look at the 0th image, predictions, and prediction array. Correct prediction labels are blue and incorrect prediction labels are red. The number gives the percentage (out of 100) for the predicted label.
 
-# In[26]:
+# In[22]:
 
 
 i = 0
@@ -385,7 +384,7 @@ plot_value_array(i, predictions[i],  test_labels)
 plt.show()
 
 
-# In[28]:
+# In[23]:
 
 
 i = 12
@@ -399,7 +398,7 @@ plt.show()
 
 # Let's plot several images with their predictions. Note that the model can be wrong even when very confident.
 
-# In[29]:
+# In[24]:
 
 
 # Plot the first X test images, their predicted labels, and the true labels.
@@ -421,7 +420,7 @@ plt.show()
 # 
 # Finally, use the trained model to make a prediction about a single image.
 
-# In[30]:
+# In[25]:
 
 
 # Grab an image from the test dataset.
@@ -432,7 +431,7 @@ print(img.shape)
 
 # `tf.keras` models are optimized to make predictions on a *batch*, or collection, of examples at once. Accordingly, even though you're using a single image, you need to add it to a list:
 
-# In[32]:
+# In[26]:
 
 
 # Add the image to a batch where it's the only member.
@@ -443,7 +442,7 @@ print(img.shape)
 
 # Now predict the correct label for this image:
 
-# In[33]:
+# In[27]:
 
 
 predictions_single = probability_model.predict(img)
@@ -451,7 +450,7 @@ predictions_single = probability_model.predict(img)
 print(predictions_single)
 
 
-# In[34]:
+# In[28]:
 
 
 plot_value_array(1, predictions_single[0], test_labels)
@@ -461,7 +460,7 @@ plt.show()
 
 # `tf.keras.Model.predict` returns a list of lists—one list for each image in the batch of data. Grab the predictions for our (only) image in the batch:
 
-# In[35]:
+# In[29]:
 
 
 np.argmax(predictions_single[0])

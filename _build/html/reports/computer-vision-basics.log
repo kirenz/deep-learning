@@ -22,7 +22,7 @@ import tensorflow as tf
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/var/folders/sl/9n0p_v712g9ftpzq9r9c254w0000gn/T/ipykernel_8198/3793406994.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/sl/9n0p_v712g9ftpzq9r9c254w0000gn/T/ipykernel_9882/3793406994.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0;32mimport[0m [0mtensorflow[0m [0;32mas[0m [0mtf[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;31mModuleNotFoundError[0m: No module named 'tensorflow'

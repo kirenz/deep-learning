@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Computer vision - build a neural network
+# # TensorFlow MNIST II
+# 
+# Computer vision - build a neural network.
 # 
 # *The content of this notebook is based on the official TensorFlow tutorial "TensorFlow 2 quickstart for beginners". Here is the original source code:*
 
@@ -28,7 +30,7 @@
 
 # ## Data preparation
 
-# In[3]:
+# In[13]:
 
 
 import tensorflow as tf
@@ -36,7 +38,7 @@ import tensorflow as tf
 
 # Load and prepare the [MNIST dataset](http://yann.lecun.com/exdb/mnist/). Convert the samples from integers to floating-point numbers:
 
-# In[4]:
+# In[14]:
 
 
 mnist = tf.keras.datasets.mnist
@@ -49,7 +51,7 @@ x_train, x_test = x_train / 255.0, x_test / 255.0
 
 # Build the `tf.keras.Sequential` model by stacking layers. The ``Dropout`` layer randomly sets input units to 0 with a frequency of rate 0.2 at each step during training time, which helps prevent overfitting. 
 
-# In[5]:
+# In[15]:
 
 
 model = tf.keras.models.Sequential([
@@ -60,13 +62,13 @@ model = tf.keras.models.Sequential([
 ])
 
 
-# ### Optimizer and loss function
+# ## Optimizer and loss function
 
 # Next, we need to choose an **optimizer** and **loss** function for training:
 
 # For each example the model returns a vector of "[logits](https://developers.google.com/machine-learning/glossary#logits)" or "[log-odds](https://developers.google.com/machine-learning/glossary#log-odds)" scores, one for each class.
 
-# In[6]:
+# In[16]:
 
 
 predictions = model(x_train[:1]).numpy()
@@ -75,7 +77,7 @@ predictions
 
 # The `tf.nn.softmax` function converts these logits to "probabilities" for each class: 
 
-# In[7]:
+# In[17]:
 
 
 tf.nn.softmax(predictions).numpy()
@@ -86,7 +88,7 @@ tf.nn.softmax(predictions).numpy()
 
 # The `losses.SparseCategoricalCrossentropy` loss takes a vector of logits and a `True` index and returns a scalar loss for each example.
 
-# In[8]:
+# In[18]:
 
 
 loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
@@ -97,13 +99,13 @@ loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
 # 
 # This untrained model gives probabilities close to random (1/10 for each class), so the initial loss should be close to `-tf.math.log(1/10) ~= 2.3`.
 
-# In[10]:
+# In[19]:
 
 
 loss_fn(y_train[:1], predictions).numpy()
 
 
-# In[12]:
+# In[20]:
 
 
 model.compile(optimizer='adam',
@@ -111,11 +113,11 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 
-# ### Model training
+# ## Model training
 
 # The `Model.fit` method adjusts the model parameters to minimize the loss: 
 
-# In[13]:
+# In[21]:
 
 
 model.fit(x_train, y_train, epochs=5)
@@ -125,7 +127,7 @@ model.fit(x_train, y_train, epochs=5)
 # 
 # The `Model.evaluate` method checks the models performance, usually on a "[Validation-set](https://developers.google.com/machine-learning/glossary#validation-set)" or "[Test-set](https://developers.google.com/machine-learning/glossary#test-set)".
 
-# In[15]:
+# In[22]:
 
 
 model.evaluate(x_test,  y_test, verbose=2)
@@ -135,7 +137,7 @@ model.evaluate(x_test,  y_test, verbose=2)
 
 # If you want your model to return a probability, you can wrap the trained model, and attach the softmax to it:
 
-# In[16]:
+# In[23]:
 
 
 probability_model = tf.keras.Sequential([
@@ -144,7 +146,7 @@ probability_model = tf.keras.Sequential([
 ])
 
 
-# In[17]:
+# In[24]:
 
 
 probability_model(x_test[:5])

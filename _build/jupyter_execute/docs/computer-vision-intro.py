@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # CV notebook
+# # TensorFlow MNIST I
 # 
 # *This tutorial is based on Lawrence Moroney's excellent video tutorial [Basic Computer Vision with ML](https://www.youtube.com/watch?v=bemDFpNooA8).*
 # 

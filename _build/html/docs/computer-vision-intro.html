@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV notebook &#8212; Deep Learning</title>
+    <title>TensorFlow MNIST I &#8212; Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,7 +54,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Convolutional" href="convolutional.html" />
+    <link rel="next" title="TensorFlow MNIST II" href="computer-vision-basics.html" />
     <link rel="prev" title="Computer vision" href="computer-vision.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -111,6 +111,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="tensorflow.html">
+   TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="intro-deep-learning.html">
    Deep Learning notebook
   </a>
@@ -129,12 +134,27 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   CV notebook
+   TensorFlow MNIST I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="computer-vision-basics.html">
+   TensorFlow MNIST II
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="computer-vision-extended.html">
+   TensorFlow MNIST III
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="convolutional.html">
    Convolutional
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cnn.html">
+   TensorFlow CNN
   </a>
  </li>
 </ul>
@@ -343,7 +363,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>CV notebook</h1>
+                <h1>TensorFlow MNIST I</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -443,8 +463,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="cv-notebook">
-<h1>CV notebook<a class="headerlink" href="#cv-notebook" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="tensorflow-mnist-i">
+<h1>TensorFlow MNIST I<a class="headerlink" href="#tensorflow-mnist-i" title="Permalink to this headline">¶</a></h1>
 <p><em>This tutorial is based on Lawrence Moroney’s excellent video tutorial <a class="reference external" href="https://www.youtube.com/watch?v=bemDFpNooA8">Basic Computer Vision with ML</a>.</em></p>
 <p>In the deep learning notebook you saw how to create a neural network to figure out a simple relationship between two variables. This gave an explicit example of learned behavior. Of course, in that instance, it was a bit of overkill because it would have been easier to write the function <span class="math notranslate nohighlight">\(y=3x+1\)</span> directly, instead of bothering with using Machine Learning to learn the relationship between <em>x</em> and *y+ for a fixed set of values, and extending that for all values.</p>
 <p>But what about a scenario where writing rules like that is much more difficult – for example a computer vision problem? Let’s take a look at a scenario where we can recognize different items of clothing, trained from a dataset containing 10 different types.</p>
@@ -1176,10 +1196,10 @@ Epoch 5/5
             <p class="prev-next-title">Computer vision</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="convolutional.html" title="next page">
+    <a class='right-next' id="next-link" href="computer-vision-basics.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Convolutional</p>
+        <p class="prev-next-title">TensorFlow MNIST II</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
