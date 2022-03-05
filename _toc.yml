@@ -1,0 +1,11 @@
+format: jb-book
+root: docs/intro.md
+parts:
+  - caption: Introduction
+    chapters:
+    - file: docs/deep-learning.md  
+    - file: docs/computer-vision.md
+    - file: docs/convolutional.md  
+  - caption: References
+    chapters:
+    - file: docs/reference.md
