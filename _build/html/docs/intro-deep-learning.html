@@ -55,7 +55,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Computer vision" href="computer-vision.html" />
-    <link rel="prev" title="Deep Learning" href="deep-learning.html" />
+    <link rel="prev" title="TensorFlow" href="tensorflow.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -110,6 +110,11 @@
    Deep Learning
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tensorflow.html">
+   TensorFlow
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Deep Learning notebook
@@ -129,12 +134,27 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="computer-vision-intro.html">
-   CV notebook
+   TensorFlow MNIST I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="computer-vision-basics.html">
+   TensorFlow MNIST II
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="computer-vision-extended.html">
+   TensorFlow MNIST III
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="convolutional.html">
    Convolutional
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cnn.html">
+   TensorFlow CNN
   </a>
  </li>
 </ul>
@@ -447,6 +467,19 @@ You probably think that y equals 3 times x plus or minus something. Then, you’
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">sl</span><span class="o">/</span><span class="mi">9</span><span class="n">n0p_v712g9ftpzq9r9c254w0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_11065</span><span class="o">/</span><span class="mf">4055475441.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Import TensorFlow and Keras</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;tensorflow&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="define-and-compile-the-neural-network">
 <h2>Define and compile the neural network<a class="headerlink" href="#define-and-compile-the-neural-network" title="Permalink to this headline">¶</a></h2>
@@ -705,11 +738,11 @@ Epoch 50/50
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="deep-learning.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="tensorflow.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Deep Learning</p>
+            <p class="prev-next-title">TensorFlow</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="computer-vision.html" title="next page">

@@ -65,7 +65,7 @@ y = np.array([-2.0, 1.0, 4.0, 7.0, 10.0, 13.0], dtype=float)
 # 
 # But before we train our model, let`s first use the Python library **seaborn** to visualize the realtionship between x and y.
 
-# In[3]:
+# In[2]:
 
 
 # Plot relationship with scatterplot
@@ -82,7 +82,7 @@ print("y = 3x + 1")
 # - We import **TensorFlow** and calling it ``tf`` for ease of use. 
 # - The framework for defining a neural network as a set of sequential layers is called ``keras``, so import that, too.
 
-# In[4]:
+# In[3]:
 
 
 # Import TensorFlow and Keras 
