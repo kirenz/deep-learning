@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Computer vision - build a neural network &#8212; Deep Learning</title>
+    <title>TensorFlow MNIST II &#8212; Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,6 +52,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TensorFlow MNIST III" href="computer-vision-extended.html" />
+    <link rel="prev" title="TensorFlow MNIST I" href="computer-vision-intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -107,6 +109,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="tensorflow.html">
+   TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="intro-deep-learning.html">
    Deep Learning notebook
   </a>
@@ -117,7 +124,7 @@
   Computer vision
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="computer-vision.html">
    Computer vision
@@ -125,12 +132,27 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="computer-vision-intro.html">
-   CV notebook
+   TensorFlow MNIST I
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   TensorFlow MNIST II
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="computer-vision-extended.html">
+   TensorFlow MNIST III
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="convolutional.html">
    Convolutional
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cnn.html">
+   TensorFlow CNN
   </a>
  </li>
 </ul>
@@ -257,18 +279,16 @@
   <a class="reference internal nav-link" href="#neural-network-design">
    Neural network design
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#optimizer-and-loss-function">
-     Optimizer and loss function
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-training">
-     Model training
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimizer-and-loss-function">
+   Optimizer and loss function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-training">
+   Model training
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model-evaluation">
@@ -285,7 +305,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Computer vision - build a neural network</h1>
+                <h1>TensorFlow MNIST II</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -304,18 +324,16 @@
   <a class="reference internal nav-link" href="#neural-network-design">
    Neural network design
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#optimizer-and-loss-function">
-     Optimizer and loss function
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-training">
-     Model training
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimizer-and-loss-function">
+   Optimizer and loss function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-training">
+   Model training
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model-evaluation">
@@ -331,8 +349,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="computer-vision-build-a-neural-network">
-<h1>Computer vision - build a neural network<a class="headerlink" href="#computer-vision-build-a-neural-network" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="tensorflow-mnist-ii">
+<h1>TensorFlow MNIST II<a class="headerlink" href="#tensorflow-mnist-ii" title="Permalink to this headline">¶</a></h1>
+<p>Computer vision - build a neural network.</p>
 <p><em>The content of this notebook is based on the official TensorFlow tutorial “TensorFlow 2 quickstart for beginners”. Here is the original source code:</em></p>
 <table class="tfo-notebook-buttons" align="left">
   <td>
@@ -389,8 +408,9 @@
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="optimizer-and-loss-function">
-<h3>Optimizer and loss function<a class="headerlink" href="#optimizer-and-loss-function" title="Permalink to this headline">¶</a></h3>
+<h2>Optimizer and loss function<a class="headerlink" href="#optimizer-and-loss-function" title="Permalink to this headline">¶</a></h2>
 <p>Next, we need to choose an <strong>optimizer</strong> and <strong>loss</strong> function for training:</p>
 <p>For each example the model returns a vector of “<a class="reference external" href="https://developers.google.com/machine-learning/glossary#logits">logits</a>” or “<a class="reference external" href="https://developers.google.com/machine-learning/glossary#log-odds">log-odds</a>” scores, one for each class.</p>
 <div class="cell docutils container">
@@ -401,8 +421,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.16821931,  0.3898082 ,  0.12535964, -0.7232452 ,  0.51362497,
-         0.00426391, -0.10888806, -0.35102203, -0.43187338, -0.5077769 ]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.54341495, -0.21888089, -0.9366398 , -0.72691745, -0.14280474,
+        -0.93294215,  0.00493893,  0.23920178, -0.5972141 , -0.02694894]],
       dtype=float32)
 </pre></div>
 </div>
@@ -416,8 +436,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.12065846, 0.15058877, 0.11559633, 0.04947658, 0.17043765,
-        0.10241248, 0.09145587, 0.07178838, 0.06621262, 0.06137285]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.20353417, 0.09496782, 0.04632951, 0.05713984, 0.10247453,
+        0.04650114, 0.11879008, 0.1501479 , 0.06505316, 0.11506188]],
       dtype=float32)
 </pre></div>
 </div>
@@ -443,7 +463,7 @@ It is zero if the model is sure of the correct class.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.2787466
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0682783
 </pre></div>
 </div>
 </div>
@@ -459,7 +479,7 @@ It is zero if the model is sure of the correct class.</p>
 </div>
 </div>
 <div class="section" id="model-training">
-<h3>Model training<a class="headerlink" href="#model-training" title="Permalink to this headline">¶</a></h3>
+<h2>Model training<a class="headerlink" href="#model-training" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Model.fit</span></code> method adjusts the model parameters to minimize the loss:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -469,20 +489,19 @@ It is zero if the model is sure of the correct class.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/5
-1875/1875 [==============================] - 1s 642us/step - loss: 0.4928 - accuracy: 0.8556
+1875/1875 [==============================] - 2s 823us/step - loss: 0.2971 - accuracy: 0.9135
 Epoch 2/5
-1875/1875 [==============================] - 1s 635us/step - loss: 0.1537 - accuracy: 0.9536
+1875/1875 [==============================] - 2s 970us/step - loss: 0.1434 - accuracy: 0.9569
 Epoch 3/5
-1875/1875 [==============================] - 1s 765us/step - loss: 0.1104 - accuracy: 0.9671
+1875/1875 [==============================] - 1s 717us/step - loss: 0.1083 - accuracy: 0.9668
 Epoch 4/5
-1875/1875 [==============================] - 1s 703us/step - loss: 0.0866 - accuracy: 0.9743
+1875/1875 [==============================] - 1s 734us/step - loss: 0.0891 - accuracy: 0.9728
 Epoch 5/5
-1875/1875 [==============================] - 1s 692us/step - loss: 0.0755 - accuracy: 0.9767
+1875/1875 [==============================] - 2s 815us/step - loss: 0.0780 - accuracy: 0.9755
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7f9df0429f50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fcbe1e76520&gt;
 </pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -497,10 +516,10 @@ Epoch 5/5
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 - 0s - loss: 0.0732 - accuracy: 0.9780
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 - 0s - loss: 0.0814 - accuracy: 0.9760 - 215ms/epoch - 687us/step
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.07321056723594666, 0.9779999852180481]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.08140749484300613, 0.9760000109672546]
 </pre></div>
 </div>
 </div>
@@ -525,21 +544,21 @@ Epoch 5/5
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(5, 10), dtype=float32, numpy=
-array([[3.09392867e-08, 1.62570846e-09, 1.71217107e-06, 2.22564777e-05,
-        2.99183530e-13, 4.48554367e-08, 1.24438166e-12, 9.99974966e-01,
-        1.77110863e-07, 7.48243963e-07],
-       [1.52942015e-09, 8.80617663e-05, 9.99895930e-01, 9.36737433e-06,
-        4.43583938e-14, 1.88387526e-06, 7.11530346e-09, 4.60684968e-16,
-        4.78148104e-06, 3.28602510e-12],
-       [3.18908491e-07, 9.97908831e-01, 1.84463002e-04, 2.05156794e-05,
-        1.49538915e-04, 1.29564996e-05, 4.39937212e-05, 7.54863955e-04,
-        9.18019505e-04, 6.59599073e-06],
-       [9.99574482e-01, 1.91707514e-07, 1.81093463e-04, 9.37698587e-07,
-        4.54466817e-06, 1.49871175e-05, 2.02364303e-04, 1.57091508e-05,
-        1.03851740e-07, 5.66688004e-06],
-       [8.74082070e-06, 2.73454537e-10, 1.69499708e-05, 3.78712201e-07,
-        9.79025066e-01, 3.72799059e-06, 1.73404951e-05, 1.17754782e-04,
-        5.50070354e-06, 2.08045002e-02]], dtype=float32)&gt;
+array([[5.40054032e-07, 5.28068655e-09, 8.55695725e-06, 9.49303503e-05,
+        9.11432713e-13, 2.27035581e-08, 1.87984258e-14, 9.99893308e-01,
+        1.33198921e-06, 1.40733334e-06],
+       [6.38863412e-07, 4.65077907e-03, 9.95305955e-01, 4.32945581e-06,
+        1.22102849e-12, 3.83286060e-05, 3.58877585e-08, 6.27718849e-11,
+        2.93874312e-08, 3.68349884e-09],
+       [4.11219162e-07, 9.97538924e-01, 8.47957737e-04, 4.33883215e-05,
+        2.19761168e-05, 6.66951601e-05, 3.85721214e-05, 9.11290990e-04,
+        5.30206133e-04, 6.71609655e-07],
+       [9.99988079e-01, 1.04602806e-10, 8.74882062e-06, 4.63699443e-08,
+        3.74681761e-08, 8.96031167e-07, 8.58595001e-07, 8.02475938e-07,
+        2.39282318e-08, 4.66454878e-07],
+       [1.24081153e-05, 2.69615330e-10, 7.30154397e-06, 5.43351121e-07,
+        9.96388555e-01, 1.11955351e-05, 2.35643552e-06, 7.20459328e-04,
+        4.44048555e-06, 2.85285013e-03]], dtype=float32)&gt;
 </pre></div>
 </div>
 </div>
@@ -571,7 +590,21 @@ array([[3.09392867e-08, 1.62570846e-09, 1.71217107e-06, 2.22564777e-05,
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="computer-vision-intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">TensorFlow MNIST I</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="computer-vision-extended.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TensorFlow MNIST III</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
