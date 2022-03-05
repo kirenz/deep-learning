@@ -20,12 +20,9 @@ Note that Keras offers many [code examples](https://keras.io/examples/) with sho
 
 ## Code example
 
-Next, we take a look at how to build a deep neural network model using TensorFlow 2 and Keras. 
-
-The content is based on Laurence Moroney's excellent Tutorial "Intro to Machine Learning" (see the video below): 
+Next, we take a look at how to build a deep neural network model using TensorFlow 2 and Keras. The content is based on Laurence Moroney's excellent Tutorial "Intro to Machine Learning" (see video below): 
 
 :::{Note}
-You'll find the Jupyter Notebook for this example in the next section.
 :::
 
 <br>
@@ -37,6 +34,8 @@ You'll find the Jupyter Notebook for this example in the next section.
 ```{admonition} Resources
 :class: tip
 - [Download slides](https://docs.google.com/presentation/d/17paB63OQX_GU7ldbRwduYevAHWqJVGJkV4NZdXPpKjY/export/pdf)
+- [Jupyter Notebook](intro-deep-learning.ipynb)
+
 ```
 
 Google'S AI Advocate Laurence Moroney walks you through the code provided in the presentation: 

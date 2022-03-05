@@ -5,7 +5,7 @@ parts:
     chapters:
     - file: docs/deep-learning.md  
     - file: docs/tensorflow.md  
-    - file: docs/intro-deep-learning.ipynb
+    - file: docs/tf-example.ipynb
   - caption: Computer vision
     chapters:
     - file: docs/computer-vision.md
