@@ -9,9 +9,10 @@ parts:
   - caption: Computer vision
     chapters:
     - file: docs/computer-vision.md
-    - file: docs/computer-vision-intro.ipynb
-    - file: docs/computer-vision-basics.ipynb
-    - file: docs/computer-vision-extended.ipynb
+    - file: docs/mnist.ipynb
+    - file: docs/cv-intro.ipynb
+    - file: docs/cv-basics.ipynb
+    - file: docs/cv-extended.ipynb
     - file: docs/convolutional.md  
     - file: docs/cnn.ipynb
   - caption: References
