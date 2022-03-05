@@ -3,7 +3,7 @@ author: Jan Kirenz
 logo: logo.png
 
 execute:
-  execute_notebooks: force #cache
+  execute_notebooks: 'off'
 
 latex:
   latex_documents:
