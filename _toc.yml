@@ -8,6 +8,7 @@ parts:
   - caption: Computer vision
     chapters:
     - file: docs/computer-vision.md
+    - file: docs/computer-vision-intro.ipynb
     - file: docs/convolutional.md      
   - caption: References
     chapters:

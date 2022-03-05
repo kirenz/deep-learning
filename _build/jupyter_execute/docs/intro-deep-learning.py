@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Introduction to Deep Learning 
+# # Deep Learning notebook
 # 
 # 
 # <img src="https://www.tensorflow.org/site-assets/images/marketing/home/model.svg">
