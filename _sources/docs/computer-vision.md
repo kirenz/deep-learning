@@ -1,4 +1,4 @@
-# Computer vision
+# Introduction
 
 The following presentation is based on Laurence Mooroney's tutorial "Basic Computer Vision with ML" (see video below):
 <br>

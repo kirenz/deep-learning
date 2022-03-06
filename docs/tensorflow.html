@@ -52,7 +52,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Deep Learning notebook" href="intro-deep-learning.html" />
+    <link rel="next" title="TensorFlow Example" href="tf-example.html" />
     <link rel="prev" title="Deep Learning" href="deep-learning.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -114,8 +114,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="intro-deep-learning.html">
-   Deep Learning notebook
+  <a class="reference internal" href="tf-example.html">
+   TensorFlow Example
   </a>
  </li>
 </ul>
@@ -127,22 +127,27 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="computer-vision.html">
-   Computer vision
+   Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="computer-vision-intro.html">
-   TensorFlow MNIST I
+  <a class="reference internal" href="mnist.html">
+   MNIST data
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="computer-vision-basics.html">
-   TensorFlow MNIST II
+  <a class="reference internal" href="cv-intro.html">
+   Model Exercises
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="computer-vision-extended.html">
-   TensorFlow MNIST III
+  <a class="reference internal" href="cv-basics.html">
+   TF MNIST I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cv-extended.html">
+   TF MNIST II
   </a>
  </li>
  <li class="toctree-l1">
@@ -152,7 +157,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="cnn.html">
-   TensorFlow CNN
+   TF CNN
   </a>
  </li>
 </ul>
@@ -260,13 +265,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tensorflow-and-keras">
-   TensorFlow and Keras
+  <a class="reference internal nav-link" href="#keras">
+   Keras
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code-example">
-   Code example
+  <a class="reference internal nav-link" href="#first-steps">
+   First steps
   </a>
  </li>
 </ul>
@@ -295,13 +300,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tensorflow-and-keras">
-   TensorFlow and Keras
+  <a class="reference internal nav-link" href="#keras">
+   Keras
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code-example">
-   Code example
+  <a class="reference internal nav-link" href="#first-steps">
+   First steps
   </a>
  </li>
 </ul>
@@ -325,20 +330,15 @@
 </ul>
 </div>
 </div>
-<div class="section" id="tensorflow-and-keras">
-<h2>TensorFlow and Keras<a class="headerlink" href="#tensorflow-and-keras" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="keras">
+<h2>Keras<a class="headerlink" href="#keras" title="Permalink to this headline">¶</a></h2>
 <p>Built on top of TensorFlow 2, <a class="reference external" href="https://keras.io">Keras</a> is an industry-strength framework that can scale to large clusters of GPUs or an entire TPU pod. It is a central part of the tightly-connected TensorFlow 2 ecosystem, covering every step of the machine learning workflow, from data management to hyperparameter training to deployment solutions.</p>
 <p>Keras is used by CERN (and yes, Keras is used at the <a class="reference external" href="https://blog.tensorflow.org/2021/04/reconstructing-thousands-of-particles-in-one-go-at-cern-lhc.html">LHC</a>), NASA and many more scientific organizations around the world. Furthermore, it is the most used deep learning framework among top-5 winning teams on <a class="reference external" href="https://www.kaggle.com">Kaggle</a>.</p>
 <p>Note that Keras offers many <a class="reference external" href="https://keras.io/examples/">code examples</a> with short (less than 300 lines of code), focused demonstrations of deep learning workflows. All of the examples are written as Jupyter notebooks and can be run in one click in Google Colab.</p>
 </div>
-<div class="section" id="code-example">
-<h2>Code example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
-<p>Next, we take a look at how to build a deep neural network model using TensorFlow 2 and Keras.</p>
-<p>The content is based on Laurence Moroney’s excellent Tutorial “Intro to Machine Learning” (see the video below):</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You’ll find the Jupyter Notebook for this example in the next section.</p>
-</div>
+<div class="section" id="first-steps">
+<h2>First steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
+<p>Next, we take a look at how to build a deep neural network model using TensorFlow 2 and Keras. The content is based on Laurence Moroney’s excellent Tutorial “Intro to Machine Learning” (see video below):</p>
 <br>
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQn-aJbtwbwSJgA9mMMRBUXrtIvKJXQWwNrMpAr4tPKZ1URiI84eWvlZPly3wcDpp0e6NrrbGVW5G2g/embed?start=false&loop=false&delayms=3000" frameborder="0" width="820" height="520" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 <br>
@@ -346,6 +346,7 @@
 <p class="admonition-title">Resources</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.google.com/presentation/d/17paB63OQX_GU7ldbRwduYevAHWqJVGJkV4NZdXPpKjY/export/pdf">Download slides</a></p></li>
+<li><p><span class="xref myst">Jupyter Notebook</span></p></li>
 </ul>
 </div>
 <p>Google’S AI Advocate Laurence Moroney walks you through the code provided in the presentation:</p>
@@ -384,10 +385,10 @@
             <p class="prev-next-title">Deep Learning</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="intro-deep-learning.html" title="next page">
+    <a class='right-next' id="next-link" href="tf-example.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Deep Learning notebook</p>
+        <p class="prev-next-title">TensorFlow Example</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
