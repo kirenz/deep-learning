@@ -15,6 +15,9 @@ parts:
     - file: docs/cv-extended.ipynb
     - file: docs/convolutional.md  
     - file: docs/cnn.ipynb
+  - caption: Regression
+    chapters:
+    - file: docs/regression-structured.md
   - caption: References
     chapters:
     - file: docs/reference.md
