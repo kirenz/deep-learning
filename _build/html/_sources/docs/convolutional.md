@@ -14,6 +14,8 @@ A convolution is a filter that passes over an image, processes it, and extracts 
 ```{admonition} Resources
 :class: tip
 - [Download slides](https://docs.google.com/presentation/d/13vGVcapsaNU0be6-Gt_fFkRgo64hsJ6kCV8PfGS7Oq4/export/pdf)
+
+- [TensorFlow (TF) CNN](https://kirenz.github.io/deep-learning/docs/cnn.html)
 ```
 
 <br>
