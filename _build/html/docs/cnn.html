@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TensorFlow CNN &#8212; Deep Learning</title>
+    <title>TF CNN &#8212; Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -114,8 +114,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="intro-deep-learning.html">
-   Deep Learning notebook
+  <a class="reference internal" href="tf-example.html">
+   TensorFlow Example
   </a>
  </li>
 </ul>
@@ -127,22 +127,27 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="computer-vision.html">
-   Computer vision
+   Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="computer-vision-intro.html">
-   TensorFlow MNIST I
+  <a class="reference internal" href="mnist.html">
+   MNIST data
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="computer-vision-basics.html">
-   TensorFlow MNIST II
+  <a class="reference internal" href="cv-intro.html">
+   Model Exercises
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="computer-vision-extended.html">
-   TensorFlow MNIST III
+  <a class="reference internal" href="cv-basics.html">
+   TF MNIST I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cv-extended.html">
+   TF MNIST II
   </a>
  </li>
  <li class="toctree-l1">
@@ -152,7 +157,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   TensorFlow CNN
+   TF CNN
   </a>
  </li>
 </ul>
@@ -272,7 +277,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   TensorFlow CNN
+   TF CNN
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -327,7 +332,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>TensorFlow CNN</h1>
+                <h1>TF CNN</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -339,7 +344,7 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   TensorFlow CNN
+   TF CNN
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -393,8 +398,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="tensorflow-cnn">
-<h1>TensorFlow CNN<a class="headerlink" href="#tensorflow-cnn" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="tf-cnn">
+<h1>TF CNN<a class="headerlink" href="#tf-cnn" title="Permalink to this headline">¶</a></h1>
 <p>Copyright 2019 The TensorFlow Authors.</p>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="convolutional-neural-network-cnn">
@@ -418,7 +423,8 @@
   <td>
     <a href="https://storage.googleapis.com/tensorflow_docs/docs/site/en/tutorials/images/cnn.ipynb"><img src="https://www.tensorflow.org/images/download_logo_32px.png" />Download notebook</a>
   </td>
-</table><p>This tutorial demonstrates training a simple <a class="reference external" href="https://developers.google.com/machine-learning/glossary/#convolutional_neural_network">Convolutional Neural Network</a> (CNN) to classify <a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR images</a>. Because this tutorial uses the <a class="reference external" href="https://www.tensorflow.org/guide/keras/overview">Keras Sequential API</a>, creating and training your model will take just a few lines of code.</p>
+</table><br>
+<p>This tutorial demonstrates training a simple <a class="reference external" href="https://developers.google.com/machine-learning/glossary/#convolutional_neural_network">Convolutional Neural Network</a> (CNN) to classify <a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR images</a>. Because this tutorial uses the <a class="reference external" href="https://www.tensorflow.org/guide/keras/overview">Keras Sequential API</a>, creating and training your model will take just a few lines of code.</p>
 <div class="section" id="import-tensorflow">
 <h2>Import TensorFlow<a class="headerlink" href="#import-tensorflow" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -427,19 +433,6 @@
 
 <span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">models</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">sl</span><span class="o">/</span><span class="mi">9</span><span class="n">n0p_v712g9ftpzq9r9c254w0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10976</span><span class="o">/</span><span class="mf">4015892469.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">models</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;tensorflow&#39;
 </pre></div>
 </div>
 </div>

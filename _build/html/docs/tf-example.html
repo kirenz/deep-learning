@@ -1,0 +1,753 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TensorFlow Example &#8212; Deep Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction" href="computer-vision.html" />
+    <link rel="prev" title="TensorFlow" href="tensorflow.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="deep-learning.html">
+   Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tensorflow.html">
+   TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   TensorFlow Example
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="computer-vision.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist.html">
+   MNIST data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cv-intro.html">
+   Model Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cv-basics.html">
+   TF MNIST I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cv-extended.html">
+   TF MNIST II
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="convolutional.html">
+   Convolutional
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cnn.html">
+   TF CNN
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="reference.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
+                title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/tf-example.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/kirenz/deep-learning"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Quell-Repository"><i
+                    class="fab fa-github"></i>Repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/tf-example.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Öffnen Sie ein Problem"><i class="fas fa-lightbulb"></i>offenes Thema</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Vollbildmodus"
+        title="Vollbildmodus"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/tf-example.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Starten Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Inhalt
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   TensorFlow Example
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-network">
+   Neural Network
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-and-compile-the-neural-network">
+     Define and compile the neural network
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-the-neural-network">
+     Train the neural network
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-the-model">
+     Use the model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>TensorFlow Example</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Inhalt </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   TensorFlow Example
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-network">
+   Neural Network
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-and-compile-the-neural-network">
+     Define and compile the neural network
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-the-neural-network">
+     Train the neural network
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-the-model">
+     Use the model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="tensorflow-example">
+<h1>TensorFlow Example<a class="headerlink" href="#tensorflow-example" title="Permalink to this headline">¶</a></h1>
+<img src="https://www.tensorflow.org/site-assets/images/marketing/home/model.svg">
+<p><sub><em>Photo credit: TensorFlow</em><sub></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=KNAWp2S3w94"><img alt="Intro to Machine Learning" src="https://img.youtube.com/vi/KNAWp2S3w94/0.jpg" /></a><br />
+<em>This tutorial is based on Lawrence Moroney’s excellent video tutorial <a class="reference external" href="https://www.youtube.com/watch?v=KNAWp2S3w94">Intro to Machine Learning</a>.</em></p>
+<ul class="simple">
+<li><p>First of all, we create some data in Python.</p></li>
+<li><p>In particular, we create two variables <em>x</em> and <em>y</em> with 6 values respectively.</p></li>
+</ul>
+<p>A Python library called <strong>NumPy</strong> provides lots of array type data structures to do this.</p>
+<ol class="simple">
+<li><p>Import the library <code class="docutils literal notranslate"><span class="pre">numpy</span></code> as <code class="docutils literal notranslate"><span class="pre">np</span></code> and</p></li>
+<li><p>specify the values for <em>x</em> and <em>y</em> as an array in NumPy with <code class="docutils literal notranslate"><span class="pre">np.array[]</span></code>. We use datatype <em>float</em>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create some data</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s take a look at the numbers.<br />
+Can you see the relationship between them?</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Value 1</p></th>
+<th class="head"><p>Value 2</p></th>
+<th class="head"><p>Value 3</p></th>
+<th class="head"><p>Value 4</p></th>
+<th class="head"><p>Value 5</p></th>
+<th class="head"><p>Value 6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>x</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>y</p></td>
+<td><p>-2</p></td>
+<td><p>1</p></td>
+<td><p>4</p></td>
+<td><p>7</p></td>
+<td><p>10</p></td>
+<td><p>13</p></td>
+</tr>
+</tbody>
+</table>
+<p>As you look at them, you might notice that the value of x is increasing by 1 as you read left to right and the corresponding value of y is increasing by 3.
+You probably think that y equals 3 times x plus or minus something. Then, you’d probably look at the 0 on x and see that y is 1, and you’d come up with the relationship:</p>
+<p><span class="math notranslate nohighlight">\(y = 3x + 1.\)</span></p>
+<p>That’s almost exactly how you would use code to train a model to spot the patterns in the data! How would you train a neural network to do the equivalent task? By feeding it with your set of x’s and y’s, it should be able to figure out the relationship between them.</p>
+<p>But before we train our model, let`s first use the Python library <strong>seaborn</strong> to visualize the realtionship between x and y.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot relationship with scatterplot</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">);</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y = 3x + 1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y = 3x + 1
+</pre></div>
+</div>
+<img alt="../_images/tf-example_6_1.png" src="../_images/tf-example_6_1.png" />
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="neural-network">
+<h1>Neural Network<a class="headerlink" href="#neural-network" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>We import <strong>TensorFlow</strong> and calling it <code class="docutils literal notranslate"><span class="pre">tf</span></code> for ease of use.</p></li>
+<li><p>The framework for defining a neural network as a set of sequential layers is called <code class="docutils literal notranslate"><span class="pre">keras</span></code>, so import that, too.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import TensorFlow and Keras </span>
+
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="define-and-compile-the-neural-network">
+<h2>Define and compile the neural network<a class="headerlink" href="#define-and-compile-the-neural-network" title="Permalink to this headline">¶</a></h2>
+<p>First, we create the simplest possible neural network:</p>
+<ul class="simple">
+<li><p>it has one layer (<code class="docutils literal notranslate"><span class="pre">keras.layers.Dense()</span></code>),</p></li>
+<li><p>that layer has one neuron (<code class="docutils literal notranslate"><span class="pre">units=1</span></code>),</p></li>
+<li><p>and the input shape to it is only one value (<code class="docutils literal notranslate"><span class="pre">input_shape=[1]</span></code>).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define neural network</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-05 13:16:23.316110: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Next, we write the code to <code class="docutils literal notranslate"><span class="pre">compile</span></code> your neural network.</p></li>
+<li><p>When you do so, you need to specify two functions:</p>
+<ul>
+<li><p>an <code class="docutils literal notranslate"><span class="pre">optimizer</span></code> and</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">loss</span></code> function.</p></li>
+</ul>
+</li>
+<li><p>We use <strong>mean_squared_error</strong> for the loss and <strong>stochastic gradient descent (sgd)</strong> for the optimizer.</p></li>
+<li><p>You don’t need to understand the math for those yet, but you can see that they work!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile neural network</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, you know that the relationship between the numbers is <span class="math notranslate nohighlight">\(y=3x+1\)</span>.</p>
+<ol class="simple">
+<li><p>When the computer is trying to learn that, it makes a guess, maybe <span class="math notranslate nohighlight">\(y=10x+10\)</span>.</p></li>
+<li><p>The <strong>loss</strong> function measures the guessed answers against the known correct answers and measures how well or badly it did.</p></li>
+<li><p>Next, the model uses the <strong>optimizer</strong> function to make another guess.</p></li>
+<li><p>Based on the <strong>loss</strong> function’s result, it tries to minimize the loss. At this point, maybe it will come up with something like <span class="math notranslate nohighlight">\(y=5x+5\)</span>. While that’s still pretty bad, it’s closer to the correct result (the loss is lower).</p></li>
+<li><p>The model repeats that for the number of <strong>epochs</strong>, which you’ll see shortly.</p></li>
+</ol>
+<p>Now you have all the code you need to define the neural network. The next step is to train it to see if it can infer the patterns between those numbers and use them to create a model.</p>
+</div>
+<div class="section" id="train-the-neural-network">
+<h2>Train the neural network<a class="headerlink" href="#train-the-neural-network" title="Permalink to this headline">¶</a></h2>
+<p>The process of training the neural network, where it learns the relationship between the x’s and y’s, is in the <code class="docutils literal notranslate"><span class="pre">model.fit</span></code> call. That’s where it will go through the loop before making a guess, measuring how good or bad it is (the loss), or using the optimizer to make another guess. It will do that for the number of <strong>epochs</strong> that you specify.</p>
+<p>When you run that code, you’ll see the loss will be printed out for each epoch.</p>
+<p>For example, you can see that for the first few epochs, the loss value is quite large, but it’s getting smaller with each step. As the training progresses, the loss soon gets very small.
+By the time the training is done, the loss is extremely small, showing that our model is doing a great job of inferring the relationship between the numbers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train neural network</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
+1/1 [==============================] - 0s 168ms/step - loss: 40.4891
+Epoch 2/50
+1/1 [==============================] - 0s 2ms/step - loss: 31.8584
+Epoch 3/50
+1/1 [==============================] - 0s 2ms/step - loss: 25.0681
+Epoch 4/50
+1/1 [==============================] - 0s 2ms/step - loss: 19.7257
+Epoch 5/50
+1/1 [==============================] - 0s 2ms/step - loss: 15.5225
+Epoch 6/50
+1/1 [==============================] - 0s 2ms/step - loss: 12.2156
+Epoch 7/50
+1/1 [==============================] - 0s 2ms/step - loss: 9.6138
+Epoch 8/50
+1/1 [==============================] - 0s 2ms/step - loss: 7.5668
+Epoch 9/50
+1/1 [==============================] - 0s 2ms/step - loss: 5.9562
+Epoch 10/50
+1/1 [==============================] - 0s 2ms/step - loss: 4.6890
+Epoch 11/50
+1/1 [==============================] - 0s 2ms/step - loss: 3.6920
+Epoch 12/50
+1/1 [==============================] - 0s 2ms/step - loss: 2.9075
+Epoch 13/50
+1/1 [==============================] - 0s 2ms/step - loss: 2.2903
+Epoch 14/50
+1/1 [==============================] - 0s 2ms/step - loss: 1.8046
+Epoch 15/50
+1/1 [==============================] - 0s 2ms/step - loss: 1.4224
+Epoch 16/50
+1/1 [==============================] - 0s 2ms/step - loss: 1.1217
+Epoch 17/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.8851
+Epoch 18/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.6988
+Epoch 19/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.5523
+Epoch 20/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.4369
+Epoch 21/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.3461
+Epoch 22/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.2746
+Epoch 23/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.2183
+Epoch 24/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.1740
+Epoch 25/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.1390
+Epoch 26/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.1115
+Epoch 27/50
+1/1 [==============================] - 0s 9ms/step - loss: 0.0898
+Epoch 28/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0727
+Epoch 29/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0592
+Epoch 30/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0485
+Epoch 31/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0401
+Epoch 32/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0334
+Epoch 33/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0281
+Epoch 34/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0239
+Epoch 35/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0206
+Epoch 36/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0179
+Epoch 37/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0158
+Epoch 38/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0141
+Epoch 39/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0127
+Epoch 40/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0116
+Epoch 41/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0107
+Epoch 42/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0099
+Epoch 43/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0093
+Epoch 44/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0088
+Epoch 45/50
+1/1 [==============================] - 0s 1ms/step - loss: 0.0083
+Epoch 46/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0080
+Epoch 47/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0076
+Epoch 48/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0074
+Epoch 49/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0071
+Epoch 50/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0069
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fbe11836670&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="use-the-model">
+<h2>Use the model<a class="headerlink" href="#use-the-model" title="Permalink to this headline">¶</a></h2>
+<p>You now have a model that has been trained to learn the relationship between x and y. You can use the <code class="docutils literal notranslate"><span class="pre">model.predict</span></code> method to have it figure out the y for a previously unknown x.</p>
+<p>For example, if x is 10, what do you think y will be? Take a guess before you run the following code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a prediction</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="mf">10.0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[31.170954]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>You might have thought 31, but it ended up not exactly there.  Why do you think that is?</p>
+<p>Neural networks deal with probabilities, so it calculated that there is a very high probability that the relationship between x and y is <span class="math notranslate nohighlight">\(y=3x+1\)</span>, but it can’t know for sure with only six data points. Therefore, the result is very close to 31, but not necessarily 31.</p>
+<p>As you work with neural networks, you’ll see that pattern recurring. You will almost always deal with probabilities, not certainties, and will do a little bit of coding to figure out what the result is based on the probabilities.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Summary</span>
+
+<span class="c1"># Import modules</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+
+<span class="c1"># Data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># Model definition</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">)</span>
+
+<span class="c1"># Model fitting</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Model prediction</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="mf">10.0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[31.005653]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="tensorflow.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">TensorFlow</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="computer-vision.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      Durch Jan Kirenz<br/>
+    
+        &copy; Urheberrechte © 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

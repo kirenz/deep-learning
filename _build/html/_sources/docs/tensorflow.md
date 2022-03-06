@@ -10,7 +10,7 @@
 - [Installation of TFX](https://kirenz.github.io/codelabs/codelabs/tfx-install/#0)
 ```
 
-## TensorFlow and Keras
+## Keras
 
 Built on top of TensorFlow 2, [Keras](https://keras.io) is an industry-strength framework that can scale to large clusters of GPUs or an entire TPU pod. It is a central part of the tightly-connected TensorFlow 2 ecosystem, covering every step of the machine learning workflow, from data management to hyperparameter training to deployment solutions.
 
@@ -18,14 +18,11 @@ Keras is used by CERN (and yes, Keras is used at the [LHC](https://blog.tensorfl
 
 Note that Keras offers many [code examples](https://keras.io/examples/) with short (less than 300 lines of code), focused demonstrations of deep learning workflows. All of the examples are written as Jupyter notebooks and can be run in one click in Google Colab.
 
-## Code example
+## First steps
 
-Next, we take a look at how to build a deep neural network model using TensorFlow 2 and Keras. 
-
-The content is based on Laurence Moroney's excellent Tutorial "Intro to Machine Learning" (see the video below): 
+Next, we take a look at how to build a deep neural network model using TensorFlow 2 and Keras. The content is based on Laurence Moroney's excellent Tutorial "Intro to Machine Learning" (see video below): 
 
 :::{Note}
-You'll find the Jupyter Notebook for this example in the next section.
 :::
 
 <br>
@@ -37,6 +34,8 @@ You'll find the Jupyter Notebook for this example in the next section.
 ```{admonition} Resources
 :class: tip
 - [Download slides](https://docs.google.com/presentation/d/17paB63OQX_GU7ldbRwduYevAHWqJVGJkV4NZdXPpKjY/export/pdf)
+- [Jupyter Notebook](intro-deep-learning.ipynb)
+
 ```
 
 Google'S AI Advocate Laurence Moroney walks you through the code provided in the presentation: 

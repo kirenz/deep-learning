@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # TensorFlow CNN
+# # TF CNN
 
 # Copyright 2019 The TensorFlow Authors.
 
@@ -28,6 +28,8 @@
 #   </td>
 # </table>
 
+# <br>
+# 
 # This tutorial demonstrates training a simple [Convolutional Neural Network](https://developers.google.com/machine-learning/glossary/#convolutional_neural_network) (CNN) to classify [CIFAR images](https://www.cs.toronto.edu/~kriz/cifar.html). Because this tutorial uses the [Keras Sequential API](https://www.tensorflow.org/guide/keras/overview), creating and training your model will take just a few lines of code.
 # 
 
