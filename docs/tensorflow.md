@@ -34,7 +34,7 @@ Next, we take a look at how to build a deep neural network model using TensorFlo
 ```{admonition} Resources
 :class: tip
 - [Download slides](https://docs.google.com/presentation/d/17paB63OQX_GU7ldbRwduYevAHWqJVGJkV4NZdXPpKjY/export/pdf)
-- [Jupyter Notebook](intro-deep-learning.ipynb)
+- [Jupyter Notebook](https://kirenz.github.io/deep-learning/docs/tf-example.html)
 
 ```
 
