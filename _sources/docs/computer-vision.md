@@ -11,6 +11,11 @@ The following presentation is based on Laurence Mooroney's tutorial "Basic Compu
 ```{admonition} Resources
 :class: tip
 - [Download slides](https://docs.google.com/presentation/d/1pzY2k6ilWrI2ES-7chaIUagLW6lzfVtJ8l-0JsCbHNQ/export/pdf)
+
+- [MNIST data exploration](https://kirenz.github.io/deep-learning/docs/mnist.html)
+
+- [MNIST model exercises](https://kirenz.github.io/deep-learning/docs/cv-intro.html)
+
 ```
 
 In part two of Machine Learning Zero to Hero, AI Advocate Laurence Moroney walks through basic computer vision with machine learning by teaching a computer how to see and recognize different objects:
