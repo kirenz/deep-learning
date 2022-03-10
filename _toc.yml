@@ -9,10 +9,7 @@ parts:
   - caption: Computer vision
     chapters:
     - file: docs/computer-vision.md
-    - file: docs/mnist.ipynb
-    - file: docs/cv-intro.ipynb
-    - file: docs/cv-basics.ipynb
-    - file: docs/cv-extended.ipynb
+    - file: docs/fashion-mnist.ipynb
     - file: docs/convolutional.md  
     - file: docs/cnn.ipynb
   - caption: Regression
