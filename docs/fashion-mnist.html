@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TF MNIST II &#8212; Deep Learning</title>
+    <title>Classify images of clothing &#8212; Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -37,23 +37,27 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Convolutional" href="convolutional.html" />
-    <link rel="prev" title="TF MNIST I" href="cv-basics.html" />
+    <link rel="prev" title="Introduction" href="computer-vision.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -87,7 +91,7 @@
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -130,24 +134,9 @@
    Introduction
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="mnist.html">
-   MNIST data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cv-intro.html">
-   Model Exercises
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cv-basics.html">
-   TF MNIST I
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   TF MNIST II
+   Classify images of clothing
   </a>
  </li>
  <li class="toctree-l1">
@@ -158,6 +147,18 @@
  <li class="toctree-l1">
   <a class="reference internal" href="cnn.html">
    TF CNN
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Regression
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression-structured.html">
+   Structured data
   </a>
  </li>
 </ul>
@@ -197,8 +198,8 @@
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
-                title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -206,18 +207,18 @@
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/cv-extended.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
+        <a class="dropdown-buttons" href="../_sources/docs/fashion-mnist.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
@@ -230,12 +231,12 @@
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/kirenz/deep-learning"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Quell-Repository"><i
-                    class="fab fa-github"></i>Repository</button></a>
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/cv-extended.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/fashion-mnist.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Öffnen Sie ein Problem"><i class="fas fa-lightbulb"></i>offenes Thema</button></a>
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
     </div>
 </div>
@@ -243,8 +244,8 @@
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Vollbildmodus"
-        title="Vollbildmodus"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -256,8 +257,8 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/cv-extended.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Starten Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/fashion-mnist.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
@@ -271,13 +272,23 @@
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Inhalt
+                <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#import-data">
    Import data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-exploration">
+   Data exploration
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -286,13 +297,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-model">
-   Build the model
+  <a class="reference internal nav-link" href="#model">
+   Model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-the-layers">
-     Set up the layers
+    <a class="reference internal nav-link" href="#set-up-layers">
+     Set up layers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -337,19 +348,29 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>TF MNIST II</h1>
+                <h1>Classify images of clothing</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
                         <div>
-                            <h2> Inhalt </h2>
+                            <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#import-data">
    Import data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-exploration">
+   Data exploration
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -358,13 +379,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-model">
-   Build the model
+  <a class="reference internal nav-link" href="#model">
+   Model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-the-layers">
-     Set up the layers
+    <a class="reference internal nav-link" href="#set-up-layers">
+     Set up layers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -408,28 +429,20 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="tf-mnist-ii">
-<h1>TF MNIST II<a class="headerlink" href="#tf-mnist-ii" title="Permalink to this headline">¶</a></h1>
-<p><em>The content of this notebook is based on the official TensorFlow tutorial “Basic classification: Classify images of clothing”. Here is the original source code:</em></p>
-<table class="tfo-notebook-buttons" align="left">
-  <td>
-    <a target="_blank" href="https://www.tensorflow.org/tutorials/keras/classification"><img src="https://www.tensorflow.org/images/tf_logo_32px.png" />View on TensorFlow.org</a>
-  </td>
-  <td>
-    <a target="_blank" href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/classification.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" />Run in Google Colab</a>
-  </td>
-  <td>
-    <a target="_blank" href="https://github.com/tensorflow/docs/blob/master/site/en/tutorials/keras/classification.ipynb"><img src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" />View source on GitHub</a>
-  </td>
-  <td>
-    <a href="https://storage.googleapis.com/tensorflow_docs/docs/site/en/tutorials/keras/classification.ipynb"><img src="https://www.tensorflow.org/images/download_logo_32px.png" />Download notebook</a>
-  </td>
-</table><p>This guide trains a neural network model to classify images of clothing, like sneakers and shirts. It’s okay if you don’t understand all the details; this is a fast-paced overview of a complete TensorFlow program with the details explained as you go.</p>
-<p>This guide uses <a class="reference external" href="https://www.tensorflow.org/guide/keras">tf.keras</a>, a high-level API to build and train models in TensorFlow.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="classify-images-of-clothing">
+<h1>Classify images of clothing<a class="headerlink" href="#classify-images-of-clothing" title="Permalink to this headline">¶</a></h1>
+<p><em>The content of this notebook is mainly based on Laurence Moroney’s video tutorial <a class="reference external" href="https://www.youtube.com/watch?v=bemDFpNooA8">Basic Computer Vision with ML</a> and
+the TensorFlow tutorial “Basic classification: Classify images of clothing”. Here is the original source code:</em></p>
+<p><a target="_blank" href="https://www.tensorflow.org/tutorials/keras/classification"><img src="https://www.tensorflow.org/images/tf_logo_32px.png" />View on TensorFlow.org</a></p>
+<p>In this tutorial we are going to train a sequential neural network model to classify images of clothing, like sneakers and shirts. We will use <a class="reference external" href="https://www.tensorflow.org/guide/keras">keras</a>, a high-level API to build and train models in TensorFlow.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TensorFlow and tf.keras</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TensorFlow and Keras</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span>
 
 <span class="c1"># Helper libraries</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -445,17 +458,83 @@
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="import-data">
 <h2>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">¶</a></h2>
+<p>We use the <a class="reference external" href="https://github.com/zalandoresearch/fashion-mnist">Fashion MNIST</a> dataset which contains 70,000 grayscale images in 10 categories. The images show individual articles of clothing at low resolution (28 by 28 pixels), as seen here:</p>
+<table>
+  <tr><td>
+    <img src="https://tensorflow.org/images/fashion-mnist-sprite.png"
+         alt="Fashion MNIST sprite"  width="600">
+  </td></tr>
+  <tr><td align="center">
+    <b>Figure 1.</b> <a href="https://github.com/zalandoresearch/fashion-mnist">Fashion-MNIST samples</a> (by Zalando, MIT License).<br/>&nbsp;
+  </td></tr>
+</table>
+<p>Fashion MNIST is intended as a drop-in replacement for the classic <a class="reference external" href="http://yann.lecun.com/exdb/mnist/">MNIST</a> dataset—often used as the “Hello, World” of machine learning programs for computer vision. The MNIST dataset contains images of handwritten digits (0, 1, 2, etc.) in a format identical to that of the articles of clothing you’ll use here.</p>
+<p>Here, 60,000 images are used to train the network and 10,000 images to evaluate how accurately the network learned to classify images. You can access the Fashion MNIST directly from TensorFlow. Import and <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/datasets/fashion_mnist/load_data">load the Fashion MNIST data</a> directly from TensorFlow:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fashion_mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fashion_mnist</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fashion_mnist</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fashion_mnist</span>
 
 <span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">fashion_mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Loading the dataset returns four NumPy arrays:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">train_images</span></code> and <code class="docutils literal notranslate"><span class="pre">train_labels</span></code> arrays are the <em>training set</em>—the data the model uses to learn.</p></li>
+<li><p>The model is tested against the <em>test set</em>, the <code class="docutils literal notranslate"><span class="pre">test_images</span></code>, and <code class="docutils literal notranslate"><span class="pre">test_labels</span></code> arrays.</p></li>
+</ul>
+<p>The images are 28x28 NumPy arrays, with pixel values ranging from 0 to 255. The <em>labels</em> are an array of integers, ranging from 0 to 9. These correspond to the <em>class</em> of clothing the image represents:</p>
+<table>
+  <tr>
+    <th>Label</th>
+    <th>Class</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>T-shirt/top</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Trouser</td>
+  </tr>
+    <tr>
+    <td>2</td>
+    <td>Pullover</td>
+  </tr>
+    <tr>
+    <td>3</td>
+    <td>Dress</td>
+  </tr>
+    <tr>
+    <td>4</td>
+    <td>Coat</td>
+  </tr>
+    <tr>
+    <td>5</td>
+    <td>Sandal</td>
+  </tr>
+    <tr>
+    <td>6</td>
+    <td>Shirt</td>
+  </tr>
+    <tr>
+    <td>7</td>
+    <td>Sneaker</td>
+  </tr>
+    <tr>
+    <td>8</td>
+    <td>Bag</td>
+  </tr>
+    <tr>
+    <td>9</td>
+    <td>Ankle boot</td>
+  </tr>
+</table>
+<p>Each image is mapped to a single label. Since the <em>class names</em> are not included with the dataset, store them here to use later when plotting the images:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T-shirt/top&#39;</span><span class="p">,</span> <span class="s1">&#39;Trouser&#39;</span><span class="p">,</span> <span class="s1">&#39;Pullover&#39;</span><span class="p">,</span> <span class="s1">&#39;Dress&#39;</span><span class="p">,</span> <span class="s1">&#39;Coat&#39;</span><span class="p">,</span>
@@ -465,9 +544,82 @@
 </div>
 </div>
 </div>
+<div class="section" id="data-exploration">
+<h2>Data exploration<a class="headerlink" href="#data-exploration" title="Permalink to this headline">¶</a></h2>
+<p>Let’s explore the format of the dataset before training the model.</p>
+<p>If you inspect the first image in the training set, you will see that each picture is represented as 28 x 28 pixels and that the pixel values fall in the range of 0 to 255:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">train_images</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/fashion-mnist_12_0.png" src="../_images/fashion-mnist_12_0.png" />
+</div>
+</div>
+<p>The following shows there are 60,000 images in the training set, with each image represented as 28 x 28 pixels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_images</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(60000, 28, 28)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Likewise, there are 60,000 labels in the training set:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">train_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60000
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each label is an integer between 0 and 9:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_labels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([9, 0, 0, ..., 3, 0, 5], dtype=uint8)
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the test set contains 10,000 images labels:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">test_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10000
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="preprocess-the-data">
 <h2>Preprocess the data<a class="headerlink" href="#preprocess-the-data" title="Permalink to this headline">¶</a></h2>
-<p>The data must be preprocessed before training the network.</p>
+<p>The data must be preprocessed before training the network. Remember that the pixel values fall in the range of 0 to 255.</p>
+<p>We need to scale these values to a range of 0 to 1 before feeding them to the neural network model.</p>
+<p>To do so, divide the values by 255. It’s important that the <em>training set</em> and the <em>testing set</em> be preprocessed in the same way:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span> <span class="o">/</span> <span class="mf">255.0</span>
@@ -477,33 +629,75 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="build-the-model">
-<h2>Build the model<a class="headerlink" href="#build-the-model" title="Permalink to this headline">¶</a></h2>
-<p>Building the neural network requires configuring the layers of the model, then compiling the model.</p>
-<div class="section" id="set-up-the-layers">
-<h3>Set up the layers<a class="headerlink" href="#set-up-the-layers" title="Permalink to this headline">¶</a></h3>
-<p>The basic building block of a neural network is the <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers"><em>layer</em></a>. Layers extract representations from the data fed into them. Hopefully, these representations are meaningful for the problem at hand.</p>
-<p>Most of deep learning consists of chaining together simple layers. Most layers, such as <code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Dense</span></code>, have parameters that are learned during training.</p>
+<p>To verify that the data is in the correct format and that you’re ready to build and train the network, let’s display the first 25 images from the <em>training set</em> and display the class name below each image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">train_images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">class_names</span><span class="p">[</span><span class="n">train_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/fashion-mnist_24_0.png" src="../_images/fashion-mnist_24_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="model">
+<h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
+<p>Building the neural network requires configuring the layers of the model, then compiling the model.</p>
+<div class="section" id="set-up-layers">
+<h3>Set up layers<a class="headerlink" href="#set-up-layers" title="Permalink to this headline">¶</a></h3>
+<p>The basic building block of a neural network is the <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers"><em>layer</em></a>.</p>
+<p>Layers extract representations from the data fed into them. Hopefully, these representations are meaningful for the problem at hand.</p>
+<p>Most of deep learning consists of chaining together simple layers. Most layers, such as <code class="docutils literal notranslate"><span class="pre">layers.Dense</span></code>, have parameters that are learned during training.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;layer1&quot;</span><span class="p">),</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;layer2&quot;</span><span class="p">),</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;layer3&quot;</span><span class="p">),</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;layer4&quot;</span><span class="p">)</span>
 <span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-05 14:13:54.352858: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-10 12:38:13.097572: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </pre></div>
 </div>
 </div>
 </div>
-<p>The first layer in this network, <code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Flatten</span></code>, transforms the format of the images from a two-dimensional array (of 28 by 28 pixels) to a one-dimensional array (of 28 * 28 = 784 pixels). Think of this layer as unstacking rows of pixels in the image and lining them up. This layer has no parameters to learn; it only reformats the data.</p>
-<p>After the pixels are flattened, the network consists of a sequence of two <code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Dense</span></code> layers. These are densely connected, or fully connected, neural layers. The first <code class="docutils literal notranslate"><span class="pre">Dense</span></code> layer has 128 nodes (or neurons). The second (and last) layer returns a logits array with length of 10. Each node contains a score that indicates the current image belongs to one of the 10 classes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">layer1</span></code>:</p>
+<ul class="simple">
+<li><p>The first layer in this network, <code class="docutils literal notranslate"><span class="pre">layers.Flatten</span></code>, transforms the format of the images from a two-dimensional array (of 28 by 28 pixels) to a one-dimensional array (of 28 * 28 = 784 pixels).</p></li>
+<li><p>Think of this layer as unstacking rows of pixels in the image and lining them up. This layer has no parameters to learn; it only reformats the data.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">layer2</span></code>:</p>
+<ul class="simple">
+<li><p>The first <code class="docutils literal notranslate"><span class="pre">Dense</span></code> layer has 128 nodes (also called functions or neurons).</p></li>
+<li><p>Each layer of neurons need an <strong>activation function</strong> to tell them what to do.</p></li>
+<li><p><strong>Relu</strong> effectively means “If X&gt;0 return X, else return 0”. So it only passes values 0 or greater to the next layer in the network.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">layer3:</span></code></p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Dropout</span></code> layer randomly sets input units to 0 with a given frequency rate at each step during training time, which helps prevent overfitting.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">layer4</span></code>:</p>
+<ul class="simple">
+<li><p>This layer returns a <a class="reference external" href="https://en.wikipedia.org/wiki/Logit">logit</a> array with length of 10.</p></li>
+<li><p>The logit is a type of function that maps probability values from 0 to 1 to real numbers in the range of  <span class="math notranslate nohighlight">\(-\infty\)</span> to <span class="math notranslate nohighlight">\(+\infty\)</span>.</p></li>
+<li><p>This simply means that each node contains a score (also called “log-odd”) that indicates how likely it is that the current image belongs to one of the 10 classes.</p></li>
+</ul>
 </div>
 <div class="section" id="compile-the-model">
 <h3>Compile the model<a class="headerlink" href="#compile-the-model" title="Permalink to this headline">¶</a></h3>
@@ -516,7 +710,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
-              <span class="n">loss</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+              <span class="n">loss</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
               <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -525,13 +719,11 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 <div class="section" id="train-the-model">
 <h3>Train the model<a class="headerlink" href="#train-the-model" title="Permalink to this headline">¶</a></h3>
-<p>Training the neural network model requires the following steps:</p>
-<ol class="simple">
-<li><p>Feed the training data to the model. In this example, the training data is in the <code class="docutils literal notranslate"><span class="pre">train_images</span></code> and <code class="docutils literal notranslate"><span class="pre">train_labels</span></code> arrays.</p></li>
-<li><p>The model learns to associate images and labels.</p></li>
-<li><p>You ask the model to make predictions about a test set—in this example, the <code class="docutils literal notranslate"><span class="pre">test_images</span></code> array.</p></li>
-<li><p>Verify that the predictions match the labels from the <code class="docutils literal notranslate"><span class="pre">test_labels</span></code> array.</p></li>
-</ol>
+<p>To train the neural network model, we feed the training data to the model.</p>
+<ul class="simple">
+<li><p>The training data is in the <code class="docutils literal notranslate"><span class="pre">train_images</span></code> and <code class="docutils literal notranslate"><span class="pre">train_labels</span></code> arrays.</p></li>
+<li><p>We also need to choose the number of epochs to train the model.</p></li>
+</ul>
 <p>To start training,  call the <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model#fit"><code class="docutils literal notranslate"><span class="pre">model.fit</span></code></a> method—so called because it “fits” the model to the training data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -541,63 +733,64 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-1875/1875 [==============================] - 2s 771us/step - loss: 0.4921 - accuracy: 0.8262
+1875/1875 [==============================] - 2s 798us/step - loss: 0.5094 - accuracy: 0.8222
 Epoch 2/10
-1875/1875 [==============================] - 1s 786us/step - loss: 0.3691 - accuracy: 0.8663
+1875/1875 [==============================] - 1s 757us/step - loss: 0.3856 - accuracy: 0.8615
 Epoch 3/10
-1875/1875 [==============================] - 1s 711us/step - loss: 0.3323 - accuracy: 0.8791
+1875/1875 [==============================] - 1s 729us/step - loss: 0.3480 - accuracy: 0.8726
 Epoch 4/10
-1875/1875 [==============================] - 1s 684us/step - loss: 0.3101 - accuracy: 0.8869
+1875/1875 [==============================] - 1s 755us/step - loss: 0.3237 - accuracy: 0.8815
 Epoch 5/10
-1875/1875 [==============================] - 1s 670us/step - loss: 0.2922 - accuracy: 0.8930
+1875/1875 [==============================] - 1s 785us/step - loss: 0.3076 - accuracy: 0.8860
 Epoch 6/10
-1875/1875 [==============================] - 1s 673us/step - loss: 0.2781 - accuracy: 0.8970
+1875/1875 [==============================] - 1s 734us/step - loss: 0.2933 - accuracy: 0.8918
 Epoch 7/10
-1875/1875 [==============================] - 1s 683us/step - loss: 0.2654 - accuracy: 0.9012
+1875/1875 [==============================] - 1s 746us/step - loss: 0.2816 - accuracy: 0.8951
 Epoch 8/10
-1875/1875 [==============================] - 1s 678us/step - loss: 0.2543 - accuracy: 0.9057
+1875/1875 [==============================] - 1s 792us/step - loss: 0.2726 - accuracy: 0.8990
 Epoch 9/10
-1875/1875 [==============================] - 1s 669us/step - loss: 0.2458 - accuracy: 0.9087
+1875/1875 [==============================] - 2s 820us/step - loss: 0.2615 - accuracy: 0.9011
 Epoch 10/10
-1875/1875 [==============================] - 1s 669us/step - loss: 0.2379 - accuracy: 0.9104
+1875/1875 [==============================] - 1s 776us/step - loss: 0.2540 - accuracy: 0.9068
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fab3a90f3d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fcaeae206d0&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>As the model trains, the loss and accuracy metrics are displayed. This model reaches an accuracy of about 0.91 (or 91%) on the training data.</p>
+<p>As the model trains, the loss and accuracy metrics are displayed.</p>
 </div>
 <div class="section" id="evaluate-accuracy">
 <h3>Evaluate accuracy<a class="headerlink" href="#evaluate-accuracy" title="Permalink to this headline">¶</a></h3>
-<p>Next, compare how the model performs on the test dataset:</p>
+<p>Next, compare how the model performs on the test dataset. This means you ask the model to make predictions about a test set. In this example, the <code class="docutils literal notranslate"><span class="pre">test_images</span></code> array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Test accuracy:&#39;</span><span class="p">,</span> <span class="n">test_acc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Test accuracy: </span><span class="si">{</span><span class="n">test_acc</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1"> Test loss </span><span class="si">{</span><span class="n">test_loss</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 - 0s - loss: 0.3300 - accuracy: 0.8844 - 219ms/epoch - 701us/step
-
-Test accuracy: 0.8844000101089478
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 - 0s - loss: 0.3213 - accuracy: 0.8853 - 232ms/epoch - 741us/step
+ Test accuracy: 0.885 
+ Test loss 0.321
 </pre></div>
 </div>
 </div>
 </div>
-<p>It turns out that the accuracy on the test dataset is a little less than the accuracy on the training dataset. This gap between training accuracy and test accuracy represents <em>overfitting</em>. Overfitting happens when a machine learning model performs worse on new, previously unseen inputs than it does on the training data. An overfitted model “memorizes” the noise and details in the training dataset to a point where it negatively impacts the performance of the model on the new data.</p>
+<p>If the accuracy on the test dataset is less than the accuracy on the training dataset, this gap represents <em>overfitting</em>.</p>
+<p>Overfitting happens when a machine learning model performs worse on new, previously unseen inputs than it does on the training data. An overfitted model “memorizes” the noise and details in the training dataset to a point where it negatively impacts the performance of the model on the new data.</p>
 </div>
 <div class="section" id="make-predictions">
 <h3>Make predictions<a class="headerlink" href="#make-predictions" title="Permalink to this headline">¶</a></h3>
-<p>With the model trained, you can use it to make predictions about some images.
-The model’s linear outputs, <a class="reference external" href="https://developers.google.com/machine-learning/glossary#logits">logits</a>. Attach a softmax layer to convert the logits to probabilities, which are easier to interpret.</p>
+<p>With the model trained, you can use it to make predictions about some images. We attach a <code class="docutils literal notranslate"><span class="pre">softmax</span></code> layer to convert the model’s linear outputs (logits) to probabilities (percentages), which are be easier to interpret:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probability_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">model</span><span class="p">,</span> 
-                                         <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Softmax</span><span class="p">()])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probability_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+                        <span class="n">model</span><span class="p">,</span> <span class="n">layers</span><span class="o">.</span><span class="n">Softmax</span><span class="p">()</span>
+                        <span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -617,14 +810,18 @@ The model’s linear outputs, <a class="reference external" href="https://develo
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.1691645e-06, 2.0755039e-08, 2.5236425e-08, 2.6634954e-08,
-       4.6032309e-08, 9.1147165e-05, 1.5820990e-07, 1.2188262e-02,
-       3.9766417e-07, 9.8771882e-01], dtype=float32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.7214844e-08, 3.5939223e-08, 1.3246297e-07, 1.9636468e-08,
+       1.3148453e-07, 6.5520611e-03, 5.3073709e-08, 1.8532565e-02,
+       1.5230922e-08, 9.7491497e-01], dtype=float32)
 </pre></div>
 </div>
 </div>
 </div>
-<p>A prediction is an array of 10 numbers. They represent the model’s “confidence” that the image corresponds to each of the 10 different articles of clothing. You can see which label has the highest confidence value:</p>
+<ul class="simple">
+<li><p>A prediction is an array of 10 numbers.</p></li>
+<li><p>They represent the model’s “confidence” that the image corresponds to each of the 10 different articles of clothing.</p></li>
+</ul>
+<p>You can see which label has the highest confidence value:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -650,6 +847,9 @@ The model’s linear outputs, <a class="reference external" href="https://develo
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="verify-predictions">
+<h3>Verify predictions<a class="headerlink" href="#verify-predictions" title="Permalink to this headline">¶</a></h3>
 <p>Let’s write functions to graph the full set of 10 class predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -687,10 +887,6 @@ The model’s linear outputs, <a class="reference external" href="https://develo
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="verify-predictions">
-<h3>Verify predictions<a class="headerlink" href="#verify-predictions" title="Permalink to this headline">¶</a></h3>
-<p>With the model trained, you can use it to make predictions about some images.</p>
 <p>Let’s look at the 0th image, predictions, and prediction array. Correct prediction labels are blue and incorrect prediction labels are red. The number gives the percentage (out of 100) for the predicted label.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -707,7 +903,7 @@ The model’s linear outputs, <a class="reference external" href="https://develo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cv-extended_35_0.png" src="../_images/cv-extended_35_0.png" />
+<img alt="../_images/fashion-mnist_52_0.png" src="../_images/fashion-mnist_52_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -723,7 +919,7 @@ The model’s linear outputs, <a class="reference external" href="https://develo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cv-extended_36_0.png" src="../_images/cv-extended_36_0.png" />
+<img alt="../_images/fashion-mnist_53_0.png" src="../_images/fashion-mnist_53_0.png" />
 </div>
 </div>
 <p>Let’s plot several images with their predictions. Note that the model can be wrong even when very confident.</p>
@@ -746,7 +942,7 @@ The model’s linear outputs, <a class="reference external" href="https://develo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cv-extended_38_0.png" src="../_images/cv-extended_38_0.png" />
+<img alt="../_images/fashion-mnist_55_0.png" src="../_images/fashion-mnist_55_0.png" />
 </div>
 </div>
 </div>
@@ -795,8 +991,8 @@ The model’s linear outputs, <a class="reference external" href="https://develo
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2.0953561e-05 2.6857138e-13 9.9985886e-01 2.0941840e-12 5.2433410e-05
-  1.3227697e-15 6.7719411e-05 4.2256099e-12 4.9624155e-11 3.2765715e-16]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.1900232e-05 1.4200392e-13 9.9936157e-01 2.2404726e-11 4.0746501e-04
+  8.0609104e-12 2.1913306e-04 4.2981963e-18 3.5087393e-08 8.4743935e-15]]
 </pre></div>
 </div>
 </div>
@@ -810,7 +1006,7 @@ The model’s linear outputs, <a class="reference external" href="https://develo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cv-extended_45_0.png" src="../_images/cv-extended_45_0.png" />
+<img alt="../_images/fashion-mnist_62_0.png" src="../_images/fashion-mnist_62_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">tf.keras.Model.predict</span></code> returns a list of lists—one list for each image in the batch of data. Grab the predictions for our (only) image in the batch:</p>
@@ -855,11 +1051,11 @@ The model’s linear outputs, <a class="reference external" href="https://develo
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="cv-basics.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="computer-vision.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">TF MNIST I</p>
+            <p class="prev-next-title">Introduction</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="convolutional.html" title="next page">
@@ -876,9 +1072,9 @@ The model’s linear outputs, <a class="reference external" href="https://develo
     <footer class="footer">
   <p>
     
-      Durch Jan Kirenz<br/>
+      By Jan Kirenz<br/>
     
-        &copy; Urheberrechte © 2021.<br/>
+        &copy; Copyright 2021.<br/>
   </p>
 </footer>
 </main>
