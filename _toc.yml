@@ -8,7 +8,6 @@ parts:
     - file: docs/tf-example.ipynb
   - caption: Computer vision
     chapters:
-    - file: docs/computer-vision.md
     - file: docs/fashion-mnist.ipynb
     - file: docs/fashion-mnist-exercises.ipynb  
     - file: docs/convolutional.md  
