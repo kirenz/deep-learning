@@ -12,6 +12,10 @@ parts:
     - file: docs/fashion-mnist-exercises.ipynb  
     - file: docs/convolutional.md  
     - file: docs/cnn.ipynb
+  - caption: MNIST
+    chapters:
+    - file: docs/MNIST_tensorflow.ipynb
+    - file: docs/MNIST_PyTorch.ipynb 
   - caption: Regression
     chapters:
     - file: docs/regression-structured.md
