@@ -6,6 +6,7 @@ parts:
     - file: docs/deep-learning.md  
     - file: docs/tensorflow.md  
     - file: docs/tf-example.ipynb
+    - file: docs/hugging-face.md 
   - caption: Computer vision
     chapters:
     - file: docs/fashion-mnist.ipynb
