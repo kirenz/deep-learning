@@ -14,8 +14,8 @@ parts:
     - file: docs/cnn.ipynb
   - caption: MNIST
     chapters:
-    - file: docs/MNIST_tensorflow.ipynb
-    - file: docs/MNIST_PyTorch.ipynb 
+    - file: docs/mnist-tensorflow.ipynb
+    - file: docs/mnist-pytorch.ipynb 
   - caption: Regression
     chapters:
     - file: docs/regression-structured.md
