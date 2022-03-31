@@ -20,6 +20,10 @@ parts:
   - caption: Regression
     chapters:
     - file: docs/regression-structured.md
+   - caption: Keras
+    chapters:
+    - file: docs/keras-sequential.md
+    - file: docs/keras-functional.md
   - caption: References
     chapters:
     - file: docs/reference.md
