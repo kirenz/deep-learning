@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt; &#8212; Deep Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Structured data" href="regression-structured.html" />
+    <link rel="prev" title="TF CNN" href="cnn.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="deep-learning.html">
+   Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tensorflow.html">
+   TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tf-example.html">
+   TensorFlow Example
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="fashion-mnist.html">
+   Classify images of clothing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fashion-mnist-exercises.html">
+   Model exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="convolutional.html">
+   Convolutional
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cnn.html">
+   TF CNN
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Regression
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression-structured.html">
+   Structured data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="reference.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/MNIST_PyTorch.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/kirenz/deep-learning"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/MNIST_PyTorch.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/MNIST_PyTorch.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1><no title></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MNIST PyTorch</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>The following code example is based on Mikhail Klassen’s article <a class="reference external" href="https://towardsdatascience.com/tensorflow-vs-pytorch-by-example-66d37901c663">Tensorflow vs. PyTorch by example</a></em></p>
+<p>First, you need to <a class="reference external" href="https://pytorch.org/get-started/locally/">install PyTorch</a> in a new <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Anaconda environment</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
+<span class="kn">from</span> <span class="nn">torch.optim.lr_scheduler</span> <span class="kn">import</span> <span class="n">ExponentialLR</span>
+
+<span class="c1"># Get CPU or GPU device for training</span>
+<span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Random seed for reproducibility</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="c1"># Save the model at the end?</span>
+<span class="n">save_model</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Batch sizes for training and testing</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">test_batch_size</span> <span class="o">=</span> <span class="mi">14</span>
+
+<span class="c1"># Training epochs (usually set to 10)</span>
+<span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Learning rate</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># Decay rate for adjusting the learning rate</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.7</span>
+
+<span class="c1"># How many batches before logging training status</span>
+<span class="n">log_interval</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># Number of target classes in the MNIST data</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">train_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="n">batch_size</span><span class="p">}</span>
+<span class="n">test_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="n">test_batch_size</span><span class="p">}</span>
+
+<span class="c1"># CUDA settings</span>
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">cuda_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;num_workers&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                   <span class="s1">&#39;pin_memory&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                   <span class="s1">&#39;shuffle&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+    <span class="n">train_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">cuda_kwargs</span><span class="p">)</span>
+    <span class="n">test_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">cuda_kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The scaled mean and standard deviation of the MNIST dataset (precalculated)</span>
+<span class="n">data_mean</span> <span class="o">=</span> <span class="mf">0.1307</span>
+<span class="n">data_std</span> <span class="o">=</span> <span class="mf">0.3081</span>
+
+<span class="c1"># Convert input images to tensors and normalize</span>
+<span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+    <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="n">data_mean</span><span class="p">,),</span> <span class="p">(</span><span class="n">data_std</span><span class="p">,))</span>
+    <span class="p">])</span>
+
+<span class="c1"># Get the MNIST data from torchvision</span>
+<span class="n">dataset1</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="s1">&#39;../data&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+<span class="n">dataset2</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="s1">&#39;../data&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+
+<span class="c1"># Define the data loaders that will handle fetching of data</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset1</span><span class="p">,</span><span class="o">**</span><span class="n">train_kwargs</span><span class="p">)</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset2</span><span class="p">,</span> <span class="o">**</span><span class="n">test_kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the architecture of the neural network</span>
+<span class="k">class</span> <span class="nc">Net</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Net</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">9216</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">log_interval</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">target</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">batch_idx</span> <span class="o">%</span> <span class="n">log_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train Epoch: </span><span class="si">{}</span><span class="s1"> [</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1"> (</span><span class="si">{:.0f}</span><span class="s1">%)]</span><span class="se">\t</span><span class="s1">Loss: </span><span class="si">{:.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">epoch</span><span class="p">,</span> <span class="n">batch_idx</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">),</span>
+                <span class="mf">100.</span> <span class="o">*</span> <span class="n">batch_idx</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">),</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">test_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">target</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="c1"># sum up batch loss</span>
+            <span class="n">test_loss</span> <span class="o">+=</span> <span class="n">F</span><span class="o">.</span><span class="n">nll_loss</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="c1"># get the index of the max log-probability</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">correct</span> <span class="o">+=</span> <span class="n">pred</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">view_as</span><span class="p">(</span><span class="n">pred</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="n">test_loss</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Test set: Average loss: </span><span class="si">{:.4f}</span><span class="s1">, Accuracy: </span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1"> (</span><span class="si">{:.0f}</span><span class="s1">%)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">test_loss</span><span class="p">,</span> <span class="n">correct</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">),</span>
+        <span class="mf">100.</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Send the model to the device (CPU or GPU)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Net</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="c1"># Define the optimizer to user for gradient descent</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adadelta</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+
+<span class="c1"># Shrinks the learning rate by gamma every step_size</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">ExponentialLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
+
+<span class="c1"># Train the model</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_epochs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">log_interval</span><span class="p">)</span>
+    <span class="n">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">)</span>
+    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Epoch: 1 [0/60000 (0%)]	Loss: 2.303437
+Train Epoch: 1 [640/60000 (1%)]	Loss: 2.190133
+Train Epoch: 1 [1280/60000 (2%)]	Loss: 1.982814
+Train Epoch: 1 [1920/60000 (3%)]	Loss: 1.953468
+Train Epoch: 1 [2560/60000 (4%)]	Loss: 1.761265
+Train Epoch: 1 [3200/60000 (5%)]	Loss: 1.802745
+Train Epoch: 1 [3840/60000 (6%)]	Loss: 1.733097
+Train Epoch: 1 [4480/60000 (7%)]	Loss: 1.738909
+Train Epoch: 1 [5120/60000 (9%)]	Loss: 1.756195
+Train Epoch: 1 [5760/60000 (10%)]	Loss: 1.757859
+Train Epoch: 1 [6400/60000 (11%)]	Loss: 1.696007
+Train Epoch: 1 [7040/60000 (12%)]	Loss: 1.692416
+Train Epoch: 1 [7680/60000 (13%)]	Loss: 1.700961
+Train Epoch: 1 [8320/60000 (14%)]	Loss: 1.692403
+Train Epoch: 1 [8960/60000 (15%)]	Loss: 1.642780
+Train Epoch: 1 [9600/60000 (16%)]	Loss: 1.682384
+Train Epoch: 1 [10240/60000 (17%)]	Loss: 1.699099
+Train Epoch: 1 [10880/60000 (18%)]	Loss: 1.596182
+Train Epoch: 1 [11520/60000 (19%)]	Loss: 1.640822
+Train Epoch: 1 [12160/60000 (20%)]	Loss: 1.612970
+Train Epoch: 1 [12800/60000 (21%)]	Loss: 1.628855
+Train Epoch: 1 [13440/60000 (22%)]	Loss: 1.544742
+Train Epoch: 1 [14080/60000 (23%)]	Loss: 1.615298
+Train Epoch: 1 [14720/60000 (25%)]	Loss: 1.643510
+Train Epoch: 1 [15360/60000 (26%)]	Loss: 1.599172
+Train Epoch: 1 [16000/60000 (27%)]	Loss: 1.678295
+Train Epoch: 1 [16640/60000 (28%)]	Loss: 1.624110
+Train Epoch: 1 [17280/60000 (29%)]	Loss: 1.551333
+Train Epoch: 1 [17920/60000 (30%)]	Loss: 1.505503
+Train Epoch: 1 [18560/60000 (31%)]	Loss: 1.502764
+Train Epoch: 1 [19200/60000 (32%)]	Loss: 1.528274
+Train Epoch: 1 [19840/60000 (33%)]	Loss: 1.507777
+Train Epoch: 1 [20480/60000 (34%)]	Loss: 1.532025
+Train Epoch: 1 [21120/60000 (35%)]	Loss: 1.522650
+Train Epoch: 1 [21760/60000 (36%)]	Loss: 1.484702
+Train Epoch: 1 [22400/60000 (37%)]	Loss: 1.539056
+Train Epoch: 1 [23040/60000 (38%)]	Loss: 1.553571
+Train Epoch: 1 [23680/60000 (39%)]	Loss: 1.607744
+Train Epoch: 1 [24320/60000 (41%)]	Loss: 1.488518
+Train Epoch: 1 [24960/60000 (42%)]	Loss: 1.559851
+Train Epoch: 1 [25600/60000 (43%)]	Loss: 1.543421
+Train Epoch: 1 [26240/60000 (44%)]	Loss: 1.491874
+Train Epoch: 1 [26880/60000 (45%)]	Loss: 1.533729
+Train Epoch: 1 [27520/60000 (46%)]	Loss: 1.508406
+Train Epoch: 1 [28160/60000 (47%)]	Loss: 1.540629
+Train Epoch: 1 [28800/60000 (48%)]	Loss: 1.538574
+Train Epoch: 1 [29440/60000 (49%)]	Loss: 1.521769
+Train Epoch: 1 [30080/60000 (50%)]	Loss: 1.553346
+Train Epoch: 1 [30720/60000 (51%)]	Loss: 1.567774
+Train Epoch: 1 [31360/60000 (52%)]	Loss: 1.556850
+Train Epoch: 1 [32000/60000 (53%)]	Loss: 1.536666
+Train Epoch: 1 [32640/60000 (54%)]	Loss: 1.498510
+Train Epoch: 1 [33280/60000 (55%)]	Loss: 1.551042
+Train Epoch: 1 [33920/60000 (57%)]	Loss: 1.528805
+Train Epoch: 1 [34560/60000 (58%)]	Loss: 1.543514
+Train Epoch: 1 [35200/60000 (59%)]	Loss: 1.544061
+Train Epoch: 1 [35840/60000 (60%)]	Loss: 1.529986
+Train Epoch: 1 [36480/60000 (61%)]	Loss: 1.504250
+Train Epoch: 1 [37120/60000 (62%)]	Loss: 1.529914
+Train Epoch: 1 [37760/60000 (63%)]	Loss: 1.530004
+Train Epoch: 1 [38400/60000 (64%)]	Loss: 1.502128
+Train Epoch: 1 [39040/60000 (65%)]	Loss: 1.494294
+Train Epoch: 1 [39680/60000 (66%)]	Loss: 1.524500
+Train Epoch: 1 [40320/60000 (67%)]	Loss: 1.498563
+Train Epoch: 1 [40960/60000 (68%)]	Loss: 1.504439
+Train Epoch: 1 [41600/60000 (69%)]	Loss: 1.519205
+Train Epoch: 1 [42240/60000 (70%)]	Loss: 1.509261
+Train Epoch: 1 [42880/60000 (71%)]	Loss: 1.553779
+Train Epoch: 1 [43520/60000 (72%)]	Loss: 1.533013
+Train Epoch: 1 [44160/60000 (74%)]	Loss: 1.516619
+Train Epoch: 1 [44800/60000 (75%)]	Loss: 1.552788
+Train Epoch: 1 [45440/60000 (76%)]	Loss: 1.554292
+Train Epoch: 1 [46080/60000 (77%)]	Loss: 1.548144
+Train Epoch: 1 [46720/60000 (78%)]	Loss: 1.587070
+Train Epoch: 1 [47360/60000 (79%)]	Loss: 1.528295
+Train Epoch: 1 [48000/60000 (80%)]	Loss: 1.524065
+Train Epoch: 1 [48640/60000 (81%)]	Loss: 1.496142
+Train Epoch: 1 [49280/60000 (82%)]	Loss: 1.480355
+Train Epoch: 1 [49920/60000 (83%)]	Loss: 1.519368
+Train Epoch: 1 [50560/60000 (84%)]	Loss: 1.502452
+Train Epoch: 1 [51200/60000 (85%)]	Loss: 1.509757
+Train Epoch: 1 [51840/60000 (86%)]	Loss: 1.491970
+Train Epoch: 1 [52480/60000 (87%)]	Loss: 1.481563
+Train Epoch: 1 [53120/60000 (88%)]	Loss: 1.527318
+Train Epoch: 1 [53760/60000 (90%)]	Loss: 1.478199
+Train Epoch: 1 [54400/60000 (91%)]	Loss: 1.499248
+Train Epoch: 1 [55040/60000 (92%)]	Loss: 1.497738
+Train Epoch: 1 [55680/60000 (93%)]	Loss: 1.523645
+Train Epoch: 1 [56320/60000 (94%)]	Loss: 1.566173
+Train Epoch: 1 [56960/60000 (95%)]	Loss: 1.516700
+Train Epoch: 1 [57600/60000 (96%)]	Loss: 1.518415
+Train Epoch: 1 [58240/60000 (97%)]	Loss: 1.476856
+Train Epoch: 1 [58880/60000 (98%)]	Loss: 1.478713
+Train Epoch: 1 [59520/60000 (99%)]	Loss: 1.463038
+
+Test set: Average loss: -0.9711, Accuracy: 9724/10000 (97%)
+
+Train Epoch: 2 [0/60000 (0%)]	Loss: 1.482012
+Train Epoch: 2 [640/60000 (1%)]	Loss: 1.484298
+Train Epoch: 2 [1280/60000 (2%)]	Loss: 1.507437
+Train Epoch: 2 [1920/60000 (3%)]	Loss: 1.493413
+Train Epoch: 2 [2560/60000 (4%)]	Loss: 1.497554
+Train Epoch: 2 [3200/60000 (5%)]	Loss: 1.479610
+Train Epoch: 2 [3840/60000 (6%)]	Loss: 1.479470
+Train Epoch: 2 [4480/60000 (7%)]	Loss: 1.478733
+Train Epoch: 2 [5120/60000 (9%)]	Loss: 1.522738
+Train Epoch: 2 [5760/60000 (10%)]	Loss: 1.486314
+Train Epoch: 2 [6400/60000 (11%)]	Loss: 1.492833
+Train Epoch: 2 [7040/60000 (12%)]	Loss: 1.508549
+Train Epoch: 2 [7680/60000 (13%)]	Loss: 1.501037
+Train Epoch: 2 [8320/60000 (14%)]	Loss: 1.478467
+Train Epoch: 2 [8960/60000 (15%)]	Loss: 1.500617
+Train Epoch: 2 [9600/60000 (16%)]	Loss: 1.501023
+Train Epoch: 2 [10240/60000 (17%)]	Loss: 1.636965
+Train Epoch: 2 [10880/60000 (18%)]	Loss: 1.461305
+Train Epoch: 2 [11520/60000 (19%)]	Loss: 1.535370
+Train Epoch: 2 [12160/60000 (20%)]	Loss: 1.540100
+Train Epoch: 2 [12800/60000 (21%)]	Loss: 1.507719
+Train Epoch: 2 [13440/60000 (22%)]	Loss: 1.505560
+Train Epoch: 2 [14080/60000 (23%)]	Loss: 1.508344
+Train Epoch: 2 [14720/60000 (25%)]	Loss: 1.533464
+Train Epoch: 2 [15360/60000 (26%)]	Loss: 1.534683
+Train Epoch: 2 [16000/60000 (27%)]	Loss: 1.507471
+Train Epoch: 2 [16640/60000 (28%)]	Loss: 1.554044
+Train Epoch: 2 [17280/60000 (29%)]	Loss: 1.475878
+Train Epoch: 2 [17920/60000 (30%)]	Loss: 1.492778
+Train Epoch: 2 [18560/60000 (31%)]	Loss: 1.499268
+Train Epoch: 2 [19200/60000 (32%)]	Loss: 1.492610
+Train Epoch: 2 [19840/60000 (33%)]	Loss: 1.535098
+Train Epoch: 2 [20480/60000 (34%)]	Loss: 1.505886
+Train Epoch: 2 [21120/60000 (35%)]	Loss: 1.499575
+Train Epoch: 2 [21760/60000 (36%)]	Loss: 1.463617
+Train Epoch: 2 [22400/60000 (37%)]	Loss: 1.475593
+Train Epoch: 2 [23040/60000 (38%)]	Loss: 1.492989
+Train Epoch: 2 [23680/60000 (39%)]	Loss: 1.503387
+Train Epoch: 2 [24320/60000 (41%)]	Loss: 1.463551
+Train Epoch: 2 [24960/60000 (42%)]	Loss: 1.479160
+Train Epoch: 2 [25600/60000 (43%)]	Loss: 1.518775
+Train Epoch: 2 [26240/60000 (44%)]	Loss: 1.487487
+Train Epoch: 2 [26880/60000 (45%)]	Loss: 1.511166
+Train Epoch: 2 [27520/60000 (46%)]	Loss: 1.515113
+Train Epoch: 2 [28160/60000 (47%)]	Loss: 1.497111
+Train Epoch: 2 [28800/60000 (48%)]	Loss: 1.528531
+Train Epoch: 2 [29440/60000 (49%)]	Loss: 1.486960
+Train Epoch: 2 [30080/60000 (50%)]	Loss: 1.492313
+Train Epoch: 2 [30720/60000 (51%)]	Loss: 1.546178
+Train Epoch: 2 [31360/60000 (52%)]	Loss: 1.505029
+Train Epoch: 2 [32000/60000 (53%)]	Loss: 1.534682
+Train Epoch: 2 [32640/60000 (54%)]	Loss: 1.504612
+Train Epoch: 2 [33280/60000 (55%)]	Loss: 1.522709
+Train Epoch: 2 [33920/60000 (57%)]	Loss: 1.461186
+Train Epoch: 2 [34560/60000 (58%)]	Loss: 1.512066
+Train Epoch: 2 [35200/60000 (59%)]	Loss: 1.533930
+Train Epoch: 2 [35840/60000 (60%)]	Loss: 1.507137
+Train Epoch: 2 [36480/60000 (61%)]	Loss: 1.511106
+Train Epoch: 2 [37120/60000 (62%)]	Loss: 1.499031
+Train Epoch: 2 [37760/60000 (63%)]	Loss: 1.500017
+Train Epoch: 2 [38400/60000 (64%)]	Loss: 1.483651
+Train Epoch: 2 [39040/60000 (65%)]	Loss: 1.469648
+Train Epoch: 2 [39680/60000 (66%)]	Loss: 1.507555
+Train Epoch: 2 [40320/60000 (67%)]	Loss: 1.476786
+Train Epoch: 2 [40960/60000 (68%)]	Loss: 1.501535
+Train Epoch: 2 [41600/60000 (69%)]	Loss: 1.497805
+Train Epoch: 2 [42240/60000 (70%)]	Loss: 1.489715
+Train Epoch: 2 [42880/60000 (71%)]	Loss: 1.535977
+Train Epoch: 2 [43520/60000 (72%)]	Loss: 1.512499
+Train Epoch: 2 [44160/60000 (74%)]	Loss: 1.477942
+Train Epoch: 2 [44800/60000 (75%)]	Loss: 1.477015
+Train Epoch: 2 [45440/60000 (76%)]	Loss: 1.519611
+Train Epoch: 2 [46080/60000 (77%)]	Loss: 1.500612
+Train Epoch: 2 [46720/60000 (78%)]	Loss: 1.493225
+Train Epoch: 2 [47360/60000 (79%)]	Loss: 1.499400
+Train Epoch: 2 [48000/60000 (80%)]	Loss: 1.497467
+Train Epoch: 2 [48640/60000 (81%)]	Loss: 1.479307
+Train Epoch: 2 [49280/60000 (82%)]	Loss: 1.477221
+Train Epoch: 2 [49920/60000 (83%)]	Loss: 1.500800
+Train Epoch: 2 [50560/60000 (84%)]	Loss: 1.524441
+Train Epoch: 2 [51200/60000 (85%)]	Loss: 1.496813
+Train Epoch: 2 [51840/60000 (86%)]	Loss: 1.504592
+Train Epoch: 2 [52480/60000 (87%)]	Loss: 1.476948
+Train Epoch: 2 [53120/60000 (88%)]	Loss: 1.503898
+Train Epoch: 2 [53760/60000 (90%)]	Loss: 1.479251
+Train Epoch: 2 [54400/60000 (91%)]	Loss: 1.462188
+Train Epoch: 2 [55040/60000 (92%)]	Loss: 1.492595
+Train Epoch: 2 [55680/60000 (93%)]	Loss: 1.492745
+Train Epoch: 2 [56320/60000 (94%)]	Loss: 1.476812
+Train Epoch: 2 [56960/60000 (95%)]	Loss: 1.463375
+Train Epoch: 2 [57600/60000 (96%)]	Loss: 1.506456
+Train Epoch: 2 [58240/60000 (97%)]	Loss: 1.462169
+Train Epoch: 2 [58880/60000 (98%)]	Loss: 1.461197
+Train Epoch: 2 [59520/60000 (99%)]	Loss: 1.461150
+
+Test set: Average loss: -0.9804, Accuracy: 9804/10000 (98%)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">save_model</span><span class="p">:</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s2">&quot;mnist_cnn_pytorch.ckpt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="cnn.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">TF CNN</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="regression-structured.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Structured data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jan Kirenz<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -6,12 +6,17 @@ parts:
     - file: docs/deep-learning.md  
     - file: docs/tensorflow.md  
     - file: docs/tf-example.ipynb
+    - file: docs/hugging-face.md 
   - caption: Computer vision
     chapters:
     - file: docs/fashion-mnist.ipynb
     - file: docs/fashion-mnist-exercises.ipynb  
     - file: docs/convolutional.md  
     - file: docs/cnn.ipynb
+  - caption: MNIST
+    chapters:
+    - file: docs/mnist-tensorflow.ipynb
+    - file: docs/mnist-pytorch.ipynb 
   - caption: Regression
     chapters:
     - file: docs/regression-structured.md
