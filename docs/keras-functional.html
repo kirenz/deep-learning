@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functional API &#8212; Deep Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="deep-learning.html">
+   Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tensorflow.html">
+   TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tf-example.html">
+   TensorFlow Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hugging-face.html">
+   Hugging Face
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="fashion-mnist.html">
+   Classify images of clothing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fashion-mnist-exercises.html">
+   Model exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="convolutional.html">
+   Convolutional
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cnn.html">
+   TF CNN
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  MNIST
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-tensorflow.html">
+   MNIST TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-pytorch.html">
+   MNIST PyTorch
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Regression
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression-structured.html">
+   Structured data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="reference.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/keras-functional.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/kirenz/deep-learning"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/keras-functional.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/keras-functional.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-example">
+   Simple example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-input-multi-output">
+   Multi-input, multi-output
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training">
+     Training
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#access-layers">
+     Access layers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retrieving-inputs-or-outputs">
+     Retrieving inputs or outputs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-new-model">
+     Creating a new model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Functional API</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-example">
+   Simple example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-input-multi-output">
+   Multi-input, multi-output
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training">
+     Training
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#access-layers">
+     Access layers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retrieving-inputs-or-outputs">
+     Retrieving inputs or outputs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-new-model">
+     Creating a new model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="functional-api">
+<h1>Functional API<a class="headerlink" href="#functional-api" title="Permalink to this headline">¶</a></h1>
+<p><em>This is a companion notebook for the excellent book <a class="reference external" href="https://www.manning.com/books/deep-learning-with-python-second-edition?a_aid=keras&amp;a_bid=76564dff">Deep Learning with Python, Second Edition</a> (<a class="reference external" href="https://github.com/fchollet/deep-learning-with-python-notebooks">code provided by François Chollet</a>).</em></p>
+<p>The Sequential model is easy to use, but its applicability is extremely limited: it can
+only express models with a single input and a single output, applying one layer after
+the other in a sequential fashion.</p>
+<p>In practice, it’s pretty common to encounter models
+with multiple inputs (say, an image and its metadata), multiple outputs (different
+things you want to predict about the data), or a nonlinear topology. In such cases, you’d build your model using the Functional API.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="simple-example">
+<h2>Simple example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
+<p>A simple Functional model with two <code class="docutils literal notranslate"><span class="pre">Dense</span></code> layers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Declare an input (sample has shape 3,1)</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_input&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a layer and call it on the input</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="c1"># Create final output layer and call it on the features</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="c1"># Specify inputs and outputs in the Model constructor</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a look at the objects:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TensorShape([None, 3])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The number of samples per batch is variable (indicated by the <code class="docutils literal notranslate"><span class="pre">None</span></code> batch size).</p></li>
+<li><p>The model will process batches where each sample has shape <code class="docutils literal notranslate"><span class="pre">(3,)</span></code> (wich is the same as <code class="docutils literal notranslate"><span class="pre">(3,1)</span></code>).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.float32
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The batches will have dtype <code class="docutils literal notranslate"><span class="pre">float32</span></code>.</p></li>
+</ul>
+<p>We call such an object a symbolic tensor. It doesn’t contain any actual data, but it
+encodes the specifications of the actual tensors of data that the model will see when
+you use it. It stands for future tensors of data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TensorShape([None, 64])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Summary of the model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ my_input (InputLayer)       [(None, 3)]               0         
+                                                                 
+ dense_6 (Dense)             (None, 64)                256       
+                                                                 
+ dense_7 (Dense)             (None, 10)                650       
+                                                                 
+=================================================================
+Total params: 906
+Trainable params: 906
+Non-trainable params: 0
+_________________________________________________________________
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multi-input-multi-output">
+<h2>Multi-input, multi-output<a class="headerlink" href="#multi-input-multi-output" title="Permalink to this headline">¶</a></h2>
+<p>Unlike the previous toy model, most deep learning models don’t look like lists—they look like
+graphs. They may, for instance, have multiple inputs or multiple outputs. It’s for this kind of model that the Functional API really shines.</p>
+<p>Let’s say you’re building a system to rank customer support tickets by priority and route them to the appropriate department.</p>
+<p><strong>Your model has three inputs:</strong></p>
+<ol class="simple">
+<li><p>The title of the ticket (text input)</p></li>
+<li><p>The text body of the ticket (text input)</p></li>
+<li><p>Any tags added by the user (categorical input, assumed here to be one-hot
+encoded)</p></li>
+</ol>
+<p>We can encode the text inputs as arrays of ones and zeros of size <code class="docutils literal notranslate"><span class="pre">vocabulary_size</span></code></p>
+<p><strong>Your model also has two outputs:</strong></p>
+<ul class="simple">
+<li><p>The priority score of the ticket, a scalar between 0 and 1 (sigmoid output)</p></li>
+<li><p>The department that should handle the ticket (a softmax over the set of departments)</p></li>
+</ul>
+<p>You can build this model in a few lines with the Functional API.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) DEFINE VARIABLES</span>
+<span class="c1"># Size of vocabulary obtained when preprocessing text data</span>
+<span class="n">vocabulary_size</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="c1"># Number of unique issue tags</span>
+<span class="n">num_tags</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="c1"># Number of departments for predictions</span>
+<span class="n">num_departments</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="c1"># 2) DEFINE MODEL INPUTS</span>
+<span class="c1"># Title of tickets</span>
+<span class="n">title</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">vocabulary_size</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
+<span class="c1"># Body of the tickets</span>
+<span class="n">text_body</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">vocabulary_size</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;text_body&quot;</span><span class="p">)</span>
+<span class="c1"># Tagy added by user</span>
+<span class="n">tags</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">num_tags</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tags&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3) FEATURES</span>
+<span class="c1"># Combine input </span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Concatenate</span><span class="p">()([</span><span class="n">title</span><span class="p">,</span> <span class="n">text_body</span><span class="p">,</span> <span class="n">tags</span><span class="p">])</span>
+<span class="c1"># Intermediate layer</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="c1"># 4) DEFINE MODEL OUTPUTS</span>
+<span class="c1"># Priority score of the ticket</span>
+<span class="n">priority</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;priority&quot;</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+<span class="c1"># Department that should handle the ticket</span>
+<span class="n">department</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+    <span class="n">num_departments</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;department&quot;</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="c1"># 5) CREATE MODEL</span>
+<span class="c1"># Specify inputs and outputs</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">title</span><span class="p">,</span> <span class="n">text_body</span><span class="p">,</span> <span class="n">tags</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">priority</span><span class="p">,</span> <span class="n">department</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="training">
+<h3>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h3>
+<p>Option 1: Providing lists of input &amp; target arrays</p>
+<p>First, we create some random input data with values between 0 and 2 as well as random data for our labels. We will use this data to train our model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define total number of samples</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Create random input data</span>
+<span class="n">title_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">vocabulary_size</span><span class="p">))</span>
+<span class="n">text_body_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">vocabulary_size</span><span class="p">))</span>
+<span class="n">tags_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">num_tags</span><span class="p">))</span>
+
+<span class="c1"># Create random labels</span>
+<span class="n">priority_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">department_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">num_departments</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mean_squared_error&quot;</span><span class="p">,</span> <span class="s2">&quot;categorical_crossentropy&quot;</span><span class="p">],</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;mean_absolute_error&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">]])</span>
+
+<span class="c1"># Fit model to data</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">title_data</span><span class="p">,</span> <span class="n">text_body_data</span><span class="p">,</span> <span class="n">tags_data</span><span class="p">],</span>
+          <span class="p">[</span><span class="n">priority_data</span><span class="p">,</span> <span class="n">department_data</span><span class="p">],</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Evaluate model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">([</span><span class="n">title_data</span><span class="p">,</span> <span class="n">text_body_data</span><span class="p">,</span> <span class="n">tags_data</span><span class="p">],</span>
+               <span class="p">[</span><span class="n">priority_data</span><span class="p">,</span> <span class="n">department_data</span><span class="p">])</span>
+
+<span class="c1"># Make predictions</span>
+<span class="n">priority_preds</span><span class="p">,</span> <span class="n">department_preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">title_data</span><span class="p">,</span> <span class="n">text_body_data</span><span class="p">,</span> <span class="n">tags_data</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4/4 [==============================] - 0s 10ms/step - loss: 86.6427 - priority_loss: 0.3638 - department_loss: 86.2789 - priority_mean_absolute_error: 0.5300 - department_accuracy: 0.2600
+4/4 [==============================] - 0s 3ms/step - loss: 55.1070 - priority_loss: 0.3638 - department_loss: 54.7432 - priority_mean_absolute_error: 0.5300 - department_accuracy: 0.2300
+</pre></div>
+</div>
+</div>
+</div>
+<p>Option 2: Providing dicts of input &amp; target arrays</p>
+<p>If you don’t want to rely on input order (for instance, because you have many inputs
+or outputs), you can also leverage the names you gave to the Input objects and the
+output layers, and pass data via dictionaries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="s2">&quot;mean_squared_error&quot;</span><span class="p">,</span> <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_crossentropy&quot;</span><span class="p">},</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mean_absolute_error&quot;</span><span class="p">],</span> <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">]})</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">({</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">title_data</span><span class="p">,</span> <span class="s2">&quot;text_body&quot;</span><span class="p">:</span> <span class="n">text_body_data</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="n">tags_data</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="n">priority_data</span><span class="p">,</span> <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="n">department_data</span><span class="p">},</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">({</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">title_data</span><span class="p">,</span> <span class="s2">&quot;text_body&quot;</span><span class="p">:</span> <span class="n">text_body_data</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="n">tags_data</span><span class="p">},</span>
+               <span class="p">{</span><span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="n">priority_data</span><span class="p">,</span> <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="n">department_data</span><span class="p">})</span>
+
+<span class="n">priority_preds</span><span class="p">,</span> <span class="n">department_preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">title_data</span><span class="p">,</span> <span class="s2">&quot;text_body&quot;</span><span class="p">:</span> <span class="n">text_body_data</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="n">tags_data</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4/4 [==============================] - 1s 10ms/step - loss: 119.7109 - priority_loss: 0.3638 - department_loss: 119.3471 - priority_mean_absolute_error: 0.5300 - department_accuracy: 0.3900
+4/4 [==============================] - 0s 3ms/step - loss: 102.1632 - priority_loss: 0.3638 - department_loss: 101.7994 - priority_mean_absolute_error: 0.5300 - department_accuracy: 0.5600
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="access-layers">
+<h3>Access layers<a class="headerlink" href="#access-layers" title="Permalink to this headline">¶</a></h3>
+<p>A Functional model is an explicit graph data structure. This makes it possible to
+inspect how layers are connected and reuse previous graph nodes (which are layer
+outputs) as part of new models. This enables two important use cases:</p>
+<ul class="simple">
+<li><p>model visualization and</p></li>
+<li><p>feature extraction.</p></li>
+</ul>
+<p>Let’s visualize the connectivity of the model we just defined (the topology of the
+model). You can plot a Functional model as a graph with the plot_model():</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;ticket_classifier.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/keras-functional_23_0.png" src="../_images/keras-functional_23_0.png" />
+</div>
+</div>
+<p>You can add to this plot the input and output shapes of each layer in the model, which
+can be helpful during debugging:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;ticket_classifier_with_shape_info.png&quot;</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/keras-functional_25_0.png" src="../_images/keras-functional_25_0.png" />
+</div>
+</div>
+<p>The “None” in the tensor shapes represents the batch size: this model allows batches
+of any size.</p>
+</div>
+<div class="section" id="retrieving-inputs-or-outputs">
+<h3>Retrieving inputs or outputs<a class="headerlink" href="#retrieving-inputs-or-outputs" title="Permalink to this headline">¶</a></h3>
+<p>Access to layer connectivity also means that you can inspect and reuse individual
+nodes (layer calls) in the graph. The model.layers model property provides the list
+of layers that make up the model, and for each layer you can query layer.input and
+layer.output</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">layers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;keras.engine.input_layer.InputLayer at 0x7fb15a2b68e0&gt;,
+ &lt;keras.engine.input_layer.InputLayer at 0x7fb15a2b6910&gt;,
+ &lt;keras.engine.input_layer.InputLayer at 0x7fb15a2b6190&gt;,
+ &lt;keras.layers.merge.Concatenate at 0x7fb15a2b6b20&gt;,
+ &lt;keras.layers.core.dense.Dense at 0x7fb18875e910&gt;,
+ &lt;keras.layers.core.dense.Dense at 0x7fb1713447f0&gt;,
+ &lt;keras.layers.core.dense.Dense at 0x7fb17134dcd0&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">input</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;KerasTensor: shape=(None, 10000) dtype=float32 (created by layer &#39;title&#39;)&gt;,
+ &lt;KerasTensor: shape=(None, 10000) dtype=float32 (created by layer &#39;text_body&#39;)&gt;,
+ &lt;KerasTensor: shape=(None, 100) dtype=float32 (created by layer &#39;tags&#39;)&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;KerasTensor: shape=(None, 20100) dtype=float32 (created by layer &#39;concatenate&#39;)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This enables you to do feature extraction, creating models that reuse intermediate features
+from another model.
+Let’s say you want to add another output to the previous model—you want to estimate
+how long a given issue ticket will take to resolve, a kind of difficulty rating. You
+could do this via a classification layer over three categories: “quick,” “medium,” and
+“difficult.”</p>
+<p>You don’t need to recreate and retrain a model from scratch. You can start
+from the intermediate features of your previous model, since you have access to them,
+like this.</p>
+</div>
+<div class="section" id="creating-a-new-model">
+<h3>Creating a new model<a class="headerlink" href="#creating-a-new-model" title="Permalink to this headline">¶</a></h3>
+<p>Creating a new model by reusing intermediate layer outputs:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># layers[4] is our intermediate Dense layer</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">output</span>
+
+<span class="n">difficulty</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;difficulty&quot;</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="n">new_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">title</span><span class="p">,</span> <span class="n">text_body</span><span class="p">,</span> <span class="n">tags</span><span class="p">],</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">priority</span><span class="p">,</span> <span class="n">department</span><span class="p">,</span> <span class="n">difficulty</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_model</span><span class="p">(</span><span class="n">new_model</span><span class="p">,</span> <span class="s2">&quot;updated_ticket_classifier.png&quot;</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/keras-functional_34_0.png" src="../_images/keras-functional_34_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jan Kirenz<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
