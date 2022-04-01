@@ -24,6 +24,7 @@ parts:
     chapters:
     - file: docs/keras-sequential.md
     - file: docs/keras-functional.md
+    - file: docs/structured_data_classification_from_scratch.ipynb
   - caption: References
     chapters:
     - file: docs/reference.md
