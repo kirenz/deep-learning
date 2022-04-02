@@ -324,22 +324,20 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preparing-the-data">
-   Preparing the data
+  <a class="reference internal nav-link" href="#data">
+   Data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import">
-     Import
+    <a class="reference internal nav-link" href="#data-import">
+     Data import
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-splitting">
-   Data splitting
-  </a>
-  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-splitting">
+     Data splitting
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#transform-to-tensors">
      Transform to Tensors
@@ -353,8 +351,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feature-preprocessing-with-keras-layers">
-   Feature preprocessing with Keras layers
+  <a class="reference internal nav-link" href="#feature-preprocessing">
+   Feature preprocessing
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -375,18 +373,18 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-a-model">
-   Build a model
+  <a class="reference internal nav-link" href="#model">
+   Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#train-the-model">
-   Train the model
+  <a class="reference internal nav-link" href="#training">
+   Training
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inference-on-new-data">
-   Inference on new data
+  <a class="reference internal nav-link" href="#predictions">
+   Predictions
   </a>
  </li>
 </ul>
@@ -415,22 +413,20 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preparing-the-data">
-   Preparing the data
+  <a class="reference internal nav-link" href="#data">
+   Data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import">
-     Import
+    <a class="reference internal nav-link" href="#data-import">
+     Data import
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-splitting">
-   Data splitting
-  </a>
-  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-splitting">
+     Data splitting
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#transform-to-tensors">
      Transform to Tensors
@@ -444,8 +440,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feature-preprocessing-with-keras-layers">
-   Feature preprocessing with Keras layers
+  <a class="reference internal nav-link" href="#feature-preprocessing">
+   Feature preprocessing
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -466,18 +462,18 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-a-model">
-   Build a model
+  <a class="reference internal nav-link" href="#model">
+   Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#train-the-model">
-   Train the model
+  <a class="reference internal nav-link" href="#training">
+   Training
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inference-on-new-data">
-   Inference on new data
+  <a class="reference internal nav-link" href="#predictions">
+   Predictions
   </a>
  </li>
 </ul>
@@ -588,10 +584,10 @@ classification</strong>).</p>
 </div>
 </div>
 </div>
-<div class="section" id="preparing-the-data">
-<h2>Preparing the data<a class="headerlink" href="#preparing-the-data" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="import">
-<h3>Import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-import">
+<h3>Data import<a class="headerlink" href="#data-import" title="Permalink to this headline">¶</a></h3>
 <p>Let’s download the data and load it into a Pandas dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -750,9 +746,8 @@ label):</p>
 <p>The last column, “target”, indicates whether the patient has a heart disease (1) or not
 (0).</p>
 </div>
-</div>
 <div class="section" id="data-splitting">
-<h2>Data splitting<a class="headerlink" href="#data-splitting" title="Permalink to this headline">¶</a></h2>
+<h3>Data splitting<a class="headerlink" href="#data-splitting" title="Permalink to this headline">¶</a></h3>
 <p>Let’s split the data into a training and validation set:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -769,6 +764,7 @@ label):</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using 242 samples for training and 61 for validation
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -900,8 +896,8 @@ Target: tf.Tensor(1, shape=(), dtype=int64)
 </div>
 </div>
 </div>
-<div class="section" id="feature-preprocessing-with-keras-layers">
-<h2>Feature preprocessing with Keras layers<a class="headerlink" href="#feature-preprocessing-with-keras-layers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="feature-preprocessing">
+<h2>Feature preprocessing<a class="headerlink" href="#feature-preprocessing" title="Permalink to this headline">¶</a></h2>
 <p>Next, we perform feature preprocessing with Keras layers.</p>
 <div class="section" id="categorical-features">
 <h3>Categorical features<a class="headerlink" href="#categorical-features" title="Permalink to this headline">¶</a></h3>
@@ -1004,8 +1000,8 @@ then one-hot encode these integer indices.</p></li>
 </div>
 </div>
 </div>
-<div class="section" id="build-a-model">
-<h2>Build a model<a class="headerlink" href="#build-a-model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="model">
+<h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
 <p>With this done, we can create our end-to-end model:</p>
 <ol class="simple">
 <li><p>Define keras.Input for every feature:</p></li>
@@ -1154,8 +1150,8 @@ then one-hot encode these integer indices.</p></li>
 </div>
 </div>
 </div>
-<div class="section" id="train-the-model">
-<h2>Train the model<a class="headerlink" href="#train-the-model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="training">
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
 <p>Trains the model for a fixed number of epochs (iterations on a dataset).</p>
 <p>An epoch is an arbitrary cutoff, generally defined as “one pass over the entire dataset”, used to separate training into distinct phases, which is useful for logging and periodic evaluation. Here, we only use 10 epochs.</p>
 <div class="cell docutils container">
@@ -1194,8 +1190,8 @@ Epoch 10/10
 </div>
 <p>We quickly get to 80% validation accuracy.</p>
 </div>
-<div class="section" id="inference-on-new-data">
-<h2>Inference on new data<a class="headerlink" href="#inference-on-new-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="predictions">
+<h2>Predictions<a class="headerlink" href="#predictions" title="Permalink to this headline">¶</a></h2>
 <p>To get a prediction for a new sample, you can simply call <code class="docutils literal notranslate"><span class="pre">model.predict()</span></code>. There are
 just two things you need to do:</p>
 <ol class="simple">
