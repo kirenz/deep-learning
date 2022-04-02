@@ -15,6 +15,7 @@ parts:
     - file: docs/cnn.ipynb
   - caption: MNIST
     chapters:
+    - file: docs/mnist-cnn.ipynb   
     - file: docs/mnist-tensorflow.ipynb
     - file: docs/mnist-pytorch.ipynb 
   - caption: Regression
