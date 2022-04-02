@@ -161,12 +161,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="mnist-tensorflow.html">
-   MNIST TensorFlow
+   MNIST with TensorFlow
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="mnist-pytorch.html">
-   MNIST PyTorch
+   MNIST with PyTorch
   </a>
  </li>
 </ul>
@@ -1124,9 +1124,10 @@ then one-hot encode these integer indices.</p></li>
 </div>
 <p><a class="reference external" href="https://keras.io/api/models/model_training_apis/">Model.compile</a> configures the model for training:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://keras.io/api/optimizers/">Optimizer</a>: one common option for the optimizer is <a class="reference external" href="https://keras.io/api/optimizers/adam/">Adam</a>,a stochastic gradient descent method that is based on adaptive estimation of first-order and second-order moments.</p></li>
-<li><p><a class="reference external" href="https://keras.io/api/losses/">loss</a>: The purpose of loss functions is to compute the quantity that a model should seek to minimize during training.</p></li>
-<li><p><a class="reference external" href="https://keras.io/api/metrics/">metrics</a>: A metric is a function that is used to judge the performance of your model.</p></li>
+<li><p><a class="reference external" href="https://keras.io/api/optimizers/">Optimizer</a>: The mechanism through which the model will update itself based on the training data it sees, so as to improve its performance. One common option for the optimizer is <a class="reference external" href="https://keras.io/api/optimizers/adam/">Adam</a>,a stochastic gradient descent method that is based on adaptive estimation of first-order and second-order moments.</p></li>
+<li><p><a class="reference external" href="https://keras.io/api/losses/">loss</a>: How the model will be able to measure its performance on the training data, and thus how it will be able to steer itself in the right direction. This menas the purpose of loss functions is to compute the quantity that a model should seek to minimize during training.</p></li>
+<li><p><a class="reference external" href="https://keras.io/api/metrics/">metrics</a>: A metric is a function that is used to judge the performance of your model during training and testing. Here, we’ll only care about accuracy
+(the fraction of the images that were correctly classified).</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
