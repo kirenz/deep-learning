@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MNIST TensorFlow intro &#8212; Deep Learning</title>
+    <title>CNN intro &#8212; Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -155,13 +155,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  MNIST
+  CNN
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   MNIST TensorFlow intro
+   CNN intro
   </a>
  </li>
  <li class="toctree-l1">
@@ -382,7 +382,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>MNIST TensorFlow intro</h1>
+                <h1>CNN intro</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -450,8 +450,8 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="mnist-tensorflow-intro">
-<h1>MNIST TensorFlow intro<a class="headerlink" href="#mnist-tensorflow-intro" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="cnn-intro">
+<h1>CNN intro<a class="headerlink" href="#cnn-intro" title="Permalink to this headline">¶</a></h1>
 <p><em>This tutorial is mainly based on the excellent book <a class="reference external" href="https://www.manning.com/books/deep-learning-with-python-second-edition?a_aid=keras&amp;a_bid=76564dff">Deep Learning with Python, Second Edition</a> by François Chollet as well as content from the <a class="reference external" href="https://developers.google.com/machine-learning/practica">ML Practica</a> provided by Google Developers.</em></p>
 <p>The problem we’re trying to solve here is to classify the grayscale images of handwritten digits (28x28 pixels) into their 10 categories (0 through 9) using a convolutional neural network (CNN).</p>
 <p>A convolutional neural network (CNN) can be used to progressively extract higher- and higher-level representations of the image content. Instead of preprocessing the data to derive features like textures and shapes, a CNN takes just the image’s raw pixel data as input and “learns” how to extract these features, and ultimately infer what object they constitute (Google Developers).</p>
@@ -578,10 +578,10 @@ arrays.</p>
 <p>For each filter-tile pair, the CNN performs element-wise multiplication of the filter matrix and the tile matrix, and then sums all the elements of the resulting matrix to get a single value. Each of these resulting values for every filter-tile pair is then output in the convolved feature matrix (see figures).</p>
 <br>
 <p><img alt="" src="https://developers.google.com/machine-learning/practica/image-classification/images/convolution_example.svg" /></p>
-<p>Figure source: Goole Developers. Left: A 5x5 input feature map (depth 1). Right: a 3x3 convolution (depth 1).</p>
+<p>Figure source: Google Developers. Left: A 5x5 input feature map (depth 1). Right: a 3x3 convolution (depth 1).</p>
 <br>
 <p><img alt="" src="../_images/feature-map.png" /></p>
-<p>Figure source: Goole Developers. Left: The 3x3 convolution is performed on the 5x5 input feature map. Right: the resulting convolved feature. Click on a value in the output feature map to see how it was calculated.</p>
+<p>Figure source: Goolge Developers. Left: The 3x3 convolution is performed on the 5x5 input feature map. Right: the resulting convolved feature. Click on a value in the output feature map to see how it was calculated.</p>
 <br>
 <p>During training, the CNN “learns” the optimal values for the filter matrices that enable it to extract meaningful features (textures, edges, shapes) from the input feature map. As the number of filters (output feature map depth) applied to the input increases, so does the number of features the CNN can extract. However, the tradeoff is that filters compose the majority of resources expended by the CNN, so training time also increases as more filters are added. Additionally, each filter added to the network provides less incremental value than the previous one, so engineers aim to construct networks that use the minimum number of filters needed to extract the features necessary for accurate image classification. (Google Developers)</p>
 </div>
@@ -660,27 +660,27 @@ activation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model_1&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model_2&quot;
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
- input_2 (InputLayer)        [(None, 28, 28, 1)]       0         
+ input_3 (InputLayer)        [(None, 28, 28, 1)]       0         
                                                                  
- conv2d_3 (Conv2D)           (None, 26, 26, 32)        320       
+ conv2d_6 (Conv2D)           (None, 26, 26, 32)        320       
                                                                  
- max_pooling2d_2 (MaxPooling  (None, 13, 13, 32)       0         
+ max_pooling2d_4 (MaxPooling  (None, 13, 13, 32)       0         
  2D)                                                             
                                                                  
- conv2d_4 (Conv2D)           (None, 11, 11, 64)        18496     
+ conv2d_7 (Conv2D)           (None, 11, 11, 64)        18496     
                                                                  
- max_pooling2d_3 (MaxPooling  (None, 5, 5, 64)         0         
+ max_pooling2d_5 (MaxPooling  (None, 5, 5, 64)         0         
  2D)                                                             
                                                                  
- conv2d_5 (Conv2D)           (None, 3, 3, 128)         73856     
+ conv2d_8 (Conv2D)           (None, 3, 3, 128)         73856     
                                                                  
- flatten_1 (Flatten)         (None, 1152)              0         
+ flatten_2 (Flatten)         (None, 1152)              0         
                                                                  
- dense_1 (Dense)             (None, 10)                11530     
+ dense_2 (Dense)             (None, 10)                11530     
                                                                  
 =================================================================
 Total params: 104,202
@@ -695,25 +695,25 @@ _________________________________________________________________
 </div>
 <div class="section" id="training">
 <h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
-<p>Because we’re doing 10-way classification with a softmax output, we’ll use the categorical crossentropy loss, and because our labels are integers, we’ll use the sparse version, sparse_categorical_crossentropy.</p>
+<p>Because we’re doing 10-way classification with a softmax output, we’ll use the categorical crossentropy loss, and because our labels are integers, we’ll use the sparse version, <code class="docutils literal notranslate"><span class="pre">sparse_categorical_crossentropy</span></code>.</p>
+<p>We also</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span>
              <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+                    <span class="n">validation_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">),</span>
+                    <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/2
-938/938 [==============================] - 60s 63ms/step - loss: 0.1547 - accuracy: 0.9522
+938/938 [==============================] - 53s 55ms/step - loss: 0.0773 - accuracy: 0.9760 - val_loss: 0.0419 - val_accuracy: 0.9858
 Epoch 2/2
-938/938 [==============================] - 53s 56ms/step - loss: 0.0438 - accuracy: 0.9862
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7f94c1c34610&gt;
+938/938 [==============================] - 58s 62ms/step - loss: 0.0390 - accuracy: 0.9876 - val_loss: 0.0262 - val_accuracy: 0.9909
 </pre></div>
 </div>
 </div>
@@ -723,16 +723,33 @@ Epoch 2/2
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span>  <span class="n">test_labels</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test accuracy: </span><span class="si">{</span><span class="n">test_acc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 [==============================] - 3s 9ms/step - loss: 0.0337 - accuracy: 0.9891
-Test accuracy: 0.989
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 - 2s - loss: 0.0262 - accuracy: 0.9909 - 2s/epoch - 6ms/step
+Test accuracy: 0.991
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;val_accuracy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/mnist-cnn_27_0.png" src="../_images/mnist-cnn_27_0.png" />
 </div>
 </div>
 </div>
