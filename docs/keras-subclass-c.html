@@ -1,0 +1,1259 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model subclass &#8212; Deep Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="deep-learning.html">
+   Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tensorflow.html">
+   TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tf-example.html">
+   TensorFlow Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hugging-face.html">
+   Hugging Face
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="fashion-mnist.html">
+   Classify images of clothing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fashion-mnist-exercises.html">
+   Model exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="convolutional.html">
+   Convolutional
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cnn.html">
+   TF CNN
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CNN
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-cnn.html">
+   CNN intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-tensorflow.html">
+   MNIST with TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-pytorch.html">
+   MNIST with PyTorch
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Regression
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression-structured.html">
+   Structured data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Keras
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-sequential.html">
+   Sequential model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-functional.html">
+   Functional API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="structured_data_classification_from_scratch.html">
+   Structured data classification
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="reference.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/keras-subclass-c.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/kirenz/deep-learning"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/keras-subclass-c.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/keras-subclass-c.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rewriting-our-previous-example-as-a-subclassed-model">
+     Rewriting our previous example as a subclassed model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beware-what-subclassed-models-don-t-support">
+     Beware: What subclassed models don’t support
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mixing-and-matching-different-components">
+     Mixing and matching different components
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#remember-use-the-right-tool-for-the-job">
+     Remember: Use the right tool for the job
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-built-in-training-and-evaluation-loops">
+   Using built-in training and evaluation loops
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#writing-your-own-metrics">
+     Writing your own metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-callbacks">
+     Using callbacks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-earlystopping-and-modelcheckpoint-callbacks">
+       The EarlyStopping and ModelCheckpoint callbacks
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#writing-your-own-callbacks">
+     Writing your own callbacks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#monitoring-and-visualization-with-tensorboard">
+     Monitoring and visualization with TensorBoard
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-your-own-training-and-evaluation-loops">
+   Writing your own training and evaluation loops
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-versus-inference">
+     Training versus inference
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#low-level-usage-of-metrics">
+     Low-level usage of metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-complete-training-and-evaluation-loop">
+     A complete training and evaluation loop
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-it-fast-with-tf-function">
+     Make it fast with tf.function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#leveraging-fit-with-a-custom-training-loop">
+     Leveraging fit() with a custom training loop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Model subclass</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rewriting-our-previous-example-as-a-subclassed-model">
+     Rewriting our previous example as a subclassed model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beware-what-subclassed-models-don-t-support">
+     Beware: What subclassed models don’t support
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mixing-and-matching-different-components">
+     Mixing and matching different components
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#remember-use-the-right-tool-for-the-job">
+     Remember: Use the right tool for the job
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-built-in-training-and-evaluation-loops">
+   Using built-in training and evaluation loops
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#writing-your-own-metrics">
+     Writing your own metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-callbacks">
+     Using callbacks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-earlystopping-and-modelcheckpoint-callbacks">
+       The EarlyStopping and ModelCheckpoint callbacks
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#writing-your-own-callbacks">
+     Writing your own callbacks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#monitoring-and-visualization-with-tensorboard">
+     Monitoring and visualization with TensorBoard
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-your-own-training-and-evaluation-loops">
+   Writing your own training and evaluation loops
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-versus-inference">
+     Training versus inference
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#low-level-usage-of-metrics">
+     Low-level usage of metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-complete-training-and-evaluation-loop">
+     A complete training and evaluation loop
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-it-fast-with-tf-function">
+     Make it fast with tf.function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#leveraging-fit-with-a-custom-training-loop">
+     Leveraging fit() with a custom training loop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="model-subclass">
+<h1>Model subclass<a class="headerlink" href="#model-subclass" title="Permalink to this headline">¶</a></h1>
+<p><em>This is a companion notebook for the excellent book <a class="reference external" href="https://www.manning.com/books/deep-learning-with-python-second-edition?a_aid=keras&amp;a_bid=76564dff">Deep Learning with Python, Second Edition</a> (<a class="reference external" href="https://github.com/fchollet/deep-learning-with-python-notebooks">code provided by François Chollet</a>).</em></p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="rewriting-our-previous-example-as-a-subclassed-model">
+<h3>Rewriting our previous example as a subclassed model<a class="headerlink" href="#rewriting-our-previous-example-as-a-subclassed-model" title="Permalink to this headline">¶</a></h3>
+<p><strong>A simple subclassed model</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomerTicketModel</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_departments</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">concat_layer</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Concatenate</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mixing_layer</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priority_scorer</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">department_classifier</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+            <span class="n">num_departments</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+        <span class="n">text_body</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;text_body&quot;</span><span class="p">]</span>
+        <span class="n">tags</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;tags&quot;</span><span class="p">]</span>
+
+        <span class="n">features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">concat_layer</span><span class="p">([</span><span class="n">title</span><span class="p">,</span> <span class="n">text_body</span><span class="p">,</span> <span class="n">tags</span><span class="p">])</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mixing_layer</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="n">priority</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">priority_scorer</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="n">department</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">department_classifier</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">priority</span><span class="p">,</span> <span class="n">department</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">CustomerTicketModel</span><span class="p">(</span><span class="n">num_departments</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">priority</span><span class="p">,</span> <span class="n">department</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">title_data</span><span class="p">,</span> <span class="s2">&quot;text_body&quot;</span><span class="p">:</span> <span class="n">text_body_data</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="n">tags_data</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mean_squared_error&quot;</span><span class="p">,</span> <span class="s2">&quot;categorical_crossentropy&quot;</span><span class="p">],</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;mean_absolute_error&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">]])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">({</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">title_data</span><span class="p">,</span>
+           <span class="s2">&quot;text_body&quot;</span><span class="p">:</span> <span class="n">text_body_data</span><span class="p">,</span>
+           <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="n">tags_data</span><span class="p">},</span>
+          <span class="p">[</span><span class="n">priority_data</span><span class="p">,</span> <span class="n">department_data</span><span class="p">],</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">({</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">title_data</span><span class="p">,</span>
+                <span class="s2">&quot;text_body&quot;</span><span class="p">:</span> <span class="n">text_body_data</span><span class="p">,</span>
+                <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="n">tags_data</span><span class="p">},</span>
+               <span class="p">[</span><span class="n">priority_data</span><span class="p">,</span> <span class="n">department_data</span><span class="p">])</span>
+<span class="n">priority_preds</span><span class="p">,</span> <span class="n">department_preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">({</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">title_data</span><span class="p">,</span>
+                                                  <span class="s2">&quot;text_body&quot;</span><span class="p">:</span> <span class="n">text_body_data</span><span class="p">,</span>
+                                                  <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="n">tags_data</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40/40 [==============================] - 1s 14ms/step - loss: 25.3773 - output_1_loss: 0.3349 - output_2_loss: 25.0425 - output_1_mean_absolute_error: 0.5011 - output_2_accuracy: 0.2352
+40/40 [==============================] - 0s 5ms/step - loss: 36.3067 - output_1_loss: 0.3358 - output_2_loss: 35.9709 - output_1_mean_absolute_error: 0.5018 - output_2_accuracy: 0.0711
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="beware-what-subclassed-models-don-t-support">
+<h3>Beware: What subclassed models don’t support<a class="headerlink" href="#beware-what-subclassed-models-don-t-support" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="mixing-and-matching-different-components">
+<h3>Mixing and matching different components<a class="headerlink" href="#mixing-and-matching-different-components" title="Permalink to this headline">¶</a></h3>
+<p><strong>Creating a Functional model that includes a subclassed model</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Classifier</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">num_classes</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">num_units</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">activation</span> <span class="o">=</span> <span class="s2">&quot;sigmoid&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">num_units</span> <span class="o">=</span> <span class="n">num_classes</span>
+            <span class="n">activation</span> <span class="o">=</span> <span class="s2">&quot;softmax&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_units</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">Classifier</span><span class="p">(</span><span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Creating a subclassed model that includes a Functional model</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,))</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">binary_classifier</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">binary_classifier</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="remember-use-the-right-tool-for-the-job">
+<h3>Remember: Use the right tool for the job<a class="headerlink" href="#remember-use-the-right-tool-for-the-job" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="using-built-in-training-and-evaluation-loops">
+<h2>Using built-in training and evaluation loops<a class="headerlink" href="#using-built-in-training-and-evaluation-loops" title="Permalink to this headline">¶</a></h2>
+<p><strong>The standard workflow: <code class="docutils literal notranslate"><span class="pre">compile()</span></code>, <code class="docutils literal notranslate"><span class="pre">fit()</span></code>, <code class="docutils literal notranslate"><span class="pre">evaluate()</span></code>, <code class="docutils literal notranslate"><span class="pre">predict()</span></code></strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
+
+<span class="k">def</span> <span class="nf">get_mnist_model</span><span class="p">():</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,))</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+
+<span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">60000</span><span class="p">,</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">train_images</span><span class="p">,</span> <span class="n">val_images</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="mi">10000</span><span class="p">:],</span> <span class="n">images</span><span class="p">[:</span><span class="mi">10000</span><span class="p">]</span>
+<span class="n">train_labels</span><span class="p">,</span> <span class="n">val_labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">10000</span><span class="p">:],</span> <span class="n">labels</span><span class="p">[:</span><span class="mi">10000</span><span class="p">]</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">get_mnist_model</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">val_images</span><span class="p">,</span> <span class="n">val_labels</span><span class="p">))</span>
+<span class="n">test_metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_images</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/3
+1563/1563 [==============================] - 8s 5ms/step - loss: 0.2950 - accuracy: 0.9129 - val_loss: 0.1440 - val_accuracy: 0.9583
+Epoch 2/3
+1563/1563 [==============================] - 7s 5ms/step - loss: 0.1656 - accuracy: 0.9523 - val_loss: 0.1242 - val_accuracy: 0.9676
+Epoch 3/3
+1563/1563 [==============================] - 7s 5ms/step - loss: 0.1369 - accuracy: 0.9626 - val_loss: 0.1174 - val_accuracy: 0.9701
+313/313 [==============================] - 0s 1ms/step - loss: 0.1100 - accuracy: 0.9721
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="writing-your-own-metrics">
+<h3>Writing your own metrics<a class="headerlink" href="#writing-your-own-metrics" title="Permalink to this headline">¶</a></h3>
+<p><strong>Implementing a custom metric by subclassing the <code class="docutils literal notranslate"><span class="pre">Metric</span></code> class</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="k">class</span> <span class="nc">RootMeanSquaredError</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">Metric</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;rmse&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mse_sum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mse_sum&quot;</span><span class="p">,</span> <span class="n">initializer</span><span class="o">=</span><span class="s2">&quot;zeros&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;total_samples&quot;</span><span class="p">,</span> <span class="n">initializer</span><span class="o">=</span><span class="s2">&quot;zeros&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">mse</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mse_sum</span><span class="o">.</span><span class="n">assign_add</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+        <span class="n">num_samples</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_samples</span><span class="o">.</span><span class="n">assign_add</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mse_sum</span> <span class="o">/</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total_samples</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">reset_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mse_sum</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="mf">0.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_samples</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">get_mnist_model</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="n">RootMeanSquaredError</span><span class="p">()])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">val_images</span><span class="p">,</span> <span class="n">val_labels</span><span class="p">))</span>
+<span class="n">test_metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/3
+1563/1563 [==============================] - 8s 5ms/step - loss: 0.2944 - accuracy: 0.9128 - rmse: 7.1830 - val_loss: 0.1680 - val_accuracy: 0.9492 - val_rmse: 7.3523
+Epoch 2/3
+1563/1563 [==============================] - 8s 5ms/step - loss: 0.1637 - accuracy: 0.9538 - rmse: 7.3535 - val_loss: 0.1208 - val_accuracy: 0.9672 - val_rmse: 7.3989
+Epoch 3/3
+1563/1563 [==============================] - 7s 5ms/step - loss: 0.1376 - accuracy: 0.9629 - rmse: 7.3878 - val_loss: 0.1110 - val_accuracy: 0.9694 - val_rmse: 7.4185
+313/313 [==============================] - 1s 2ms/step - loss: 0.1135 - accuracy: 0.9701 - rmse: 7.4333
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-callbacks">
+<h3>Using callbacks<a class="headerlink" href="#using-callbacks" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-earlystopping-and-modelcheckpoint-callbacks">
+<h4>The EarlyStopping and ModelCheckpoint callbacks<a class="headerlink" href="#the-earlystopping-and-modelcheckpoint-callbacks" title="Permalink to this headline">¶</a></h4>
+<p><strong>Using the <code class="docutils literal notranslate"><span class="pre">callbacks</span></code> argument in the <code class="docutils literal notranslate"><span class="pre">fit()</span></code> method</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callbacks_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span>
+        <span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;val_accuracy&quot;</span><span class="p">,</span>
+        <span class="n">patience</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span>
+        <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;checkpoint_path.keras&quot;</span><span class="p">,</span>
+        <span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;val_loss&quot;</span><span class="p">,</span>
+        <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">get_mnist_model</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks_list</span><span class="p">,</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">val_images</span><span class="p">,</span> <span class="n">val_labels</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+1563/1563 [==============================] - 8s 5ms/step - loss: 0.2928 - accuracy: 0.9133 - val_loss: 0.1478 - val_accuracy: 0.9574
+Epoch 2/10
+1563/1563 [==============================] - 8s 5ms/step - loss: 0.1672 - accuracy: 0.9529 - val_loss: 0.1180 - val_accuracy: 0.9663
+Epoch 3/10
+1563/1563 [==============================] - 7s 5ms/step - loss: 0.1406 - accuracy: 0.9624 - val_loss: 0.1176 - val_accuracy: 0.9693
+Epoch 4/10
+1563/1563 [==============================] - 8s 5ms/step - loss: 0.1245 - accuracy: 0.9679 - val_loss: 0.1175 - val_accuracy: 0.9717
+Epoch 5/10
+1563/1563 [==============================] - 8s 5ms/step - loss: 0.1164 - accuracy: 0.9713 - val_loss: 0.1073 - val_accuracy: 0.9755
+Epoch 6/10
+1563/1563 [==============================] - 7s 5ms/step - loss: 0.1089 - accuracy: 0.9735 - val_loss: 0.1145 - val_accuracy: 0.9741
+Epoch 7/10
+1563/1563 [==============================] - 7s 5ms/step - loss: 0.1054 - accuracy: 0.9750 - val_loss: 0.1143 - val_accuracy: 0.9753
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fb351a68460&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;checkpoint_path.keras&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="writing-your-own-callbacks">
+<h3>Writing your own callbacks<a class="headerlink" href="#writing-your-own-callbacks" title="Permalink to this headline">¶</a></h3>
+<p><strong>Creating a custom callback by subclassing the <code class="docutils literal notranslate"><span class="pre">Callback</span></code> class</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="k">class</span> <span class="nc">LossHistory</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">on_train_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">per_batch_losses</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">on_batch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">per_batch_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">logs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">per_batch_losses</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">per_batch_losses</span><span class="p">,</span>
+                 <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Training loss for each batch&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Batch (epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Loss&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;plot_at_epoch_</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">per_batch_losses</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">get_mnist_model</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">LossHistory</span><span class="p">()],</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">val_images</span><span class="p">,</span> <span class="n">val_labels</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+1563/1563 [==============================] - 8s 5ms/step - loss: 0.2937 - accuracy: 0.9127 - val_loss: 0.1441 - val_accuracy: 0.9600
+Epoch 2/10
+1563/1563 [==============================] - 7s 4ms/step - loss: 0.1636 - accuracy: 0.9538 - val_loss: 0.1332 - val_accuracy: 0.9642
+Epoch 3/10
+1563/1563 [==============================] - 7s 5ms/step - loss: 0.1379 - accuracy: 0.9627 - val_loss: 0.1149 - val_accuracy: 0.9709
+Epoch 4/10
+1563/1563 [==============================] - 7s 5ms/step - loss: 0.1247 - accuracy: 0.9671 - val_loss: 0.1013 - val_accuracy: 0.9759
+Epoch 5/10
+1563/1563 [==============================] - 7s 4ms/step - loss: 0.1161 - accuracy: 0.9710 - val_loss: 0.1080 - val_accuracy: 0.9749
+Epoch 6/10
+1563/1563 [==============================] - 7s 4ms/step - loss: 0.1108 - accuracy: 0.9734 - val_loss: 0.1096 - val_accuracy: 0.9775
+Epoch 7/10
+1563/1563 [==============================] - 7s 4ms/step - loss: 0.1040 - accuracy: 0.9755 - val_loss: 0.1143 - val_accuracy: 0.9760
+Epoch 8/10
+1563/1563 [==============================] - 7s 4ms/step - loss: 0.1023 - accuracy: 0.9764 - val_loss: 0.1058 - val_accuracy: 0.9781
+Epoch 9/10
+1563/1563 [==============================] - 7s 4ms/step - loss: 0.0939 - accuracy: 0.9783 - val_loss: 0.1260 - val_accuracy: 0.9767
+Epoch 10/10
+1563/1563 [==============================] - 7s 5ms/step - loss: 0.0935 - accuracy: 0.9786 - val_loss: 0.1126 - val_accuracy: 0.9783
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fb351b6fa30&gt;
+</pre></div>
+</div>
+<img alt="../_images/keras-subclass-c_30_2.png" src="../_images/keras-subclass-c_30_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="monitoring-and-visualization-with-tensorboard">
+<h3>Monitoring and visualization with TensorBoard<a class="headerlink" href="#monitoring-and-visualization-with-tensorboard" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">get_mnist_model</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+
+<span class="n">tensorboard</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span>
+    <span class="n">log_dir</span><span class="o">=</span><span class="s2">&quot;/full_path_to_your_log_dir&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">val_images</span><span class="p">,</span> <span class="n">val_labels</span><span class="p">),</span>
+          <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-31 14:41:28.457683: W tensorflow/core/framework/op_kernel.cc:1745] OP_REQUIRES failed at summary_kernels.cc:65 : PERMISSION_DENIED: /train; Read-only file system
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">PermissionDeniedError</span><span class="g g-Whitespace">                     </span>Traceback (most recent call last)
+<span class="nn">/var/folders/sl/9n0p_v712g9ftpzq9r9c254w0000gn/T/ipykernel_21187/4035301753.py</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">log_dir</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>           <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>           <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">val_images</span><span class="p">,</span> <span class="n">val_labels</span><span class="p">),</span>
+
+<span class="nn">~/opt/anaconda3/envs/tf/lib/python3.8/site-packages/keras/utils/traceback_utils.py</span> in <span class="ni">error_handler</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span>       <span class="n">filtered_tb</span> <span class="o">=</span> <span class="n">_process_traceback_frames</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__traceback__</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">67</span>       <span class="k">raise</span> <span class="n">e</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="n">filtered_tb</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>     <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>       <span class="k">del</span> <span class="n">filtered_tb</span>
+
+<span class="nn">~/opt/anaconda3/envs/tf/lib/python3.8/site-packages/tensorflow/python/framework/ops.py</span> in <span class="ni">raise_from_not_ok_status</span><span class="nt">(e, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">7105</span> <span class="k">def</span> <span class="nf">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">7106</span>   <span class="n">e</span><span class="o">.</span><span class="n">message</span> <span class="o">+=</span> <span class="p">(</span><span class="s2">&quot; name: &quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">7107</span>   <span class="k">raise</span> <span class="n">core</span><span class="o">.</span><span class="n">_status_to_exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>  <span class="c1"># pylint: disable=protected-access</span>
+<span class="g g-Whitespace">   </span><span class="mi">7108</span> 
+<span class="g g-Whitespace">   </span><span class="mi">7109</span> 
+
+<span class="ne">PermissionDeniedError</span>: /train; Read-only file system [Op:CreateSummaryFileWriter]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tensorboard
+<span class="o">%</span><span class="k">tensorboard</span> --logdir /full_path_to_your_log_dir
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="writing-your-own-training-and-evaluation-loops">
+<h2>Writing your own training and evaluation loops<a class="headerlink" href="#writing-your-own-training-and-evaluation-loops" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="training-versus-inference">
+<h3>Training versus inference<a class="headerlink" href="#training-versus-inference" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="low-level-usage-of-metrics">
+<h3>Low-level usage of metrics<a class="headerlink" href="#low-level-usage-of-metrics" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metric</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">()</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="n">metric</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="n">current_result</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;result: </span><span class="si">{</span><span class="n">current_result</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">mean_tracker</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">Mean</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+    <span class="n">mean_tracker</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean of values: </span><span class="si">{</span><span class="n">mean_tracker</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-complete-training-and-evaluation-loop">
+<h3>A complete training and evaluation loop<a class="headerlink" href="#a-complete-training-and-evaluation-loop" title="Permalink to this headline">¶</a></h3>
+<p><strong>Writing a step-by-step training loop: the training step function</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">get_mnist_model</span><span class="p">()</span>
+
+<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">()</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">()]</span>
+<span class="n">loss_tracking_metric</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">Mean</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+    <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">)</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">gradients</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">))</span>
+
+    <span class="n">logs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">metrics</span><span class="p">:</span>
+        <span class="n">metric</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+        <span class="n">logs</span><span class="p">[</span><span class="n">metric</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+    <span class="n">loss_tracking_metric</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;loss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loss_tracking_metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">logs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Writing a step-by-step training loop: resetting the metrics</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reset_metrics</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">metrics</span><span class="p">:</span>
+        <span class="n">metric</span><span class="o">.</span><span class="n">reset_state</span><span class="p">()</span>
+    <span class="n">loss_tracking_metric</span><span class="o">.</span><span class="n">reset_state</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Writing a step-by-step training loop: the loop itself</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">))</span>
+<span class="n">training_dataset</span> <span class="o">=</span> <span class="n">training_dataset</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">reset_metrics</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">inputs_batch</span><span class="p">,</span> <span class="n">targets_batch</span> <span class="ow">in</span> <span class="n">training_dataset</span><span class="p">:</span>
+        <span class="n">logs</span> <span class="o">=</span> <span class="n">train_step</span><span class="p">(</span><span class="n">inputs_batch</span><span class="p">,</span> <span class="n">targets_batch</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Results at the end of epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">logs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;...</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Writing a step-by-step evaluation loop</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_step</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+
+    <span class="n">logs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">metrics</span><span class="p">:</span>
+        <span class="n">metric</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+        <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;val_&quot;</span> <span class="o">+</span> <span class="n">metric</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+    <span class="n">loss_tracking_metric</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;val_loss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loss_tracking_metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">logs</span>
+
+<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">val_images</span><span class="p">,</span> <span class="n">val_labels</span><span class="p">))</span>
+<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">val_dataset</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">reset_metrics</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">inputs_batch</span><span class="p">,</span> <span class="n">targets_batch</span> <span class="ow">in</span> <span class="n">val_dataset</span><span class="p">:</span>
+    <span class="n">logs</span> <span class="o">=</span> <span class="n">test_step</span><span class="p">(</span><span class="n">inputs_batch</span><span class="p">,</span> <span class="n">targets_batch</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluation results:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">logs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;...</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="make-it-fast-with-tf-function">
+<h3>Make it fast with tf.function<a class="headerlink" href="#make-it-fast-with-tf-function" title="Permalink to this headline">¶</a></h3>
+<p><strong>Adding a <code class="docutils literal notranslate"><span class="pre">tf.function</span></code> decorator to our evaluation-step function</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+<span class="k">def</span> <span class="nf">test_step</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+
+    <span class="n">logs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">metrics</span><span class="p">:</span>
+        <span class="n">metric</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+        <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;val_&quot;</span> <span class="o">+</span> <span class="n">metric</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+    <span class="n">loss_tracking_metric</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;val_loss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loss_tracking_metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">logs</span>
+
+<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">val_images</span><span class="p">,</span> <span class="n">val_labels</span><span class="p">))</span>
+<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">val_dataset</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">reset_metrics</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">inputs_batch</span><span class="p">,</span> <span class="n">targets_batch</span> <span class="ow">in</span> <span class="n">val_dataset</span><span class="p">:</span>
+    <span class="n">logs</span> <span class="o">=</span> <span class="n">test_step</span><span class="p">(</span><span class="n">inputs_batch</span><span class="p">,</span> <span class="n">targets_batch</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluation results:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">logs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;...</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="leveraging-fit-with-a-custom-training-loop">
+<h3>Leveraging fit() with a custom training loop<a class="headerlink" href="#leveraging-fit-with-a-custom-training-loop" title="Permalink to this headline">¶</a></h3>
+<p><strong>Implementing a custom training step to use with <code class="docutils literal notranslate"><span class="pre">fit()</span></code></strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loss_fn</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">()</span>
+<span class="n">loss_tracker</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">Mean</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">CustomModel</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+            <span class="n">predictions</span> <span class="o">=</span> <span class="bp">self</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+        <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">gradients</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">))</span>
+
+        <span class="n">loss_tracker</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;loss&quot;</span><span class="p">:</span> <span class="n">loss_tracker</span><span class="o">.</span><span class="n">result</span><span class="p">()}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">loss_tracker</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,))</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">CustomModel</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomModel</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+            <span class="n">predictions</span> <span class="o">=</span> <span class="bp">self</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compiled_loss</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+        <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">gradients</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compiled_metrics</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">result</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,))</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">CustomModel</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(),</span>
+              <span class="n">loss</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">()])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jan Kirenz<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

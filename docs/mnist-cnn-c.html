@@ -54,8 +54,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MNIST with TensorFlow" href="mnist-tensorflow.html" />
-    <link rel="prev" title="TF CNN" href="cnn.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -158,9 +156,9 @@ const thebe_selector_output = ".output, .cell_output"
   CNN
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-cnn.html">
    CNN intro
   </a>
  </li>
@@ -261,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/mnist-cnn.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/mnist-cnn-c.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -281,7 +279,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/mnist-cnn.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/mnist-cnn-c.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -304,7 +302,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/mnist-cnn.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/mnist-cnn-c.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -483,12 +481,7 @@ arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># take a look at the shape</span>
-<span class="n">train_images</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(60000, 28, 28)
+<span class="n">train_images</span><span class="o">.</span><span class="n">___</span>
 </pre></div>
 </div>
 </div>
@@ -496,12 +489,7 @@ arrays.</p>
 <p>Let’s take a look at our labels:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_labels</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(60000,)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">___</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -509,11 +497,6 @@ arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_labels</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5, 0, 4, ..., 5, 6, 8], dtype=uint8)
 </pre></div>
 </div>
 </div>
@@ -532,12 +515,12 @@ arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Training data</span>
-<span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">60000</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">___</span><span class="p">,</span> <span class="n">___</span><span class="p">,</span> <span class="n">___</span><span class="p">,</span> <span class="n">___</span><span class="p">))</span>
+<span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;___&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">___</span>
 
 <span class="c1"># Test data</span>
-<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">___</span><span class="p">,</span> <span class="n">___</span><span class="p">,</span> <span class="n">___</span><span class="p">,</span> <span class="n">___</span><span class="p">))</span>
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;___&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">___</span>
 </pre></div>
 </div>
 </div>
@@ -631,23 +614,32 @@ activation.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span>
 
-<span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1"># provide  (image_height, image_width, image_channels)</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">___</span><span class="p">,</span> <span class="n">___</span><span class="p">,</span> <span class="n">___</span><span class="p">))</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="c1"># use 32 filters, height and width of the 2D convolution window: use 3x3 as integer 3</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="n">___</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">___</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;___&quot;</span><span class="p">)(</span><span class="n">___</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># extracting 2x2 windows from the input feature maps</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="n">___</span><span class="p">)(</span><span class="n">___</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># use 64 filters with 3x3 window</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="n">___</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">___</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;___&quot;</span><span class="p">)(</span><span class="n">_</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># use 2x2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="n">___</span><span class="p">)(</span><span class="n">___</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># use 128 filters</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="n">___</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># flatten the layers</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">___</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># use softmax activation</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">___</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;___&quot;</span><span class="p">)(</span><span class="n">___</span><span class="p">)</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
+<span class="c1"># define inputs and outputs</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">___</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">___</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -655,38 +647,7 @@ activation.</p>
 <p><strong>Displaying the model’s summary</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model_2&quot;
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- input_3 (InputLayer)        [(None, 28, 28, 1)]       0         
-                                                                 
- conv2d_6 (Conv2D)           (None, 26, 26, 32)        320       
-                                                                 
- max_pooling2d_4 (MaxPooling  (None, 13, 13, 32)       0         
- 2D)                                                             
-                                                                 
- conv2d_7 (Conv2D)           (None, 11, 11, 64)        18496     
-                                                                 
- max_pooling2d_5 (MaxPooling  (None, 5, 5, 64)         0         
- 2D)                                                             
-                                                                 
- conv2d_8 (Conv2D)           (None, 3, 3, 128)         73856     
-                                                                 
- flatten_2 (Flatten)         (None, 1152)              0         
-                                                                 
- dense_2 (Dense)             (None, 10)                11530     
-                                                                 
-=================================================================
-Total params: 104,202
-Trainable params: 104,202
-Non-trainable params: 0
-_________________________________________________________________
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">___</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -695,24 +656,21 @@ _________________________________________________________________
 </div>
 <div class="section" id="training">
 <h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
-<p>Because we’re doing 10-way classification with a softmax output, we’ll use the categorical crossentropy loss, and because our labels are integers, we’ll use the sparse version, <code class="docutils literal notranslate"><span class="pre">sparse_categorical_crossentropy</span></code>.</p>
+<ul class="simple">
+<li><p>Because we’re doing 10-way classification with a softmax output, we’ll use the categorical crossentropy loss</p></li>
+<li><p>and because our labels are integers, we’ll use the sparse version, <code class="docutils literal notranslate"><span class="pre">sparse_categorical_crossentropy</span></code>.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span>
-             <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
-             <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use rmsprop</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;___&quot;</span><span class="p">,</span>
+             <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;___&quot;</span><span class="p">,</span>
+             <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;___&quot;</span><span class="p">])</span>
 
-<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+<span class="c1"># use 2 epochs and patch size of 64</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">___</span><span class="p">,</span> 
                     <span class="n">validation_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">),</span>
-                    <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/2
-938/938 [==============================] - 53s 55ms/step - loss: 0.0773 - accuracy: 0.9760 - val_loss: 0.0419 - val_accuracy: 0.9858
-Epoch 2/2
-938/938 [==============================] - 58s 62ms/step - loss: 0.0390 - accuracy: 0.9876 - val_loss: 0.0262 - val_accuracy: 0.9909
+                    <span class="n">batch_size</span><span class="o">=</span><span class="n">___</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -722,14 +680,10 @@ Epoch 2/2
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span>  <span class="n">test_labels</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test accuracy: </span><span class="si">{</span><span class="n">test_acc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 - 2s - loss: 0.0262 - accuracy: 0.9909 - 2s/epoch - 6ms/step
-Test accuracy: 0.991
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">___</span><span class="p">,</span>  <span class="n">___</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test accuracy: </span><span class="si">{</span><span class="n">___</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -746,9 +700,6 @@ Test accuracy: 0.991
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/mnist-cnn_27_0.png" src="../_images/mnist-cnn_27_0.png" />
 </div>
 </div>
 </div>
@@ -778,21 +729,7 @@ Test accuracy: 0.991
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="cnn.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">TF CNN</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="mnist-tensorflow.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MNIST with TensorFlow</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>
