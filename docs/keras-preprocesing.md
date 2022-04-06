@@ -8,5 +8,9 @@ Google Software Engineer Matthew Watson highlights Keras Preprocessing Layers’
 
 <br>
 
+- [An Introduction to Keras Preprocessing Layers
+](https://blog.tensorflow.org/2021/11/an-introduction-to-keras-preprocessing.html)
+
 - [Preprocessing Guide](https://keras.io/guides/preprocessing_layers/)
 - [This tutorial demonstrates two ways to load and preprocess text](https://www.tensorflow.org/tutorials/load_data/text)
+- [Load and preprocess images](https://www.tensorflow.org/tutorials/load_data/images)
