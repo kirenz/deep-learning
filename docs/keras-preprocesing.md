@@ -2,6 +2,8 @@
 
 Keras input processing pipelines can be used as independent preprocessing code in non-Keras workflows, combined directly with Keras models, and exported as part of a Keras SavedModel.
 
+Keras preprocessing layers can handle a wide range of input, including structured data, images, and text.
+
 With Keras preprocessing layers, you can build and export models that are truly end-to-end: 
 
 - models that accept raw images or raw structured data as input
