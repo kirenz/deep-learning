@@ -300,6 +300,19 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#video-tutorial">
+   Video tutorial
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -312,6 +325,19 @@ const thebe_selector_output = ".output, .cell_output"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#video-tutorial">
+   Video tutorial
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -320,17 +346,35 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="preprocessing-layers">
 <h1>Preprocessing layers<a class="headerlink" href="#preprocessing-layers" title="Permalink to this headline">¶</a></h1>
+<p>Keras input processing pipelines can be used as independent preprocessing code in non-Keras workflows, combined directly with Keras models, and exported as part of a Keras SavedModel.</p>
+<p>Keras preprocessing layers can handle a wide range of input, including structured data, images, and text.</p>
+<p>With Keras preprocessing layers, you can build and export models that are truly end-to-end:</p>
+<ul class="simple">
+<li><p>models that accept raw images or raw structured data as input</p></li>
+<li><p>models that handle feature normalization or feature value indexing on their own.</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Resources</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://keras.io/guides/preprocessing_layers/">Preprocessing Guide</a></p></li>
+<li><p><a class="reference external" href="https://www.tensorflow.org/tutorials/load_data/text">Load and preprocess text</a></p></li>
+<li><p><a class="reference external" href="https://www.tensorflow.org/tutorials/load_data/images">Load and preprocess images</a></p></li>
+</ul>
+</div>
+<div class="section" id="video-tutorial">
+<h2>Video tutorial<a class="headerlink" href="#video-tutorial" title="Permalink to this headline">¶</a></h2>
 <p>Google Software Engineer Matthew Watson highlights Keras Preprocessing Layers’ ability to streamline model development workflows. Follow along as he builds an end-to-end model showing what you can do with these layers:</p>
 <br>
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/GVShIIh3_yE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
+<div class="tipp admonition">
+<p class="admonition-title">Resources</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://blog.tensorflow.org/2021/11/an-introduction-to-keras-preprocessing.html">An Introduction to Keras Preprocessing Layers
 </a></p></li>
-<li><p><a class="reference external" href="https://keras.io/guides/preprocessing_layers/">Preprocessing Guide</a></p></li>
-<li><p><a class="reference external" href="https://www.tensorflow.org/tutorials/load_data/text">This tutorial demonstrates two ways to load and preprocess text</a></p></li>
-<li><p><a class="reference external" href="https://www.tensorflow.org/tutorials/load_data/images">Load and preprocess images</a></p></li>
 </ul>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
