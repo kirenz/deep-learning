@@ -26,6 +26,7 @@ parts:
     - file: docs/keras-sequential.md
     - file: docs/keras-functional.md
     - file: docs/structured_data_classification_from_scratch.ipynb
+    - file: docs/keras-imdb.ipynb
     - file: docs/keras-preprocessing.md
   - caption: References
     chapters:
