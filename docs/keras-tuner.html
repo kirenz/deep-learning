@@ -465,7 +465,19 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span>
 
+<span class="kn">from</span> <span class="nn">tensorboard</span> <span class="kn">import</span> <span class="n">notebook</span>
+<span class="kn">from</span> <span class="nn">tensorboard.plugins.hparams</span> <span class="kn">import</span> <span class="n">api</span> <span class="k">as</span> <span class="n">hp</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="o">%</span><span class="k">load_ext</span> tensorboard
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The tensorboard extension is already loaded. To reload it, use:
+  %reload_ext tensorboard
 </pre></div>
 </div>
 </div>
@@ -513,11 +525,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-08 10:21:59.502906: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.engine.sequential.Sequential at 0x7fc3d8547520&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.engine.sequential.Sequential at 0x7fe98a0fca30&gt;
 </pre></div>
 </div>
 </div>
@@ -576,7 +584,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.engine.sequential.Sequential at 0x7fc3b91c9e20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.engine.sequential.Sequential at 0x7fe98a138730&gt;
 </pre></div>
 </div>
 </div>
@@ -662,6 +670,7 @@ lr (Float)
 <ul class="simple">
 <li><p>Before starting the search, let’s prepare the data.</p></li>
 <li><p>We use the MNIST dataset.</p></li>
+<li><p>Since we use hyperparameter tuning, we use training, evaluation and test data.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -767,41 +776,32 @@ lr (Float)
 <li><p>The metrics are recorded.</p></li>
 <li><p>The tuner progressively explores the space and finally finds a good set of hyperparameter values.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#tuner.search(</span>
-<span class="c1">#    x_train, </span>
-<span class="c1">#    y_train, </span>
-<span class="c1">#    epochs=2, </span>
-<span class="c1">#    validation_data=(x_val, y_val),</span>
-<span class="c1">#)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>To use TensorBoard, we need to pass a keras.callbacks.TensorBoard instance to the callbacks.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuner</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create TensorBoard folders</span>
+<span class="n">log_dir</span> <span class="o">=</span> <span class="s2">&quot;tmp/tb_logs/&quot;</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">-%H%M%S&quot;</span><span class="p">)</span>
+
+<span class="n">tuner</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
     <span class="n">x_train</span><span class="p">,</span>
     <span class="n">y_train</span><span class="p">,</span>
     <span class="n">epochs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">),</span>
     <span class="c1"># Use the TensorBoard callback.</span>
     <span class="c1"># The logs will be write to &quot;/tmp/tb_logs&quot;.</span>
-    <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="s2">&quot;/tmp/tb_logs&quot;</span><span class="p">)],</span>
+    <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="n">log_dir</span><span class="p">)],</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trial 3 Complete [00h 00m 07s]
-val_accuracy: 0.9580000042915344
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trial 3 Complete [00h 00m 10s]
+val_accuracy: 0.9515500068664551
 
-Best val_accuracy So Far: 0.9675500094890594
-Total elapsed time: 00h 00m 25s
+Best val_accuracy So Far: 0.9719000160694122
+Total elapsed time: 00h 00m 34s
 INFO:tensorflow:Oracle triggered exit
 </pre></div>
 </div>
@@ -816,23 +816,73 @@ INFO:tensorflow:Oracle triggered exit
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tensorboard
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">tensorboard</span> --logdir /tmp/tb_logs
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reusing TensorBoard on port 6007 (pid 9162), started 0:26:39 ago. (Use &#39;!kill 9162&#39; to kill it.)
+</pre></div>
+</div>
+<div class="output text_html">
+<iframe id="tensorboard-frame-a28e37ae1b3b98d5" width="100%" height="800" frameborder="0">
+</iframe>
+<script>
+  (function() {
+    const frame = document.getElementById("tensorboard-frame-a28e37ae1b3b98d5");
+    const url = new URL("http://localhost");
+    const port = 6007;
+    if (port) {
+      url.port = port;
+    }
+    frame.src = url;
+  })();
+</script>
+</div></div>
+</div>
+<p>If TensorBoard does not open a window, try to use the following code to start TensorBoard:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View open TensorBoard instances</span>
+<span class="n">notebook</span><span class="o">.</span><span class="n">list</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Known TensorBoard instances:
+  - port 6006: logdir logs/fit (started 5:45:52 ago; pid 2825)
+  - port 6007: logdir /tmp/tb_logs (started 0:27:37 ago; pid 9162)
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start TensorBoard by providing the right port</span>
+<span class="c1"># notebook.display(port=6007, height=1000)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following content is based on <a class="reference external" href="https://keras.io/guides/keras_tuner/visualize_tuning/">“Visualize the hyperparameter tuning process”</a> by Jin Haifeng:</p>
 <ul class="simple">
-<li><p>We first use TensorBoard in Visual Studio Code (<a class="reference external" href="https://stackoverflow.com/a/66375514">Stackoverflow</a>):</p></li>
+<li><p>You have access to all the common features of the TensorBoard.</p></li>
+<li><p>For example, you can view the loss and metrics curves and visualize the computational graph of the models in different trials.</p></li>
+<li><p>In addition to these features, we also have a <code class="docutils literal notranslate"><span class="pre">HParams</span></code> tab, in which there are three views:</p></li>
 </ul>
 <ol class="simple">
-<li><p>Open the command palette (Ctrl/Cmd + Shift + P)</p></li>
-<li><p>Search for the command “Python: Launch TensorBoard” and press enter.</p></li>
-<li><p>You will be able to select the folder where your TensorBoard log files are located. By default, the current working directory will be used.</p></li>
+<li><p>In the table view, you can view the different trials in a table with the different hyperparameter values and evaluation metrics. On the left side, you can specify the filters for certain hyperparameters.</p></li>
+<li><p>It also provides parallel coordinates view and scatter plot matrix view. They are just different visualization methods for the same data:</p></li>
 </ol>
+<ul class="simple">
+<li><p>In the parallel coordinates view, each colored line is a trial. The axes are the hyperparameters and evaluation metrics.</p></li>
+<li><p>In the scatter plot matrix view, each dot is a trial. The plots are projections of the trials on planes with different hyperparameter and metrics as the axes.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the top 2 models.</span>
 <span class="n">models</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">.</span><span class="n">get_best_models</span><span class="p">(</span><span class="n">num_models</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># Get best model</span>
 <span class="n">best_model</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -858,7 +908,7 @@ INFO:tensorflow:Oracle triggered exit
 </div>
 </div>
 <ul class="simple">
-<li><p>You will find detailed logs, checkpoints, etc, in the folder tuner/hello_world, i.e. directory/project_name.</p></li>
+<li><p>You will find detailed logs, checkpoints, etc, in your specified folder.</p></li>
 <li><p>You can also visualize the tuning results using TensorBoard and HParams plugin. For more information, please following this link.</p></li>
 </ul>
 </div>

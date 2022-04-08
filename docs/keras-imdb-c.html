@@ -54,8 +54,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="KerasTuner" href="keras-tuner.html" />
-    <link rel="prev" title="Structured data classification" href="structured_data_classification_from_scratch.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -192,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
   Keras
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="keras-sequential.html">
    Sequential model
@@ -208,8 +206,8 @@ const thebe_selector_output = ".output, .cell_output"
    Structured data classification
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-imdb.html">
    IMDB Sentiment analysis
   </a>
  </li>
@@ -271,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/keras-imdb.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/keras-imdb-c.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -291,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/keras-imdb.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/keras-imdb-c.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -314,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/keras-imdb.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/keras-imdb-c.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -606,11 +604,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Version:  2.7.1
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -648,14 +641,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_ds</span><span class="p">,</span> <span class="n">val_ds</span><span class="p">,</span> <span class="n">test_ds</span> <span class="o">=</span> <span class="n">tfds</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;imdb_reviews&quot;</span><span class="p">,</span> 
-    <span class="n">split</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;train[:60%]&#39;</span><span class="p">,</span> <span class="s1">&#39;train[60%:]&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">),</span>
+    <span class="n">split</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;train[:___%]&#39;</span><span class="p">,</span> <span class="s1">&#39;train[___%:]&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">),</span>
     <span class="n">as_supervised</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-08 09:30:11.503633: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </pre></div>
 </div>
 </div>
@@ -676,26 +663,11 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">train_ds</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">train_ds</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">___</span><span class="p">):</span> 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Input:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> 
     <span class="nb">print</span><span class="p">(</span><span class="mi">50</span><span class="o">*</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>     
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Target:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> 
     <span class="nb">print</span><span class="p">(</span><span class="mi">50</span><span class="o">*</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>  
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input: tf.Tensor(b&quot;This was an absolutely terrible movie. Don&#39;t be lured in by Christopher Walken or Michael Ironside. Both are great actors, but this must simply be their worst role in history. Even their great acting could not redeem this movie&#39;s ridiculous storyline. This movie is an early nineties US propaganda piece. The most pathetic scenes were those when the Columbian rebels were making their cases for revolutions. Maria Conchita Alonso appeared phony, and her pseudo-love affair with Walken was nothing but a pathetic emotional plug in a movie that was devoid of any real meaning. I am disappointed that there are movies like this, ruining actor&#39;s like Christopher Walken&#39;s good name. I could barely sit through it.&quot;, shape=(), dtype=string)
-..................................................
-Target: tf.Tensor(0, shape=(), dtype=int64)
---------------------------------------------------
-Input: tf.Tensor(b&#39;I have been known to fall asleep during films, but this is usually due to a combination of things including, really tired, being warm and comfortable on the sette and having just eaten a lot. However on this occasion I fell asleep because the film was rubbish. The plot development was constant. Constantly slow and boring. Things seemed to happen, but with no explanation of what was causing them or why. I admit, I may have missed part of the film, but i watched the majority of it and everything just seemed to happen of its own accord without any real concern for anything else. I cant recommend this film at all.&#39;, shape=(), dtype=string)
-..................................................
-Target: tf.Tensor(0, shape=(), dtype=int64)
---------------------------------------------------
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-08 09:30:11.645198: W tensorflow/core/kernels/data/cache_dataset_ops.cc:768] The calling iterator did not fully read the dataset being cached. In order to avoid unexpected truncation of the dataset, the partially cached contents of the dataset  will be discarded. This can happen if you have an input pipeline similar to `dataset.cache().take(k).repeat()`. You should use `dataset.take(k).cache().repeat()` instead.
 </pre></div>
 </div>
 </div>
@@ -755,13 +727,13 @@ Target: tf.Tensor(0, shape=(), dtype=int64)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_vectorizer</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">TextVectorization</span><span class="p">(</span>
-     <span class="n">output_mode</span><span class="o">=</span><span class="s1">&#39;multi_hot&#39;</span><span class="p">,</span> 
-     <span class="n">max_tokens</span><span class="o">=</span><span class="mi">2500</span>
+     <span class="n">output_mode</span><span class="o">=</span><span class="s1">&#39;____&#39;</span><span class="p">,</span> 
+     <span class="n">max_tokens</span><span class="o">=</span><span class="n">___</span>
      <span class="p">)</span>
 
 <span class="n">features</span> <span class="o">=</span> <span class="n">train_ds</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span>
 
-<span class="n">text_vectorizer</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">text_vectorizer</span><span class="o">.</span><span class="n">____</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -774,7 +746,7 @@ Target: tf.Tensor(0, shape=(), dtype=int64)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-  <span class="k">return</span> <span class="n">text_vectorizer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">____</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -788,11 +760,11 @@ Target: tf.Tensor(0, shape=(), dtype=int64)
 <h3>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
 
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">preprocess</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">___</span><span class="p">(</span><span class="n">___</span><span class="p">))</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">___</span><span class="p">,</span> <span class="n">___</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -805,7 +777,7 @@ Target: tf.Tensor(0, shape=(), dtype=int64)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
     <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
     <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="o">.</span><span class="n">BinaryCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;___&#39;</span><span class="p">]</span>
     <span class="p">)</span>
 </pre></div>
 </div>
@@ -816,27 +788,7 @@ Target: tf.Tensor(0, shape=(), dtype=int64)
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- input_1 (InputLayer)        [(None, 1)]               0         
-                                                                 
- text_vectorization (TextVec  (None, 2500)             0         
- torization)                                                     
-                                                                 
- dense (Dense)               (None, 1)                 2501      
-                                                                 
-=================================================================
-Total params: 2,501
-Trainable params: 2,501
-Non-trainable params: 0
-_________________________________________________________________
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">___</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -850,18 +802,12 @@ _________________________________________________________________
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/keras-imdb_35_0.png" src="../_images/keras-imdb_35_0.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;sentiment_classifier_with_shape_info.png&quot;</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/keras-imdb_36_0.png" src="../_images/keras-imdb_36_0.png" />
 </div>
 </div>
 </div>
@@ -899,38 +845,14 @@ _________________________________________________________________
 <p><em><code class="docutils literal notranslate"><span class="pre">buffer_size</span></code> is the number of items in the shuffle buffer. The function fills the buffer and then randomly samples from it. A big enough buffer is needed for proper shuffling, but it’s a balance with memory consumption. Reshuffling happens automatically at every epoch</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="n">___</span>
 
 <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-    <span class="n">train_ds</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">buffer_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">512</span><span class="p">),</span>
-    <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
-    <span class="n">validation_data</span><span class="o">=</span><span class="n">val_ds</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">512</span><span class="p">),</span>
-    <span class="n">callbacks</span><span class="o">=</span><span class="n">my_callbacks</span><span class="p">,</span>
+    <span class="n">train_ds</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">buffer_size</span><span class="o">=</span><span class="n">___</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">___</span><span class="p">),</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">___</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="o">=</span><span class="n">val_ds</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">___</span><span class="p">),</span>
+    <span class="n">callbacks</span><span class="o">=</span><span class="n">___</span><span class="p">,</span>
     <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-30/30 [==============================] - 2s 47ms/step - loss: 0.6570 - accuracy: 0.5297 - val_loss: 0.6073 - val_accuracy: 0.5627
-Epoch 2/10
-30/30 [==============================] - 1s 37ms/step - loss: 0.5713 - accuracy: 0.6363 - val_loss: 0.5444 - val_accuracy: 0.6579
-Epoch 3/10
-30/30 [==============================] - 1s 33ms/step - loss: 0.5153 - accuracy: 0.7089 - val_loss: 0.5018 - val_accuracy: 0.7496
-Epoch 4/10
-30/30 [==============================] - 1s 32ms/step - loss: 0.4754 - accuracy: 0.7583 - val_loss: 0.4695 - val_accuracy: 0.7693
-Epoch 5/10
-30/30 [==============================] - 1s 32ms/step - loss: 0.4448 - accuracy: 0.7877 - val_loss: 0.4459 - val_accuracy: 0.7763
-Epoch 6/10
-30/30 [==============================] - 1s 32ms/step - loss: 0.4208 - accuracy: 0.8054 - val_loss: 0.4264 - val_accuracy: 0.8006
-Epoch 7/10
-30/30 [==============================] - 1s 32ms/step - loss: 0.4009 - accuracy: 0.8233 - val_loss: 0.4112 - val_accuracy: 0.8137
-Epoch 8/10
-30/30 [==============================] - 1s 32ms/step - loss: 0.3846 - accuracy: 0.8366 - val_loss: 0.3984 - val_accuracy: 0.8198
-Epoch 9/10
-30/30 [==============================] - 1s 32ms/step - loss: 0.3707 - accuracy: 0.8443 - val_loss: 0.3883 - val_accuracy: 0.8183
-Epoch 10/10
-30/30 [==============================] - 1s 32ms/step - loss: 0.3589 - accuracy: 0.8509 - val_loss: 0.3790 - val_accuracy: 0.8269
 </pre></div>
 </div>
 </div>
@@ -939,11 +861,6 @@ Epoch 10/10
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">])</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
 </pre></div>
 </div>
 </div>
@@ -959,17 +876,10 @@ Epoch 10/10
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_ds</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">512</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_ds</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">___</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">metrics_names</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49/49 - 1s - loss: 0.3829 - accuracy: 0.8246 - 1s/epoch - 21ms/step
-loss: 0.383
-accuracy: 0.825
 </pre></div>
 </div>
 </div>
@@ -982,11 +892,6 @@ accuracy: 0.825
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history_dict</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span>
 <span class="n">history_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;loss&#39;, &#39;accuracy&#39;, &#39;val_loss&#39;, &#39;val_accuracy&#39;])
 </pre></div>
 </div>
 </div>
@@ -1010,9 +915,10 @@ accuracy: 0.825
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &quot;bo&quot; is for &quot;blue dot&quot;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="s1">&#39;___&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training loss&#39;</span><span class="p">)</span>
 <span class="c1"># r is for &quot;solid red line&quot;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Validation loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="s1">&#39;__&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Validation loss&#39;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training and validation loss&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Loss&#39;</span><span class="p">)</span>
@@ -1022,15 +928,13 @@ accuracy: 0.825
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/keras-imdb_55_0.png" src="../_images/keras-imdb_55_0.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training acc&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_acc</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Validation acc&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training and validation accuracy&#39;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
@@ -1038,9 +942,6 @@ accuracy: 0.825
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/keras-imdb_56_0.png" src="../_images/keras-imdb_56_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1057,7 +958,7 @@ accuracy: 0.825
 <div class="section" id="tensorboard">
 <h3>TensorBoard<a class="headerlink" href="#tensorboard" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>We use the tensorboard.notebook API</p></li>
+<li><p>We use the tensorboard.notebook API:</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1071,12 +972,6 @@ accuracy: 0.825
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View open TensorBoard instances</span>
 <span class="n">notebook</span><span class="o">.</span><span class="n">list</span><span class="p">()</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Known TensorBoard instances:
-  - port 6006: logdir logs/fit (started 0:21:34 ago; pid 2825)
 </pre></div>
 </div>
 </div>
@@ -1128,8 +1023,8 @@ accuracy: 0.825
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probability_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
-                        <span class="n">model</span><span class="p">,</span> 
-                        <span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">)</span>
+                        <span class="n">___</span><span class="p">,</span> 
+                        <span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;___&#39;</span><span class="p">)</span>
                         <span class="p">])</span>
 </pre></div>
 </div>
@@ -1140,14 +1035,7 @@ accuracy: 0.825
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probability_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">examples</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.53673124],
-       [0.44737166],
-       [0.41206655]], dtype=float32)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probability_model</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="n">examples</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1174,18 +1062,7 @@ add_metric()).</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;imdb_model&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-08 09:30:31.623865: W tensorflow/python/util/util.cc:368] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Assets written to: imdb_model/assets
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Assets written to: imdb_model/assets
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="s1">&#39;imdb_model&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1203,26 +1080,6 @@ add_metric()).</p></li>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_new</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- input_1 (InputLayer)        [(None, 1)]               0         
-                                                                 
- text_vectorization (TextVec  (None, 2500)             0         
- torization)                                                     
-                                                                 
- dense (Dense)               (None, 1)                 2501      
-                                                                 
-=================================================================
-Total params: 2,501
-Trainable params: 2,501
-Non-trainable params: 0
-_________________________________________________________________
 </pre></div>
 </div>
 </div>
@@ -1247,6 +1104,7 @@ _________________________________________________________________
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This layer will scale our review length feature to mean 0 variance 1.</span>
 <span class="n">normalizer</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Normalization</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
 <span class="n">normalizer</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
 
 <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1264,11 +1122,24 @@ _________________________________________________________________
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">preprocess</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">BinaryCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">___</span><span class="p">(</span><span class="n">___</span><span class="p">))</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">BinaryCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">callback</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
@@ -1277,20 +1148,6 @@ _________________________________________________________________
     <span class="n">validation_data</span><span class="o">=</span><span class="n">val_ds</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">512</span><span class="p">),</span>
     <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">callback</span><span class="p">],</span>
     <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/5
-30/30 [==============================] - 1s 37ms/step - loss: 0.6334 - val_loss: 0.5907
-Epoch 2/5
-30/30 [==============================] - 1s 34ms/step - loss: 0.5522 - val_loss: 0.5304
-Epoch 3/5
-30/30 [==============================] - 1s 34ms/step - loss: 0.4986 - val_loss: 0.4870
-Epoch 4/5
-30/30 [==============================] - 1s 34ms/step - loss: 0.4581 - val_loss: 0.4548
-Epoch 5/5
-30/30 [==============================] - 1s 34ms/step - loss: 0.4265 - val_loss: 0.4296
 </pre></div>
 </div>
 </div>
@@ -1322,21 +1179,7 @@ Epoch 5/5
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="structured_data_classification_from_scratch.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Structured data classification</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="keras-tuner.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">KerasTuner</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>
