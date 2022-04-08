@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bibliography" href="reference.html" />
+    <link rel="next" title="KerasTuner" href="keras-tuner.html" />
     <link rel="prev" title="Structured data classification" href="structured_data_classification_from_scratch.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -213,6 +213,11 @@ const thebe_selector_output = ".output, .cell_output"
    IMDB Sentiment analysis
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-tuner.html">
+   KerasTuner
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -329,6 +334,11 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#setup">
    Setup
   </a>
@@ -343,23 +353,21 @@ const thebe_selector_output = ".output, .cell_output"
      Data import
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explore-data">
-   Explore data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-preprocessing">
-   Data preprocessing
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#textvectorization">
-     TextVectorization
+    <a class="reference internal nav-link" href="#explore-data">
+     Explore data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-preprocessing">
+     Data preprocessing
     </a>
     <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#textvectorization">
+       TextVectorization
+      </a>
+     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#multi-hot-encoding">
        Multi-hot encoding
@@ -424,8 +432,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feature-engineering-example">
-   Feature engineering example
+  <a class="reference internal nav-link" href="#multiple-feature-engineering-steps">
+   Multiple feature engineering steps
   </a>
  </li>
 </ul>
@@ -449,6 +457,11 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#setup">
    Setup
   </a>
@@ -463,23 +476,21 @@ const thebe_selector_output = ".output, .cell_output"
      Data import
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explore-data">
-   Explore data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-preprocessing">
-   Data preprocessing
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#textvectorization">
-     TextVectorization
+    <a class="reference internal nav-link" href="#explore-data">
+     Explore data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-preprocessing">
+     Data preprocessing
     </a>
     <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#textvectorization">
+       TextVectorization
+      </a>
+     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#multi-hot-encoding">
        Multi-hot encoding
@@ -544,8 +555,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feature-engineering-example">
-   Feature engineering example
+  <a class="reference internal nav-link" href="#multiple-feature-engineering-steps">
+   Multiple feature engineering steps
   </a>
  </li>
 </ul>
@@ -560,11 +571,21 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="tex2jax_ignore mathjax_ignore section" id="imdb-sentiment-analysis">
 <h1>IMDB Sentiment analysis<a class="headerlink" href="#imdb-sentiment-analysis" title="Permalink to this headline">¶</a></h1>
 <p><em>This tutorial is based on <a class="reference external" href="https://blog.tensorflow.org/2021/11/an-introduction-to-keras-preprocessing.html">An Introduction to Keras Preprocessing Layers</a> by Matthew Watson, <a class="reference external" href="https://www.tensorflow.org/tutorials/keras/text_classification_with_hub">Text classification with TensorFlow Hub: Movie reviews</a> and <a class="reference external" href="https://www.tensorflow.org/tutorials/keras/text_classification">Basic text classification</a> by TensorFlow.</em></p>
+<p>Main topics in this tutorial:</p>
 <ul class="simple">
-<li><p>Goal: build a binary sentiment classification model with keras preprocessing</p></li>
-<li><p>We use TensorBoard to view model results</p></li>
-<li><p>Data: imdb movie review dataset.</p></li>
+<li><p>Build a binary sentiment classification model with keras</p></li>
+<li><p>Use keras layers for data preprocessing</p></li>
+<li><p>Use TensorBoard to view model results</p></li>
+<li><p>Save and reload the model</p></li>
+<li><p>Example for multiple feature engineering steps</p></li>
 </ul>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>To start this tutorial, you need the following setup:</p>
+<ul class="simple">
+<li><p>Install <a class="reference external" href="https://kirenz.github.io/codelabs/codelabs/tfx-install/#0">TensorFlow</a> (Note that we install TensorFlow Extended to obtain more deployment options. However, we don’t use the options in this tutorial)</p></li>
+</ul>
+</div>
 <div class="section" id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -575,6 +596,8 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">losses</span>
 <span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
+
+<span class="kn">from</span> <span class="nn">tensorboard</span> <span class="kn">import</span> <span class="n">notebook</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
@@ -601,24 +624,23 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Dataset with 50,000 polar movie reviews (positive or negative)</p></li>
-<li><p>Training data and test data each 25,000</p></li>
-<li><p>Training and testing sets are balanced (contain an equal number of positive and negative reviews)</p></li>
+<li><p>We use the IMDB dataset with 50,000 polar movie reviews (positive or negative)</p></li>
+<li><p>Training data and test data: each 25,000</p></li>
+<li><p>Training and testing sets are balanced (they contain an equal number of positive and negative reviews)</p></li>
 <li><p>The input data consists of sentences (strings)</p></li>
 <li><p>The labels to predict are either 0 or 1.</p></li>
 </ul>
 <div class="section" id="data-import">
 <h3>Data import<a class="headerlink" href="#data-import" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Import data as batches with size 32</p></li>
 <li><p>We use 3 data splits: training, validation and test data</p></li>
 <li><p>Split the data into 60% training and 40% test</p></li>
 <li><p>Split training into 60% training and 40% validation</p></li>
 <li><p>Resulting data split:</p>
 <ul>
-<li><p>15,000 examples for training,</p></li>
+<li><p>15,000 examples for training</p></li>
 <li><p>10,000 examples for validation</p></li>
-<li><p>25,000 examples for testing.</p></li>
+<li><p>25,000 examples for testing</p></li>
 </ul>
 </li>
 </ul>
@@ -632,26 +654,15 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-07 22:14:42.938666: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-08 09:30:11.503633: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import tensorflow as tf</span>
-<span class="c1">#import tensorflow_datasets as tfds</span>
-
-<span class="c1">#train_ds = tfds.load(&#39;imdb_reviews&#39;, split=&#39;train&#39;, as_supervised=True).batch(32)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="section" id="explore-data">
-<h2>Explore data<a class="headerlink" href="#explore-data" title="Permalink to this headline">¶</a></h2>
+<h3>Explore data<a class="headerlink" href="#explore-data" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Each example is a sentence representing the movie review and a corresponding label.</p></li>
 <li><p>The sentence is not preprocessed in any way.</p></li>
@@ -684,40 +695,22 @@ Target: tf.Tensor(0, shape=(), dtype=int64)
 --------------------------------------------------
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-07 22:14:43.803622: W tensorflow/core/kernels/data/cache_dataset_ops.cc:768] The calling iterator did not fully read the dataset being cached. In order to avoid unexpected truncation of the dataset, the partially cached contents of the dataset  will be discarded. This can happen if you have an input pipeline similar to `dataset.cache().take(k).repeat()`. You should use `dataset.take(k).cache().repeat()` instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-08 09:30:11.645198: W tensorflow/core/kernels/data/cache_dataset_ops.cc:768] The calling iterator did not fully read the dataset being cached. In order to avoid unexpected truncation of the dataset, the partially cached contents of the dataset  will be discarded. This can happen if you have an input pipeline similar to `dataset.cache().take(k).repeat()`. You should use `dataset.take(k).cache().repeat()` instead.
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="data-preprocessing">
-<h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
+<h3>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>How to represent the text?</p></li>
-</ul>
-<ul class="simple">
-<li><p>Option 1: One-hot encoding</p>
-<ul>
-<li><p>Example: a color feature gets a 1 in a specific index for different colors (‘red’ = [0, 0, 1, 0, 0])</p></li>
-</ul>
-</li>
-</ul>
-<ul class="simple">
-<li><p>Option 2: embed the feature</p>
-<ul>
-<li><p>Example: each color maps to a unique trainable vector (‘red’ = [0.1, 0.2, 0.5, -0.2]</p></li>
-</ul>
-</li>
-</ul>
-<ul class="simple">
-<li><p>Larger category spaces: might do better with an embedding</p></li>
-<li><p>Smaller spaces: one-hot encoding</p></li>
+<li><p>First, we need to decide how to represent the text data</p></li>
 </ul>
 <div class="section" id="textvectorization">
-<h3>TextVectorization<a class="headerlink" href="#textvectorization" title="Permalink to this headline">¶</a></h3>
+<h4>TextVectorization<a class="headerlink" href="#textvectorization" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>We will be working with raw text (natural language inputs)</p></li>
-<li><p>so we will use the <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/TextVectorization"><code class="docutils literal notranslate"><span class="pre">TextVectorization</span></code></a> layer.</p></li>
+<li><p>So we will use the <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/TextVectorization"><code class="docutils literal notranslate"><span class="pre">TextVectorization</span></code></a> layer.</p></li>
 <li><p>It transforms a batch of strings (one example = one string) into either a</p>
 <ul>
 <li><p>list of token indices (one example = 1D tensor of integer token indices) or</p></li>
@@ -735,6 +728,7 @@ Target: tf.Tensor(0, shape=(), dtype=int64)
 <li><p>Index tokens (associate a unique int value with each token)</p></li>
 <li><p>Transform each example using this index, either into a vector of ints or a dense float vector.</p></li>
 </ol>
+</div>
 <div class="section" id="multi-hot-encoding">
 <h4>Multi-hot encoding<a class="headerlink" href="#multi-hot-encoding" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
@@ -753,6 +747,11 @@ Target: tf.Tensor(0, shape=(), dtype=int64)
 <li><p>Map over our training dataset and discard the integer label indicating a positive or negative review (this gives us a dataset containing only the review text)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">adapt()</span></code> the layer over this dataset, which causes the layer to learn a vocabulary of the most frequent terms in all documents, capped at a max of 2500.</p></li>
 </ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Adapt</span></code> is a utility function on all stateful preprocessing layers, which allows layers to set their internal state from input data.</p></li>
+<li><p>Calling adapt is always optional.</p></li>
+<li><p>For TextVectorization, we could instead supply a precomputed vocabulary on layer construction, and skip the adapt step.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_vectorizer</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">TextVectorization</span><span class="p">(</span>
@@ -768,17 +767,10 @@ Target: tf.Tensor(0, shape=(), dtype=int64)
 </div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Adapt</span></code> is a utility function on all stateful preprocessing layers, which allows layers to set their internal state from input data.</p></li>
-<li><p>Calling adapt is always optional.</p></li>
-<li><p>For TextVectorization, we could instead supply a precomputed vocabulary on layer construction, and skip the adapt step.</p></li>
+<li><p>Next, we define a preprocessing function</p></li>
+<li><p>This is especially useful if you combine multiple preprocessing steps</p></li>
+<li><p>Here, we only use one step: <code class="docutils literal notranslate"><span class="pre">preprocess</span></code> converts raw input data to the representation we want for our model</p></li>
 </ul>
-<ul class="simple">
-<li><p>We will define two functions:</p></li>
-</ul>
-<ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">preprocess</span></code>, which converts raw input data to the representation we want for our model, and</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">forward_pass</span></code>, which applies the trainable layers.</p></li>
-</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -794,9 +786,6 @@ Target: tf.Tensor(0, shape=(), dtype=int64)
 <h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="architecture">
 <h3>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>We can now train a simple linear model on top of this multi-hot encoding.</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
@@ -862,7 +851,7 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/keras-imdb_38_0.png" src="../_images/keras-imdb_38_0.png" />
+<img alt="../_images/keras-imdb_35_0.png" src="../_images/keras-imdb_35_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -872,38 +861,47 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/keras-imdb_39_0.png" src="../_images/keras-imdb_39_0.png" />
+<img alt="../_images/keras-imdb_36_0.png" src="../_images/keras-imdb_36_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="training">
 <h3>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Train the model for 10 epochs in mini-batches of 512 samples</p></li>
-<li><p>This is 10 iterations over all samples in the x-train and y-train tensors</p></li>
-<li><p>We shuffle the data and use a buffer_size of 10000 to fill our batches</p></li>
-<li><p>While training, monitor the model’s loss and accuracy on the 10,000 samples from the validation set.</p></li>
-<li><p>To prevent overfitting, we use a callback wich will stop the training when there is no improvement in the accuracy for three consecutive epochs.</p></li>
-<li><p>We add <code class="docutils literal notranslate"><span class="pre">keras.callbacks.TensorBoard</span></code> callback which ensures that logs are created and stored.</p></li>
-<li><p>Additionally, we enable histogram computation every epoch with histogram_freq=1 (this is off by default)</p></li>
+<li><p>We can now train a simple model on top of this multi-hot encoding.</p></li>
 </ul>
-<p><em><code class="docutils literal notranslate"><span class="pre">buffer_size</span></code> is the number of items in the shuffle buffer. The function fills the buffer and then randomly samples from it. A big enough buffer is needed for proper shuffling, but it’s a balance with memory consumption. Reshuffling happens automatically at every epoch</em></p>
+<p>First, we set up TensorBoard and an early stopping rule:</p>
+<ol class="simple">
+<li><p>Define the directory where TensorBoard stores log files (we create folders with timestamps by using <a class="reference external" href="https://docs.python.org/3/library/datetime.html"><code class="docutils literal notranslate"><span class="pre">datetime</span></code></a>)</p></li>
+<li><p>We add <code class="docutils literal notranslate"><span class="pre">keras.callbacks.TensorBoard</span></code> callback which ensures that logs are created and stored.</p></li>
+<li><p>To prevent overfitting, we use a callback wich will stop the training when there is no improvement in the validation accuracy for three consecutive epochs.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_dir</span> <span class="o">=</span> <span class="s2">&quot;logs/fit/&quot;</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">-%H%M%S&quot;</span><span class="p">)</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create TensorBoard folders</span>
+<span class="n">log_dir</span> <span class="o">=</span> <span class="s2">&quot;logs/fit/&quot;</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">-%H%M%S&quot;</span><span class="p">)</span>
 
+<span class="c1"># Create callbacks</span>
 <span class="n">my_callbacks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="n">log_dir</span><span class="p">),</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
-    <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="n">log_dir</span><span class="p">,</span> <span class="n">histogram_freq</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Model training:</p>
+<ul class="simple">
+<li><p>Train the model for 10 epochs in mini-batches of 512 samples</p></li>
+<li><p>We shuffle the data and use a <code class="docutils literal notranslate"><span class="pre">buffer_size</span></code> of 10000</p></li>
+<li><p>We monitor the model’s loss and accuracy on the 10,000 samples from the validation set.</p></li>
+</ul>
+<p><em><code class="docutils literal notranslate"><span class="pre">buffer_size</span></code> is the number of items in the shuffle buffer. The function fills the buffer and then randomly samples from it. A big enough buffer is needed for proper shuffling, but it’s a balance with memory consumption. Reshuffling happens automatically at every epoch</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
     <span class="n">train_ds</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">buffer_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">512</span><span class="p">),</span>
     <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
     <span class="n">validation_data</span><span class="o">=</span><span class="n">val_ds</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">512</span><span class="p">),</span>
@@ -914,25 +912,25 @@ _________________________________________________________________
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-30/30 [==============================] - 5s 97ms/step - loss: 0.6469 - accuracy: 0.5387 - val_loss: 0.5978 - val_accuracy: 0.5761
+30/30 [==============================] - 2s 47ms/step - loss: 0.6570 - accuracy: 0.5297 - val_loss: 0.6073 - val_accuracy: 0.5627
 Epoch 2/10
-30/30 [==============================] - 2s 76ms/step - loss: 0.5642 - accuracy: 0.6319 - val_loss: 0.5370 - val_accuracy: 0.6747
+30/30 [==============================] - 1s 37ms/step - loss: 0.5713 - accuracy: 0.6363 - val_loss: 0.5444 - val_accuracy: 0.6579
 Epoch 3/10
-30/30 [==============================] - 2s 74ms/step - loss: 0.5100 - accuracy: 0.7163 - val_loss: 0.4962 - val_accuracy: 0.7166
+30/30 [==============================] - 1s 33ms/step - loss: 0.5153 - accuracy: 0.7089 - val_loss: 0.5018 - val_accuracy: 0.7496
 Epoch 4/10
-30/30 [==============================] - 2s 66ms/step - loss: 0.4715 - accuracy: 0.7601 - val_loss: 0.4657 - val_accuracy: 0.7639
+30/30 [==============================] - 1s 32ms/step - loss: 0.4754 - accuracy: 0.7583 - val_loss: 0.4695 - val_accuracy: 0.7693
 Epoch 5/10
-30/30 [==============================] - 2s 71ms/step - loss: 0.4421 - accuracy: 0.7901 - val_loss: 0.4429 - val_accuracy: 0.7912
+30/30 [==============================] - 1s 32ms/step - loss: 0.4448 - accuracy: 0.7877 - val_loss: 0.4459 - val_accuracy: 0.7763
 Epoch 6/10
-30/30 [==============================] - 2s 53ms/step - loss: 0.4186 - accuracy: 0.8107 - val_loss: 0.4252 - val_accuracy: 0.8110
+30/30 [==============================] - 1s 32ms/step - loss: 0.4208 - accuracy: 0.8054 - val_loss: 0.4264 - val_accuracy: 0.8006
 Epoch 7/10
-30/30 [==============================] - 2s 72ms/step - loss: 0.3994 - accuracy: 0.8257 - val_loss: 0.4096 - val_accuracy: 0.8131
+30/30 [==============================] - 1s 32ms/step - loss: 0.4009 - accuracy: 0.8233 - val_loss: 0.4112 - val_accuracy: 0.8137
 Epoch 8/10
-30/30 [==============================] - 2s 67ms/step - loss: 0.3834 - accuracy: 0.8351 - val_loss: 0.3975 - val_accuracy: 0.8263
+30/30 [==============================] - 1s 32ms/step - loss: 0.3846 - accuracy: 0.8366 - val_loss: 0.3984 - val_accuracy: 0.8198
 Epoch 9/10
-30/30 [==============================] - 2s 62ms/step - loss: 0.3699 - accuracy: 0.8433 - val_loss: 0.3874 - val_accuracy: 0.8347
+30/30 [==============================] - 1s 32ms/step - loss: 0.3707 - accuracy: 0.8443 - val_loss: 0.3883 - val_accuracy: 0.8183
 Epoch 10/10
-30/30 [==============================] - 2s 75ms/step - loss: 0.3580 - accuracy: 0.8511 - val_loss: 0.3782 - val_accuracy: 0.8367
+30/30 [==============================] - 1s 32ms/step - loss: 0.3589 - accuracy: 0.8509 - val_loss: 0.3790 - val_accuracy: 0.8269
 </pre></div>
 </div>
 </div>
@@ -969,9 +967,9 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49/49 - 2s - loss: 0.3827 - accuracy: 0.8284 - 2s/epoch - 38ms/step
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49/49 - 1s - loss: 0.3829 - accuracy: 0.8246 - 1s/epoch - 21ms/step
 loss: 0.383
-accuracy: 0.828
+accuracy: 0.825
 </pre></div>
 </div>
 </div>
@@ -1054,6 +1052,34 @@ accuracy: 0.828
 <div class="section" id="tensorboard">
 <h3>TensorBoard<a class="headerlink" href="#tensorboard" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
+<li><p>We use the tensorboard.notebook API:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View open TensorBoard instances</span>
+<span class="n">notebook</span><span class="o">.</span><span class="n">list</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Known TensorBoard instances:
+  - port 6006: logdir logs/fit (started 0:21:34 ago; pid 2825)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If no port is provided, the most recently launched TensorBoard is used</span>
+
+<span class="c1"># notebook.display(port=6006, height=1000)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="../_images/tensorboard.png" /></p>
+<p>Alternative option to view TensorBoard:</p>
+<ul class="simple">
 <li><p>How to use TensorBoard in Visual Studio Code (<a class="reference external" href="https://stackoverflow.com/a/66375514">Stackoverflow</a>):</p></li>
 </ul>
 <ol class="simple">
@@ -1065,33 +1091,6 @@ accuracy: 0.828
 </ul>
 </li>
 </ol>
-<p>Alternatively, you can use TensorBoard directely in Jupyter Notebook:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">tensorboard</span> --logdir logs/fit
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reusing TensorBoard on port 6006 (pid 57180), started 0:45:14 ago. (Use &#39;!kill 57180&#39; to kill it.)
-</pre></div>
-</div>
-<div class="output text_html">
-<iframe id="tensorboard-frame-ba772405cd47f49c" width="100%" height="800" frameborder="0">
-</iframe>
-<script>
-  (function() {
-    const frame = document.getElementById("tensorboard-frame-ba772405cd47f49c");
-    const url = new URL("http://localhost");
-    const port = 6006;
-    if (port) {
-      url.port = port;
-    }
-    frame.src = url;
-  })();
-</script>
-</div></div>
-</div>
 </div>
 </div>
 <div class="section" id="inference-on-new-data">
@@ -1123,6 +1122,9 @@ accuracy: 0.828
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>Make predictions</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probability_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">examples</span><span class="p">)</span>
@@ -1130,9 +1132,9 @@ accuracy: 0.828
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.51533335],
-       [0.43800226],
-       [0.42223874]], dtype=float32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.53673124],
+       [0.44737166],
+       [0.41206655]], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -1164,7 +1166,7 @@ add_metric()).</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-07 22:15:29.907350: W tensorflow/python/util/util.cc:368] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-08 09:30:31.623865: W tensorflow/python/util/util.cc:368] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Assets written to: imdb_model/assets
@@ -1213,8 +1215,8 @@ _________________________________________________________________
 </div>
 </div>
 </div>
-<div class="section" id="feature-engineering-example">
-<h2>Feature engineering example<a class="headerlink" href="#feature-engineering-example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="multiple-feature-engineering-steps">
+<h2>Multiple feature engineering steps<a class="headerlink" href="#multiple-feature-engineering-steps" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The following code is an add on to demonstrate how to perform further feature engineering</p></li>
 </ul>
@@ -1223,11 +1225,11 @@ _________________________________________________________________
 <li><p>Our multi-hot encoding does not contain any notion of review length</p></li>
 <li><p>We can try adding a feature for normalized string length.</p></li>
 </ul>
-<ul class="simple">
-<li><p>Preprocessing layers can be mixed with TensorFlow ops and custom layers as desired.</p></li>
-<li><p>Here we can combine the <code class="docutils literal notranslate"><span class="pre">tf.strings.length</span></code> function with the <code class="docutils literal notranslate"><span class="pre">Normalization</span></code> layer, which will scale the input to have 0 mean and 1 variance.</p></li>
-<li><p>We have only updated code up to the preprocess function below, but we will show the rest of training for clarity.</p></li>
-</ul>
+<ol class="simple">
+<li><p>Create the normalization layer (which will scale the input to have 0 mean and 1 standard deviation)</p></li>
+<li><p>Adapt it to our input</p></li>
+<li><p>Within the preprocess function, we simply concatenate our multi-hot encoding and length features together</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This layer will scale our review length feature to mean 0 variance 1.</span>
@@ -1243,6 +1245,9 @@ _________________________________________________________________
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>Use the new preprocess function in our model (we don’t use TensorBoard in this example):</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
@@ -1264,24 +1269,19 @@ _________________________________________________________________
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/5
-30/30 [==============================] - 3s 70ms/step - loss: 0.6334 - val_loss: 0.5882
+30/30 [==============================] - 1s 37ms/step - loss: 0.6334 - val_loss: 0.5907
 Epoch 2/5
-30/30 [==============================] - 3s 96ms/step - loss: 0.5514 - val_loss: 0.5281
+30/30 [==============================] - 1s 34ms/step - loss: 0.5522 - val_loss: 0.5304
 Epoch 3/5
-30/30 [==============================] - 3s 104ms/step - loss: 0.4983 - val_loss: 0.4869
+30/30 [==============================] - 1s 34ms/step - loss: 0.4986 - val_loss: 0.4870
 Epoch 4/5
-30/30 [==============================] - 3s 92ms/step - loss: 0.4586 - val_loss: 0.4544
+30/30 [==============================] - 1s 34ms/step - loss: 0.4581 - val_loss: 0.4548
 Epoch 5/5
-30/30 [==============================] - 2s 78ms/step - loss: 0.4273 - val_loss: 0.4288
+30/30 [==============================] - 1s 34ms/step - loss: 0.4265 - val_loss: 0.4296
 </pre></div>
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>Above, we create the normalization layer and adapt it to our input.</p></li>
-<li><p>Within the preprocess function, we simply concatenate our multi-hot encoding and length features together.</p></li>
-<li><p>We learn a model over the union of the two feature representations.</p></li>
-</ul>
 </div>
 </div>
 
@@ -1317,10 +1317,10 @@ Epoch 5/5
             <p class="prev-next-title">Structured data classification</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="reference.html" title="next page">
+    <a class='right-next' id="next-link" href="keras-tuner.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bibliography</p>
+        <p class="prev-next-title">KerasTuner</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

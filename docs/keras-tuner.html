@@ -54,6 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bibliography" href="reference.html" />
+    <link rel="prev" title="IMDB Sentiment analysis" href="keras-imdb.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -190,7 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
   Keras
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="keras-sequential.html">
    Sequential model
@@ -209,6 +211,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="keras-imdb.html">
    IMDB Sentiment analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   KerasTuner
   </a>
  </li>
 </ul>
@@ -420,26 +427,33 @@ const thebe_selector_output = ".output, .cell_output"
 <p><em>The following code is based on <a class="reference external" href="https://keras.io/guides/keras_tuner/getting_started/">“Getting started with KerasTuner
 “</a> from Luca Invernizzi, James Long, Francois Chollet, Tom O’Malley and Haifeng Jin.</em></p>
 <p><a class="reference external" href="https://keras.io/guides/keras_tuner/getting_started/">KerasTuner</a> is an easy-to-use, scalable hyperparameter optimization framework that solves the pain points of hyperparameter search.</p>
-<p>KerasTuner is a general-purpose hyperparameter tuning library. It has strong integration with Keras workflows, but it isn’t limited to them: you could use it to tune scikit-learn models, or anything else.</p>
-<p>Easily configure your search space with a define-by-run syntax, then leverage one of the available search algorithms to find the best hyperparameter values for your models.</p>
-<p>KerasTuner comes with</p>
 <ul class="simple">
-<li><p>Bayesian Optimization,</p></li>
-<li><p>Hyperband, and</p></li>
-<li><p>Random Search algorithms</p></li>
+<li><p>It is a general-purpose hyperparameter tuning library.</p></li>
+<li><p>It has strong integration with Keras workflows, but it isn’t limited to them</p></li>
+<li><p>You can use it to tune scikit-learn models, or anything else.</p></li>
 </ul>
-<p>built-in, and is also designed to be easy for researchers to extend in order to experiment with new search algorithms.</p>
+<p>KerasTuner comes with:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://keras.io/api/keras_tuner/tuners/bayesian/">Bayesian Optimization</a> (see this <a class="reference external" href="https://distill.pub/2020/bayesian-optimization/">blog</a> for detailed explanations),</p></li>
+<li><p><a class="reference external" href="https://keras.io/api/keras_tuner/tuners/hyperband/">Hyperband</a> (see this <a class="reference external" href="https://jmlr.org/papers/v18/16-558.html">paper</a>)</p></li>
+<li><p><a class="reference external" href="https://keras.io/api/keras_tuner/tuners/random/">Random Search algorithms</a></p></li>
+</ul>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>KerasTuner requires Python 3.6+ and TensorFlow 2.0+.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install keras-tuner --upgrade</span>
+<ul class="simple">
+<li><p>Installation with pip:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install keras-tuner --upgrade
 </pre></div>
 </div>
-</div>
+<ul class="simple">
+<li><p>Installation with conda</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge keras-tuner
+</pre></div>
 </div>
 </div>
 <div class="section" id="setup">
@@ -466,18 +480,25 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_model</span><span class="p">(</span><span class="n">hp</span><span class="p">):</span>
+
     <span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+    
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">())</span>
+    
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
         <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
             <span class="c1"># Define the hyperparameter.</span>
-            <span class="n">units</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">32</span><span class="p">),</span>
-            <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+            <span class="n">units</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> 
+                                    <span class="n">max_value</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> 
+                                    <span class="n">step</span><span class="o">=</span><span class="mi">32</span><span class="p">),</span>
+            <span class="n">activation</span> <span class="o">=</span> <span class="s2">&quot;relu&quot;</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">))</span>
+    
     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
         <span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;adam&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;categorical_crossentropy&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">],</span>
+    
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
@@ -492,11 +513,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-07 18:14:00.674619: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-08 10:21:59.502906: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.engine.sequential.Sequential at 0x7ff208ecae80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.engine.sequential.Sequential at 0x7fc3d8547520&gt;
 </pre></div>
 </div>
 </div>
@@ -515,6 +536,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_model</span><span class="p">(</span><span class="n">hp</span><span class="p">):</span>
+    
     <span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
 
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">())</span>
@@ -554,7 +576,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.engine.sequential.Sequential at 0x7ff2497cde20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.engine.sequential.Sequential at 0x7fc3b91c9e20&gt;
 </pre></div>
 </div>
 </div>
@@ -562,7 +584,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 <ul class="simple">
 <li><p>As shown below, the hyperparameters are actual values.</p></li>
 <li><p>In fact, they are just functions returning actual values.</p></li>
-<li><p>For example, hp.Int() returns an int value.</p></li>
+<li><p>For example, <code class="docutils literal notranslate"><span class="pre">hp.Int()</span></code> returns an int value.</p></li>
 <li><p>Therefore, you can put them into variables, for loops, or if conditions.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -583,18 +605,19 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 <div class="section" id="start-search">
 <h2>Start search<a class="headerlink" href="#start-search" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>After defining the search space, we need to select a tuner class to run the search. - You may choose from RandomSearch, BayesianOptimization and Hyperband, which correspond to different tuning algorithms.</p></li>
-<li><p>Here we use RandomSearch as an example.</p></li>
+<li><p>After defining the search space, we need to select a tuner class to run the search.</p></li>
+<li><p>You may choose from <code class="docutils literal notranslate"><span class="pre">RandomSearch</span></code>, <code class="docutils literal notranslate"><span class="pre">BayesianOptimization</span></code> and <code class="docutils literal notranslate"><span class="pre">Hyperband</span></code>, which correspond to different tuning algorithms.</p></li>
+<li><p>Here we use <code class="docutils literal notranslate"><span class="pre">RandomSearch</span></code> as an example.</p></li>
 </ul>
 <p>To initialize the tuner, we need to specify several arguments in the initializer:</p>
 <ul class="simple">
-<li><p>hypermodel. The model-building function, which is build_model in our case.</p></li>
-<li><p>objective. The name of the objective to optimize (whether to minimize or maximize is automatically inferred for built-in metrics).</p></li>
-<li><p>max_trials. The total number of trials to run during the search.</p></li>
-<li><p>executions_per_trial. The number of models that should be built and fit for each trial. Different trials have different hyperparameter values. The executions within the same trial have the same hyperparameter values. The purpose of having multiple executions per trial is to reduce results variance and therefore be able to more accurately assess the performance of a model. If you want to get results faster, you could set executions_per_trial=1 (single round of training for each model configuration).</p></li>
-<li><p>overwrite. Control whether to overwrite the previous results in the same directory or resume the previous search instead. Here we set overwrite=True to start a new search and ignore any previous results.</p></li>
-<li><p>directory. A path to a directory for storing the search results.
--project_name. The name of the sub-directory in the directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hypermodel</span></code>. The model-building function, which is build_model in our case.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">objective</span></code>. The name of the objective to optimize (whether to minimize or maximize is automatically inferred for built-in metrics).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_trials</span></code>. The total number of trials to run during the search.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">executions_per_trial</span></code>. The number of models that should be built and fit for each trial. Different trials have different hyperparameter values. The executions within the same trial have the same hyperparameter values. The purpose of having multiple executions per trial is to reduce results variance and therefore be able to more accurately assess the performance of a model. If you want to get results faster, you could set executions_per_trial=1 (single round of training for each model configuration).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overwrite</span></code>. Control whether to overwrite the previous results in the same directory or resume the previous search instead. Here we set overwrite=True to start a new search and ignore any previous results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">directory</span></code>. A path to a directory for storing the search results.
+-<code class="docutils literal notranslate"><span class="pre">project_name</span></code>. The name of the sub-directory in the directory.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -637,7 +660,8 @@ lr (Float)
 <div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Before starting the search, let’s prepare the MNIST dataset.</p></li>
+<li><p>Before starting the search, let’s prepare the data.</p></li>
+<li><p>We use the MNIST dataset.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -647,9 +671,80 @@ lr (Float)
 <span class="n">x_val</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">10000</span><span class="p">:]</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">10000</span><span class="p">]</span>
 <span class="n">y_val</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">10000</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        ...,
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0]],
 
-<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
-<span class="n">x_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x_val</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
+       [[0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        ...,
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0]],
+
+       [[0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        ...,
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0]],
+
+       ...,
+
+       [[0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        ...,
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0]],
+
+       [[0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        ...,
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0]],
+
+       [[0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        ...,
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0],
+        [0, 0, 0, ..., 0, 0, 0]]], dtype=uint8)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x_val</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
 <span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
 
 <span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
@@ -793,7 +888,21 @@ INFO:tensorflow:Oracle triggered exit
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="keras-imdb.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">IMDB Sentiment analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="reference.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bibliography</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>

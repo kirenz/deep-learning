@@ -213,6 +213,11 @@ const thebe_selector_output = ".output, .cell_output"
    IMDB Sentiment analysis
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-tuner.html">
+   KerasTuner
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -497,7 +502,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="structured-data-classification">
 <h1>Structured data classification<a class="headerlink" href="#structured-data-classification" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial is based on:</p>
+<p>This tutorial is mainly based on:</p>
 <p><strong>Author:</strong> <a class="reference external" href="https://twitter.com/fchollet">fchollet</a><br>
 <strong>Date created:</strong> 2020/06/09<br>
 <strong>Last modified:</strong> 2020/06/09<br>
@@ -923,6 +928,20 @@ Target: tf.Tensor(1, shape=(), dtype=int64)
 <li><p><code class="docutils literal notranslate"><span class="pre">restecg</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">exang</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ca</span></code></p></li>
+<li><p>First, we need to decide how to represent the categorical data</p></li>
+</ul>
+<p>Option 1: <strong>One-hot encoding</strong></p>
+<ul class="simple">
+<li><p>Example: a color feature gets a 1 in a specific index for different colors (‘red’ = [0, 0, 1, 0, 0])</p></li>
+</ul>
+<p>Option 2: <strong>Embed the feature</strong></p>
+<ul class="simple">
+<li><p>Example: each color maps to a unique trainable vector (‘red’ = [0.1, 0.2, 0.5, -0.2]</p></li>
+</ul>
+<p>Rule of thumb:</p>
+<ul class="simple">
+<li><p>Larger category spaces might do better with an embedding</p></li>
+<li><p>Smaller spaces can use one-hot encoding</p></li>
 </ul>
 <p>We will encode these features using <strong>one-hot encoding</strong>. We have two options
 here:</p>
