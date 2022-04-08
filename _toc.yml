@@ -28,6 +28,7 @@ parts:
     - file: docs/structured_data_classification_from_scratch.ipynb
     - file: docs/keras-preprocessing.md
     - file: docs/keras-imdb.ipynb
+    - file: docs/keras-tuner.ipynb
   - caption: References
     chapters:
     - file: docs/reference.md
