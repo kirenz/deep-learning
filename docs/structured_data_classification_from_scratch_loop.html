@@ -1,0 +1,1170 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Structured data classification &#8212; Deep Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="deep-learning.html">
+   Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tensorflow.html">
+   TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tf-example.html">
+   TensorFlow Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hugging-face.html">
+   Hugging Face
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="fashion-mnist.html">
+   Classify images of clothing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fashion-mnist-exercises.html">
+   Model exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="convolutional.html">
+   Convolutional
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cnn.html">
+   TF CNN
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CNN
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-cnn.html">
+   CNN intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-tensorflow.html">
+   MNIST with TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-pytorch.html">
+   MNIST with PyTorch
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Regression
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression-structured.html">
+   Structured data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Keras
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-sequential.html">
+   Sequential model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-functional.html">
+   Functional API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="structured_data_classification_from_scratch.html">
+   Structured data classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-imdb.html">
+   IMDB Sentiment analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-tuner.html">
+   KerasTuner
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="reference.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/structured_data_classification_from_scratch_loop.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/kirenz/deep-learning"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/structured_data_classification_from_scratch_loop.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/structured_data_classification_from_scratch_loop.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-import">
+     Data import
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-structure">
+     Data structure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-splitting">
+     Data splitting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transform-to-tensors">
+     Transform to Tensors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-preprocessing">
+   Feature preprocessing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing-functions">
+     Preprocessing functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training">
+   Training
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predictions">
+   Predictions
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Structured data classification</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-import">
+     Data import
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-structure">
+     Data structure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-splitting">
+     Data splitting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transform-to-tensors">
+     Transform to Tensors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-preprocessing">
+   Feature preprocessing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing-functions">
+     Preprocessing functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training">
+   Training
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predictions">
+   Predictions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="structured-data-classification">
+<h1>Structured data classification<a class="headerlink" href="#structured-data-classification" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial is mainly based on the Keras tutorial <a class="reference external" href="https://keras.io/examples/structured_data/structured_data_classification_from_scratch/">“Structured data classification from scratch”</a> by François Chollet.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<p>Here’s the description of each feature:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Feature Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Age</p></td>
+<td><p>Age in years</p></td>
+<td><p>Numerical</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sex</p></td>
+<td><p>(1 = male; 0 = female)</p></td>
+<td><p>Categorical</p></td>
+</tr>
+<tr class="row-even"><td><p>CP</p></td>
+<td><p>Chest pain type (0, 1, 2, 3, 4)</p></td>
+<td><p>Categorical</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trestbpd</p></td>
+<td><p>Resting blood pressure (in mm Hg on admission)</p></td>
+<td><p>Numerical</p></td>
+</tr>
+<tr class="row-even"><td><p>Chol</p></td>
+<td><p>Serum cholesterol in mg/dl</p></td>
+<td><p>Numerical</p></td>
+</tr>
+<tr class="row-odd"><td><p>FBS</p></td>
+<td><p>fasting blood sugar in 120 mg/dl (1 = true; 0 = false)</p></td>
+<td><p>Categorical</p></td>
+</tr>
+<tr class="row-even"><td><p>RestECG</p></td>
+<td><p>Resting electrocardiogram results (0, 1, 2)</p></td>
+<td><p>Categorical</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thalach</p></td>
+<td><p>Maximum heart rate achieved</p></td>
+<td><p>Numerical</p></td>
+</tr>
+<tr class="row-even"><td><p>Exang</p></td>
+<td><p>Exercise induced angina (1 = yes; 0 = no)</p></td>
+<td><p>Categorical</p></td>
+</tr>
+<tr class="row-odd"><td><p>Oldpeak</p></td>
+<td><p>ST depression induced by exercise relative to rest</p></td>
+<td><p>Numerical</p></td>
+</tr>
+<tr class="row-even"><td><p>Slope</p></td>
+<td><p>Slope of the peak exercise ST segment</p></td>
+<td><p>Numerical</p></td>
+</tr>
+<tr class="row-odd"><td><p>CA</p></td>
+<td><p>Number of major vessels (0-3) colored by fluoroscopy</p></td>
+<td><p>Both numerical &amp; categorical</p></td>
+</tr>
+<tr class="row-even"><td><p>Thal</p></td>
+<td><p>normal; fixed defect; reversible defect</p></td>
+<td><p>Categorical (string)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target</p></td>
+<td><p>Diagnosis of heart disease (1 = true; 0 = false)</p></td>
+<td><p>Target</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="data-import">
+<h3>Data import<a class="headerlink" href="#data-import" title="Permalink to this headline">¶</a></h3>
+<p>Let’s download the data and load it into a Pandas dataframe:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_url</span> <span class="o">=</span> <span class="s2">&quot;http://storage.googleapis.com/download.tensorflow.org/data/heart.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>trestbps</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>63</td>
+      <td>1</td>
+      <td>1</td>
+      <td>145</td>
+      <td>233</td>
+      <td>1</td>
+      <td>2</td>
+      <td>150</td>
+      <td>0</td>
+      <td>2.3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>fixed</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>67</td>
+      <td>1</td>
+      <td>4</td>
+      <td>160</td>
+      <td>286</td>
+      <td>0</td>
+      <td>2</td>
+      <td>108</td>
+      <td>1</td>
+      <td>1.5</td>
+      <td>2</td>
+      <td>3</td>
+      <td>normal</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>67</td>
+      <td>1</td>
+      <td>4</td>
+      <td>120</td>
+      <td>229</td>
+      <td>0</td>
+      <td>2</td>
+      <td>129</td>
+      <td>1</td>
+      <td>2.6</td>
+      <td>2</td>
+      <td>2</td>
+      <td>reversible</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>37</td>
+      <td>1</td>
+      <td>3</td>
+      <td>130</td>
+      <td>250</td>
+      <td>0</td>
+      <td>0</td>
+      <td>187</td>
+      <td>0</td>
+      <td>3.5</td>
+      <td>3</td>
+      <td>0</td>
+      <td>normal</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>41</td>
+      <td>0</td>
+      <td>2</td>
+      <td>130</td>
+      <td>204</td>
+      <td>0</td>
+      <td>2</td>
+      <td>172</td>
+      <td>0</td>
+      <td>1.4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>normal</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 303 entries, 0 to 302
+Data columns (total 14 columns):
+ #   Column    Non-Null Count  Dtype  
+---  ------    --------------  -----  
+ 0   age       303 non-null    int64  
+ 1   sex       303 non-null    int64  
+ 2   cp        303 non-null    int64  
+ 3   trestbps  303 non-null    int64  
+ 4   chol      303 non-null    int64  
+ 5   fbs       303 non-null    int64  
+ 6   restecg   303 non-null    int64  
+ 7   thalach   303 non-null    int64  
+ 8   exang     303 non-null    int64  
+ 9   oldpeak   303 non-null    float64
+ 10  slope     303 non-null    int64  
+ 11  ca        303 non-null    int64  
+ 12  thal      303 non-null    object 
+ 13  target    303 non-null    int64  
+dtypes: float64(1), int64(12), object(1)
+memory usage: 33.3+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following features are <em>categorical features</em> encoded as integers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sex</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fbs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">restecg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exang</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ca</span></code></p></li>
+</ul>
+<p>The following feature is a <em>categorical features</em> encoded as string:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">thal</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="data-structure">
+<h3>Data structure<a class="headerlink" href="#data-structure" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to string</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;thal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;thal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to categorical</span>
+<span class="n">cat_convert</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="s1">&#39;fbs&#39;</span><span class="p">,</span> <span class="s1">&#39;restecg&#39;</span><span class="p">,</span> <span class="s1">&#39;exang&#39;</span><span class="p">,</span> <span class="s1">&#39;ca&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cat_convert</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define outcome variable as y_label</span>
+<span class="n">y_label</span> <span class="o">=</span> <span class="s1">&#39;target&#39;</span>
+
+<span class="c1"># Make list of all numerical data (except label)</span>
+<span class="n">list_num</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">y_label</span><span class="p">])</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># Make list of all categorical data (except label)</span>
+<span class="n">list_cat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">y_label</span><span class="p">])</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-splitting">
+<h3>Data splitting<a class="headerlink" href="#data-splitting" title="Permalink to this headline">¶</a></h3>
+<p>Let’s split the data into a training and validation set:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val_dataframe</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1337</span><span class="p">)</span>
+<span class="n">train_dataframe</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">val_dataframe</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Using </span><span class="si">%d</span><span class="s2"> samples for training and </span><span class="si">%d</span><span class="s2"> for validation&quot;</span>
+    <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataframe</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">val_dataframe</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using 242 samples for training and 61 for validation
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="transform-to-tensors">
+<h3>Transform to Tensors<a class="headerlink" href="#transform-to-tensors" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Let’s generate <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/data/Dataset"><code class="docutils literal notranslate"><span class="pre">tf.data.Dataset</span></code></a> objects for our training and validation dataframes:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to create our tensors</span>
+
+<span class="k">def</span> <span class="nf">dataframe_to_dataset</span><span class="p">(</span><span class="n">dataframe</span><span class="p">):</span>
+    <span class="n">dataframe</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">y_label</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="nb">dict</span><span class="p">(</span><span class="n">dataframe</span><span class="p">),</span> <span class="n">labels</span><span class="p">))</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">buffer_size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">dataframe</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use function</span>
+<span class="n">train_ds</span> <span class="o">=</span> <span class="n">dataframe_to_dataset</span><span class="p">(</span><span class="n">train_dataframe</span><span class="p">)</span>
+<span class="n">val_ds</span> <span class="o">=</span> <span class="n">dataframe_to_dataset</span><span class="p">(</span><span class="n">val_dataframe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Let’s batch the datasets (combine some of our samples). Here, we use a mini-batch size of 32:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_ds</span> <span class="o">=</span> <span class="n">train_ds</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">val_ds</span> <span class="o">=</span> <span class="n">val_ds</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BatchDataset shapes: ({age: (None,), sex: (None,), cp: (None,), trestbps: (None,), chol: (None,), fbs: (None,), restecg: (None,), thalach: (None,), exang: (None,), oldpeak: (None,), slope: (None,), ca: (None,), thal: (None,)}, (None,)), types: ({age: tf.int64, sex: tf.int64, cp: tf.int64, trestbps: tf.int64, chol: tf.int64, fbs: tf.int64, restecg: tf.int64, thalach: tf.int64, exang: tf.int64, oldpeak: tf.float64, slope: tf.int64, ca: tf.int64, thal: tf.string}, tf.int64)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="feature-preprocessing">
+<h2>Feature preprocessing<a class="headerlink" href="#feature-preprocessing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="preprocessing-functions">
+<h3>Preprocessing functions<a class="headerlink" href="#preprocessing-functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Below, we define utility functions to do the feature preprocessing operations:</p></li>
+<li><p>For each numeric feature in the dataset, you will use a tf.keras.layers.Normalization layer to standardize the distribution of the data.</p></li>
+<li><p>Define a new utility function that returns a layer which applies feature-wise normalization to numerical features using that Keras preprocessing layer:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define numerical preprocessing function</span>
+<span class="k">def</span> <span class="nf">get_normalization_layer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+    <span class="c1"># Create a Normalization layer for our feature</span>
+    <span class="n">normalizer</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Normalization</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># Prepare a Dataset that only yields our feature</span>
+    <span class="n">feature_ds</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+
+    <span class="c1"># Learn the statistics of the data</span>
+    <span class="n">normalizer</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">feature_ds</span><span class="p">)</span>
+
+    <span class="c1"># Normalize the input feature</span>
+    <span class="k">return</span> <span class="n">normalizer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Categorical data preprocessing</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">IntegerLookup</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">StringLookup</span>
+
+<span class="c1"># Define categorical preprocessing function</span>
+<span class="k">def</span> <span class="nf">encode_categorical_feature</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">is_string</span><span class="p">):</span>
+    <span class="n">lookup_class</span> <span class="o">=</span> <span class="n">StringLookup</span> <span class="k">if</span> <span class="n">is_string</span> <span class="k">else</span> <span class="n">IntegerLookup</span>
+    <span class="c1"># Create a lookup layer which will turn strings into integer indices</span>
+    <span class="n">lookup</span> <span class="o">=</span> <span class="n">lookup_class</span><span class="p">(</span><span class="n">output_mode</span><span class="o">=</span><span class="s2">&quot;binary&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Prepare a Dataset that only yields our feature</span>
+    <span class="n">feature_ds</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+    <span class="n">feature_ds</span> <span class="o">=</span> <span class="n">feature_ds</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># Learn the set of possible string values and assign them a fixed integer index</span>
+    <span class="n">lookup</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">feature_ds</span><span class="p">)</span>
+
+    <span class="c1"># Turn the string input into integer indices</span>
+    <span class="n">encoded_feature</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">encoded_feature</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define another new utility function that returns a layer which maps values from a vocabulary to integer indices and multi-hot encodes the features using the tf.keras.layers.StringLookup, tf.keras.layers.IntegerLookup, and tf.keras.CategoryEncoding preprocessing layers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_category_encoding_layer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="c1"># Create a layer that turns strings into integer indices.</span>
+  <span class="k">if</span> <span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;string&#39;</span><span class="p">:</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">StringLookup</span><span class="p">(</span><span class="n">max_tokens</span><span class="o">=</span><span class="n">max_tokens</span><span class="p">)</span>
+  <span class="c1"># Otherwise, create a layer that turns integer values into integer indices.</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">IntegerLookup</span><span class="p">(</span><span class="n">max_tokens</span><span class="o">=</span><span class="n">max_tokens</span><span class="p">)</span>
+
+  <span class="c1"># Prepare a `tf.data.Dataset` that only yields the feature.</span>
+  <span class="n">feature_ds</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+
+  <span class="c1"># Learn the set of possible values and assign them a fixed integer index.</span>
+  <span class="n">index</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">feature_ds</span><span class="p">)</span>
+
+  <span class="c1"># Encode the integer indices.</span>
+  <span class="n">encoder</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">CategoryEncoding</span><span class="p">(</span><span class="n">num_tokens</span><span class="o">=</span><span class="n">index</span><span class="o">.</span><span class="n">vocabulary_size</span><span class="p">())</span>
+
+  <span class="c1"># Apply multi-hot encoding to the indices. The lambda function captures the</span>
+  <span class="c1"># layer, so you can use them, or include them in the Keras Functional model later.</span>
+  <span class="k">return</span> <span class="k">lambda</span> <span class="n">feature</span><span class="p">:</span> <span class="n">encoder</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">feature</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With this done, we can create our preprocessing steps:</p>
+<ul class="simple">
+<li><p>Normalize the numerical features and add them to one list of inputs called <code class="docutils literal notranslate"><span class="pre">encoded_features</span></code>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_inputs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">encoded_features</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Numerical features.</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">list_num</span><span class="p">:</span>
+  <span class="n">numeric_col</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="n">feature</span><span class="p">)</span>
+  <span class="n">normalization_layer</span> <span class="o">=</span> <span class="n">get_normalization_layer</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">train_ds</span><span class="p">)</span>
+  <span class="n">encoded_numeric_col</span> <span class="o">=</span> <span class="n">normalization_layer</span><span class="p">(</span><span class="n">numeric_col</span><span class="p">)</span>
+  <span class="n">all_inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">numeric_col</span><span class="p">)</span>
+  <span class="n">encoded_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">encoded_numeric_col</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">encoded_features</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;KerasTensor: shape=(None, 1) dtype=float32 (created by layer &#39;normalization_28&#39;)&gt;,
+ &lt;KerasTensor: shape=(None, 1) dtype=float32 (created by layer &#39;normalization_29&#39;)&gt;,
+ &lt;KerasTensor: shape=(None, 1) dtype=float32 (created by layer &#39;normalization_30&#39;)&gt;,
+ &lt;KerasTensor: shape=(None, 1) dtype=float32 (created by layer &#39;normalization_31&#39;)&gt;,
+ &lt;KerasTensor: shape=(None, 1) dtype=float32 (created by layer &#39;normalization_32&#39;)&gt;,
+ &lt;KerasTensor: shape=(None, 1) dtype=float32 (created by layer &#39;normalization_33&#39;)&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Make a list of all encoded features</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">encoded_features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Note that we also could use a for loop to automate some of the steps above:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can build the model:</p>
+<ol class="simple">
+<li><p>We use 32 number of units in the first layer</p></li>
+<li><p>We use <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dropout">layers.Dropout()</a> to prevent overvitting</p></li>
+<li><p>Our output layer has 1 output (since the classification task is binary)</p></li>
+<li><p>keras.Model groups layers into an object with training and inference features.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First layer</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">all_features</span><span class="p">)</span>
+<span class="c1"># Dropout to prevent overvitting</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># Output layer</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Group all layers </span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">all_inputs</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;adam&quot;</span><span class="p">,</span> 
+              <span class="n">loss</span> <span class="o">=</span><span class="s2">&quot;binary_crossentropy&quot;</span><span class="p">,</span> 
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s visualize our connectivity graph:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `rankdir=&#39;LR&#39;` is to make the graph horizontal.</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rankdir</span><span class="o">=</span><span class="s2">&quot;LR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/structured_data_classification_from_scratch_loop_42_0.png" src="../_images/structured_data_classification_from_scratch_loop_42_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="training">
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_ds</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="n">val_ds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jankirenz/opt/anaconda3/envs/tf/lib/python3.8/site-packages/keras/engine/functional.py:559: UserWarning: Input dict contained keys [&#39;sex&#39;, &#39;cp&#39;, &#39;fbs&#39;, &#39;restecg&#39;, &#39;exang&#39;, &#39;ca&#39;, &#39;thal&#39;] which did not match any model input. They will be ignored by the model.
+  inputs = self._flatten_to_reference_inputs(inputs)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10/10 [==============================] - 0s 14ms/step - loss: 0.7481 - accuracy: 0.5083 - val_loss: 0.6906 - val_accuracy: 0.5941
+Epoch 2/10
+10/10 [==============================] - 0s 4ms/step - loss: 0.7339 - accuracy: 0.5413 - val_loss: 0.6576 - val_accuracy: 0.6271
+Epoch 3/10
+10/10 [==============================] - 0s 4ms/step - loss: 0.6958 - accuracy: 0.5776 - val_loss: 0.6286 - val_accuracy: 0.6535
+Epoch 4/10
+10/10 [==============================] - 0s 4ms/step - loss: 0.6554 - accuracy: 0.5908 - val_loss: 0.6037 - val_accuracy: 0.6700
+Epoch 5/10
+10/10 [==============================] - 0s 4ms/step - loss: 0.6460 - accuracy: 0.6106 - val_loss: 0.5814 - val_accuracy: 0.6931
+Epoch 6/10
+10/10 [==============================] - 0s 4ms/step - loss: 0.5947 - accuracy: 0.6634 - val_loss: 0.5617 - val_accuracy: 0.7096
+Epoch 7/10
+10/10 [==============================] - 0s 4ms/step - loss: 0.5911 - accuracy: 0.6733 - val_loss: 0.5439 - val_accuracy: 0.7195
+Epoch 8/10
+10/10 [==============================] - 0s 4ms/step - loss: 0.5579 - accuracy: 0.6997 - val_loss: 0.5302 - val_accuracy: 0.7360
+Epoch 9/10
+10/10 [==============================] - 0s 3ms/step - loss: 0.5420 - accuracy: 0.7129 - val_loss: 0.5176 - val_accuracy: 0.7459
+Epoch 10/10
+10/10 [==============================] - 0s 3ms/step - loss: 0.5706 - accuracy: 0.6997 - val_loss: 0.5068 - val_accuracy: 0.7558
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7f87393925b0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="predictions">
+<h2>Predictions<a class="headerlink" href="#predictions" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="s2">&quot;sex&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;cp&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;trestbps&quot;</span><span class="p">:</span> <span class="mi">145</span><span class="p">,</span>
+    <span class="s2">&quot;chol&quot;</span><span class="p">:</span> <span class="mi">233</span><span class="p">,</span>
+    <span class="s2">&quot;fbs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;restecg&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;thalach&quot;</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+    <span class="s2">&quot;exang&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;oldpeak&quot;</span><span class="p">:</span> <span class="mf">2.3</span><span class="p">,</span>
+    <span class="s2">&quot;slope&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;ca&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;thal&quot;</span><span class="p">:</span> <span class="s2">&quot;fixed&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">input_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">([</span><span class="n">value</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;This particular patient had a </span><span class="si">%.1f</span><span class="s2"> percent probability &quot;</span>
+    <span class="s2">&quot;of having a heart disease, as evaluated by our model.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This particular patient had a 61.8 percent probability of having a heart disease, as evaluated by our model.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jan Kirenz<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

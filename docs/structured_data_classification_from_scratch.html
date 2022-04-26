@@ -566,8 +566,8 @@ classification</strong>).</p>
 <td><p>Both numerical &amp; categorical</p></td>
 </tr>
 <tr class="row-even"><td><p>Thal</p></td>
-<td><p>3 = normal; 6 = fixed defect; 7 = reversible defect</p></td>
-<td><p>Categorical</p></td>
+<td><p>normal; fixed defect; reversible defect</p></td>
+<td><p>Categorical (string)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Target</p></td>
 <td><p>Diagnosis of heart disease (1 = true; 0 = false)</p></td>
@@ -597,14 +597,14 @@ classification</strong>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_url</span> <span class="o">=</span> <span class="s2">&quot;http://storage.googleapis.com/download.tensorflow.org/data/heart.csv&quot;</span>
-<span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataframe</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -619,7 +619,7 @@ label):</p>
 <p>Here’s a preview of a few samples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataframe</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -756,8 +756,8 @@ label):</p>
 <p>Let’s split the data into a training and validation set:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val_dataframe</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1337</span><span class="p">)</span>
-<span class="n">train_dataframe</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">val_dataframe</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val_dataframe</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1337</span><span class="p">)</span>
+<span class="n">train_dataframe</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">val_dataframe</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span>
     <span class="s2">&quot;Using </span><span class="si">%d</span><span class="s2"> samples for training and </span><span class="si">%d</span><span class="s2"> for validation&quot;</span>
@@ -797,7 +797,7 @@ tf.Tensor(2, shape=(), dtype=int32)
 tf.Tensor(3, shape=(), dtype=int32)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-02 20:44:15.670219: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-26 15:22:19.143440: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </pre></div>
 </div>
@@ -872,9 +872,9 @@ and <code class="docutils literal notranslate"><span class="pre">target</span></
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input: {&#39;age&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=62&gt;, &#39;sex&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=0&gt;, &#39;cp&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=4&gt;, &#39;trestbps&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=160&gt;, &#39;chol&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=164&gt;, &#39;fbs&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=0&gt;, &#39;restecg&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=2&gt;, &#39;thalach&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=145&gt;, &#39;exang&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=0&gt;, &#39;oldpeak&#39;: &lt;tf.Tensor: shape=(), dtype=float64, numpy=6.2&gt;, &#39;slope&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=3&gt;, &#39;ca&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=3&gt;, &#39;thal&#39;: &lt;tf.Tensor: shape=(), dtype=string, numpy=b&#39;reversible&#39;&gt;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input: {&#39;age&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=57&gt;, &#39;sex&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=1&gt;, &#39;cp&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=4&gt;, &#39;trestbps&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=140&gt;, &#39;chol&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=192&gt;, &#39;fbs&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=0&gt;, &#39;restecg&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=0&gt;, &#39;thalach&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=148&gt;, &#39;exang&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=0&gt;, &#39;oldpeak&#39;: &lt;tf.Tensor: shape=(), dtype=float64, numpy=0.4&gt;, &#39;slope&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=2&gt;, &#39;ca&#39;: &lt;tf.Tensor: shape=(), dtype=int64, numpy=0&gt;, &#39;thal&#39;: &lt;tf.Tensor: shape=(), dtype=string, numpy=b&#39;fixed&#39;&gt;}
 --------------------------------------------------
-Target: tf.Tensor(1, shape=(), dtype=int64)
+Target: tf.Tensor(0, shape=(), dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1021,12 +1021,10 @@ then one-hot encode these integer indices.</p></li>
 </div>
 </div>
 </div>
+<p>With this done, we can create our preprocessing steps:</p>
 <ul class="simple">
-<li><p>With this done, we can create our end-to-end pipeline:</p></li>
-</ul>
-<ol class="simple">
 <li><p>Define keras.Input for every feature:</p></li>
-</ol>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Categorical features encoded as integers</span>
@@ -1051,9 +1049,9 @@ then one-hot encode these integer indices.</p></li>
 </div>
 </div>
 </div>
-<ol class="simple">
+<ul class="simple">
 <li><p>Make a list of all keras.Input feature names</p></li>
-</ol>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_inputs</span> <span class="o">=</span> <span class="p">[</span>
@@ -1075,9 +1073,9 @@ then one-hot encode these integer indices.</p></li>
 </div>
 </div>
 </div>
-<ol class="simple">
+<ul class="simple">
 <li><p>Perform preprocessing</p></li>
-</ol>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Integer categorical features</span>
@@ -1098,15 +1096,22 @@ then one-hot encode these integer indices.</p></li>
 <span class="n">thalach_encoded</span> <span class="o">=</span> <span class="n">encode_numerical_feature</span><span class="p">(</span><span class="n">thalach</span><span class="p">,</span> <span class="s2">&quot;thalach&quot;</span><span class="p">,</span> <span class="n">train_ds</span><span class="p">)</span>
 <span class="n">oldpeak_encoded</span> <span class="o">=</span> <span class="n">encode_numerical_feature</span><span class="p">(</span><span class="n">oldpeak</span><span class="p">,</span> <span class="s2">&quot;oldpeak&quot;</span><span class="p">,</span> <span class="n">train_ds</span><span class="p">)</span>
 <span class="n">slope_encoded</span> <span class="o">=</span> <span class="n">encode_numerical_feature</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="s2">&quot;slope&quot;</span><span class="p">,</span> <span class="n">train_ds</span><span class="p">)</span>
-
-<span class="n">all_features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Make a list of all encoded features</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="n">sex_encoded</span><span class="p">,</span>
         <span class="n">cp_encoded</span><span class="p">,</span>
         <span class="n">fbs_encoded</span><span class="p">,</span>
         <span class="n">restecg_encoded</span><span class="p">,</span>
         <span class="n">exang_encoded</span><span class="p">,</span>
-        <span class="n">slope_encoded</span><span class="p">,</span>
         <span class="n">ca_encoded</span><span class="p">,</span>
         <span class="n">thal_encoded</span><span class="p">,</span>
         <span class="n">age_encoded</span><span class="p">,</span>
@@ -1114,6 +1119,7 @@ then one-hot encode these integer indices.</p></li>
         <span class="n">chol_encoded</span><span class="p">,</span>
         <span class="n">thalach_encoded</span><span class="p">,</span>
         <span class="n">oldpeak_encoded</span><span class="p">,</span>
+        <span class="n">slope_encoded</span><span class="p">,</span>
     <span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
@@ -1136,13 +1142,14 @@ then one-hot encode these integer indices.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First layer</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">all_features</span><span class="p">)</span>
-<span class="c1"># 2</span>
+<span class="c1"># Dropout to prevent overvitting</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-<span class="c1"># 3</span>
+<span class="c1"># Output layer</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-<span class="c1"># 4</span>
+
+<span class="c1"># Group all layers </span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">all_inputs</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1172,7 +1179,7 @@ then one-hot encode these integer indices.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/structured_data_classification_from_scratch_43_0.png" src="../_images/structured_data_classification_from_scratch_43_0.png" />
+<img alt="../_images/structured_data_classification_from_scratch_45_0.png" src="../_images/structured_data_classification_from_scratch_45_0.png" />
 </div>
 </div>
 </div>
