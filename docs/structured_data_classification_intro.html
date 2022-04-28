@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Structured data classification &#8212; Deep Learning</title>
+    <title>Structured data classification I &#8212; Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -205,7 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Structured data classification
+   Structured data classification I
   </a>
  </li>
  <li class="toctree-l1">
@@ -271,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/structured_data_classification_from_scratch.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/structured_data_classification_intro.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -291,7 +291,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/structured_data_classification_from_scratch.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/structured_data_classification_intro.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -314,7 +314,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/structured_data_classification_from_scratch.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/structured_data_classification_intro.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -397,6 +397,11 @@ const thebe_selector_output = ".output, .cell_output"
    Predictions
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next steps
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -407,7 +412,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Structured data classification</h1>
+                <h1>Structured data classification I</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -481,6 +486,11 @@ const thebe_selector_output = ".output, .cell_output"
    Predictions
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next steps
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -490,13 +500,9 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="structured-data-classification">
-<h1>Structured data classification<a class="headerlink" href="#structured-data-classification" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial is mainly based on:</p>
-<p><strong>Author:</strong> <a class="reference external" href="https://twitter.com/fchollet">fchollet</a><br>
-<strong>Date created:</strong> 2020/06/09<br>
-<strong>Last modified:</strong> 2020/06/09<br>
-<strong>Description:</strong> Binary classification of structured data including numerical and categorical features.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="structured-data-classification-i">
+<h1>Structured data classification I<a class="headerlink" href="#structured-data-classification-i" title="Permalink to this headline">¶</a></h1>
+<p><em>This tutorial is mainly based on the Keras tutorial <a class="reference external" href="https://keras.io/examples/structured_data/structured_data_classification_from_scratch/">“Structured data classification from scratch”</a> by François Chollet.</em></p>
 <p>This example demonstrates how to do structured data classification, starting from a raw
 CSV file. Our data includes both numerical and categorical features. We will use Keras
 preprocessing layers to normalize the numerical features and vectorize the categorical
@@ -1179,7 +1185,7 @@ then one-hot encode these integer indices.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/structured_data_classification_from_scratch_45_0.png" src="../_images/structured_data_classification_from_scratch_45_0.png" />
+<img alt="../_images/structured_data_classification_intro_45_0.png" src="../_images/structured_data_classification_intro_45_0.png" />
 </div>
 </div>
 </div>
@@ -1268,6 +1274,14 @@ of data, not single samples)</p></li>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>In this example, we used a lot of code to demonstrate the data preprocessing as simple as possible.</p></li>
+<li><p>If you want to learn more about how to reduce this code by using functions, take a look at the following example which uses the same data and model:</p></li>
+<li><p><img alt="" src="docs/structured_data_classification_functions.ipynb" /></p></li>
+</ul>
 </div>
 </div>
 
