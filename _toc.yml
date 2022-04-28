@@ -7,6 +7,12 @@ parts:
     - file: docs/tensorflow.md  
     - file: docs/tf-example.ipynb
     - file: docs/hugging-face.md 
+  - caption: Keras
+    chapters:
+    - file: docs/keras-sequential.md
+    - file: docs/keras-functional.md   
+    - file: docs/keras-preprocessing.md
+    - file: docs/keras-tuner.ipynb 
   - caption: Computer vision
     chapters:
     - file: docs/fashion-mnist.ipynb
@@ -18,18 +24,14 @@ parts:
     - file: docs/mnist-cnn.ipynb   
     - file: docs/mnist-tensorflow.ipynb
     - file: docs/mnist-pytorch.ipynb 
-  - caption: Regression
+ # - caption: Regression
+ #   chapters:
+ #   - file: docs/regression-structured.md
+  - caption: Structured data
     chapters:
-    - file: docs/regression-structured.md
-  - caption: Keras
-    chapters:
-    - file: docs/keras-sequential.md
-    - file: docs/keras-functional.md
     - file: docs/structured_data_classification_intro.ipynb
     - file: docs/structured_data_classification_functions.ipynb  
-    - file: docs/keras-preprocessing.md
     - file: docs/keras-imdb.ipynb
-    - file: docs/keras-tuner.ipynb
   - caption: References
     chapters:
     - file: docs/reference.md
