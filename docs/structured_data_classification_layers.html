@@ -1096,11 +1096,14 @@ A batch of targets: tf.Tensor([0 0 0 0 0], shape=(5,), dtype=int32)
 <h2>Feature preprocessing<a class="headerlink" href="#feature-preprocessing" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Next, we define utility functions to do the feature preprocessing operations.</p></li>
-<li><p>In this tutorial, you will use the following preprocessing layers to demonstrate how to perform preprocessing, structured data encoding, and feature engineering:</p></li>
+<li><p>In this tutorial, you will use the following preprocessing layers to demonstrate how to perform preprocessing, structured data encoding, and feature engineering:</p>
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Normalization</span></code>: Performs feature-wise normalization of input features.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tf.keras.layers.CategoryEncoding</span></code>: Turns integer categorical features into one-hot, multi-hot, or tf-idf dense representations.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tf.keras.layers.StringLookup</span></code>: Turns string categorical values into integer indices.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tf.keras.layers.IntegerLookup</span></code>: Turns integer categorical values into integer indices.</p></li>
+</ul>
+</li>
 </ul>
 <div class="section" id="numerical-preprocessing-function">
 <h3>Numerical preprocessing function<a class="headerlink" href="#numerical-preprocessing-function" title="Permalink to this headline">¶</a></h3>
@@ -1337,7 +1340,7 @@ array([-0.29864562, -1.0903649 ,  0.60617656, -1.4296733 , -0.86415946],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/structured_data_classification_layers_72_0.png" src="../_images/structured_data_classification_layers_72_0.png" />
+<img alt="../_images/structured_data_classification_layers_73_0.png" src="../_images/structured_data_classification_layers_73_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1351,7 +1354,7 @@ array([-0.29864562, -1.0903649 ,  0.60617656, -1.4296733 , -0.86415946],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/structured_data_classification_layers_74_0.png" src="../_images/structured_data_classification_layers_74_0.png" />
+<img alt="../_images/structured_data_classification_layers_75_0.png" src="../_images/structured_data_classification_layers_75_0.png" />
 </div>
 </div>
 </div>
