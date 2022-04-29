@@ -1,0 +1,973 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The StatQuest Introduction to PyTorch!!! &#8212; Deep Learning</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../deep-learning.html">
+   Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tensorflow.html">
+   TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tf-example.html">
+   TensorFlow Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../hugging-face.html">
+   Hugging Face
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Keras
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../keras-sequential.html">
+   Keras Sequential model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../keras-functional.html">
+   Keras Functional API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../keras-tuner.html">
+   KerasTuner
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fashion-mnist.html">
+   Classify images of clothing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fashion-mnist-exercises.html">
+   Model exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convolutional.html">
+   Convolutional
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cnn.html">
+   TF CNN
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CNN
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mnist-cnn.html">
+   CNN intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mnist-tensorflow.html">
+   MNIST with TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mnist-pytorch.html">
+   MNIST with PyTorch
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Structured data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../structured_data_classification_intro.html">
+   Structured data classification I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../structured_data_classification_functions.html">
+   Structured data classification II
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../keras-imdb.html">
+   IMDB Sentiment analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/statquest_introduction_to_pytorch/statquest_introduction_to_pytorch.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/kirenz/deep-learning"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/statquest_introduction_to_pytorch/statquest_introduction_to_pytorch.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/statquest_introduction_to_pytorch/statquest_introduction_to_pytorch.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   The StatQuest Introduction to PyTorch!!!
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sponsored-by">
+     Sponsored by…
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#note">
+       NOTE:
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#also-note">
+       ALSO NOTE:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-the-modules-that-will-do-all-the-work">
+   Import the modules that will do all the work
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-installed-python-3-with-anaconda">
+     If you installed
+     <strong>
+      Python 3
+     </strong>
+     with Anaconda…
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-need-to-install-pytorch">
+     If you need to install
+     <strong>
+      PyTorch
+     </strong>
+     …
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-need-to-install-seaborn">
+     If you need to install
+     <strong>
+      seaborn
+     </strong>
+     …
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-a-simple-neural-network-in-pytorch">
+   Build a Simple Neural Network in PyTorch
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bam">
+     BAM!!!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-the-neural-network-and-graph-the-output">
+   Use the Neural Network and Graph the Output
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#double-bam">
+   Double BAM!!!
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimize-train-a-parameter-in-the-neural-network-and-graph-the-output">
+   Optimize (Train) a Parameter in the Neural Network and Graph the Output
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#triple-bam">
+   Triple BAM!!!
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The StatQuest Introduction to PyTorch!!!</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   The StatQuest Introduction to PyTorch!!!
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sponsored-by">
+     Sponsored by…
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#note">
+       NOTE:
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#also-note">
+       ALSO NOTE:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-the-modules-that-will-do-all-the-work">
+   Import the modules that will do all the work
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-installed-python-3-with-anaconda">
+     If you installed
+     <strong>
+      Python 3
+     </strong>
+     with Anaconda…
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-need-to-install-pytorch">
+     If you need to install
+     <strong>
+      PyTorch
+     </strong>
+     …
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-need-to-install-seaborn">
+     If you need to install
+     <strong>
+      seaborn
+     </strong>
+     …
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-a-simple-neural-network-in-pytorch">
+   Build a Simple Neural Network in PyTorch
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bam">
+     BAM!!!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-the-neural-network-and-graph-the-output">
+   Use the Neural Network and Graph the Output
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#double-bam">
+   Double BAM!!!
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimize-train-a-parameter-in-the-neural-network-and-graph-the-output">
+   Optimize (Train) a Parameter in the Neural Network and Graph the Output
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#triple-bam">
+   Triple BAM!!!
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="the-statquest-introduction-to-pytorch">
+<h1>The StatQuest Introduction to PyTorch!!!<a class="headerlink" href="#the-statquest-introduction-to-pytorch" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sponsored-by">
+<h2>Sponsored by…<a class="headerlink" href="#sponsored-by" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.pytorchlightning.ai/"><img src="./images/PytorchLightningLogo@4x.png" alt="Lightning" style="width: 400px;"></a>
+     <img src="./images/VerticalRule@4x.png" style="height: 100px;">     
+<a class="reference external" href="https://www.grid.ai/"><img src="./images/Grid_Logo@4x.png" alt="Grid" style="width: 400px;"></a></p>
+<p>Copyright 2022, Joshua Starmer</p>
+<hr class="docutils" />
+<p><strong>NOTE:</strong> This tutorial is from StatQuest’s <strong><span class="xref myst">A Gentle Introduction to PyTorch</span></strong>.</p>
+<p>In this tutorial, we will use <strong><a class="reference external" href="https://pytorch.org/">PyTorch</a></strong> to create, draw the output from, and optimize the super simple <strong>neural network</strong> featured in  StatQuest’s <strong><a class="reference external" href="https://youtu.be/68BZ5f7P94E">Neural Networks Part 3: ReLU in Action!!!</a></strong> This simple neural network, seen below, predicts whether or not a drug dose will be effective.</p>
+<!-- <img src="./xgboost_tree.png" alt="An XGBoost Tree" style="width: 600px;"> -->
+<img src="./images/simple_relu.001.png" alt="A simple Neural Network" style="width: 1620px;">
+<p>The training data (below) that the neural network is fit to consist of three data points for three different drug doses. Low (<strong>0</strong>) and high (<strong>1</strong>) doses do not cure a disease, so their y-axis values are both <strong>0</strong>. However, when the dose is <strong>0.5</strong>, that dose can cure the disease, and the corresponding y-axis value is <strong>1</strong>.</p>
+<img src="./images/training_data_500x275.png" alt="A simple Neural Network" style="width: 250px;">
+<p>Below, we see the output of the neural network for different doses, and it fits the training data well!</p>
+<img src="./images/training_data_with_bent_shape_500x275.png" alt="A simple Neural Network" style="width: 250px;">
+<p>In this tutorial, you will…</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="#build">Build a Simple Neural Network in PyTorch</a></strong></p></li>
+<li><p><strong><a class="reference external" href="#using">Use the Neural Network and Graph the Output</a></strong></p></li>
+<li><p><strong><a class="reference external" href="#train">Optimize (Train) a Parameter in the Neural Network and Graph the Output</a></strong></p></li>
+</ul>
+<div class="section" id="note">
+<h3>NOTE:<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h3>
+<p>This tutorial assumes that you already know the basics of coding in <strong>Python</strong> and are familiar with the theory behind <strong><a class="reference external" href="https://youtu.be/CqOfi41LfDw">Neural Networks</a></strong>, <strong><a class="reference external" href="https://youtu.be/IN2XmBhILt4">Backpropagation</a></strong>, the <strong><a class="reference external" href="https://youtu.be/68BZ5f7P94E">ReLU Activation Function</a></strong>, <strong><a class="reference external" href="https://youtu.be/sDv4f4s2SB8">Gradient Descent</a></strong>, and <strong><a class="reference external" href="https://youtu.be/vMh0zPT0tLI">Stochastic Gradient Descent</a></strong>. If not, check out the <strong>‘Quests</strong> by clicking on the links for each topic.</p>
+</div>
+<div class="section" id="also-note">
+<h3>ALSO NOTE:<a class="headerlink" href="#also-note" title="Permalink to this headline">¶</a></h3>
+<p>I strongly encourage you to play around with the code. Playing with the code is the best way to learn from it.</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="import-the-modules-that-will-do-all-the-work">
+<h1>Import the modules that will do all the work<a class="headerlink" href="#import-the-modules-that-will-do-all-the-work" title="Permalink to this headline">¶</a></h1>
+<p>The very first thing we need to do is load a bunch of Python modules. Python itself is just a basic programming language. These modules give us extra functionality to create a neural network, use and graph the output for various input values, and optimize the neural network’s parameters.</p>
+<p><strong>NOTE:</strong> You will need <strong>Python 3</strong> and have at least these versions for each of the following modules:</p>
+<ul class="simple">
+<li><p>pytorch &gt;= 1.10.1</p></li>
+<li><p>matplotlib &gt;= 3.3.4</p></li>
+<li><p>seaborn &gt;= 0.11.0</p></li>
+</ul>
+<div class="section" id="if-you-installed-python-3-with-anaconda">
+<h2>If you installed <strong>Python 3</strong> with <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>…<a class="headerlink" href="#if-you-installed-python-3-with-anaconda" title="Permalink to this headline">¶</a></h2>
+<p>…then you can check which versions of each package you have with the command: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code>. If, for example, your version of <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is older than <strong>3.3.4</strong>, then the easiest thing to do is just update all of your Anaconda packages with the following command: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">update</span> <span class="pre">--all</span></code>. However, if you only want to update <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, then you can run this command: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">matplotlib=3.3.4</span></code>.</p>
+</div>
+<div class="section" id="if-you-need-to-install-pytorch">
+<h2>If you need to install <strong>PyTorch</strong>…<a class="headerlink" href="#if-you-need-to-install-pytorch" title="Permalink to this headline">¶</a></h2>
+<p>…then the easiest thing to do is follow the instructions on the <a class="reference external" href="https://pytorch.org/get-started/locally/">PyTorch website</a>.</p>
+</div>
+<div class="section" id="if-you-need-to-install-seaborn">
+<h2>If you need to install <strong>seaborn</strong>…<a class="headerlink" href="#if-you-need-to-install-seaborn" title="Permalink to this headline">¶</a></h2>
+<p>…then the easiest thing to do is follow the instructions on the <a class="reference external" href="https://seaborn.pydata.org/installing.html">seaborn website</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: Even though we use the PyTorch module, we import it with the name &#39;torch&#39;, which was the original name.</span>
+<span class="kn">import</span> <span class="nn">torch</span> <span class="c1"># torch provides basic functions, from setting a random seed (for reproducability) to creating tensors.</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span> <span class="c1"># torch.nn allows us to create a neural network.</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span> <span class="c1"># nn.functional give us access to the activation and loss functions.</span>
+<span class="kn">from</span> <span class="nn">torch.optim</span> <span class="kn">import</span> <span class="n">SGD</span> <span class="c1"># optim contains many optimizers. Here, we&#39;re using SGD, stochastic gradient descent.</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1">## matplotlib allows us to draw graphs.</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> <span class="c1">## seaborn makes it easier to draw nice-looking graphs.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id="build"></a></p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="build-a-simple-neural-network-in-pytorch">
+<h1>Build a Simple Neural Network in PyTorch<a class="headerlink" href="#build-a-simple-neural-network-in-pytorch" title="Permalink to this headline">¶</a></h1>
+<p>Building a neural network in <strong>PyTorch</strong> means creating a new class with two methods: <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> and <code class="docutils literal notranslate"><span class="pre">forward()</span></code>. The <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method defines and initializes all of the parameters that we want to use, and the <code class="docutils literal notranslate"><span class="pre">forward()</span></code> method tells <strong>PyTorch</strong> what should happen during a forward pass through the neural network.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## create a neural network class by creating a class that inherits from nn.Module.</span>
+<span class="k">class</span> <span class="nc">BasicNN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># __init__() is the class constructor function, and we use it to initialize the weights and biases.</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span> <span class="c1"># initialize an instance of the parent class, nn.Model.</span>
+        
+        <span class="c1">## Now create the weights and biases that we need for our neural network.</span>
+        <span class="c1">## Each weight or bias is an nn.Parameter, which gives us the option to optimize the parameter by setting</span>
+        <span class="c1">## requires_grad, which is short for &quot;requires gradient&quot;, to True. Since we don&#39;t need to optimize any of these</span>
+        <span class="c1">## parameters now, we set requires_grad=False.</span>
+        <span class="c1">##</span>
+        <span class="c1">## NOTE: Because our neural network is already fit to the data, we will input specific values</span>
+        <span class="c1">## for each weight and bias. In contrast, if we had not already fit the neural network to the data,</span>
+        <span class="c1">## we might start with a random initalization of the weights and biases.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w00</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.7</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b00</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="o">-</span><span class="mf">0.85</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w01</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="o">-</span><span class="mf">40.8</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">w10</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">12.6</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b10</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w11</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">2.7</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">final_bias</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="o">-</span><span class="mf">16.</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span> <span class="c1">## forward() takes an input value and runs it though the neural network </span>
+                              <span class="c1">## illustrated at the top of this notebook. </span>
+        
+        <span class="c1">## the next three lines implement the top of the neural network (using the top node in the hidden layer).</span>
+        <span class="n">input_to_top_relu</span> <span class="o">=</span> <span class="nb">input</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w00</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b00</span>
+        <span class="n">top_relu_output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">input_to_top_relu</span><span class="p">)</span>
+        <span class="n">scaled_top_relu_output</span> <span class="o">=</span> <span class="n">top_relu_output</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w01</span>
+        
+        <span class="c1">## the next three lines implement the bottom of the neural network (using the bottom node in the hidden layer).</span>
+        <span class="n">input_to_bottom_relu</span> <span class="o">=</span> <span class="nb">input</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w10</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b10</span>
+        <span class="n">bottom_relu_output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">input_to_bottom_relu</span><span class="p">)</span>
+        <span class="n">scaled_bottom_relu_output</span> <span class="o">=</span> <span class="n">bottom_relu_output</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w11</span>
+        
+        <span class="c1">## here, we combine both the top and bottom nodes from the hidden layer with the final bias.</span>
+        <span class="n">input_to_final_relu</span> <span class="o">=</span> <span class="n">scaled_top_relu_output</span> <span class="o">+</span> <span class="n">scaled_bottom_relu_output</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">final_bias</span>
+        
+        <span class="n">output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">input_to_final_relu</span><span class="p">)</span>
+    
+        <span class="k">return</span> <span class="n">output</span> <span class="c1"># output is the predicted effectiveness for a drug dose.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once we have created the class that defines the neural network, we can create an actual neural network and print out its parameters, just to make sure things are what we expect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## create the neural network. </span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BasicNN</span><span class="p">()</span>
+
+<span class="c1">## print out the name and value for each parameter</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bam">
+<h2>BAM!!!<a class="headerlink" href="#bam" title="Permalink to this headline">¶</a></h2>
+<p>The values for each weight and bias in <code class="docutils literal notranslate"><span class="pre">BasicNN</span></code> match the values we see in the optimized neural network (below).
+<img src="./images/simple_relu.001.png" alt="A simple Neural Network" style="width: 810px;"></p>
+<hr class="docutils" />
+<p><a id="using"></a></p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="use-the-neural-network-and-graph-the-output">
+<h1>Use the Neural Network and Graph the Output<a class="headerlink" href="#use-the-neural-network-and-graph-the-output" title="Permalink to this headline">¶</a></h1>
+<p>Now that we have a neural network, we can use it on a variety of doses to determine which will be effective. Then we can make a graph of these data, and this graph should match the green bent shape fit to the training data that’s shown at the top of this document. So, let’s start by making a sequence of input doses…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## now create the different doses we want to run through the neural network.</span>
+<span class="c1">## torch.linspace() creates the sequence of numbers between, and including, 0 and 1.</span>
+<span class="n">input_doses</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+
+<span class="c1"># now print out the doses to make sure they are what we expect...</span>
+<span class="n">input_doses</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have <code class="docutils literal notranslate"><span class="pre">input_doses</span></code>, let’s run them through the neural network and graph the output…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## create the neural network. </span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BasicNN</span><span class="p">()</span> 
+
+<span class="c1">## now run the different doses through the neural network.</span>
+<span class="n">output_values</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_doses</span><span class="p">)</span>
+
+<span class="c1">## Now draw a graph that shows the effectiveness for each dose.</span>
+<span class="c1">##</span>
+<span class="c1">## First, set the style for seaborn so that the graph looks cool.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+<span class="c1">## create the graph (you might not see it at this point, but you will after we save it as a PDF).</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">input_doses</span><span class="p">,</span> 
+             <span class="n">y</span><span class="o">=</span><span class="n">output_values</span><span class="p">,</span> 
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> 
+             <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+
+<span class="c1">## now label the y- and x-axes.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Effectiveness&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Dose&#39;</span><span class="p">)</span>
+
+<span class="c1">## optionally, save the graph as a PDF.</span>
+<span class="c1"># plt.savefig(&#39;BasicNN.pdf&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The graph shows that the neural network fits the training data. In other words, so far, we don’t have any bugs in our code.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="double-bam">
+<h1>Double BAM!!!<a class="headerlink" href="#double-bam" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p><a id="train"></a></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="optimize-train-a-parameter-in-the-neural-network-and-graph-the-output">
+<h1>Optimize (Train) a Parameter in the Neural Network and Graph the Output<a class="headerlink" href="#optimize-train-a-parameter-in-the-neural-network-and-graph-the-output" title="Permalink to this headline">¶</a></h1>
+<p>Now that we know how to create and use a simple neural network, and we can graph the output relative to the input, let’s see how to train a neural network. The first thing we need to do is tell <strong>PyTorch</strong> which parameter (or parameters) we want to train, and we do that by setting <code class="docutils literal notranslate"><span class="pre">requires_grad=True</span></code>. In this example, we’ll train <code class="docutils literal notranslate"><span class="pre">final_bias</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## create a neural network by creating a class that inherits from nn.Module.</span>
+<span class="c1">## NOTE: This code is the same as before, except we changed the class name to BasicNN_train and we modified </span>
+<span class="c1">##       final_bias in two ways:</span>
+<span class="c1">##       1) we set the value of the tensor to 0, and</span>
+<span class="c1">##       2) we set &quot;requires_grad=True&quot;.</span>
+<span class="k">class</span> <span class="nc">BasicNN_train</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># __init__ is the class constructor function, and we use it to initialize the weights and biases.</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span> <span class="c1"># initialize an instance of the parent class, nn.Module.</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">w00</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.7</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b00</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="o">-</span><span class="mf">0.85</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w01</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="o">-</span><span class="mf">40.8</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">w10</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">12.6</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b10</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w11</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">2.7</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1">## we want to modify final_bias to demonstrate how to optimize it with backpropagation.</span>
+        <span class="c1">## The optimal value for final_bias is -16...</span>
+<span class="c1">#         self.final_bias = nn.Parameter(torch.tensor(-16.), requires_grad=False)</span>
+        <span class="c1">## ...so we set it to 0 and tell Pytorch that it now needs to calculate the gradient for this parameter.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">final_bias</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        
+        <span class="n">input_to_top_relu</span> <span class="o">=</span> <span class="nb">input</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w00</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b00</span>
+        <span class="n">top_relu_output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">input_to_top_relu</span><span class="p">)</span>
+        <span class="n">scaled_top_relu_output</span> <span class="o">=</span> <span class="n">top_relu_output</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w01</span>
+        
+        <span class="n">input_to_bottom_relu</span> <span class="o">=</span> <span class="nb">input</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w10</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b10</span>
+        <span class="n">bottom_relu_output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">input_to_bottom_relu</span><span class="p">)</span>
+        <span class="n">scaled_bottom_relu_output</span> <span class="o">=</span> <span class="n">bottom_relu_output</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">w11</span>
+    
+        <span class="n">input_to_final_relu</span> <span class="o">=</span> <span class="n">scaled_top_relu_output</span> <span class="o">+</span> <span class="n">scaled_bottom_relu_output</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">final_bias</span>
+        
+        <span class="n">output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">input_to_final_relu</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s graph the output of <code class="docutils literal notranslate"><span class="pre">BasicNN_train</span></code>, which is currently not optimized, and compare it to the graph we drew earlier of the optimized neural network.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## create the neural network. </span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BasicNN_train</span><span class="p">()</span> 
+
+<span class="c1">## now run the different doses through the neural network.</span>
+<span class="n">output_values</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_doses</span><span class="p">)</span>
+
+<span class="c1">## Now draw a graph that shows the effectiveness for each dose.</span>
+<span class="c1">##</span>
+<span class="c1">## set the style for seaborn so that the graph looks cool.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+<span class="c1">## create the graph (you might not see it at this point, but you will after we save it as a PDF).</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">input_doses</span><span class="p">,</span> 
+             <span class="n">y</span><span class="o">=</span><span class="n">output_values</span><span class="o">.</span><span class="n">detach</span><span class="p">(),</span> <span class="c1">## NOTE: because final_bias has a gradident, we call detach() </span>
+                                       <span class="c1">## to return a new tensor that only has the value and not the gradient.</span>
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> 
+             <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+
+<span class="c1">## now label the y- and x-axes.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Effectiveness&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Dose&#39;</span><span class="p">)</span>
+
+<span class="c1">## lastly, save the graph as a PDF.</span>
+<span class="c1"># plt.savefig(&#39;BasicNN_train.pdf&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The graph shows that when the dose is <strong>0.5</strong>, the output from the unoptimized neural network is <strong>17</strong>, which is wrong, since the output value should be <strong>1</strong>. So, now that we have a parameter we can optimize, let’s create some training data that we can use to optimize it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## create the training data for the neural network.</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>…and now let’s use that training data to train (or optimize) <code class="docutils literal notranslate"><span class="pre">final_bias</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## create the neural network we want to train.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BasicNN_train</span><span class="p">()</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1">## here we&#39;re creating an optimizer to train the neural network.</span>
+                                            <span class="c1">## NOTE: There are a bunch of different ways to optimize a neural network.</span>
+                                            <span class="c1">## In this example, we&#39;ll use Stochastic Gradient Descent (SGD). However,</span>
+                                            <span class="c1">## another popular algortihm is Adam (which will be covered in a StatQuest).</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final bias, before optimization: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">final_bias</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">## this is the optimization loop. Each time the optimizer sees all of the training data is called an &quot;epoch&quot;.</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        
+    <span class="c1">## we create and initialize total_loss for each epoch so that we can evaluate how well model fits the</span>
+    <span class="c1">## training data. At first, when the model doesn&#39;t fit the training data very well, total_loss</span>
+    <span class="c1">## will be large. However, as gradient descent improves the fit, total_loss will get smaller and smaller.</span>
+    <span class="c1">## If total_loss gets really small, we can decide that the model fits the data well enough and stop</span>
+    <span class="c1">## optimizing the fit. Otherwise, we can just keep optimizing until we reach the maximum number of epochs. </span>
+    <span class="n">total_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1">## this internal loop is where the optimizer sees all of the training data and where we </span>
+    <span class="c1">## calculate the total_loss for all of the training data.</span>
+    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
+        
+        <span class="n">input_i</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="n">iteration</span><span class="p">]</span> <span class="c1">## extract a single input value (a single dose)...</span>
+        <span class="n">label_i</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">iteration</span><span class="p">]</span> <span class="c1">## ...and its corresponding label (the effectiveness for the dose).</span>
+        
+        <span class="n">output_i</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_i</span><span class="p">)</span> <span class="c1">## calculate the neural network output for the input (the single dose).</span>
+        
+        <span class="n">loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">output_i</span> <span class="o">-</span> <span class="n">label_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="c1">## calculate the loss for the single value.</span>
+                                       <span class="c1">## NOTE: Because output_i = model(input_i), &quot;loss&quot; has a connection to &quot;model&quot;</span>
+                                       <span class="c1">## and the derivative (calculated in the next step) is kept and accumulated</span>
+                                       <span class="c1">## in &quot;model&quot;.</span>
+        
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span> <span class="c1"># backward() calculates the derivative for that single value and adds it to the previous one.</span>
+        
+        <span class="n">total_loss</span> <span class="o">+=</span> <span class="nb">float</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span> <span class="c1"># accumulate the total loss for this epoch.</span>
+        
+        
+    <span class="k">if</span> <span class="p">(</span><span class="n">total_loss</span> <span class="o">&lt;</span> <span class="mf">0.0001</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Num steps: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">epoch</span><span class="p">))</span>
+        <span class="k">break</span>
+      
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> <span class="c1">## take a step toward the optimal value.</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> <span class="c1">## This zeroes out the gradient stored in &quot;model&quot;. </span>
+                          <span class="c1">## Remember, by default, gradients are added to the previous step (the gradients are accumulated),</span>
+                          <span class="c1">## and we took advantage of this process to calculate the derivative one data point at a time.</span>
+                          <span class="c1">## NOTE: &quot;optimizer&quot; has access to &quot;model&quot; because of how it was created with the call </span>
+                          <span class="c1">## (made earlier): optimizer = SGD(model.parameters(), lr=0.1).</span>
+                          <span class="c1">## ALSO NOTE: Alternatively, we can zero out the gradient with model.zero_grad().</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Step: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Final Bias: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">final_bias</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1">## now go back to the start of the loop and go through another epoch.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total loss: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total_loss</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final bias, after optimization: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">final_bias</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, if everything worked correctly, the optimizer should have converged on <code class="docutils literal notranslate"><span class="pre">final_bias</span> <span class="pre">=</span> <span class="pre">16.0019</span></code> after <strong>34</strong> steps, or epochs. <strong>BAM!</strong></p>
+<p>Lastly, let’s graph the output from the optimized neural network and see if it’s the same as what we started with. If so, then the optimization worked.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## run the different doses through the neural network</span>
+<span class="n">output_values</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_doses</span><span class="p">)</span>
+
+<span class="c1">## set the style for seaborn so that the graph looks cool.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+<span class="c1">## create the graph (you might not see it at this point, but you will after we save it as a PDF).</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">input_doses</span><span class="p">,</span> 
+             <span class="n">y</span><span class="o">=</span><span class="n">output_values</span><span class="o">.</span><span class="n">detach</span><span class="p">(),</span> <span class="c1">## NOTE: we call detach() because final_bias has a gradient</span>
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> 
+             <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+
+<span class="c1">## now label the y- and x-axes.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Effectiveness&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Dose&#39;</span><span class="p">)</span>
+
+<span class="c1">## lastly, save the graph as a PDF.</span>
+<span class="c1"># plt.savefig(&#39;BascNN_optimized.pdf&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we see that the optimized model results in the same graph that we started with, so the optimization worked as expected.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="triple-bam">
+<h1>Triple BAM!!!<a class="headerlink" href="#triple-bam" title="Permalink to this headline">¶</a></h1>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/statquest_introduction_to_pytorch"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jan Kirenz<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
