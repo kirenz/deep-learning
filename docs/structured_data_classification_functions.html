@@ -1354,11 +1354,11 @@ Accuracy 0.8
 </div>
 </div>
 <ul class="simple">
-<li><p>To get a prediction for a new sample, you can simply call the Keras Model.predict method.</p></li>
+<li><p>To get a prediction for a new sample, you can simply call the Keras <code class="docutils literal notranslate"><span class="pre">Model.predict</span></code> method.</p></li>
 <li><p>There are just two things you need to do:</p>
 <ul>
 <li><p>Wrap scalars into a list so as to have a batch dimension (Models only process batches of data, not single samples).</p></li>
-<li><p>Call tf.convert_to_tensor on each feature.</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">tf.convert_to_tensor</span></code> on each feature.</p></li>
 </ul>
 </li>
 </ul>
@@ -1379,12 +1379,27 @@ Accuracy 0.8
     <span class="s2">&quot;ca&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="s2">&quot;thal&quot;</span><span class="p">:</span> <span class="s2">&quot;fixed&quot;</span><span class="p">,</span>
 <span class="p">}</span>
-
-<span class="n">input_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">([</span><span class="n">value</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-
-<span class="n">predictions</span> <span class="o">=</span> <span class="n">reloaded_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">([</span><span class="n">value</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">reloaded_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
     <span class="s2">&quot;This particular patient had a </span><span class="si">%.1f</span><span class="s2"> percent probability &quot;</span>
     <span class="s2">&quot;of having a heart disease, as evaluated by our model.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],)</span>
 <span class="p">)</span>
@@ -1392,7 +1407,7 @@ Accuracy 0.8
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This particular patient had a 45.2 percent probability of having a heart disease, as evaluated by our model.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This particular patient had a 36.3 percent probability of having a heart disease, as evaluated by our model.
 </pre></div>
 </div>
 </div>
