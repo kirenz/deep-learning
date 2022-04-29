@@ -874,8 +874,13 @@ memory usage: 33.3+ KB
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_val</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1337</span><span class="p">)</span>
 
 <span class="n">df_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df_val</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
     <span class="s2">&quot;Using </span><span class="si">%d</span><span class="s2"> samples for training and </span><span class="si">%d</span><span class="s2"> for validation&quot;</span>
     <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_val</span><span class="p">))</span>
 <span class="p">)</span>
@@ -1086,8 +1091,7 @@ A batch of targets: tf.Tensor([0 0 1 1 0], shape=(5,), dtype=int64)
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>As a rule of thumb: Larger category spaces might do better with an embedding;
-smaller spaces can use one-hot encoding</p>
+<p>As a rule of thumb: Larger category spaces might do better with an embedding; smaller spaces can use one-hot encoding</p>
 </div>
 <ul class="simple">
 <li><p>We will encode these features using <strong>one-hot encoding</strong>. We have two options
@@ -1130,7 +1134,7 @@ at inference, so we will use <code class="docutils literal notranslate"><span cl
 <div class="section" id="numerical-preprocessing-functions">
 <h3>Numerical preprocessing functions<a class="headerlink" href="#numerical-preprocessing-functions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Below, we define a utility function to do the feature preprocessing operations</p></li>
+<li><p>Next, we define a utility function to do the feature preprocessing operations</p></li>
 <li><p>We create the function <code class="docutils literal notranslate"><span class="pre">encode_numerical_feature</span></code> to apply featurewise normalization to numerical features.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1259,11 +1263,21 @@ at inference, so we will use <code class="docutils literal notranslate"><span cl
 <span class="n">restecg_encoded</span> <span class="o">=</span> <span class="n">encode_categorical_feature</span><span class="p">(</span><span class="n">restecg</span><span class="p">,</span> <span class="s2">&quot;restecg&quot;</span><span class="p">,</span> <span class="n">ds_train</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 <span class="n">exang_encoded</span> <span class="o">=</span> <span class="n">encode_categorical_feature</span><span class="p">(</span><span class="n">exang</span><span class="p">,</span> <span class="s2">&quot;exang&quot;</span><span class="p">,</span> <span class="n">ds_train</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 <span class="n">ca_encoded</span> <span class="o">=</span> <span class="n">encode_categorical_feature</span><span class="p">(</span><span class="n">ca</span><span class="p">,</span> <span class="s2">&quot;ca&quot;</span><span class="p">,</span> <span class="n">ds_train</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-
-<span class="c1"># String categorical features</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># String categorical features</span>
 <span class="n">thal_encoded</span> <span class="o">=</span> <span class="n">encode_categorical_feature</span><span class="p">(</span><span class="n">thal</span><span class="p">,</span> <span class="s2">&quot;thal&quot;</span><span class="p">,</span> <span class="n">ds_train</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Numerical features</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Numerical features</span>
 <span class="n">age_encoded</span> <span class="o">=</span> <span class="n">encode_numerical_feature</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="n">ds_train</span><span class="p">)</span>
 <span class="n">trestbps_encoded</span> <span class="o">=</span> <span class="n">encode_numerical_feature</span><span class="p">(</span><span class="n">trestbps</span><span class="p">,</span> <span class="s2">&quot;trestbps&quot;</span><span class="p">,</span> <span class="n">ds_train</span><span class="p">)</span>
 <span class="n">chol_encoded</span> <span class="o">=</span> <span class="n">encode_numerical_feature</span><span class="p">(</span><span class="n">chol</span><span class="p">,</span> <span class="s2">&quot;chol&quot;</span><span class="p">,</span> <span class="n">ds_train</span><span class="p">)</span>
@@ -1381,7 +1395,7 @@ at inference, so we will use <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/structured_data_classification_intro_76_0.png" src="../_images/structured_data_classification_intro_76_0.png" />
+<img alt="../_images/structured_data_classification_intro_81_0.png" src="../_images/structured_data_classification_intro_81_0.png" />
 </div>
 </div>
 </div>
