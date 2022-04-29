@@ -1025,8 +1025,8 @@ tf.Tensor(3, shape=(), dtype=int32)
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Every feature: [&#39;age&#39;, &#39;sex&#39;, &#39;cp&#39;, &#39;trestbps&#39;, &#39;chol&#39;, &#39;fbs&#39;, &#39;restecg&#39;, &#39;thalach&#39;, &#39;exang&#39;, &#39;oldpeak&#39;, &#39;slope&#39;, &#39;ca&#39;, &#39;thal&#39;]
-A batch of ages: tf.Tensor([55 66 34 58 54], shape=(5,), dtype=int64)
-A batch of targets: tf.Tensor([0 0 0 0 0], shape=(5,), dtype=int64)
+A batch of ages: tf.Tensor([54 63 65 54 35], shape=(5,), dtype=int64)
+A batch of targets: tf.Tensor([0 0 1 1 0], shape=(5,), dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1376,7 +1376,7 @@ at inference, so we will use <code class="docutils literal notranslate"><span cl
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `rankdir=&#39;LR&#39;` is to make the graph horizontal.</span>
-<span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rankdir</span><span class="o">=</span><span class="s2">&quot;LR&quot;</span><span class="p">)</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rankdir</span><span class="o">=</span><span class="s2">&quot;LR&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1400,28 +1400,28 @@ at inference, so we will use <code class="docutils literal notranslate"><span cl
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-8/8 [==============================] - 1s 32ms/step - loss: 0.4971 - accuracy: 0.7521 - val_loss: 0.4810 - val_accuracy: 0.7377
+8/8 [==============================] - 1s 29ms/step - loss: 0.7005 - accuracy: 0.6033 - val_loss: 0.6359 - val_accuracy: 0.7213
 Epoch 2/10
-8/8 [==============================] - 0s 3ms/step - loss: 0.4806 - accuracy: 0.7645 - val_loss: 0.4564 - val_accuracy: 0.7705
+8/8 [==============================] - 0s 3ms/step - loss: 0.6558 - accuracy: 0.6777 - val_loss: 0.6018 - val_accuracy: 0.7541
 Epoch 3/10
-8/8 [==============================] - 0s 3ms/step - loss: 0.4821 - accuracy: 0.7521 - val_loss: 0.4365 - val_accuracy: 0.7705
+8/8 [==============================] - 0s 3ms/step - loss: 0.6192 - accuracy: 0.6860 - val_loss: 0.5747 - val_accuracy: 0.7705
 Epoch 4/10
-8/8 [==============================] - 0s 3ms/step - loss: 0.4488 - accuracy: 0.7934 - val_loss: 0.4214 - val_accuracy: 0.7705
+8/8 [==============================] - 0s 3ms/step - loss: 0.5884 - accuracy: 0.6942 - val_loss: 0.5516 - val_accuracy: 0.7705
 Epoch 5/10
-8/8 [==============================] - 0s 3ms/step - loss: 0.4363 - accuracy: 0.7934 - val_loss: 0.4097 - val_accuracy: 0.7869
+8/8 [==============================] - 0s 4ms/step - loss: 0.5947 - accuracy: 0.7397 - val_loss: 0.5297 - val_accuracy: 0.7705
 Epoch 6/10
-8/8 [==============================] - 0s 3ms/step - loss: 0.4306 - accuracy: 0.7686 - val_loss: 0.4014 - val_accuracy: 0.7869
+8/8 [==============================] - 0s 3ms/step - loss: 0.5420 - accuracy: 0.7397 - val_loss: 0.5115 - val_accuracy: 0.7705
 Epoch 7/10
-8/8 [==============================] - 0s 3ms/step - loss: 0.4020 - accuracy: 0.8264 - val_loss: 0.3956 - val_accuracy: 0.8033
+8/8 [==============================] - 0s 3ms/step - loss: 0.5193 - accuracy: 0.7603 - val_loss: 0.4953 - val_accuracy: 0.7869
 Epoch 8/10
-8/8 [==============================] - 0s 3ms/step - loss: 0.3993 - accuracy: 0.8058 - val_loss: 0.3913 - val_accuracy: 0.8033
+8/8 [==============================] - 0s 3ms/step - loss: 0.5153 - accuracy: 0.7397 - val_loss: 0.4811 - val_accuracy: 0.7869
 Epoch 9/10
-8/8 [==============================] - 0s 3ms/step - loss: 0.4119 - accuracy: 0.7934 - val_loss: 0.3874 - val_accuracy: 0.8033
+8/8 [==============================] - 0s 3ms/step - loss: 0.4999 - accuracy: 0.7397 - val_loss: 0.4670 - val_accuracy: 0.7541
 Epoch 10/10
-8/8 [==============================] - 0s 3ms/step - loss: 0.3961 - accuracy: 0.7769 - val_loss: 0.3843 - val_accuracy: 0.8197
+8/8 [==============================] - 0s 3ms/step - loss: 0.4858 - accuracy: 0.7645 - val_loss: 0.4546 - val_accuracy: 0.7705
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fd1b92394c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fd1ab66a190&gt;
 </pre></div>
 </div>
 </div>
@@ -1438,7 +1438,7 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy 0.82
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy 0.77
 </pre></div>
 </div>
 </div>
@@ -1500,7 +1500,7 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This particular patient had a 39.6 percent probability of having a heart disease, as evaluated by our model.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This particular patient had a 42.2 percent probability of having a heart disease, as evaluated by our model.
 </pre></div>
 </div>
 </div>
