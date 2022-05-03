@@ -7,7 +7,7 @@
 
 ```{admonition} Installation tutorial
 :class: tip
-- [Installation of TFX](https://kirenz.github.io/codelabs/codelabs/tf-install/#0)
+- [Installation of TensorFlow 2](https://kirenz.github.io/codelabs/codelabs/tf-install/#0)
 ```
 
 ## Keras
