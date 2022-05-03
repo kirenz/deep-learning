@@ -6,9 +6,7 @@ We'll mainly use TensorFlow 2, which is an end-to-end open source platform for m
 
 ![](https://blog.keras.io/img/keras-tensorflow-logo.jpg)
 
-Keras is an approachable, highly-productive interface for solving machine learning problems, with a focus on modern deep learning.
-
-
+Keras is an approachable, highly-productive interface for solving machine learning problems, with a focus on modern deep learning. It is used by CERN (e.g., at the [LHC](https://blog.tensorflow.org/2021/04/reconstructing-thousands-of-particles-in-one-go-at-cern-lhc.html)), NASA and many more scientific organizations around the world. Furthermore, it is the most used deep learning framework among top-5 winning teams on [Kaggle](https://www.kaggle.com). 
 
 ---
 
