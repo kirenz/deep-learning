@@ -2,19 +2,19 @@
 
 ## Installation
 
-[TensorFlow](https://www.tensorflow.org) is an open source platform for machine learning provided by Google. In this course, we will use TensorFlow 2 in combination with [TensorFlow Extended (TFX)](https://www.tensorflow.org/tfx) -which is an end-to-end platform for deploying production ML pipelines- to build deep neural networks. 
+[TensorFlow](https://www.tensorflow.org) is an open source platform for machine learning provided by Google. 
 
 
 ```{admonition} Installation tutorial
 :class: tip
-- [Installation of TFX](https://kirenz.github.io/codelabs/codelabs/tfx-install/#0)
+- [Installation of TFX](https://kirenz.github.io/codelabs/codelabs/tf-install/#0)
 ```
 
 ## Keras
 
-Built on top of TensorFlow 2, [Keras](https://keras.io) is an industry-strength framework that can scale to large clusters of GPUs or an entire TPU pod. It is a central part of the tightly-connected TensorFlow 2 ecosystem, covering every step of the machine learning workflow, from data management to hyperparameter training to deployment solutions.
+Built on top of TensorFlow 2, [Keras](https://keras.io) is a central part of the tightly-connected TensorFlow 2 ecosystem, covering every step of the machine learning workflow, from data management to hyperparameter training to deployment solutions.
 
-Keras is used by CERN (and yes, Keras is used at the [LHC](https://blog.tensorflow.org/2021/04/reconstructing-thousands-of-particles-in-one-go-at-cern-lhc.html)), NASA and many more scientific organizations around the world. Furthermore, it is the most used deep learning framework among top-5 winning teams on [Kaggle](https://www.kaggle.com). 
+Keras is used by CERN (e.g., at the [LHC](https://blog.tensorflow.org/2021/04/reconstructing-thousands-of-particles-in-one-go-at-cern-lhc.html)), NASA and many more scientific organizations around the world. Furthermore, it is the most used deep learning framework among top-5 winning teams on [Kaggle](https://www.kaggle.com). 
 
 Note that Keras offers many [code examples](https://keras.io/examples/) with short (less than 300 lines of code), focused demonstrations of deep learning workflows. All of the examples are written as Jupyter notebooks and can be run in one click in Google Colab.
 
