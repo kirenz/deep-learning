@@ -2,6 +2,13 @@
 
 In this book we'll cover the basics of deep learning. 
 
+We'll mainly use TensorFlow 2, which is an end-to-end open source platform for machine learning. It has a comprehensive, flexible ecosystem of tools, libraries and can be used with Keras, a high-level API of TensorFlow 2.
+
+![](https://blog.keras.io/img/keras-tensorflow-logo.jpg)
+
+Keras is an approachable, highly-productive interface for solving machine learning problems, with a focus on modern deep learning.
+
+
 
 ---
 
