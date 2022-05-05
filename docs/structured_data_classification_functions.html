@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Setup &#8212; Deep Learning</title>
+    <title>Classification II &#8212; Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="IMDB Sentiment analysis" href="keras-imdb.html" />
-    <link rel="prev" title="Structured data classification I" href="structured_data_classification_intro.html" />
+    <link rel="prev" title="Classification I" href="structured_data_classification_intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -205,12 +205,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="structured_data_classification_intro.html">
-   Structured data classification I
+   Classification I
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Setup
+   Classification II
   </a>
  </li>
  <li class="toctree-l1">
@@ -333,69 +333,69 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
    Setup
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data">
    Data
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-import">
      Data import
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#define-label">
      Define label
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-format">
      Data format
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-splitting">
      Data splitting
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#transform-to-tensors">
      Transform to Tensors
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-preprocessing">
    Feature preprocessing
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#numerical-preprocessing-function">
      Numerical preprocessing function
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#categorical-preprocessing-functions">
      Categorical preprocessing functions
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-preprocessing">
      Data preprocessing
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#numerical-preprocessing">
        Numerical preprocessing
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#categorical-preprocessing">
        Categorical preprocessing
       </a>
@@ -404,22 +404,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model">
    Model
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training">
    Training
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#perform-inference">
    Perform inference
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#next-steps">
    Next steps
   </a>
@@ -434,7 +434,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Setup</h1>
+                <h1>Classification II</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -444,69 +444,69 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
    Setup
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data">
    Data
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-import">
      Data import
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#define-label">
      Define label
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-format">
      Data format
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-splitting">
      Data splitting
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#transform-to-tensors">
      Transform to Tensors
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-preprocessing">
    Feature preprocessing
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#numerical-preprocessing-function">
      Numerical preprocessing function
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#categorical-preprocessing-functions">
      Categorical preprocessing functions
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-preprocessing">
      Data preprocessing
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#numerical-preprocessing">
        Numerical preprocessing
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#categorical-preprocessing">
        Categorical preprocessing
       </a>
@@ -515,22 +515,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model">
    Model
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training">
    Training
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#perform-inference">
    Perform inference
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#next-steps">
    Next steps
   </a>
@@ -544,13 +544,15 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <p><em>This tutorial is mainly based on the Keras tutorial <a class="reference external" href="https://keras.io/examples/structured_data/structured_data_classification_from_scratch/">“Structured data classification from scratch”</a> by François Chollet and <a class="reference external" href="https://www.tensorflow.org/tutorials/structured_data/preprocessing_layers">“Classify structured data using Keras preprocessing layers”</a> by TensorFlow.</em></p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="classification-ii">
+<h1>Classification II<a class="headerlink" href="#classification-ii" title="Permalink to this headline">¶</a></h1>
+<p><em>This tutorial is mainly based on the Keras tutorial <a class="reference external" href="https://keras.io/examples/structured_data/structured_data_classification_from_scratch/">“Structured data classification from scratch”</a> by François Chollet and <a class="reference external" href="https://www.tensorflow.org/tutorials/structured_data/preprocessing_layers">“Classify structured data using Keras preprocessing layers”</a> by TensorFlow.</em></p>
 <ul class="simple">
 <li><p>This tutorial demonstrates how to do structured binary classification with Keras, starting from a raw CSV file.</p></li>
-<li><p>This example is an advanced version of <a class="reference internal" href="structured_data_classification_intro.html"><span class="doc std std-doc">Structured data classification I</span></a> since we will use more functions and less code.</p></li>
+<li><p>This example is an advanced version of <a class="reference internal" href="structured_data_classification_intro.html"><span class="doc std std-doc">Classification I</span></a> since we will use more functions and less code.</p></li>
 </ul>
 <div class="section" id="setup">
-<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -571,7 +573,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="data">
-<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>We use the features below to predict whether a patient has a heart disease (<code class="docutils literal notranslate"><span class="pre">Target</span></code>).</p></li>
 </ul>
@@ -642,7 +644,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <div class="section" id="data-import">
-<h2>Data import<a class="headerlink" href="#data-import" title="Permalink to this headline">¶</a></h2>
+<h3>Data import<a class="headerlink" href="#data-import" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Let’s download the data and load it into a Pandas dataframe:</p></li>
 </ul>
@@ -819,7 +821,7 @@ memory usage: 33.3+ KB
 </div>
 </div>
 <div class="section" id="define-label">
-<h2>Define label<a class="headerlink" href="#define-label" title="Permalink to this headline">¶</a></h2>
+<h3>Define label<a class="headerlink" href="#define-label" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Define outcome variable as <code class="docutils literal notranslate"><span class="pre">y_label</span></code></p></li>
 </ul>
@@ -832,7 +834,7 @@ memory usage: 33.3+ KB
 </div>
 </div>
 <div class="section" id="data-format">
-<h2>Data format<a class="headerlink" href="#data-format" title="Permalink to this headline">¶</a></h2>
+<h3>Data format<a class="headerlink" href="#data-format" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>First, we make some changes to our data</p></li>
 </ul>
@@ -983,7 +985,7 @@ memory usage: 13.5 KB
 </div>
 </div>
 <div class="section" id="data-splitting">
-<h2>Data splitting<a class="headerlink" href="#data-splitting" title="Permalink to this headline">¶</a></h2>
+<h3>Data splitting<a class="headerlink" href="#data-splitting" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Let’s split the data into a training and validation set</p></li>
 </ul>
@@ -1015,7 +1017,7 @@ memory usage: 13.5 KB
 </div>
 </div>
 <div class="section" id="transform-to-tensors">
-<h2>Transform to Tensors<a class="headerlink" href="#transform-to-tensors" title="Permalink to this headline">¶</a></h2>
+<h3>Transform to Tensors<a class="headerlink" href="#transform-to-tensors" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Let’s generate <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/data/Dataset"><code class="docutils literal notranslate"><span class="pre">tf.data.Dataset</span></code></a> objects for our training and validation dataframes</p></li>
 <li><p>The following utility function converts each training and validation set into a tf.data.Dataset, then shuffles and batches the data.</p></li>
@@ -1059,7 +1061,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 <div class="section" id="feature-preprocessing">
-<h1>Feature preprocessing<a class="headerlink" href="#feature-preprocessing" title="Permalink to this headline">¶</a></h1>
+<h2>Feature preprocessing<a class="headerlink" href="#feature-preprocessing" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Next, we define utility functions to do the feature preprocessing operations.</p></li>
 <li><p>In this tutorial, you will use the following preprocessing layers to demonstrate how to perform preprocessing, structured data encoding, and feature engineering:</p>
@@ -1072,7 +1074,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </li>
 </ul>
 <div class="section" id="numerical-preprocessing-function">
-<h2>Numerical preprocessing function<a class="headerlink" href="#numerical-preprocessing-function" title="Permalink to this headline">¶</a></h2>
+<h3>Numerical preprocessing function<a class="headerlink" href="#numerical-preprocessing-function" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Define a new utility function that returns a layer which applies feature-wise normalization to numerical features using that Keras preprocessing layer:</p></li>
 </ul>
@@ -1098,7 +1100,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 <div class="section" id="categorical-preprocessing-functions">
-<h2>Categorical preprocessing functions<a class="headerlink" href="#categorical-preprocessing-functions" title="Permalink to this headline">¶</a></h2>
+<h3>Categorical preprocessing functions<a class="headerlink" href="#categorical-preprocessing-functions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Define another new utility function that returns a layer which maps values from a vocabulary to integer indices and multi-hot encodes the features using the preprocessing layers:</p>
 <ul>
@@ -1140,7 +1142,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 <div class="section" id="data-preprocessing">
-<h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
+<h3>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h3>
 <p>Next, we will:</p>
 <ul class="simple">
 <li><p>Apply the preprocessing utility functions defined earlier on our numerical and categorical features and store it into a list called <code class="docutils literal notranslate"><span class="pre">encoded_features</span></code></p></li>
@@ -1158,7 +1160,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 <div class="section" id="numerical-preprocessing">
-<h3>Numerical preprocessing<a class="headerlink" href="#numerical-preprocessing" title="Permalink to this headline">¶</a></h3>
+<h4>Numerical preprocessing<a class="headerlink" href="#numerical-preprocessing" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>For every feature:</p>
 <ul>
@@ -1184,7 +1186,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 <div class="section" id="categorical-preprocessing">
-<h3>Categorical preprocessing<a class="headerlink" href="#categorical-preprocessing" title="Permalink to this headline">¶</a></h3>
+<h4>Categorical preprocessing<a class="headerlink" href="#categorical-preprocessing" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>Turn the integer categorical values from the dataset into integer indices, perform multi-hot encoding and add the resulting feature inputs to encoded_feature</p></li>
 </ul>
@@ -1218,24 +1220,15 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>Merge the list of feature inputs (<code class="docutils literal notranslate"><span class="pre">encoded_features</span></code>) into one vector via concatenation with <code class="docutils literal notranslate"><span class="pre">layers.concatenate</span></code>:</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">encoded_features</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div class="section" id="model">
-<h1>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h1>
+<h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Now we can build the model using the <a class="reference external" href="https://www.tensorflow.org/guide/keras/functional">Keras Functional API</a>:</p>
 <ol class="simple">
+<li><p>Merge the list of feature inputs (<code class="docutils literal notranslate"><span class="pre">encoded_features</span></code>) into one vector via concatenation with <code class="docutils literal notranslate"><span class="pre">layers.concatenate</span></code>.</p></li>
 <li><p>We use 32 number of units in the first layer</p></li>
 <li><p>We use <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dropout">layers.Dropout()</a> to prevent overvitting</p></li>
 <li><p>Our output layer has 1 output (since the classification task is binary)</p></li>
@@ -1245,7 +1238,10 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First layer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Input</span>
+<span class="n">all_features</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">encoded_features</span><span class="p">)</span>
+
+<span class="c1"># First layer</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">all_features</span><span class="p">)</span>
 
 <span class="c1"># Dropout to prevent overvitting</span>
@@ -1283,12 +1279,12 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/structured_data_classification_functions_63_0.png" src="../_images/structured_data_classification_functions_63_0.png" />
+<img alt="../_images/structured_data_classification_functions_62_0.png" src="../_images/structured_data_classification_functions_62_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="training">
-<h1>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h1>
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Next, train and test the model:</p></li>
 </ul>
@@ -1346,7 +1342,7 @@ Accuracy 0.75
 </div>
 </div>
 <div class="section" id="perform-inference">
-<h1>Perform inference<a class="headerlink" href="#perform-inference" title="Permalink to this headline">¶</a></h1>
+<h2>Perform inference<a class="headerlink" href="#perform-inference" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The model you have developed can now classify a row from a CSV file directly after you’ve included the preprocessing layers inside the model itself.</p></li>
 <li><p>Next, we demonstrate the process.</p></li>
@@ -1440,7 +1436,7 @@ Accuracy 0.75
 </div>
 </div>
 <div class="section" id="next-steps">
-<h1>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h1>
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
 <p>The tutorial <a class="reference internal" href="keras-imdb.html"><span class="doc std std-doc">IMDB Sentiment analysis</span></a> covers how to build a binary sentiment classification model with keras using keras layers for data preprocessing and TensorBoard to view model results.</p>
 <p>To learn more about classifying structured data, try working with other datasets. Below are some suggestions for datasets:</p>
 <ul class="simple">
@@ -1448,6 +1444,7 @@ Accuracy 0.75
 <li><p><a class="reference external" href="https://www.tensorflow.org/datasets/catalog/wine_quality">TensorFlow Datasets: Wine Quality</a>: Two datasets related to red and white variants of the Portuguese “Vinho Verde” wine. You can also find the Red Wine Quality dataset on Kaggle.</p></li>
 <li><p><a class="reference external" href="https://www.kaggle.com/Cornell-University/arxiv">Kaggle: arXiv Dataset</a>: A corpus of 1.7 million scholarly articles from arXiv, covering physics, computer science, math, statistics, electrical engineering, quantitative biology, and economics.</p></li>
 </ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1479,7 +1476,7 @@ Accuracy 0.75
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Structured data classification I</p>
+            <p class="prev-next-title">Classification I</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="keras-imdb.html" title="next page">
