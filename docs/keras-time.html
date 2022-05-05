@@ -332,53 +332,66 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#different-kinds-of-timeseries-tasks">
-   Different kinds of timeseries tasks
+  <a class="reference internal nav-link" href="#import-data">
+   Import data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-temperature-forecasting-example">
-   A temperature-forecasting example
+  <a class="reference internal nav-link" href="#data-split">
+   Data split
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normalizing-the-data">
+   Normalizing the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#batch-the-data">
+   Batch the data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preparing-the-data">
-     Preparing the data
+    <a class="reference internal nav-link" href="#example">
+     Example
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-common-sense-non-machine-learning-baseline">
-     A common-sense, non-machine-learning baseline
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#let-s-try-a-basic-machine-learning-model">
-     Let’s try a basic machine-learning model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#let-s-try-a-1d-convolutional-model">
-     Let’s try a 1D convolutional model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-first-recurrent-baseline">
-     A first recurrent baseline
+    <a class="reference internal nav-link" href="#instantiating-dataset">
+     Instantiating dataset
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#baseline">
+   Baseline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#densely-connected-model">
+   Densely connected model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#d-convolutional-model">
+   1D convolutional model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recurrent-neural-networks-lstm-based-model">
+   Recurrent neural networks: LSTM-based model
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#understanding-recurrent-neural-networks">
    Understanding recurrent neural networks
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-recurrent-layer-in-keras">
-     A recurrent layer in Keras
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-recurrent-layer-in-keras">
+   A recurrent layer in Keras
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#advanced-use-of-recurrent-neural-networks">
@@ -386,13 +399,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-recurrent-dropout-to-fight-overfitting">
-     Using recurrent dropout to fight overfitting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stacking-recurrent-layers">
-     Stacking recurrent layers
+    <a class="reference internal nav-link" href="#stacking-recurrent-layers-with-a-gru-model">
+     Stacking recurrent layers with a GRU model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -400,17 +408,7 @@ const thebe_selector_output = ".output, .cell_output"
      Using bidirectional RNNs
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#going-even-further">
-     Going even further
-    </a>
-   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
  </li>
 </ul>
 
@@ -433,53 +431,66 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#different-kinds-of-timeseries-tasks">
-   Different kinds of timeseries tasks
+  <a class="reference internal nav-link" href="#import-data">
+   Import data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-temperature-forecasting-example">
-   A temperature-forecasting example
+  <a class="reference internal nav-link" href="#data-split">
+   Data split
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normalizing-the-data">
+   Normalizing the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#batch-the-data">
+   Batch the data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preparing-the-data">
-     Preparing the data
+    <a class="reference internal nav-link" href="#example">
+     Example
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-common-sense-non-machine-learning-baseline">
-     A common-sense, non-machine-learning baseline
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#let-s-try-a-basic-machine-learning-model">
-     Let’s try a basic machine-learning model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#let-s-try-a-1d-convolutional-model">
-     Let’s try a 1D convolutional model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-first-recurrent-baseline">
-     A first recurrent baseline
+    <a class="reference internal nav-link" href="#instantiating-dataset">
+     Instantiating dataset
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#baseline">
+   Baseline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#densely-connected-model">
+   Densely connected model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#d-convolutional-model">
+   1D convolutional model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recurrent-neural-networks-lstm-based-model">
+   Recurrent neural networks: LSTM-based model
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#understanding-recurrent-neural-networks">
    Understanding recurrent neural networks
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-recurrent-layer-in-keras">
-     A recurrent layer in Keras
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-recurrent-layer-in-keras">
+   A recurrent layer in Keras
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#advanced-use-of-recurrent-neural-networks">
@@ -487,13 +498,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-recurrent-dropout-to-fight-overfitting">
-     Using recurrent dropout to fight overfitting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stacking-recurrent-layers">
-     Stacking recurrent layers
+    <a class="reference internal nav-link" href="#stacking-recurrent-layers-with-a-gru-model">
+     Stacking recurrent layers with a GRU model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -501,17 +507,7 @@ const thebe_selector_output = ".output, .cell_output"
      Using bidirectional RNNs
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#going-even-further">
-     Going even further
-    </a>
-   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
  </li>
 </ul>
 
@@ -522,25 +518,63 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <p>This is a companion notebook for the book <a class="reference external" href="https://www.manning.com/books/deep-learning-with-python-second-edition?a_aid=keras&amp;a_bid=76564dff">Deep Learning with Python, Second Edition</a>. For readability, it only contains runnable code blocks and section titles, and omits everything else in the book: text paragraphs, figures, and pseudocode.</p>
-<p><strong>If you want to be able to follow what’s going on, I recommend reading the notebook side by side with your copy of the book.</strong></p>
-<p>This notebook was generated for TensorFlow 2.6.</p>
-<div class="tex2jax_ignore mathjax_ignore section" id="deep-learning-for-timeseries">
+  <div class="tex2jax_ignore mathjax_ignore section" id="deep-learning-for-timeseries">
 <h1>Deep learning for timeseries<a class="headerlink" href="#deep-learning-for-timeseries" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="different-kinds-of-timeseries-tasks">
-<h2>Different kinds of timeseries tasks<a class="headerlink" href="#different-kinds-of-timeseries-tasks" title="Permalink to this headline">¶</a></h2>
+<p>This is a companion notebook for the book <a class="reference external" href="https://www.manning.com/books/deep-learning-with-python-second-edition?a_aid=keras&amp;a_bid=76564dff">Deep Learning with Python, Second Edition</a> provided by Francois Chollet.</p>
+<p>The exact formulation of the problem will be as follows: given data covering the previous
+five days and sampled once per hour, can we predict the temperature in 24 hours?</p>
+<div class="section" id="import-data">
+<h2>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>We first need to download the data</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mac user: use <a class="reference external" href="https://brew.sh">homebrew</a> to install the following packages:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install openssl
+</pre></div>
 </div>
-<div class="section" id="a-temperature-forecasting-example">
-<h2>A temperature-forecasting example<a class="headerlink" href="#a-temperature-forecasting-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install wget
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget https://s3.amazonaws.com/keras-datasets/jena_climate_2009_2016.csv.zip
-<span class="o">!</span>unzip jena_climate_2009_2016.csv.zip
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-05-05 15:33:33--  https://s3.amazonaws.com/keras-datasets/jena_climate_2009_2016.csv.zip
+Auflösen des Hostnamens s3.amazonaws.com (s3.amazonaws.com)… 54.231.165.120
+Verbindungsaufbau zu s3.amazonaws.com (s3.amazonaws.com)|54.231.165.120|:443 … verbunden.
+HTTP-Anforderung gesendet, auf Antwort wird gewartet … 200 OK
+Länge: 13565642 (13M) [application/zip]
+Wird in »jena_climate_2009_2016.csv.zip« gespeichert.
+
+jena_climate_2009_2 100%[===================&gt;]  12,94M  12,5MB/s    in 1,0s    
+
+2022-05-05 15:33:34 (12,5 MB/s) - »jena_climate_2009_2016.csv.zip« gespeichert [13565642/13565642]
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Inspecting the data of the Jena weather dataset</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>unzip jena_climate_2009_2016.csv.zip
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Archive:  jena_climate_2009_2016.csv.zip
+  inflating: jena_climate_2009_2016.csv  
+  inflating: __MACOSX/._jena_climate_2009_2016.csv  
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Inspecting the data of the Jena weather dataset</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -552,18 +586,36 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">lines</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">header</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&quot;Date Time&quot;&#39;, &#39;&quot;p (mbar)&quot;&#39;, &#39;&quot;T (degC)&quot;&#39;, &#39;&quot;Tpot (K)&quot;&#39;, &#39;&quot;Tdew (degC)&quot;&#39;, &#39;&quot;rh (%)&quot;&#39;, &#39;&quot;VPmax (mbar)&quot;&#39;, &#39;&quot;VPact (mbar)&quot;&#39;, &#39;&quot;VPdef (mbar)&quot;&#39;, &#39;&quot;sh (g/kg)&quot;&#39;, &#39;&quot;H2OC (mmol/mol)&quot;&#39;, &#39;&quot;rho (g/m**3)&quot;&#39;, &#39;&quot;wv (m/s)&quot;&#39;, &#39;&quot;max. wv (m/s)&quot;&#39;, &#39;&quot;wd (deg)&quot;&#39;]
+420451
+</pre></div>
 </div>
-<p><strong>Parsing the data</strong></p>
+</div>
+</div>
+<ul class="simple">
+<li><p>This outputs a count of 420,551 lines of data (each line is a timestep: a record of a
+date and 14 weather-related values), as well as the header.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Now, convert all 420,551 lines of data into NumPy arrays: one array for the temperature
+(in degrees Celsius), and another one for the rest of the data—the features we
+will use to predict future temperatures. Note that we discard the “Date Time” column.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
 <span class="n">temperature</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">),))</span>
+
 <span class="n">raw_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
     <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]]</span>
     <span class="n">temperature</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -572,58 +624,148 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p><strong>Plotting the temperature timeseries</strong></p>
+<ul class="simple">
+<li><p>Plotting the temperature timeseries</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temperature</span><span class="p">)),</span> <span class="n">temperature</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9b793f7bb0&gt;]
+</pre></div>
 </div>
-<p><strong>Plotting the first 10 days of the temperature timeseries</strong></p>
+<img alt="../_images/keras-time_13_1.png" src="../_images/keras-time_13_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Plotting the first 10 days of the temperature timeseries</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1440</span><span class="p">),</span> <span class="n">temperature</span><span class="p">[:</span><span class="mi">1440</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9b5932c550&gt;]
+</pre></div>
 </div>
-<p><strong>Computing the number of samples we’ll use for each data split</strong></p>
+<img alt="../_images/keras-time_15_1.png" src="../_images/keras-time_15_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="data-split">
+<h2>Data split<a class="headerlink" href="#data-split" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>In all our experiments, we’ll use the first 50% of the data for training, the following
+25% for validation, and the last 25% for testing</p></li>
+</ul>
+<ul class="simple">
+<li><p>When working with timeseries data, it’s important to use validation and test data that is more recent than the training
+data, because you’re trying to predict the future given the past, not the reverse,
+and your validation/test splits should reflect that</p></li>
+</ul>
+<ul class="simple">
+<li><p>Computing the number of samples we’ll use for each data split:</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_train_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_data</span><span class="p">))</span>
 <span class="n">num_val_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_data</span><span class="p">))</span>
+
 <span class="n">num_test_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span> <span class="o">-</span> <span class="n">num_train_samples</span> <span class="o">-</span> <span class="n">num_val_samples</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num_train_samples:&quot;</span><span class="p">,</span> <span class="n">num_train_samples</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num_val_samples:&quot;</span><span class="p">,</span> <span class="n">num_val_samples</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num_test_samples:&quot;</span><span class="p">,</span> <span class="n">num_test_samples</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num_train_samples: 210225
+num_val_samples: 105112
+num_test_samples: 105114
+</pre></div>
 </div>
-<div class="section" id="preparing-the-data">
-<h3>Preparing the data<a class="headerlink" href="#preparing-the-data" title="Permalink to this headline">¶</a></h3>
-<p><strong>Normalizing the data</strong></p>
+</div>
+</div>
+</div>
+<div class="section" id="normalizing-the-data">
+<h2>Normalizing the data<a class="headerlink" href="#normalizing-the-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>We’re going to use the first 210,225 timesteps as
+training data, so we’ll compute the mean and standard deviation only on this fraction
+of the data.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">[:</span><span class="n">num_train_samples</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">raw_data</span> <span class="o">-=</span> <span class="n">mean</span>
+
 <span class="n">std</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">[:</span><span class="n">num_train_samples</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">raw_data</span> <span class="o">/=</span> <span class="n">std</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="batch-the-data">
+<h2>Batch the data<a class="headerlink" href="#batch-the-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Next, let’s create a Dataset object that yields batches of data from the past five days
+along with a target temperature 24 hours in the future.</p></li>
+<li><p>Because the samples in the dataset are highly redundant (sample N and sample N + 1 will have most of their timesteps in common), it would be wasteful to explicitly allocate memory for every sample.</p></li>
+<li><p>Instead, we’ll generate the samples on the fly while only keeping in memory the original
+raw_data and temperature arrays, and nothing more.</p></li>
+<li><p>We could write a Python generator to do this, but there’s a built-in dataset
+utility in Keras that does just that (timeseries_dataset_from_array()), so we can
+save ourselves some work by using it.</p></li>
+<li><p>You can generally use it for any kind of timeseries
+forecasting task.</p></li>
+</ul>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>To understand what timeseries_dataset_from_array() does, let’s look at a simple
+example.</p></li>
+<li><p>The general idea is that you provide an array of timeseries data (the
+data argument), and <code class="docutils literal notranslate"><span class="pre">timeseries_dataset_from_array()</span></code> gives you windows
+extracted from the original timeseries (we’ll call them “sequences”)</p></li>
+<li><p>For example, if you use data = [0 1 2 3 4 5 6] and sequence_length=3, then
+timeseries_dataset_from_array() will generate the following samples: [0 1 2],
+[1 2 3], [2 3 4], [3 4 5], [4 5 6].</p></li>
+<li><p>You can also pass a targets argument (an array) to timeseries_dataset_
+from_array(). The first entry of the targets array should match the desired target
+for the first sequence that will be generated from the data array.</p></li>
+<li><p>So if you’re doing timeseries forecasting, targets should be the same array as data, offset
+by some amount.</p></li>
+</ul>
+<ul class="simple">
+<li><p>For instance, with data = [0 1 2 3 4 5 6 …] and sequence_length=3, you could create
+a dataset to predict the next step in the series by passing targets = [3 4 5 6 …]. Let’s
+try it:</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+
+<span class="c1"># generate an array of sorted integers from 0 to 9</span>
 <span class="n">int_sequence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
 <span class="n">dummy_dataset</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">timeseries_dataset_from_array</span><span class="p">(</span>
+    <span class="c1"># The sequences we generate will be sampled from [0 1 2 3 4 5 6]</span>
     <span class="n">data</span><span class="o">=</span><span class="n">int_sequence</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+    <span class="c1"># The target for the sequences taht starts at data [N] will be the data [N+3]</span>
     <span class="n">targets</span><span class="o">=</span><span class="n">int_sequence</span><span class="p">[</span><span class="mi">3</span><span class="p">:],</span>
+    <span class="c1"># The sequences will be 3 steps long</span>
     <span class="n">sequence_length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="c1"># The sequences will be batched in batches of size 2</span>
     <span class="n">batch_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -633,8 +775,41 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-05 15:53:12.424635: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div>
 </div>
-<p><strong>Instantiating datasets for training, validation, and testing</strong></p>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2] 3
+[1, 2, 3] 4
+[2, 3, 4] 5
+[3, 4, 5] 6
+[4, 5, 6] 7
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="instantiating-dataset">
+<h3>Instantiating dataset<a class="headerlink" href="#instantiating-dataset" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>We’ll use timeseries_dataset_from_array() to instantiate three datasets: one for
+training, one for validation, and one for testing.</p></li>
+<li><p>We’ll use the following parameter values:</p>
+<ul>
+<li><p><em>sampling_rate</em> = 6 (Observations will be sampled at one data point per hour: we will only keep one data point out of 6).</p></li>
+<li><p><em>sequence_length</em> = 120 (Observations will go back 5 days (120 hours)).</p></li>
+<li><p><em>delay</em> = sampling_rate *  (sequence_length + 24 - 1) (The target for a sequence
+will be the temperature 24 hours after the end of the sequence)</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>When making the training dataset, we’ll pass start_index = 0 and end_index =
+num_train_samples to only use the first 50% of the data.</p></li>
+<li><p>For the validation dataset, we’ll pass start_index = num_train_samples and end_index = num_train_samples + num_val_samples to use the next 25% of the data.</p></li>
+<li><p>Finally, for the test dataset, we’ll pass start_index = num_train_samples + num_val_samples to use the remaining samples.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="mi">6</span>
@@ -674,6 +849,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>Each dataset yields a tuple (samples, targets), where samples is a batch of 256 samples,
+each containing 120 consecutive hours of input data, and targets is the corresponding
+array of 256 target temperatures.</p></li>
+<li><p>Note that the samples are randomly shuffled, so two consecutive sequences in a batch (like samples[0] and samples[1]) aren’t necessarily temporally close.</p></li>
+</ul>
 <p><strong>Inspecting the output of one of our datasets</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -684,16 +865,37 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>samples shape: (256, 120, 14)
+targets shape: (256,)
+</pre></div>
 </div>
 </div>
-<div class="section" id="a-common-sense-non-machine-learning-baseline">
-<h3>A common-sense, non-machine-learning baseline<a class="headerlink" href="#a-common-sense-non-machine-learning-baseline" title="Permalink to this headline">¶</a></h3>
-<p><strong>Computing the common-sense baseline MAE</strong></p>
+</div>
+</div>
+</div>
+<div class="section" id="baseline">
+<h2>Baseline<a class="headerlink" href="#baseline" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A common-sense, non-machine-learning baseline</p></li>
+<li><p>The temperature timeseries can safely be assumed to be continuous (the temperatures tomorrow are likely to be close to the temperatures today) as
+well as periodical with a daily period.</p></li>
+<li><p>Thus a common-sense approach is to always predict that the temperature 24 hours from now will be equal to the temperature right now.</p></li>
+<li><p>Let’s evaluate this approach, using the mean absolute error (MAE) metric, defined as follows:</p></li>
+</ul>
+<ul class="simple">
+<li><p>Computing the common-sense baseline MAE</p></li>
+<li><p>The temperature feature is at column 1, so samples[:, -1, 1] is the last temperature measurement in the input sequence.</p></li>
+<li><p>Recall that we normalized our features, so to retrieve a temperature in degrees Celsius,
+we need to un-normalize it by multiplying it by the standard deviation and adding back the mean.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">evaluate_naive_method</span><span class="p">(</span><span class="n">dataset</span><span class="p">):</span>
+
     <span class="n">total_abs_err</span> <span class="o">=</span> <span class="mf">0.</span>
     <span class="n">samples_seen</span> <span class="o">=</span> <span class="mi">0</span>
+    
     <span class="k">for</span> <span class="n">samples</span><span class="p">,</span> <span class="n">targets</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
         <span class="n">preds</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">std</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">mean</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">total_abs_err</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">preds</span> <span class="o">-</span> <span class="n">targets</span><span class="p">))</span>
@@ -705,34 +907,111 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation MAE: 2.44
+Test MAE: 2.62
+</pre></div>
 </div>
 </div>
-<div class="section" id="let-s-try-a-basic-machine-learning-model">
-<h3>Let’s try a basic machine-learning model<a class="headerlink" href="#let-s-try-a-basic-machine-learning-model" title="Permalink to this headline">¶</a></h3>
-<p><strong>Training and evaluating a densely connected model</strong></p>
+</div>
+<ul class="simple">
+<li><p>This common-sense baseline achieves a validation MAE of 2.44 degrees Celsius and a
+test MAE of 2.62 degrees Celsius.</p></li>
+<li><p>So if you always assume that the temperature 24 hours in the future will be the same as it is now, you will be off by two and a half degrees on average.</p></li>
+</ul>
+</div>
+<div class="section" id="densely-connected-model">
+<h2>Densely connected model<a class="headerlink" href="#densely-connected-model" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Training and evaluating a densely connected model</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span>
 
 <span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">,</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">inputs</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
 
-<span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We use a callback to save the bestperforming model</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s2">&quot;jena_dense.keras&quot;</span><span class="p">,</span>
                                     <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="p">]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
-<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> 
+              <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> 
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
                     <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                     <span class="n">validation_data</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span>
                     <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;jena_dense.keras&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+819/819 [==============================] - 9s 10ms/step - loss: 13.1165 - mae: 2.8049 - val_loss: 10.8281 - val_mae: 2.6115
+Epoch 2/10
+819/819 [==============================] - 8s 10ms/step - loss: 9.2778 - mae: 2.4000 - val_loss: 12.8892 - val_mae: 2.8570
+Epoch 3/10
+819/819 [==============================] - 9s 10ms/step - loss: 8.4191 - mae: 2.2877 - val_loss: 12.5275 - val_mae: 2.8098
+Epoch 4/10
+819/819 [==============================] - 8s 10ms/step - loss: 7.8867 - mae: 2.2164 - val_loss: 10.3757 - val_mae: 2.5471
+Epoch 5/10
+819/819 [==============================] - 8s 10ms/step - loss: 7.5173 - mae: 2.1652 - val_loss: 11.4504 - val_mae: 2.6782
+Epoch 6/10
+819/819 [==============================] - 8s 9ms/step - loss: 7.2560 - mae: 2.1310 - val_loss: 11.1244 - val_mae: 2.6349
+Epoch 7/10
+819/819 [==============================] - 8s 10ms/step - loss: 7.0370 - mae: 2.0993 - val_loss: 12.8551 - val_mae: 2.8469
+Epoch 8/10
+819/819 [==============================] - 8s 10ms/step - loss: 6.8612 - mae: 2.0718 - val_loss: 10.6731 - val_mae: 2.5789
+Epoch 9/10
+819/819 [==============================] - 8s 9ms/step - loss: 6.6785 - mae: 2.0419 - val_loss: 10.7732 - val_mae: 2.5922
+Epoch 10/10
+819/819 [==============================] - 8s 10ms/step - loss: 6.5861 - mae: 2.0302 - val_loss: 11.2685 - val_mae: 2.6662
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Reload the best model and evaluate it on the test data.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;jena_dense.keras&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test MAE: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 3s 7ms/step - loss: 11.2877 - mae: 2.6435
+Test MAE: 2.64
 </pre></div>
 </div>
 </div>
@@ -741,210 +1020,614 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 <span class="n">loss</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">]</span>
 <span class="n">val_loss</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">&quot;val_mae&quot;</span><span class="p">]</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Training MAE&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Validation MAE&quot;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Training and validation MAE&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/keras-time_52_0.png" src="../_images/keras-time_52_0.png" />
 </div>
 </div>
-<div class="section" id="let-s-try-a-1d-convolutional-model">
-<h3>Let’s try a 1D convolutional model<a class="headerlink" href="#let-s-try-a-1d-convolutional-model" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Some of the validation losses are close to the no-learning baseline, but not reliably.</p></li>
+<li><p>This goes to show the merit of having this baseline in the first place: it turns out to be
+not easy to outperform.</p></li>
+<li><p>Your common sense contains a lot of valuable information to which a machine learning model doesn’t have access.</p></li>
+</ul>
+</div>
+<div class="section" id="d-convolutional-model">
+<h2>1D convolutional model<a class="headerlink" href="#d-convolutional-model" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Since our input sequences feature daily cycles, perhaps a convolutional model could work.</p></li>
+<li><p>A temporal convnet could reuse the same representations across different days, much like a spatial convnet can reuse the same representations across different locations in an image.</p></li>
+<li><p>You can build 1D convnets, strictly analogous to 2D convnets.</p></li>
+<li><p>They’re a great fit for any sequence data that follows the translation invariance assumption (meaning that if you slide a window over the sequence, the content of the window should follow the same properties independently of the location of the window).</p></li>
+<li><p>Let’s try one on our temperature-forecasting problem.</p></li>
+<li><p>We’ll pick an initial window length of 24, so that we look at 24 hours of data at a time (one cycle).</p></li>
+<li><p>As we downsample the sequences (via MaxPooling1D layers), we’ll reduce the window size accordingly.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">,</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv1D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="mi">2</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv1D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="mi">2</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv1D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">GlobalAveragePooling1D</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
 
-<span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s2">&quot;jena_conv.keras&quot;</span><span class="p">,</span>
                                     <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="p">]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
-<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
-                    <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                    <span class="n">validation_data</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span>
-                    <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;jena_conv.keras&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test MAE: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> 
+              <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> 
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
+</pre></div>
 </div>
-<div class="section" id="a-first-recurrent-baseline">
-<h3>A first recurrent baseline<a class="headerlink" href="#a-first-recurrent-baseline" title="Permalink to this headline">¶</a></h3>
-<p><strong>A simple LSTM-based model</strong></p>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
+                    <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                    <span class="n">validation_data</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span>
+                    <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+819/819 [==============================] - 18s 21ms/step - loss: 22.4444 - mae: 3.7136 - val_loss: 22.1856 - val_mae: 3.7301
+Epoch 2/10
+819/819 [==============================] - 17s 21ms/step - loss: 15.5299 - mae: 3.1352 - val_loss: 15.8140 - val_mae: 3.1652
+Epoch 3/10
+819/819 [==============================] - 17s 21ms/step - loss: 14.4003 - mae: 3.0145 - val_loss: 14.5049 - val_mae: 3.0009
+Epoch 4/10
+819/819 [==============================] - 17s 21ms/step - loss: 13.5429 - mae: 2.9163 - val_loss: 15.5662 - val_mae: 3.0777
+Epoch 5/10
+819/819 [==============================] - 17s 21ms/step - loss: 12.9068 - mae: 2.8427 - val_loss: 15.0414 - val_mae: 3.0400
+Epoch 6/10
+819/819 [==============================] - 18s 21ms/step - loss: 12.4551 - mae: 2.7867 - val_loss: 13.8883 - val_mae: 2.9576
+Epoch 7/10
+819/819 [==============================] - 18s 21ms/step - loss: 12.0553 - mae: 2.7407 - val_loss: 14.3529 - val_mae: 2.9928
+Epoch 8/10
+819/819 [==============================] - 18s 21ms/step - loss: 11.7203 - mae: 2.7043 - val_loss: 13.4188 - val_mae: 2.8948
+Epoch 9/10
+819/819 [==============================] - 18s 21ms/step - loss: 11.4639 - mae: 2.6748 - val_loss: 14.7571 - val_mae: 2.9941
+Epoch 10/10
+819/819 [==============================] - 18s 22ms/step - loss: 11.1975 - mae: 2.6403 - val_loss: 14.1712 - val_mae: 2.9581
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;jena_conv.keras&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test MAE: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 3s 8ms/step - loss: 15.3856 - mae: 3.1037
+Test MAE: 3.10
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>This model performs even worse than the densely connected one,</p></li>
+<li><p>We only achieve a validation MAE of about 3 degrees, far from the common-sense
+baseline.</p></li>
+<li><p>What went wrong here? Two things:</p>
+<ul>
+<li><p>First, weather data doesn’t quite respect the translation invariance assumption. While the data does feature daily cycles, data from a morning follows different properties than data from an evening or from the middle of the night. Weather data is only translation-invariant for a very specific timescale.</p></li>
+<li><p>Second, order in our data matters—a lot. The recent past is far more informative for predicting the next day’s temperature than data from five days ago. A 1D convnet is not able to leverage this fact. In particular, our max pooling and global average pooling layers are largely destroying order information.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="recurrent-neural-networks-lstm-based-model">
+<h2>Recurrent neural networks: LSTM-based model<a class="headerlink" href="#recurrent-neural-networks-lstm-based-model" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The densely connected approach first flattened the timeseries, which removed the notion of time from the input data.</p></li>
+<li><p>The convolutional approach treated every segment of the data in the same way, even applying pooling, which destroyed order information.</p></li>
+<li><p>Let’s instead look at the data as what it is: a sequence, where causality and order matter.</p></li>
+</ul>
+<ul class="simple">
+<li><p>There’s a family of neural network architectures designed specifically for this use
+case: recurrent neural networks.</p></li>
+<li><p>Among them, the Long Short Term Memory (LSTM) layer has long been very popular.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">,</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">16</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
 
-<span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">16</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s2">&quot;jena_lstm.keras&quot;</span><span class="p">,</span>
                                     <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="p">]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
-<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> 
+              <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> 
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
                     <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                     <span class="n">validation_data</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span>
                     <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+819/819 [==============================] - 33s 38ms/step - loss: 40.1362 - mae: 4.5977 - val_loss: 12.0617 - val_mae: 2.6626
+Epoch 2/10
+819/819 [==============================] - 30s 36ms/step - loss: 10.7800 - mae: 2.5560 - val_loss: 9.5589 - val_mae: 2.4105
+Epoch 3/10
+819/819 [==============================] - 30s 36ms/step - loss: 9.8158 - mae: 2.4471 - val_loss: 9.5597 - val_mae: 2.4216
+Epoch 4/10
+819/819 [==============================] - 30s 36ms/step - loss: 9.4428 - mae: 2.3991 - val_loss: 9.7182 - val_mae: 2.4355
+Epoch 5/10
+819/819 [==============================] - 30s 36ms/step - loss: 9.0972 - mae: 2.3520 - val_loss: 9.8284 - val_mae: 2.4453
+Epoch 6/10
+819/819 [==============================] - 29s 36ms/step - loss: 8.7998 - mae: 2.3121 - val_loss: 9.8863 - val_mae: 2.4535
+Epoch 7/10
+819/819 [==============================] - 30s 36ms/step - loss: 8.5702 - mae: 2.2812 - val_loss: 10.0695 - val_mae: 2.4665
+Epoch 8/10
+819/819 [==============================] - 30s 36ms/step - loss: 8.3627 - mae: 2.2527 - val_loss: 10.1515 - val_mae: 2.4785
+Epoch 9/10
+819/819 [==============================] - 29s 36ms/step - loss: 8.1913 - mae: 2.2290 - val_loss: 10.1713 - val_mae: 2.4816
+Epoch 10/10
+819/819 [==============================] - 30s 36ms/step - loss: 8.0120 - mae: 2.1996 - val_loss: 10.2862 - val_mae: 2.4917
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;jena_lstm.keras&quot;</span><span class="p">)</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;jena_lstm.keras&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test MAE: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 5s 12ms/step - loss: 11.1261 - mae: 2.5961
+Test MAE: 2.60
+</pre></div>
 </div>
 </div>
+</div>
+<ul class="simple">
+<li><p>We achieve a validation MAE as low as 2.5961 degrees and a test MAE of 2.6 degrees.</p></li>
+<li><p>The LSTM-based model can finally beat the common-sense baseline (albeit just by a bit, for now), demonstrating the value of machine learning on this task.</p></li>
+</ul>
 </div>
 <div class="section" id="understanding-recurrent-neural-networks">
 <h2>Understanding recurrent neural networks<a class="headerlink" href="#understanding-recurrent-neural-networks" title="Permalink to this headline">¶</a></h2>
-<p><strong>NumPy implementation of a simple RNN</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">timesteps</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">input_features</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="n">output_features</span> <span class="o">=</span> <span class="mi">64</span>
-<span class="n">inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">timesteps</span><span class="p">,</span> <span class="n">input_features</span><span class="p">))</span>
-<span class="n">state_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">output_features</span><span class="p">,))</span>
-<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">output_features</span><span class="p">,</span> <span class="n">input_features</span><span class="p">))</span>
-<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">output_features</span><span class="p">,</span> <span class="n">output_features</span><span class="p">))</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">output_features</span><span class="p">,))</span>
-<span class="n">successive_outputs</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">input_t</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
-    <span class="n">output_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">input_t</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">state_t</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
-    <span class="n">successive_outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_t</span><span class="p">)</span>
-    <span class="n">state_t</span> <span class="o">=</span> <span class="n">output_t</span>
-<span class="n">final_output_sequence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">successive_outputs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<ul class="simple">
+<li><p>A major characteristic of all neural networks you’ve seen so far, such as densely connected
+networks and convnets, is that they have no memory.</p></li>
+<li><p>Each input shown to them is processed independently, with no state kept between inputs.</p></li>
+<li><p>With such networks,in order to process a sequence or a temporal series of data points, you have to show the entire sequence to the network at once: turn it into a single data point.</p></li>
+<li><p>For instance, this is what we did in the densely connected network example: we flattened
+our five days of data into a single large vector and processed it in one go. Such networks
+are called feedforward networks.</p></li>
+</ul>
+<ul class="simple">
+<li><p>A recurrent neural network (RNN) processes sequences by iterating through the sequence elements and maintaining a state that contains information relative to what
+it has seen so far.</p></li>
+<li><p>In effect, an RNN is a type of neural network that has an internal loop</p></li>
+</ul>
 </div>
 <div class="section" id="a-recurrent-layer-in-keras">
-<h3>A recurrent layer in Keras<a class="headerlink" href="#a-recurrent-layer-in-keras" title="Permalink to this headline">¶</a></h3>
-<p><strong>An RNN layer that can process sequences of any length</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_features</span> <span class="o">=</span> <span class="mi">14</span>
-<span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_features</span><span class="p">))</span>
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">16</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>An RNN layer that returns only its last output step</strong></p>
+<h2>A recurrent layer in Keras<a class="headerlink" href="#a-recurrent-layer-in-keras" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>An RNN layer that can process sequences of any length</p></li>
+<li><p>It takes inputs of shape (batch_size, timesteps, input_features)</p></li>
+<li><p>All recurrent layers in Keras (SimpleRNN, LSTM, and GRU) can be run in two different
+modes: they can return either full sequences of successive outputs for each timestep
+(a rank-3 tensor of shape (batch_size, timesteps, output_features)) or
+return only the last output for each input sequence (a rank-2 tensor of shape (batch_
+size, output_features)).</p></li>
+<li><p>These two modes are controlled by the return_sequences constructor argument</p></li>
+</ul>
+<ul class="simple">
+<li><p>An RNN layer that returns only its last output step**</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_features</span> <span class="o">=</span> <span class="mi">14</span>
 <span class="n">steps</span> <span class="o">=</span> <span class="mi">120</span>
+
 <span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">num_features</span><span class="p">))</span>
+
 <span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(None, 16)
+</pre></div>
 </div>
-<p><strong>An RNN layer that returns its full output sequence</strong></p>
+</div>
+</div>
+<ul class="simple">
+<li><p>An RNN layer that returns its full output sequence</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_features</span> <span class="o">=</span> <span class="mi">14</span>
 <span class="n">steps</span> <span class="o">=</span> <span class="mi">120</span>
+
 <span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">num_features</span><span class="p">))</span>
 <span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(None, 120, 16)
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>Stacking RNN layers</strong></p>
+<ul class="simple">
+<li><p>It’s sometimes useful to stack several recurrent layers one after the other in order to
+increase the representational power of a network.</p></li>
+<li><p>In such a setup, you have to get all of the intermediate layers to return a full sequence of outputs.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">num_features</span><span class="p">))</span>
+
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
 <span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">16</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
+<ul class="simple">
+<li><p>In practice, you’ll rarely work with the SimpleRNN layer. It’s generally too simplistic to be of real use.</p></li>
+<li><p>In particular, SimpleRNN has a major issue: although it should theoretically
+be able to retain at time t information about inputs seen many timesteps before, such
+long-term dependencies prove impossible to learn in practice.</p></li>
+<li><p>This is due to the vanishing gradient problem, an effect that is similar to what is observed with non-recurrent networks (feedforward networks) that are many layers deep: as you keep adding layers to a network, the network eventually becomes untrainable</p></li>
+</ul>
 </div>
 <div class="section" id="advanced-use-of-recurrent-neural-networks">
 <h2>Advanced use of recurrent neural networks<a class="headerlink" href="#advanced-use-of-recurrent-neural-networks" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="using-recurrent-dropout-to-fight-overfitting">
-<h3>Using recurrent dropout to fight overfitting<a class="headerlink" href="#using-recurrent-dropout-to-fight-overfitting" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Using recurrent dropout to fight overfitting</p></li>
+</ul>
 <p><strong>Training and evaluating a dropout-regularized LSTM</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">,</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">recurrent_dropout</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
 <span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
-
-<span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s2">&quot;jena_lstm_dropout.keras&quot;</span><span class="p">,</span>
                                     <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="p">]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
-<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
-                    <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
-                    <span class="n">validation_data</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span>
-                    <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">,</span> <span class="n">num_features</span><span class="p">))</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">recurrent_dropout</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">unroll</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
+                    <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
+                    <span class="n">validation_data</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span>
+                    <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
+819/819 [==============================] - 54s 64ms/step - loss: 26.8157 - mae: 3.8247 - val_loss: 10.0694 - val_mae: 2.4593
+Epoch 2/50
+819/819 [==============================] - 52s 64ms/step - loss: 14.7295 - mae: 2.9791 - val_loss: 9.4813 - val_mae: 2.3867
+Epoch 3/50
+819/819 [==============================] - 54s 66ms/step - loss: 14.0210 - mae: 2.8980 - val_loss: 9.3239 - val_mae: 2.3670
+Epoch 4/50
+819/819 [==============================] - 53s 64ms/step - loss: 13.4708 - mae: 2.8364 - val_loss: 9.4147 - val_mae: 2.3825
+Epoch 5/50
+819/819 [==============================] - 54s 66ms/step - loss: 12.8856 - mae: 2.7784 - val_loss: 9.3276 - val_mae: 2.3795
+Epoch 6/50
+819/819 [==============================] - 52s 64ms/step - loss: 12.5006 - mae: 2.7377 - val_loss: 9.4144 - val_mae: 2.3856
+Epoch 7/50
+819/819 [==============================] - 53s 64ms/step - loss: 12.0924 - mae: 2.6934 - val_loss: 9.4523 - val_mae: 2.4001
+Epoch 8/50
+819/819 [==============================] - 54s 66ms/step - loss: 11.9245 - mae: 2.6728 - val_loss: 9.3850 - val_mae: 2.3851
+Epoch 9/50
+819/819 [==============================] - 52s 64ms/step - loss: 11.5852 - mae: 2.6354 - val_loss: 9.4370 - val_mae: 2.3927
+Epoch 10/50
+819/819 [==============================] - 53s 65ms/step - loss: 11.4179 - mae: 2.6154 - val_loss: 9.4011 - val_mae: 2.3799
+Epoch 11/50
+819/819 [==============================] - 51s 62ms/step - loss: 11.1691 - mae: 2.5880 - val_loss: 9.8555 - val_mae: 2.4354
+Epoch 12/50
+819/819 [==============================] - 52s 64ms/step - loss: 10.9844 - mae: 2.5722 - val_loss: 9.6549 - val_mae: 2.4135
+Epoch 13/50
+819/819 [==============================] - 53s 65ms/step - loss: 10.8842 - mae: 2.5571 - val_loss: 9.9515 - val_mae: 2.4485
+Epoch 14/50
+819/819 [==============================] - 52s 63ms/step - loss: 10.7262 - mae: 2.5395 - val_loss: 9.8517 - val_mae: 2.4327
+Epoch 15/50
+819/819 [==============================] - 52s 63ms/step - loss: 10.6212 - mae: 2.5276 - val_loss: 10.0569 - val_mae: 2.4575
+Epoch 16/50
+819/819 [==============================] - 50s 61ms/step - loss: 10.5199 - mae: 2.5133 - val_loss: 9.9255 - val_mae: 2.4492
+Epoch 17/50
+819/819 [==============================] - 52s 63ms/step - loss: 10.4492 - mae: 2.5050 - val_loss: 10.3644 - val_mae: 2.4986
+Epoch 18/50
+819/819 [==============================] - 53s 64ms/step - loss: 10.3448 - mae: 2.4927 - val_loss: 10.6227 - val_mae: 2.5215
+Epoch 19/50
+819/819 [==============================] - 55s 67ms/step - loss: 10.2640 - mae: 2.4811 - val_loss: 10.3540 - val_mae: 2.5006
+Epoch 20/50
+819/819 [==============================] - 52s 63ms/step - loss: 10.1202 - mae: 2.4654 - val_loss: 10.1275 - val_mae: 2.4687
+Epoch 21/50
+819/819 [==============================] - 53s 64ms/step - loss: 10.0946 - mae: 2.4602 - val_loss: 10.3949 - val_mae: 2.5050
+Epoch 22/50
+819/819 [==============================] - 52s 63ms/step - loss: 10.0354 - mae: 2.4551 - val_loss: 10.6253 - val_mae: 2.5252
+Epoch 23/50
+819/819 [==============================] - 52s 63ms/step - loss: 9.9540 - mae: 2.4421 - val_loss: 10.7326 - val_mae: 2.5374
+Epoch 24/50
+819/819 [==============================] - 52s 64ms/step - loss: 9.9371 - mae: 2.4406 - val_loss: 10.2433 - val_mae: 2.4821
+Epoch 25/50
+819/819 [==============================] - 52s 63ms/step - loss: 9.8615 - mae: 2.4311 - val_loss: 10.3931 - val_mae: 2.5087
+Epoch 26/50
+819/819 [==============================] - 52s 63ms/step - loss: 9.7959 - mae: 2.4248 - val_loss: 10.5028 - val_mae: 2.5138
+Epoch 27/50
+819/819 [==============================] - 52s 63ms/step - loss: 9.6738 - mae: 2.4071 - val_loss: 10.3429 - val_mae: 2.4894
+Epoch 28/50
+819/819 [==============================] - 50s 61ms/step - loss: 9.6486 - mae: 2.4059 - val_loss: 10.6087 - val_mae: 2.5281
+Epoch 29/50
+819/819 [==============================] - 50s 62ms/step - loss: 9.5631 - mae: 2.3922 - val_loss: 10.5368 - val_mae: 2.5289
+Epoch 30/50
+819/819 [==============================] - 50s 61ms/step - loss: 9.5524 - mae: 2.3940 - val_loss: 10.7345 - val_mae: 2.5413
+Epoch 31/50
+819/819 [==============================] - 50s 61ms/step - loss: 9.5146 - mae: 2.3843 - val_loss: 10.6748 - val_mae: 2.5355
+Epoch 32/50
+819/819 [==============================] - 50s 61ms/step - loss: 9.5337 - mae: 2.3913 - val_loss: 10.8398 - val_mae: 2.5527
+Epoch 33/50
+819/819 [==============================] - 56s 68ms/step - loss: 9.3970 - mae: 2.3720 - val_loss: 10.6069 - val_mae: 2.5268
+Epoch 34/50
+819/819 [==============================] - 1850s 2s/step - loss: 9.3932 - mae: 2.3697 - val_loss: 11.0735 - val_mae: 2.5821
+Epoch 35/50
+819/819 [==============================] - 855s 1s/step - loss: 9.3460 - mae: 2.3622 - val_loss: 10.9389 - val_mae: 2.5673
+Epoch 36/50
+819/819 [==============================] - 52s 63ms/step - loss: 9.3123 - mae: 2.3594 - val_loss: 11.2767 - val_mae: 2.6077
+Epoch 37/50
+819/819 [==============================] - 52s 63ms/step - loss: 9.2420 - mae: 2.3512 - val_loss: 11.3413 - val_mae: 2.6125
+Epoch 38/50
+819/819 [==============================] - 52s 63ms/step - loss: 9.2209 - mae: 2.3463 - val_loss: 11.2516 - val_mae: 2.6080
+Epoch 39/50
+819/819 [==============================] - 52s 63ms/step - loss: 9.1732 - mae: 2.3406 - val_loss: 11.1228 - val_mae: 2.5875
+Epoch 40/50
+819/819 [==============================] - 52s 63ms/step - loss: 9.0794 - mae: 2.3280 - val_loss: 11.2700 - val_mae: 2.6080
+Epoch 41/50
+819/819 [==============================] - 52s 63ms/step - loss: 9.0500 - mae: 2.3215 - val_loss: 11.5613 - val_mae: 2.6347
+Epoch 42/50
+819/819 [==============================] - 50s 61ms/step - loss: 9.0249 - mae: 2.3201 - val_loss: 11.5478 - val_mae: 2.6426
+Epoch 43/50
+819/819 [==============================] - 50s 61ms/step - loss: 9.0713 - mae: 2.3240 - val_loss: 11.5943 - val_mae: 2.6388
+Epoch 44/50
+819/819 [==============================] - 50s 61ms/step - loss: 8.9700 - mae: 2.3127 - val_loss: 11.4612 - val_mae: 2.6317
+Epoch 45/50
+819/819 [==============================] - 51s 62ms/step - loss: 8.9515 - mae: 2.3098 - val_loss: 11.8122 - val_mae: 2.6640
+Epoch 46/50
+819/819 [==============================] - 50s 61ms/step - loss: 8.8998 - mae: 2.3033 - val_loss: 11.3142 - val_mae: 2.6160
+Epoch 47/50
+819/819 [==============================] - 50s 61ms/step - loss: 8.9058 - mae: 2.3022 - val_loss: 11.6600 - val_mae: 2.6491
+Epoch 48/50
+819/819 [==============================] - 58s 71ms/step - loss: 8.8489 - mae: 2.2948 - val_loss: 11.6394 - val_mae: 2.6498
+Epoch 49/50
+819/819 [==============================] - 1881s 2s/step - loss: 8.7924 - mae: 2.2895 - val_loss: 11.6280 - val_mae: 2.6495
+Epoch 50/50
+819/819 [==============================] - 1106s 1s/step - loss: 8.8360 - mae: 2.2946 - val_loss: 11.6715 - val_mae: 2.6524
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;jena_lstm_dropout.keras&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test MAE: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="stacking-recurrent-layers">
-<h3>Stacking recurrent layers<a class="headerlink" href="#stacking-recurrent-layers" title="Permalink to this headline">¶</a></h3>
-<p><strong>Training and evaluating a dropout-regularized, stacked GRU model</strong></p>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 7s 16ms/step - loss: 10.3666 - mae: 2.5408
+Test MAE: 2.54
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">loss</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">]</span>
+<span class="n">val_loss</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">&quot;val_mae&quot;</span><span class="p">]</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Training MAE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Validation MAE&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Training and validation MAE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/keras-time_91_0.png" src="../_images/keras-time_91_0.png" />
+</div>
+</div>
+<div class="section" id="stacking-recurrent-layers-with-a-gru-model">
+<h3>Stacking recurrent layers with a GRU model<a class="headerlink" href="#stacking-recurrent-layers-with-a-gru-model" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Next, we’ll use Gated Recurrent Unit (GRU) layers instead of LSTM.</p></li>
+<li><p>GRU is very similar to LSTM—you can think of it as a slightly simpler, streamlined version of the LSTM architecture.</p></li>
+<li><p>Training and evaluating a dropout-regularized, stacked GRU model</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">,</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">GRU</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">recurrent_dropout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">GRU</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">recurrent_dropout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
 
-<span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s2">&quot;jena_stacked_gru_dropout.keras&quot;</span><span class="p">,</span>
                                     <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="p">]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
-<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
-                    <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
+                    <span class="n">epochs</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="c1"># we use 15 instead of 50</span>
                     <span class="n">validation_data</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span>
                     <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;jena_stacked_gru_dropout.keras&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/15
+819/819 [==============================] - 92s 108ms/step - loss: 26.6000 - mae: 3.7910 - val_loss: 9.3166 - val_mae: 2.3574
+Epoch 2/15
+819/819 [==============================] - 86s 105ms/step - loss: 14.0802 - mae: 2.9065 - val_loss: 9.4442 - val_mae: 2.3896
+Epoch 3/15
+819/819 [==============================] - 86s 105ms/step - loss: 13.2165 - mae: 2.8177 - val_loss: 8.9861 - val_mae: 2.3204
+Epoch 4/15
+819/819 [==============================] - 86s 105ms/step - loss: 12.5084 - mae: 2.7416 - val_loss: 8.8973 - val_mae: 2.3289
+Epoch 5/15
+819/819 [==============================] - 86s 105ms/step - loss: 12.0001 - mae: 2.6852 - val_loss: 9.1988 - val_mae: 2.3634
+Epoch 6/15
+819/819 [==============================] - 86s 105ms/step - loss: 11.6346 - mae: 2.6446 - val_loss: 10.0672 - val_mae: 2.4820
+Epoch 7/15
+819/819 [==============================] - 86s 104ms/step - loss: 11.3016 - mae: 2.6076 - val_loss: 9.7055 - val_mae: 2.4287
+Epoch 8/15
+819/819 [==============================] - 85s 104ms/step - loss: 10.8956 - mae: 2.5624 - val_loss: 9.4754 - val_mae: 2.4178
+Epoch 9/15
+819/819 [==============================] - 84s 103ms/step - loss: 10.5807 - mae: 2.5281 - val_loss: 9.3378 - val_mae: 2.3802
+Epoch 10/15
+819/819 [==============================] - 84s 103ms/step - loss: 10.2928 - mae: 2.4930 - val_loss: 9.6785 - val_mae: 2.4280
+Epoch 11/15
+819/819 [==============================] - 84s 102ms/step - loss: 10.0334 - mae: 2.4640 - val_loss: 9.4520 - val_mae: 2.4115
+Epoch 12/15
+819/819 [==============================] - 1265s 2s/step - loss: 9.8189 - mae: 2.4357 - val_loss: 9.7087 - val_mae: 2.4456
+Epoch 13/15
+819/819 [==============================] - 2004s 2s/step - loss: 9.5484 - mae: 2.4041 - val_loss: 10.1827 - val_mae: 2.4976
+Epoch 14/15
+819/819 [==============================] - 3721s 5s/step - loss: 9.4338 - mae: 2.3887 - val_loss: 10.2095 - val_mae: 2.4939
+Epoch 15/15
+819/819 [==============================] - 86s 105ms/step - loss: 9.1984 - mae: 2.3606 - val_loss: 10.4121 - val_mae: 2.5400
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;jena_stacked_gru_dropout.keras&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test MAE: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 9s 21ms/step - loss: 9.8207 - mae: 2.4722
+Test MAE: 2.47
 </pre></div>
 </div>
 </div>
@@ -952,29 +1635,60 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="using-bidirectional-rnns">
 <h3>Using bidirectional RNNs<a class="headerlink" href="#using-bidirectional-rnns" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The last technique we’ll look at is the bidirectional RNN.</p></li>
+<li><p>A bidirectional RNN is a common RNN variant that can offer greater performance than a regular RNN on certain tasks.</p></li>
+<li><p>It’s frequently used in natural language processing—you could call it the Swiss Army knife of deep learning for natural language processing</p></li>
+</ul>
+<ul class="simple">
+<li><p>You’ll find that it doesn’t perform as well as the plain LSTM layer since  all the predictive capacity must come from the chronological half of the
+network, because the antichronological half is known to be severely underperforming
+on this task (again, because the recent past matters much more than the distant past,
+in this case).</p></li>
+<li><p>At the same time, the presence of the antichronological half doubles the network’s capacity and causes it to start overfitting much earlier.</p></li>
+<li><p>However, bidirectional RNNs are a great fit for text data, or any other kind of data
+where order matters, yet where which order you use doesn’t matter.</p></li>
+<li><p>In fact, for a while in 2016, bidirectional LSTMs were considered the state of the art on many natural language processing tasks (before the rise of the Transformer architecture)</p></li>
+</ul>
 <p><strong>Training and evaluating a bidirectional LSTM</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">,</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">16</span><span class="p">))(</span><span class="n">inputs</span><span class="p">)</span>
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">16</span><span class="p">))(</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
 <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
-                    <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                    <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
                     <span class="n">validation_data</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/5
+819/819 [==============================] - 39s 44ms/step - loss: 25.8332 - mae: 3.6772 - val_loss: 11.0329 - val_mae: 2.5763
+Epoch 2/5
+819/819 [==============================] - 41s 50ms/step - loss: 9.3958 - mae: 2.3961 - val_loss: 10.1830 - val_mae: 2.4680
+Epoch 3/5
+819/819 [==============================] - 37s 46ms/step - loss: 8.5552 - mae: 2.2780 - val_loss: 10.1725 - val_mae: 2.4703
+Epoch 4/5
+819/819 [==============================] - 35s 42ms/step - loss: 8.0000 - mae: 2.1981 - val_loss: 10.3795 - val_mae: 2.5004
+Epoch 5/5
+819/819 [==============================] - 38s 46ms/step - loss: 7.6410 - mae: 2.1488 - val_loss: 10.7315 - val_mae: 2.5576
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="going-even-further">
-<h3>Going even further<a class="headerlink" href="#going-even-further" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
