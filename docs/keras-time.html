@@ -335,6 +335,11 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#different-kinds-of-timeseries-tasks">
    Different kinds of timeseries tasks
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-temperature-forecasting-example">
+   A temperature-forecasting example
+  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#preparing-the-data">
@@ -431,6 +436,11 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#different-kinds-of-timeseries-tasks">
    Different kinds of timeseries tasks
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-temperature-forecasting-example">
+   A temperature-forecasting example
+  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#preparing-the-data">
@@ -512,54 +522,20 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="deep-learning-for-timeseries">
-<h1>Deep learning for timeseries<a class="headerlink" href="#deep-learning-for-timeseries" title="Permalink to this headline">¶</a></h1>
-<p>This is a companion notebook for the book <a class="reference external" href="https://www.manning.com/books/deep-learning-with-python-second-edition?a_aid=keras&amp;a_bid=76564dff">Deep Learning with Python, Second Edition</a>. For readability, it only contains runnable code blocks and section titles, and omits everything else in the book: text paragraphs, figures, and pseudocode.</p>
+  <p>This is a companion notebook for the book <a class="reference external" href="https://www.manning.com/books/deep-learning-with-python-second-edition?a_aid=keras&amp;a_bid=76564dff">Deep Learning with Python, Second Edition</a>. For readability, it only contains runnable code blocks and section titles, and omits everything else in the book: text paragraphs, figures, and pseudocode.</p>
 <p><strong>If you want to be able to follow what’s going on, I recommend reading the notebook side by side with your copy of the book.</strong></p>
 <p>This notebook was generated for TensorFlow 2.6.</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="deep-learning-for-timeseries">
+<h1>Deep learning for timeseries<a class="headerlink" href="#deep-learning-for-timeseries" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="different-kinds-of-timeseries-tasks">
 <h2>Different kinds of timeseries tasks<a class="headerlink" href="#different-kinds-of-timeseries-tasks" title="Permalink to this headline">¶</a></h2>
-<p>A temperature-forecasting example</p>
-<ul class="simple">
-<li><p>Mac user: use <a class="reference external" href="https://brew.sh">homebrew</a> to install the following packages:</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install openssl
-</pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install wget
-</pre></div>
-</div>
+<div class="section" id="a-temperature-forecasting-example">
+<h2>A temperature-forecasting example<a class="headerlink" href="#a-temperature-forecasting-example" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget https://s3.amazonaws.com/keras-datasets/jena_climate_2009_2016.csv.zip
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-05-05 14:46:29--  https://s3.amazonaws.com/keras-datasets/jena_climate_2009_2016.csv.zip
-Auflösen des Hostnamens s3.amazonaws.com (s3.amazonaws.com)… 52.217.206.232
-Verbindungsaufbau zu s3.amazonaws.com (s3.amazonaws.com)|52.217.206.232|:443 … verbunden.
-HTTP-Anforderung gesendet, auf Antwort wird gewartet … 200 OK
-Länge: 13565642 (13M) [application/zip]
-Wird in »jena_climate_2009_2016.csv.zip« gespeichert.
-
-jena_climate_2009_2 100%[===================&gt;]  12,94M  11,4MB/s    in 1,1s    
-
-2022-05-05 14:46:31 (11,4 MB/s) - »jena_climate_2009_2016.csv.zip« gespeichert [13565642/13565642]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>unzip jena_climate_2009_2016.csv.zip
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Archive:  jena_climate_2009_2016.csv.zip
-  inflating: jena_climate_2009_2016.csv  
-  inflating: __MACOSX/._jena_climate_2009_2016.csv  
+<span class="o">!</span>unzip jena_climate_2009_2016.csv.zip
 </pre></div>
 </div>
 </div>
@@ -576,15 +552,8 @@ jena_climate_2009_2 100%[===================&gt;]  12,94M  11,4MB/s    in 1,1s
 <span class="n">lines</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">header</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&quot;Date Time&quot;&#39;, &#39;&quot;p (mbar)&quot;&#39;, &#39;&quot;T (degC)&quot;&#39;, &#39;&quot;Tpot (K)&quot;&#39;, &#39;&quot;Tdew (degC)&quot;&#39;, &#39;&quot;rh (%)&quot;&#39;, &#39;&quot;VPmax (mbar)&quot;&#39;, &#39;&quot;VPact (mbar)&quot;&#39;, &#39;&quot;VPdef (mbar)&quot;&#39;, &#39;&quot;sh (g/kg)&quot;&#39;, &#39;&quot;H2OC (mmol/mol)&quot;&#39;, &#39;&quot;rho (g/m**3)&quot;&#39;, &#39;&quot;wv (m/s)&quot;&#39;, &#39;&quot;max. wv (m/s)&quot;&#39;, &#39;&quot;wd (deg)&quot;&#39;]
-420451
 </pre></div>
 </div>
 </div>
@@ -593,11 +562,8 @@ jena_climate_2009_2 100%[===================&gt;]  12,94M  11,4MB/s    in 1,1s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
 <span class="n">temperature</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">),))</span>
-
 <span class="n">raw_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
     <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]]</span>
     <span class="n">temperature</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -610,16 +576,9 @@ jena_climate_2009_2 100%[===================&gt;]  12,94M  11,4MB/s    in 1,1s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temperature</span><span class="p">)),</span> <span class="n">temperature</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x29372bfa0&gt;]
-</pre></div>
-</div>
-<img alt="../_images/keras-time_12_1.png" src="../_images/keras-time_12_1.png" />
 </div>
 </div>
 <p><strong>Plotting the first 10 days of the temperature timeseries</strong></p>
@@ -629,31 +588,16 @@ jena_climate_2009_2 100%[===================&gt;]  12,94M  11,4MB/s    in 1,1s
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2937dfdf0&gt;]
-</pre></div>
-</div>
-<img alt="../_images/keras-time_14_1.png" src="../_images/keras-time_14_1.png" />
-</div>
 </div>
 <p><strong>Computing the number of samples we’ll use for each data split</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_train_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_data</span><span class="p">))</span>
 <span class="n">num_val_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_data</span><span class="p">))</span>
-
 <span class="n">num_test_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span> <span class="o">-</span> <span class="n">num_train_samples</span> <span class="o">-</span> <span class="n">num_val_samples</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num_train_samples:&quot;</span><span class="p">,</span> <span class="n">num_train_samples</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num_val_samples:&quot;</span><span class="p">,</span> <span class="n">num_val_samples</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num_test_samples:&quot;</span><span class="p">,</span> <span class="n">num_test_samples</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num_train_samples: 210225
-num_val_samples: 105112
-num_test_samples: 105114
 </pre></div>
 </div>
 </div>
@@ -675,7 +619,6 @@ num_test_samples: 105114
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
-
 <span class="n">int_sequence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">dummy_dataset</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">timeseries_dataset_from_array</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">int_sequence</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span>
@@ -687,25 +630,6 @@ num_test_samples: 105114
 <span class="k">for</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span> <span class="ow">in</span> <span class="n">dummy_dataset</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
         <span class="nb">print</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="nb">int</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metal device set to: Apple M1 Pro
-
-systemMemory: 16.00 GB
-maxCacheSize: 5.33 GB
-
-[0, 1, 2] 3
-[1, 2, 3] 4
-[2, 3, 4] 5
-[3, 4, 5] 6
-[4, 5, 6] 7
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-05 15:06:48.453784: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
-2022-05-05 15:06:48.453915: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -&gt; physical PluggableDevice (device: 0, name: METAL, pci bus id: &lt;undefined&gt;)
-2022-05-05 15:06:48.491302: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
 </pre></div>
 </div>
 </div>
