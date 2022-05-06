@@ -32,6 +32,7 @@ parts:
     - file: docs/structured_data_classification_intro.ipynb
     - file: docs/structured_data_classification_functions.ipynb  
     - file: docs/keras-imdb.ipynb
+    - file: docs/keras-time.ipynb
   - caption: References
     chapters:
     - file: docs/reference.md
