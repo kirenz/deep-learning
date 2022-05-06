@@ -216,6 +216,11 @@ const thebe_selector_output = ".output, .cell_output"
    IMDB Sentiment analysis
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-time.html">
+   Time series regression
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -387,28 +392,28 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#understanding-recurrent-neural-networks">
    Understanding recurrent neural networks
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-recurrent-layer-in-keras">
-   A recurrent layer in Keras
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-recurrent-layer-in-keras">
+     A recurrent layer in Keras
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#advanced-use-of-recurrent-neural-networks">
    Advanced use of recurrent neural networks
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stacking-recurrent-layers-with-a-gru-model">
-     Stacking recurrent layers with a GRU model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-bidirectional-rnns">
-     Using bidirectional RNNs
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stacking-recurrent-layers-with-a-gru-model">
+   Stacking recurrent layers with a GRU model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bidirectional-rnn">
+   Bidirectional RNN
+  </a>
  </li>
 </ul>
 
@@ -486,28 +491,28 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#understanding-recurrent-neural-networks">
    Understanding recurrent neural networks
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-recurrent-layer-in-keras">
-   A recurrent layer in Keras
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-recurrent-layer-in-keras">
+     A recurrent layer in Keras
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#advanced-use-of-recurrent-neural-networks">
    Advanced use of recurrent neural networks
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stacking-recurrent-layers-with-a-gru-model">
-     Stacking recurrent layers with a GRU model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-bidirectional-rnns">
-     Using bidirectional RNNs
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stacking-recurrent-layers-with-a-gru-model">
+   Stacking recurrent layers with a GRU model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bidirectional-rnn">
+   Bidirectional RNN
+  </a>
  </li>
 </ul>
 
@@ -637,7 +642,7 @@ will use to predict future temperatures. Note that we discard the “Date Time�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9b793f7bb0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb7d9207b80&gt;]
 </pre></div>
 </div>
 <img alt="../_images/keras-time-tutorial_13_1.png" src="../_images/keras-time-tutorial_13_1.png" />
@@ -653,7 +658,7 @@ will use to predict future temperatures. Note that we discard the “Date Time�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9b5932c550&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb7baea2a30&gt;]
 </pre></div>
 </div>
 <img alt="../_images/keras-time-tutorial_15_1.png" src="../_images/keras-time-tutorial_15_1.png" />
@@ -777,15 +782,15 @@ try it:</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-05 15:53:12.424635: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2] 3
 [1, 2, 3] 4
 [2, 3, 4] 5
 [3, 4, 5] 6
 [4, 5, 6] 7
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-06 13:36:21.580752: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </pre></div>
 </div>
 </div>
@@ -953,7 +958,7 @@ test MAE of 2.62 degrees Celsius.</p></li>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s2">&quot;jena_dense.keras&quot;</span><span class="p">,</span>
                                     <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-    <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;val_loss&quot;</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;val_loss&quot;</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -979,25 +984,23 @@ test MAE of 2.62 degrees Celsius.</p></li>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-819/819 [==============================] - 9s 10ms/step - loss: 13.1165 - mae: 2.8049 - val_loss: 10.8281 - val_mae: 2.6115
+819/819 [==============================] - 8s 9ms/step - loss: 14.3800 - mae: 2.9339 - val_loss: 12.1828 - val_mae: 2.7651
 Epoch 2/10
-819/819 [==============================] - 8s 10ms/step - loss: 9.2778 - mae: 2.4000 - val_loss: 12.8892 - val_mae: 2.8570
+819/819 [==============================] - 8s 10ms/step - loss: 10.0183 - mae: 2.4863 - val_loss: 11.7025 - val_mae: 2.7049
 Epoch 3/10
-819/819 [==============================] - 9s 10ms/step - loss: 8.4191 - mae: 2.2877 - val_loss: 12.5275 - val_mae: 2.8098
+819/819 [==============================] - 8s 9ms/step - loss: 9.0763 - mae: 2.3721 - val_loss: 10.8984 - val_mae: 2.6006
 Epoch 4/10
-819/819 [==============================] - 8s 10ms/step - loss: 7.8867 - mae: 2.2164 - val_loss: 10.3757 - val_mae: 2.5471
+819/819 [==============================] - 8s 10ms/step - loss: 8.4876 - mae: 2.2970 - val_loss: 10.5284 - val_mae: 2.5631
 Epoch 5/10
-819/819 [==============================] - 8s 10ms/step - loss: 7.5173 - mae: 2.1652 - val_loss: 11.4504 - val_mae: 2.6782
+819/819 [==============================] - 8s 10ms/step - loss: 8.0546 - mae: 2.2381 - val_loss: 11.4569 - val_mae: 2.6579
 Epoch 6/10
-819/819 [==============================] - 8s 9ms/step - loss: 7.2560 - mae: 2.1310 - val_loss: 11.1244 - val_mae: 2.6349
+819/819 [==============================] - 8s 10ms/step - loss: 7.7324 - mae: 2.1923 - val_loss: 10.7193 - val_mae: 2.5830
 Epoch 7/10
-819/819 [==============================] - 8s 10ms/step - loss: 7.0370 - mae: 2.0993 - val_loss: 12.8551 - val_mae: 2.8469
+819/819 [==============================] - 8s 10ms/step - loss: 7.5112 - mae: 2.1631 - val_loss: 10.7113 - val_mae: 2.5755
 Epoch 8/10
-819/819 [==============================] - 8s 10ms/step - loss: 6.8612 - mae: 2.0718 - val_loss: 10.6731 - val_mae: 2.5789
+819/819 [==============================] - 8s 10ms/step - loss: 7.2989 - mae: 2.1330 - val_loss: 12.5019 - val_mae: 2.7986
 Epoch 9/10
-819/819 [==============================] - 8s 9ms/step - loss: 6.6785 - mae: 2.0419 - val_loss: 10.7732 - val_mae: 2.5922
-Epoch 10/10
-819/819 [==============================] - 8s 10ms/step - loss: 6.5861 - mae: 2.0302 - val_loss: 11.2685 - val_mae: 2.6662
+819/819 [==============================] - 8s 10ms/step - loss: 7.1252 - mae: 2.1071 - val_loss: 11.7819 - val_mae: 2.7100
 </pre></div>
 </div>
 </div>
@@ -1013,8 +1016,8 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 3s 7ms/step - loss: 11.2877 - mae: 2.6435
-Test MAE: 2.64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 3s 6ms/step - loss: 11.7181 - mae: 2.6940
+Test MAE: 2.69
 </pre></div>
 </div>
 </div>
@@ -1043,15 +1046,15 @@ Test MAE: 2.64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/keras-time-tutorial_52_0.png" src="../_images/keras-time-tutorial_52_0.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">visualize_mae</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="s2">&quot;Training and Validation MAE&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/keras-time-tutorial_53_0.png" src="../_images/keras-time-tutorial_53_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1096,7 +1099,9 @@ not easy to outperform.</p></li>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s2">&quot;jena_conv.keras&quot;</span><span class="p">,</span>
-                                    <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                    <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;val_loss&quot;</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                                
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -1122,25 +1127,25 @@ not easy to outperform.</p></li>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-819/819 [==============================] - 18s 21ms/step - loss: 22.4444 - mae: 3.7136 - val_loss: 22.1856 - val_mae: 3.7301
+819/819 [==============================] - 17s 20ms/step - loss: 23.6939 - mae: 3.7550 - val_loss: 18.1069 - val_mae: 3.3402
 Epoch 2/10
-819/819 [==============================] - 17s 21ms/step - loss: 15.5299 - mae: 3.1352 - val_loss: 15.8140 - val_mae: 3.1652
+819/819 [==============================] - 17s 20ms/step - loss: 15.1103 - mae: 3.0730 - val_loss: 15.7768 - val_mae: 3.1067
 Epoch 3/10
-819/819 [==============================] - 17s 21ms/step - loss: 14.4003 - mae: 3.0145 - val_loss: 14.5049 - val_mae: 3.0009
+819/819 [==============================] - 17s 21ms/step - loss: 14.0057 - mae: 2.9560 - val_loss: 16.5323 - val_mae: 3.1798
 Epoch 4/10
-819/819 [==============================] - 17s 21ms/step - loss: 13.5429 - mae: 2.9163 - val_loss: 15.5662 - val_mae: 3.0777
+819/819 [==============================] - 17s 21ms/step - loss: 13.2491 - mae: 2.8729 - val_loss: 14.2281 - val_mae: 2.9814
 Epoch 5/10
-819/819 [==============================] - 17s 21ms/step - loss: 12.9068 - mae: 2.8427 - val_loss: 15.0414 - val_mae: 3.0400
+819/819 [==============================] - 17s 20ms/step - loss: 12.7285 - mae: 2.8138 - val_loss: 15.4208 - val_mae: 3.0884
 Epoch 6/10
-819/819 [==============================] - 18s 21ms/step - loss: 12.4551 - mae: 2.7867 - val_loss: 13.8883 - val_mae: 2.9576
+819/819 [==============================] - 17s 21ms/step - loss: 12.2768 - mae: 2.7600 - val_loss: 16.1570 - val_mae: 3.1698
 Epoch 7/10
-819/819 [==============================] - 18s 21ms/step - loss: 12.0553 - mae: 2.7407 - val_loss: 14.3529 - val_mae: 2.9928
+819/819 [==============================] - 17s 20ms/step - loss: 11.9065 - mae: 2.7183 - val_loss: 14.2458 - val_mae: 2.9699
 Epoch 8/10
-819/819 [==============================] - 18s 21ms/step - loss: 11.7203 - mae: 2.7043 - val_loss: 13.4188 - val_mae: 2.8948
+819/819 [==============================] - 17s 21ms/step - loss: 11.5829 - mae: 2.6791 - val_loss: 19.4210 - val_mae: 3.4790
 Epoch 9/10
-819/819 [==============================] - 18s 21ms/step - loss: 11.4639 - mae: 2.6748 - val_loss: 14.7571 - val_mae: 2.9941
+819/819 [==============================] - 17s 20ms/step - loss: 11.2942 - mae: 2.6457 - val_loss: 14.6049 - val_mae: 3.0147
 Epoch 10/10
-819/819 [==============================] - 18s 22ms/step - loss: 11.1975 - mae: 2.6403 - val_loss: 14.1712 - val_mae: 2.9581
+819/819 [==============================] - 17s 20ms/step - loss: 11.0020 - mae: 2.6118 - val_loss: 16.6014 - val_mae: 3.1635
 </pre></div>
 </div>
 </div>
@@ -1154,8 +1159,8 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 3s 8ms/step - loss: 15.3856 - mae: 3.1037
-Test MAE: 3.10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 3s 8ms/step - loss: 16.1991 - mae: 3.2221
+Test MAE: 3.22
 </pre></div>
 </div>
 </div>
@@ -1165,6 +1170,9 @@ Test MAE: 3.10
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">visualize_mae</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="s2">&quot;Training and Validation MAE&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/keras-time-tutorial_62_0.png" src="../_images/keras-time-tutorial_62_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1208,7 +1216,8 @@ case: recurrent neural networks.</p></li>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s2">&quot;jena_lstm.keras&quot;</span><span class="p">,</span>
-                                    <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                    <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;val_loss&quot;</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>                              
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -1234,25 +1243,25 @@ case: recurrent neural networks.</p></li>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-819/819 [==============================] - 33s 38ms/step - loss: 40.1362 - mae: 4.5977 - val_loss: 12.0617 - val_mae: 2.6626
+819/819 [==============================] - 34s 39ms/step - loss: 42.9086 - mae: 4.7865 - val_loss: 13.1834 - val_mae: 2.7782
 Epoch 2/10
-819/819 [==============================] - 30s 36ms/step - loss: 10.7800 - mae: 2.5560 - val_loss: 9.5589 - val_mae: 2.4105
+819/819 [==============================] - 33s 40ms/step - loss: 11.2389 - mae: 2.6037 - val_loss: 9.8621 - val_mae: 2.4406
 Epoch 3/10
-819/819 [==============================] - 30s 36ms/step - loss: 9.8158 - mae: 2.4471 - val_loss: 9.5597 - val_mae: 2.4216
+819/819 [==============================] - 34s 42ms/step - loss: 9.9253 - mae: 2.4582 - val_loss: 9.9196 - val_mae: 2.4556
 Epoch 4/10
-819/819 [==============================] - 30s 36ms/step - loss: 9.4428 - mae: 2.3991 - val_loss: 9.7182 - val_mae: 2.4355
+819/819 [==============================] - 36s 43ms/step - loss: 9.5473 - mae: 2.4084 - val_loss: 9.7663 - val_mae: 2.4092
 Epoch 5/10
-819/819 [==============================] - 30s 36ms/step - loss: 9.0972 - mae: 2.3520 - val_loss: 9.8284 - val_mae: 2.4453
+819/819 [==============================] - 37s 45ms/step - loss: 9.2234 - mae: 2.3655 - val_loss: 9.9486 - val_mae: 2.4083
 Epoch 6/10
-819/819 [==============================] - 29s 36ms/step - loss: 8.7998 - mae: 2.3121 - val_loss: 9.8863 - val_mae: 2.4535
+819/819 [==============================] - 38s 46ms/step - loss: 8.9929 - mae: 2.3343 - val_loss: 10.3940 - val_mae: 2.4632
 Epoch 7/10
-819/819 [==============================] - 30s 36ms/step - loss: 8.5702 - mae: 2.2812 - val_loss: 10.0695 - val_mae: 2.4665
+819/819 [==============================] - 39s 48ms/step - loss: 8.8194 - mae: 2.3088 - val_loss: 10.4243 - val_mae: 2.4520
 Epoch 8/10
-819/819 [==============================] - 30s 36ms/step - loss: 8.3627 - mae: 2.2527 - val_loss: 10.1515 - val_mae: 2.4785
+819/819 [==============================] - 40s 49ms/step - loss: 8.6682 - mae: 2.2856 - val_loss: 9.8806 - val_mae: 2.4162
 Epoch 9/10
-819/819 [==============================] - 29s 36ms/step - loss: 8.1913 - mae: 2.2290 - val_loss: 10.1713 - val_mae: 2.4816
+819/819 [==============================] - 38s 46ms/step - loss: 8.5465 - mae: 2.2697 - val_loss: 10.2288 - val_mae: 2.4538
 Epoch 10/10
-819/819 [==============================] - 30s 36ms/step - loss: 8.0120 - mae: 2.1996 - val_loss: 10.2862 - val_mae: 2.4917
+819/819 [==============================] - 41s 50ms/step - loss: 8.4262 - mae: 2.2539 - val_loss: 10.3551 - val_mae: 2.4635
 </pre></div>
 </div>
 </div>
@@ -1266,8 +1275,8 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 5s 12ms/step - loss: 11.1261 - mae: 2.5961
-Test MAE: 2.60
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 9s 22ms/step - loss: 11.0675 - mae: 2.5845
+Test MAE: 2.58
 </pre></div>
 </div>
 </div>
@@ -1277,6 +1286,9 @@ Test MAE: 2.60
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">visualize_mae</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="s2">&quot;Training and Validation MAE&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/keras-time-tutorial_72_0.png" src="../_images/keras-time-tutorial_72_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1300,9 +1312,8 @@ are called feedforward networks.</p></li>
 it has seen so far.</p></li>
 <li><p>In effect, an RNN is a type of neural network that has an internal loop</p></li>
 </ul>
-</div>
 <div class="section" id="a-recurrent-layer-in-keras">
-<h2>A recurrent layer in Keras<a class="headerlink" href="#a-recurrent-layer-in-keras" title="Permalink to this headline">¶</a></h2>
+<h3>A recurrent layer in Keras<a class="headerlink" href="#a-recurrent-layer-in-keras" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>An RNN layer that can process sequences of any length</p></li>
 <li><p>It takes inputs of shape (batch_size, timesteps, input_features)</p></li>
@@ -1382,6 +1393,7 @@ long-term dependencies prove impossible to learn in practice.</p></li>
 <li><p>This is due to the vanishing gradient problem, an effect that is similar to what is observed with non-recurrent networks (feedforward networks) that are many layers deep: as you keep adding layers to a network, the network eventually becomes untrainable</p></li>
 </ul>
 </div>
+</div>
 <div class="section" id="advanced-use-of-recurrent-neural-networks">
 <h2>Advanced use of recurrent neural networks<a class="headerlink" href="#advanced-use-of-recurrent-neural-networks" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -1405,7 +1417,8 @@ long-term dependencies prove impossible to learn in practice.</p></li>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s2">&quot;jena_lstm_dropout.keras&quot;</span><span class="p">,</span>
-                                    <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                    <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;val_loss&quot;</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>                                
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -1415,113 +1428,33 @@ long-term dependencies prove impossible to learn in practice.</p></li>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;mse&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mae&quot;</span><span class="p">])</span>
 <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
-                    <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
+                    <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
                     <span class="n">validation_data</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span>
                     <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
-819/819 [==============================] - 54s 64ms/step - loss: 26.8157 - mae: 3.8247 - val_loss: 10.0694 - val_mae: 2.4593
-Epoch 2/50
-819/819 [==============================] - 52s 64ms/step - loss: 14.7295 - mae: 2.9791 - val_loss: 9.4813 - val_mae: 2.3867
-Epoch 3/50
-819/819 [==============================] - 54s 66ms/step - loss: 14.0210 - mae: 2.8980 - val_loss: 9.3239 - val_mae: 2.3670
-Epoch 4/50
-819/819 [==============================] - 53s 64ms/step - loss: 13.4708 - mae: 2.8364 - val_loss: 9.4147 - val_mae: 2.3825
-Epoch 5/50
-819/819 [==============================] - 54s 66ms/step - loss: 12.8856 - mae: 2.7784 - val_loss: 9.3276 - val_mae: 2.3795
-Epoch 6/50
-819/819 [==============================] - 52s 64ms/step - loss: 12.5006 - mae: 2.7377 - val_loss: 9.4144 - val_mae: 2.3856
-Epoch 7/50
-819/819 [==============================] - 53s 64ms/step - loss: 12.0924 - mae: 2.6934 - val_loss: 9.4523 - val_mae: 2.4001
-Epoch 8/50
-819/819 [==============================] - 54s 66ms/step - loss: 11.9245 - mae: 2.6728 - val_loss: 9.3850 - val_mae: 2.3851
-Epoch 9/50
-819/819 [==============================] - 52s 64ms/step - loss: 11.5852 - mae: 2.6354 - val_loss: 9.4370 - val_mae: 2.3927
-Epoch 10/50
-819/819 [==============================] - 53s 65ms/step - loss: 11.4179 - mae: 2.6154 - val_loss: 9.4011 - val_mae: 2.3799
-Epoch 11/50
-819/819 [==============================] - 51s 62ms/step - loss: 11.1691 - mae: 2.5880 - val_loss: 9.8555 - val_mae: 2.4354
-Epoch 12/50
-819/819 [==============================] - 52s 64ms/step - loss: 10.9844 - mae: 2.5722 - val_loss: 9.6549 - val_mae: 2.4135
-Epoch 13/50
-819/819 [==============================] - 53s 65ms/step - loss: 10.8842 - mae: 2.5571 - val_loss: 9.9515 - val_mae: 2.4485
-Epoch 14/50
-819/819 [==============================] - 52s 63ms/step - loss: 10.7262 - mae: 2.5395 - val_loss: 9.8517 - val_mae: 2.4327
-Epoch 15/50
-819/819 [==============================] - 52s 63ms/step - loss: 10.6212 - mae: 2.5276 - val_loss: 10.0569 - val_mae: 2.4575
-Epoch 16/50
-819/819 [==============================] - 50s 61ms/step - loss: 10.5199 - mae: 2.5133 - val_loss: 9.9255 - val_mae: 2.4492
-Epoch 17/50
-819/819 [==============================] - 52s 63ms/step - loss: 10.4492 - mae: 2.5050 - val_loss: 10.3644 - val_mae: 2.4986
-Epoch 18/50
-819/819 [==============================] - 53s 64ms/step - loss: 10.3448 - mae: 2.4927 - val_loss: 10.6227 - val_mae: 2.5215
-Epoch 19/50
-819/819 [==============================] - 55s 67ms/step - loss: 10.2640 - mae: 2.4811 - val_loss: 10.3540 - val_mae: 2.5006
-Epoch 20/50
-819/819 [==============================] - 52s 63ms/step - loss: 10.1202 - mae: 2.4654 - val_loss: 10.1275 - val_mae: 2.4687
-Epoch 21/50
-819/819 [==============================] - 53s 64ms/step - loss: 10.0946 - mae: 2.4602 - val_loss: 10.3949 - val_mae: 2.5050
-Epoch 22/50
-819/819 [==============================] - 52s 63ms/step - loss: 10.0354 - mae: 2.4551 - val_loss: 10.6253 - val_mae: 2.5252
-Epoch 23/50
-819/819 [==============================] - 52s 63ms/step - loss: 9.9540 - mae: 2.4421 - val_loss: 10.7326 - val_mae: 2.5374
-Epoch 24/50
-819/819 [==============================] - 52s 64ms/step - loss: 9.9371 - mae: 2.4406 - val_loss: 10.2433 - val_mae: 2.4821
-Epoch 25/50
-819/819 [==============================] - 52s 63ms/step - loss: 9.8615 - mae: 2.4311 - val_loss: 10.3931 - val_mae: 2.5087
-Epoch 26/50
-819/819 [==============================] - 52s 63ms/step - loss: 9.7959 - mae: 2.4248 - val_loss: 10.5028 - val_mae: 2.5138
-Epoch 27/50
-819/819 [==============================] - 52s 63ms/step - loss: 9.6738 - mae: 2.4071 - val_loss: 10.3429 - val_mae: 2.4894
-Epoch 28/50
-819/819 [==============================] - 50s 61ms/step - loss: 9.6486 - mae: 2.4059 - val_loss: 10.6087 - val_mae: 2.5281
-Epoch 29/50
-819/819 [==============================] - 50s 62ms/step - loss: 9.5631 - mae: 2.3922 - val_loss: 10.5368 - val_mae: 2.5289
-Epoch 30/50
-819/819 [==============================] - 50s 61ms/step - loss: 9.5524 - mae: 2.3940 - val_loss: 10.7345 - val_mae: 2.5413
-Epoch 31/50
-819/819 [==============================] - 50s 61ms/step - loss: 9.5146 - mae: 2.3843 - val_loss: 10.6748 - val_mae: 2.5355
-Epoch 32/50
-819/819 [==============================] - 50s 61ms/step - loss: 9.5337 - mae: 2.3913 - val_loss: 10.8398 - val_mae: 2.5527
-Epoch 33/50
-819/819 [==============================] - 56s 68ms/step - loss: 9.3970 - mae: 2.3720 - val_loss: 10.6069 - val_mae: 2.5268
-Epoch 34/50
-819/819 [==============================] - 1850s 2s/step - loss: 9.3932 - mae: 2.3697 - val_loss: 11.0735 - val_mae: 2.5821
-Epoch 35/50
-819/819 [==============================] - 855s 1s/step - loss: 9.3460 - mae: 2.3622 - val_loss: 10.9389 - val_mae: 2.5673
-Epoch 36/50
-819/819 [==============================] - 52s 63ms/step - loss: 9.3123 - mae: 2.3594 - val_loss: 11.2767 - val_mae: 2.6077
-Epoch 37/50
-819/819 [==============================] - 52s 63ms/step - loss: 9.2420 - mae: 2.3512 - val_loss: 11.3413 - val_mae: 2.6125
-Epoch 38/50
-819/819 [==============================] - 52s 63ms/step - loss: 9.2209 - mae: 2.3463 - val_loss: 11.2516 - val_mae: 2.6080
-Epoch 39/50
-819/819 [==============================] - 52s 63ms/step - loss: 9.1732 - mae: 2.3406 - val_loss: 11.1228 - val_mae: 2.5875
-Epoch 40/50
-819/819 [==============================] - 52s 63ms/step - loss: 9.0794 - mae: 2.3280 - val_loss: 11.2700 - val_mae: 2.6080
-Epoch 41/50
-819/819 [==============================] - 52s 63ms/step - loss: 9.0500 - mae: 2.3215 - val_loss: 11.5613 - val_mae: 2.6347
-Epoch 42/50
-819/819 [==============================] - 50s 61ms/step - loss: 9.0249 - mae: 2.3201 - val_loss: 11.5478 - val_mae: 2.6426
-Epoch 43/50
-819/819 [==============================] - 50s 61ms/step - loss: 9.0713 - mae: 2.3240 - val_loss: 11.5943 - val_mae: 2.6388
-Epoch 44/50
-819/819 [==============================] - 50s 61ms/step - loss: 8.9700 - mae: 2.3127 - val_loss: 11.4612 - val_mae: 2.6317
-Epoch 45/50
-819/819 [==============================] - 51s 62ms/step - loss: 8.9515 - mae: 2.3098 - val_loss: 11.8122 - val_mae: 2.6640
-Epoch 46/50
-819/819 [==============================] - 50s 61ms/step - loss: 8.8998 - mae: 2.3033 - val_loss: 11.3142 - val_mae: 2.6160
-Epoch 47/50
-819/819 [==============================] - 50s 61ms/step - loss: 8.9058 - mae: 2.3022 - val_loss: 11.6600 - val_mae: 2.6491
-Epoch 48/50
-819/819 [==============================] - 58s 71ms/step - loss: 8.8489 - mae: 2.2948 - val_loss: 11.6394 - val_mae: 2.6498
-Epoch 49/50
-819/819 [==============================] - 1881s 2s/step - loss: 8.7924 - mae: 2.2895 - val_loss: 11.6280 - val_mae: 2.6495
-Epoch 50/50
-819/819 [==============================] - 1106s 1s/step - loss: 8.8360 - mae: 2.2946 - val_loss: 11.6715 - val_mae: 2.6524
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+819/819 [==============================] - 57s 67ms/step - loss: 9.5786 - mae: 2.4009 - val_loss: 11.0471 - val_mae: 2.5688
+Epoch 2/10
+819/819 [==============================] - 54s 66ms/step - loss: 9.5111 - mae: 2.3911 - val_loss: 11.4402 - val_mae: 2.6143
+Epoch 3/10
+819/819 [==============================] - 56s 68ms/step - loss: 9.5285 - mae: 2.3896 - val_loss: 11.1815 - val_mae: 2.5868
+Epoch 4/10
+819/819 [==============================] - 56s 68ms/step - loss: 9.5142 - mae: 2.3911 - val_loss: 11.1256 - val_mae: 2.5893
+Epoch 5/10
+819/819 [==============================] - 56s 68ms/step - loss: 9.3757 - mae: 2.3720 - val_loss: 10.9156 - val_mae: 2.5615
+Epoch 6/10
+819/819 [==============================] - 55s 67ms/step - loss: 9.3851 - mae: 2.3715 - val_loss: 11.0319 - val_mae: 2.5698
+Epoch 7/10
+819/819 [==============================] - 54s 66ms/step - loss: 9.3228 - mae: 2.3688 - val_loss: 11.0931 - val_mae: 2.5773
+Epoch 8/10
+819/819 [==============================] - 55s 67ms/step - loss: 9.2358 - mae: 2.3581 - val_loss: 11.1550 - val_mae: 2.5877
+Epoch 9/10
+819/819 [==============================] - 54s 66ms/step - loss: 9.2531 - mae: 2.3579 - val_loss: 10.8746 - val_mae: 2.5554
+Epoch 10/10
+819/819 [==============================] - 54s 66ms/step - loss: 9.2377 - mae: 2.3555 - val_loss: 11.3936 - val_mae: 2.6106
 </pre></div>
 </div>
 </div>
@@ -1534,8 +1467,8 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 7s 16ms/step - loss: 10.3666 - mae: 2.5408
-Test MAE: 2.54
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 6s 15ms/step - loss: 10.1155 - mae: 2.5134
+Test MAE: 2.51
 </pre></div>
 </div>
 </div>
@@ -1550,8 +1483,9 @@ Test MAE: 2.54
 <img alt="../_images/keras-time-tutorial_94_0.png" src="../_images/keras-time-tutorial_94_0.png" />
 </div>
 </div>
+</div>
 <div class="section" id="stacking-recurrent-layers-with-a-gru-model">
-<h3>Stacking recurrent layers with a GRU model<a class="headerlink" href="#stacking-recurrent-layers-with-a-gru-model" title="Permalink to this headline">¶</a></h3>
+<h2>Stacking recurrent layers with a GRU model<a class="headerlink" href="#stacking-recurrent-layers-with-a-gru-model" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Next, we’ll use Gated Recurrent Unit (GRU) layers instead of LSTM.</p></li>
 <li><p>GRU is very similar to LSTM—you can think of it as a slightly simpler, streamlined version of the LSTM architecture.</p></li>
@@ -1576,7 +1510,8 @@ Test MAE: 2.54
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s2">&quot;jena_stacked_gru_dropout.keras&quot;</span><span class="p">,</span>
-                                    <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                    <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;val_loss&quot;</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>                             
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -1592,43 +1527,25 @@ Test MAE: 2.54
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span>
-                    <span class="n">epochs</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="c1"># we use 15 instead of 50</span>
+                    <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                     <span class="n">validation_data</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span>
                     <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/15
-819/819 [==============================] - 92s 108ms/step - loss: 26.6000 - mae: 3.7910 - val_loss: 9.3166 - val_mae: 2.3574
-Epoch 2/15
-819/819 [==============================] - 86s 105ms/step - loss: 14.0802 - mae: 2.9065 - val_loss: 9.4442 - val_mae: 2.3896
-Epoch 3/15
-819/819 [==============================] - 86s 105ms/step - loss: 13.2165 - mae: 2.8177 - val_loss: 8.9861 - val_mae: 2.3204
-Epoch 4/15
-819/819 [==============================] - 86s 105ms/step - loss: 12.5084 - mae: 2.7416 - val_loss: 8.8973 - val_mae: 2.3289
-Epoch 5/15
-819/819 [==============================] - 86s 105ms/step - loss: 12.0001 - mae: 2.6852 - val_loss: 9.1988 - val_mae: 2.3634
-Epoch 6/15
-819/819 [==============================] - 86s 105ms/step - loss: 11.6346 - mae: 2.6446 - val_loss: 10.0672 - val_mae: 2.4820
-Epoch 7/15
-819/819 [==============================] - 86s 104ms/step - loss: 11.3016 - mae: 2.6076 - val_loss: 9.7055 - val_mae: 2.4287
-Epoch 8/15
-819/819 [==============================] - 85s 104ms/step - loss: 10.8956 - mae: 2.5624 - val_loss: 9.4754 - val_mae: 2.4178
-Epoch 9/15
-819/819 [==============================] - 84s 103ms/step - loss: 10.5807 - mae: 2.5281 - val_loss: 9.3378 - val_mae: 2.3802
-Epoch 10/15
-819/819 [==============================] - 84s 103ms/step - loss: 10.2928 - mae: 2.4930 - val_loss: 9.6785 - val_mae: 2.4280
-Epoch 11/15
-819/819 [==============================] - 84s 102ms/step - loss: 10.0334 - mae: 2.4640 - val_loss: 9.4520 - val_mae: 2.4115
-Epoch 12/15
-819/819 [==============================] - 1265s 2s/step - loss: 9.8189 - mae: 2.4357 - val_loss: 9.7087 - val_mae: 2.4456
-Epoch 13/15
-819/819 [==============================] - 2004s 2s/step - loss: 9.5484 - mae: 2.4041 - val_loss: 10.1827 - val_mae: 2.4976
-Epoch 14/15
-819/819 [==============================] - 3721s 5s/step - loss: 9.4338 - mae: 2.3887 - val_loss: 10.2095 - val_mae: 2.4939
-Epoch 15/15
-819/819 [==============================] - 86s 105ms/step - loss: 9.1984 - mae: 2.3606 - val_loss: 10.4121 - val_mae: 2.5400
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+819/819 [==============================] - 97s 116ms/step - loss: 25.7359 - mae: 3.7422 - val_loss: 9.3439 - val_mae: 2.3706
+Epoch 2/10
+819/819 [==============================] - 91s 111ms/step - loss: 14.0316 - mae: 2.9030 - val_loss: 9.3555 - val_mae: 2.3701
+Epoch 3/10
+819/819 [==============================] - 88s 108ms/step - loss: 13.2588 - mae: 2.8209 - val_loss: 9.2216 - val_mae: 2.3564
+Epoch 4/10
+819/819 [==============================] - 91s 111ms/step - loss: 12.6635 - mae: 2.7597 - val_loss: 8.7221 - val_mae: 2.2933
+Epoch 5/10
+819/819 [==============================] - 94s 115ms/step - loss: 12.1896 - mae: 2.7076 - val_loss: 8.9592 - val_mae: 2.3243
+Epoch 6/10
+819/819 [==============================] - 96s 117ms/step - loss: 11.7795 - mae: 2.6615 - val_loss: 9.1896 - val_mae: 2.3371
 </pre></div>
 </div>
 </div>
@@ -1641,8 +1558,8 @@ Epoch 15/15
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 9s 21ms/step - loss: 9.8207 - mae: 2.4722
-Test MAE: 2.47
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405/405 [==============================] - 10s 24ms/step - loss: 9.8430 - mae: 2.4757
+Test MAE: 2.48
 </pre></div>
 </div>
 </div>
@@ -1653,10 +1570,13 @@ Test MAE: 2.47
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/keras-time-tutorial_102_0.png" src="../_images/keras-time-tutorial_102_0.png" />
 </div>
 </div>
-<div class="section" id="using-bidirectional-rnns">
-<h3>Using bidirectional RNNs<a class="headerlink" href="#using-bidirectional-rnns" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bidirectional-rnn">
+<h2>Bidirectional RNN<a class="headerlink" href="#bidirectional-rnn" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The last technique we’ll look at is the bidirectional RNN.</p></li>
 <li><p>A bidirectional RNN is a common RNN variant that can offer greater performance than a regular RNN on certain tasks.</p></li>
@@ -1697,18 +1617,27 @@ where order matters, yet where which order you use doesn’t matter.</p></li>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/5
-819/819 [==============================] - 39s 44ms/step - loss: 25.8332 - mae: 3.6772 - val_loss: 11.0329 - val_mae: 2.5763
+819/819 [==============================] - 46s 53ms/step - loss: 28.7066 - mae: 3.8249 - val_loss: 10.8151 - val_mae: 2.5471
 Epoch 2/5
-819/819 [==============================] - 41s 50ms/step - loss: 9.3958 - mae: 2.3961 - val_loss: 10.1830 - val_mae: 2.4680
+819/819 [==============================] - 47s 57ms/step - loss: 9.4020 - mae: 2.3933 - val_loss: 9.5691 - val_mae: 2.3854
 Epoch 3/5
-819/819 [==============================] - 37s 46ms/step - loss: 8.5552 - mae: 2.2780 - val_loss: 10.1725 - val_mae: 2.4703
+819/819 [==============================] - 46s 57ms/step - loss: 8.4517 - mae: 2.2606 - val_loss: 9.4533 - val_mae: 2.3619
 Epoch 4/5
-819/819 [==============================] - 35s 42ms/step - loss: 8.0000 - mae: 2.1981 - val_loss: 10.3795 - val_mae: 2.5004
+819/819 [==============================] - 46s 56ms/step - loss: 7.9258 - mae: 2.1868 - val_loss: 9.4290 - val_mae: 2.3604
 Epoch 5/5
-819/819 [==============================] - 38s 46ms/step - loss: 7.6410 - mae: 2.1488 - val_loss: 10.7315 - val_mae: 2.5576
+819/819 [==============================] - 49s 60ms/step - loss: 7.5546 - mae: 2.1369 - val_loss: 9.6947 - val_mae: 2.4016
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">visualize_mae</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="s2">&quot;Training and Validation MAE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/keras-time-tutorial_109_0.png" src="../_images/keras-time-tutorial_109_0.png" />
 </div>
 </div>
 </div>
