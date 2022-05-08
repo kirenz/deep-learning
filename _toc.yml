@@ -7,13 +7,13 @@ parts:
     - file: docs/tensorflow.md  
     - file: docs/tf-example.ipynb
     - file: docs/hugging-face.md 
-  - caption: Keras
+  - caption: Keras intro
     chapters:
     - file: docs/keras-sequential.md
     - file: docs/keras-functional.md   
     - file: docs/keras-preprocessing.md
     - file: docs/keras-tuner.ipynb 
-  - caption: Computer vision
+  - caption: Computer vision intro
     chapters:
     - file: docs/fashion-mnist.ipynb
     - file: docs/fashion-mnist-exercises.ipynb  
@@ -24,6 +24,10 @@ parts:
     - file: docs/mnist-cnn.ipynb   
     - file: docs/mnist-tensorflow.ipynb
     - file: docs/mnist-pytorch.ipynb 
+  - caption: Image augmentation
+    chapters:
+    - file: docs/image_classification_from_scratch.ipynb
+    - file: docs/image_augmentation.ipynb
  # - caption: Regression
  #   chapters:
  #   - file: docs/regression-structured.md
