@@ -1036,7 +1036,7 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 <div class="section" id="train-a-model">
 <h3>Train a model<a class="headerlink" href="#train-a-model" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>For completeness, you will now train a model using the datasets you have just prepared.</p></li>
+<li><p>For completeness, you will now train a sequential model using the datasets you have just prepared.</p></li>
 <li><p>The <a class="reference external" href="https://www.tensorflow.org/guide/keras/sequential_model">Sequential</a> model consists of three convolution blocks (<code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Conv2D</span></code>) with a max pooling layer (<code class="docutils literal notranslate"><span class="pre">tf.keras.layers.MaxPooling2D</span></code>) in each of them.</p></li>
 <li><p>There’s a fully-connected layer (<code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Dense</span></code>) with 128 units on top of it that is activated by a ReLU activation function (<code class="docutils literal notranslate"><span class="pre">'relu'</span></code>).</p></li>
 <li><p>This model has not been tuned for accuracy (the goal is to show you the mechanics).</p></li>
