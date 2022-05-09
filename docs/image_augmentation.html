@@ -691,7 +691,20 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="tex2jax_ignore mathjax_ignore section" id="data-augmentation">
 <h1>Data augmentation<a class="headerlink" href="#data-augmentation" title="Permalink to this headline">¶</a></h1>
 <p>Copyright 2020 The TensorFlow Authors.</p>
-<div class="cell docutils container">
+<table class="tfo-notebook-buttons" align="left">
+  <td>
+    <a target="_blank" href="https://www.tensorflow.org/tutorials/images/data_augmentation"><img src="https://www.tensorflow.org/images/tf_logo_32px.png" />View on TensorFlow.org</a>
+  </td>
+  <td>
+    <a target="_blank" href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/data_augmentation.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" />Run in Google Colab</a>
+  </td>
+  <td>
+    <a target="_blank" href="https://github.com/tensorflow/docs/blob/master/site/en/tutorials/images/data_augmentation.ipynb"><img src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" />View source on GitHub</a>
+  </td>
+  <td>
+    <a href="https://storage.googleapis.com/tensorflow_docs/docs/site/en/tutorials/images/data_augmentation.ipynb"><img src="https://www.tensorflow.org/images/download_logo_32px.png" />Download notebook</a>
+  </td>
+</table><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="c1"># you may not use this file except in compliance with the License.</span>
@@ -708,20 +721,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<table class="tfo-notebook-buttons" align="left">
-  <td>
-    <a target="_blank" href="https://www.tensorflow.org/tutorials/images/data_augmentation"><img src="https://www.tensorflow.org/images/tf_logo_32px.png" />View on TensorFlow.org</a>
-  </td>
-  <td>
-    <a target="_blank" href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/data_augmentation.ipynb"><img src="https://www.tensorflow.org/images/colab_logo_32px.png" />Run in Google Colab</a>
-  </td>
-  <td>
-    <a target="_blank" href="https://github.com/tensorflow/docs/blob/master/site/en/tutorials/images/data_augmentation.ipynb"><img src="https://www.tensorflow.org/images/GitHub-Mark-32px.png" />View source on GitHub</a>
-  </td>
-  <td>
-    <a href="https://storage.googleapis.com/tensorflow_docs/docs/site/en/tutorials/images/data_augmentation.ipynb"><img src="https://www.tensorflow.org/images/download_logo_32px.png" />Download notebook</a>
-  </td>
-</table><div class="section" id="overview">
+<div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>This tutorial demonstrates data augmentation: a technique to increase the diversity of your training set by applying random (but realistic) transformations, such as image rotation.</p></li>
@@ -928,14 +928,15 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 </div>
 </div>
 <ul class="simple">
-<li><p>There are a variety of preprocessing layers you can use for data augmentation including
--<code class="docutils literal notranslate"><span class="pre">tf.keras.layers.RandomContrast</span></code>,</p>
+<li><p>There are a variety of preprocessing layers you can use for data augmentation including</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">tf.keras.layers.RandomCrop</span></code>,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tf.keras.layers.RandomZoom</span></code>, and others.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tf.keras.layers.RandomContrast</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tf.keras.layers.RandomCrop</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tf.keras.layers.RandomZoom</span></code>,</p></li>
 </ul>
 </li>
 </ul>
+<p>and others.</p>
 </div>
 <div class="section" id="two-options-to-use-the-keras-preprocessing-layers">
 <h3>Two options to use the Keras preprocessing layers<a class="headerlink" href="#two-options-to-use-the-keras-preprocessing-layers" title="Permalink to this headline">¶</a></h3>
@@ -1044,14 +1045,20 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  
   <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
   <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(),</span>
+  
   <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
   <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(),</span>
+  
   <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
   <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(),</span>
+  
+    
   <span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
   <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    
   <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">)</span>
 <span class="p">])</span>
 </pre></div>
