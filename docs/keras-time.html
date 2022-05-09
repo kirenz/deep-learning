@@ -728,7 +728,7 @@ by some amount.</p></li>
 <span class="n">dummy_dataset</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">timeseries_dataset_from_array</span><span class="p">(</span>
     <span class="c1"># The sequences we generate will be sampled from [0 1 2 3 4 5 6]</span>
     <span class="n">data</span><span class="o">=</span><span class="n">int_sequence</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span>
-    <span class="c1"># The target for the sequences taht starts at data [N] will be the data [N+3]</span>
+    <span class="c1"># The target for the sequences that starts at data [N] will be the data [N+3]</span>
     <span class="n">targets</span><span class="o">=</span><span class="n">int_sequence</span><span class="p">[</span><span class="mi">3</span><span class="p">:],</span>
     <span class="c1"># The sequences will be 3 steps long</span>
     <span class="n">sequence_length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
