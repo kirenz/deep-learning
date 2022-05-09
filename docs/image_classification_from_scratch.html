@@ -438,6 +438,18 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#build-a-model">
    Build a model
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#best-practice-advice">
+     Best practice advice
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model">
+     Model
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#train-the-model">
@@ -552,6 +564,18 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#build-a-model">
    Build a model
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#best-practice-advice">
+     Best practice advice
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model">
+     Model
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#train-the-model">
@@ -982,15 +1006,54 @@ having I/O becoming blocking:</p></li>
 </div>
 <div class="section" id="build-a-model">
 <h2>Build a model<a class="headerlink" href="#build-a-model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="best-practice-advice">
+<h3>Best practice advice<a class="headerlink" href="#best-practice-advice" title="Permalink to this headline">¶</a></h3>
+<p>Convnet architecture principles (Chollet, 2021):</p>
 <ul class="simple">
-<li><p>We’ll build a small version of the <a class="reference external" href="https://arxiv.org/abs/1610.02357">Xception network</a>.</p></li>
-<li><p>We haven’t particularly tried to optimize the architecture; if you want to do a systematic search for the best model configuration, consider using
-<a class="reference external" href="https://github.com/keras-team/keras-tuner">KerasTuner</a>.</p></li>
+<li><p>Your model should be organized into repeated blocks of layers, usually made of</p>
+<ul>
+<li><p>multiple convolution layers (usually <a class="reference external" href="https://keras.io/api/layers/convolution_layers/convolution2d/">Conv2d</a>) and a</p></li>
+<li><p>max pooling layer (usually <a class="reference external" href="https://keras.io/api/layers/pooling_layers/max_pooling2d/">MaxPooling2D</a>).</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>The number of filters in your layers should increase (usually we double it) as the size of the spatial feature maps decreases.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Deep and narrow is better than broad and shallow.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Introducing residual connections around blocks of layers helps you train deeper networks.</p></li>
+</ul>
+<ul class="simple">
+<li><p>It can be beneficial to introduce batch <a class="reference external" href="https://keras.io/api/layers/normalization_layers/batch_normalization/">normalization layers</a> after your convolution layers.</p></li>
+</ul>
+<ul class="simple">
+<li><p>It can be beneficial to replace Conv2D layers with <a class="reference external" href="https://keras.io/api/layers/convolution_layers/separable_convolution2d/">SeparableConv2D</a> layers, which are more parameter-efficient.</p></li>
+</ul>
+</div>
+<div class="section" id="model">
+<h3>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Next, we’ll build a small version of the <a class="reference external" href="https://arxiv.org/abs/1610.02357">Xception network</a>.</p></li>
 </ul>
 <p>Note that:</p>
 <ul class="simple">
 <li><p>We start the model with the <code class="docutils literal notranslate"><span class="pre">data_augmentation</span></code> preprocessor, followed by a
 <code class="docutils literal notranslate"><span class="pre">Rescaling</span></code> layer.</p></li>
+<li><p>first layer in our model is a regular Conv2D layer. We’ll start using <a class="reference external" href="https://keras.io/api/layers/convolution_layers/separable_convolution2d/">SeparableConv2D</a> afterwards</p></li>
+</ul>
+<ul class="simple">
+<li><p>Since the assumption that underlies separable convolution, “feature channels are largely independent,” does not hold for RGB images! Red, green, and blue color channels are actually highly correlated in natural images.</p></li>
+</ul>
+<ul class="simple">
+<li><p>We apply a series of convolutional blocks with increasing feature depth (using a foor loop)</p></li>
+</ul>
+<ul class="simple">
+<li><p>We use <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/GlobalAveragePooling2D">GlobalAveragePooling2D</a> -which is similar to flatten the layer- right before the classification outout layer</p></li>
+</ul>
+<ul class="simple">
 <li><p>We include a <code class="docutils literal notranslate"><span class="pre">Dropout</span></code> layer before the final classification layer.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1002,8 +1065,11 @@ having I/O becoming blocking:</p></li>
     <span class="c1"># Image augmentation block</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">data_augmentation</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
-    <span class="c1"># Entry block</span>
+    <span class="c1"># Image rescaling</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Rescaling</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">255</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># Entry block</span>
+    
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
@@ -1013,6 +1079,8 @@ having I/O becoming blocking:</p></li>
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 
     <span class="n">previous_block_activation</span> <span class="o">=</span> <span class="n">x</span>  <span class="c1"># Set aside residual</span>
+    
+    <span class="c1"># Series of convolutional blocks with SeparableConv2D</span>
 
     <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">728</span><span class="p">]:</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
@@ -1032,10 +1100,12 @@ having I/O becoming blocking:</p></li>
         <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">residual</span><span class="p">])</span>  <span class="c1"># Add back residual</span>
         <span class="n">previous_block_activation</span> <span class="o">=</span> <span class="n">x</span>  <span class="c1"># Set aside next residual</span>
 
+             
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">SeparableConv2D</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 
+    
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">GlobalAveragePooling2D</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">num_classes</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="n">activation</span> <span class="o">=</span> <span class="s2">&quot;sigmoid&quot;</span>
@@ -1047,16 +1117,31 @@ having I/O becoming blocking:</p></li>
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
-
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="n">image_size</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="n">image_size</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/image_classification_from_scratch_49_0.png" src="../_images/image_classification_from_scratch_49_0.png" />
+<img alt="../_images/image_classification_from_scratch_63_0.png" src="../_images/image_classification_from_scratch_63_0.png" />
 </div>
+</div>
+<ul class="simple">
+<li><p>We haven’t particularly tried to optimize the architecture; if you want to do a systematic search for the best model configuration, consider using
+<a class="reference external" href="https://github.com/keras-team/keras-tuner">KerasTuner</a>.</p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="train-the-model">
