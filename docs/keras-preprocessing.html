@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Preprocessing layers &#8212; Deep Learning</title>
+    <title>Preprocessing Layers &#8212; Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,6 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KerasTuner" href="keras-tuner.html" />
+    <link rel="prev" title="Keras Functional API" href="keras-functional.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -129,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
   Keras intro
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="keras-sequential.html">
    Keras Sequential model
@@ -138,6 +140,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="keras-functional.html">
    Keras Functional API
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Preprocessing Layers
   </a>
  </li>
  <li class="toctree-l1">
@@ -291,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/keras-preprocesing.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/keras-preprocessing.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -311,7 +318,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/keras-preprocesing.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/keras-preprocessing.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -338,8 +345,13 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#video-tutorial">
-   Video tutorial
+  <a class="reference internal nav-link" href="#quick-introduction">
+   Quick introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#end-to-end-example">
+   End-to-End example
   </a>
  </li>
 </ul>
@@ -352,7 +364,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Preprocessing layers</h1>
+                <h1>Preprocessing Layers</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -363,8 +375,13 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#video-tutorial">
-   Video tutorial
+  <a class="reference internal nav-link" href="#quick-introduction">
+   Quick introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#end-to-end-example">
+   End-to-End example
   </a>
  </li>
 </ul>
@@ -377,33 +394,46 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="preprocessing-layers">
-<h1>Preprocessing layers<a class="headerlink" href="#preprocessing-layers" title="Permalink to this headline">¶</a></h1>
-<p>Keras input processing pipelines can be used as independent preprocessing code in non-Keras workflows, combined directly with Keras models, and exported as part of a Keras SavedModel.</p>
-<p>Keras preprocessing layers can handle a wide range of input, including structured data, images, and text.</p>
+<h1>Preprocessing Layers<a class="headerlink" href="#preprocessing-layers" title="Permalink to this headline">¶</a></h1>
+<p>Keras Preprocessing Layers are a set of Keras layers aimed at making preprocessing data fit more naturally into model development workflows. They can handle a wide range of input, including structured data, images, and text and can be combined directly with Keras models and exported as part of a Keras SavedModel.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keras input processing pipelines can also be used as independent preprocessing code in non-Keras workflows</p>
+</div>
 <p>With Keras preprocessing layers, you can build and export models that are truly end-to-end:</p>
 <ul class="simple">
 <li><p>models that accept raw images or raw structured data as input</p></li>
 <li><p>models that handle feature normalization or feature value indexing on their own.</p></li>
 </ul>
+<p>To learn more about Keras Preprocessing layers, review the videos in the following sections.</p>
 <div class="tip admonition">
-<p class="admonition-title">Resources</p>
+<p class="admonition-title">Notebooks &amp; Documentation</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://keras.io/guides/preprocessing_layers/">Preprocessing Guide</a></p></li>
-<li><p><a class="reference external" href="https://www.tensorflow.org/tutorials/load_data/text">Load and preprocess text</a></p></li>
-<li><p><a class="reference external" href="https://www.tensorflow.org/tutorials/load_data/images">Load and preprocess images</a></p></li>
+<li><p><a class="reference external" href="https://keras.io/guides/preprocessing_layers/">Keras Preprocessing Guide</a></p></li>
+<li><p><a class="reference internal" href="structured_data_classification_layers.html"><span class="doc std std-doc">Structured data classification with preprocessing layers</span></a></p></li>
+<li><p><a class="reference internal" href="keras-imdb.html"><span class="doc std std-doc">Sentiment analysis with preprocessing layers</span></a></p></li>
+<li><p><a class="reference external" href="https://www.tensorflow.org/tutorials/load_data/text">TensorFlow tutorial: Load and preprocess text</a></p></li>
+<li><p><a class="reference external" href="https://www.tensorflow.org/tutorials/load_data/images">TensorFlow tutorial: Load and preprocess images</a></p></li>
 </ul>
 </div>
-<div class="section" id="video-tutorial">
-<h2>Video tutorial<a class="headerlink" href="#video-tutorial" title="Permalink to this headline">¶</a></h2>
-<p>Google Software Engineer Matthew Watson highlights Keras Preprocessing Layers’ ability to streamline model development workflows. Follow along as he builds an end-to-end model showing what you can do with these layers:</p>
+<div class="section" id="quick-introduction">
+<h2>Quick introduction<a class="headerlink" href="#quick-introduction" title="Permalink to this headline">¶</a></h2>
+<p>Check out this quick introduction to machine learning data processing as well as its challenges.</p>
+<p>Learn how to easily prepare your data using the new Keras Preprocessing Layers API – in particular, how to do asynchronous preprocessing as part of your data pipeline, and how to export an end-to-end model that embeds its own preprocessing logic:</p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Jku4j0Ve-3Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br>
+</div>
+<div class="section" id="end-to-end-example">
+<h2>End-to-End example<a class="headerlink" href="#end-to-end-example" title="Permalink to this headline">¶</a></h2>
+<p>Google Software Engineer Matthew Watson highlights Keras Preprocessing Layers’ ability to streamline model development workflows. Follow along as he builds an end-to-end model showing what you can do with these layers.</p>
 <br>
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/GVShIIh3_yE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
 <div class="tipp admonition">
 <p class="admonition-title">Resources</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://blog.tensorflow.org/2021/11/an-introduction-to-keras-preprocessing.html">An Introduction to Keras Preprocessing Layers
-</a></p></li>
+<li><p><a class="reference external" href="https://blog.tensorflow.org/2021/11/an-introduction-to-keras-preprocessing.html">An Introduction to Keras Preprocessing Layers</a></p></li>
 </ul>
 </div>
 </div>
@@ -433,7 +463,21 @@ const thebe_selector_output = ".output, .cell_output"
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="keras-functional.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Keras Functional API</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="keras-tuner.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KerasTuner</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
