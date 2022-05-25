@@ -37,6 +37,10 @@ parts:
     - file: docs/structured_data_classification_functions.ipynb  
     - file: docs/keras-imdb.ipynb
     - file: docs/keras-time.ipynb
+ # - caption: Explainable AI dat
+ #   chapters:
+ #   - file: docs/
+ #   - file: docs/     
   - caption: References
     chapters:
     - file: docs/reference.md
