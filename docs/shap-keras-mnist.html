@@ -1,0 +1,690 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Front Page DeepExplainer MNIST &#8212; Deep Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="deep-learning.html">
+   Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tensorflow.html">
+   TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tf-example.html">
+   TensorFlow Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hugging-face.html">
+   Hugging Face
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Keras intro
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-sequential.html">
+   Keras Sequential model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-functional.html">
+   Keras Functional API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-preprocessing.html">
+   Preprocessing Layers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-tuner.html">
+   KerasTuner
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer vision intro
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="fashion-mnist.html">
+   Classify images of clothing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fashion-mnist-exercises.html">
+   Model exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="convolutional.html">
+   Convolutional
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cnn.html">
+   TF CNN
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CNN
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-cnn.html">
+   CNN intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-tensorflow.html">
+   MNIST with TensorFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mnist-pytorch.html">
+   MNIST with PyTorch
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Image augmentation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="image_classification_from_scratch.html">
+   Image preprocessing and data augmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="image_augmentation.html">
+   Data augmentation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Structured data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="structured_data_classification_intro.html">
+   Classification I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="structured_data_classification_functions.html">
+   Classification II
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-imdb.html">
+   IMDB Sentiment analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="keras-time.html">
+   Time series regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="reference.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/shap-keras-mnist.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/kirenz/deep-learning"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/shap-keras-mnist.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/shap-keras-mnist.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Front Page DeepExplainer MNIST</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="front-page-deepexplainer-mnist">
+<h1>Front Page DeepExplainer MNIST<a class="headerlink" href="#front-page-deepexplainer-mnist" title="Permalink to this headline">¶</a></h1>
+<p>Source: <a class="reference external" href="https://shap-lrjball.readthedocs.io/en/latest/example_notebooks/deep_explainer/Front%20Page%20DeepExplainer%20MNIST%20Example.html">SHAP documentation</a></p>
+<p>A simple example showing how to explain an MNIST CNN trained using Keras with DeepExplainer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">keras</span>
+<span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Flatten</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span>
+<span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="c1"># input image dimensions</span>
+<span class="n">img_rows</span><span class="p">,</span> <span class="n">img_cols</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span>
+
+<span class="c1"># the data, split between train and test sets</span>
+<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">K</span><span class="o">.</span><span class="n">image_data_format</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;channels_first&#39;</span><span class="p">:</span>
+    <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">img_rows</span><span class="p">,</span> <span class="n">img_cols</span><span class="p">)</span>
+    <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">img_rows</span><span class="p">,</span> <span class="n">img_cols</span><span class="p">)</span>
+    <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">img_rows</span><span class="p">,</span> <span class="n">img_cols</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">img_rows</span><span class="p">,</span> <span class="n">img_cols</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">img_rows</span><span class="p">,</span> <span class="n">img_cols</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">img_rows</span><span class="p">,</span> <span class="n">img_cols</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+
+<span class="n">x_train</span> <span class="o">/=</span> <span class="mi">255</span>
+<span class="n">x_test</span> <span class="o">/=</span> <span class="mi">255</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x_train shape:&#39;</span><span class="p">,</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;train samples&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;test samples&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x_train shape: (60000, 28, 28, 1)
+60000 train samples
+10000 test samples
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert class vectors to binary class matrices</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                 <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span>
+                 <span class="n">input_shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">categorical_crossentropy</span><span class="p">,</span>
+              <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adadelta</span><span class="p">(),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>
+          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+          <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/12
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-26 22:06:15.310844: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>469/469 [==============================] - 22s 46ms/step - loss: 2.2797 - accuracy: 0.1539 - val_loss: 2.2381 - val_accuracy: 0.3093
+Epoch 2/12
+469/469 [==============================] - 22s 46ms/step - loss: 2.2149 - accuracy: 0.2711 - val_loss: 2.1579 - val_accuracy: 0.4743
+Epoch 3/12
+469/469 [==============================] - 22s 47ms/step - loss: 2.1320 - accuracy: 0.3712 - val_loss: 2.0515 - val_accuracy: 0.5980
+Epoch 4/12
+469/469 [==============================] - 22s 47ms/step - loss: 2.0209 - accuracy: 0.4515 - val_loss: 1.9086 - val_accuracy: 0.6657
+Epoch 5/12
+469/469 [==============================] - 22s 48ms/step - loss: 1.8797 - accuracy: 0.5095 - val_loss: 1.7313 - val_accuracy: 0.6928
+Epoch 6/12
+469/469 [==============================] - 22s 48ms/step - loss: 1.7178 - accuracy: 0.5513 - val_loss: 1.5311 - val_accuracy: 0.7259
+Epoch 7/12
+469/469 [==============================] - 22s 48ms/step - loss: 1.5430 - accuracy: 0.5890 - val_loss: 1.3274 - val_accuracy: 0.7639
+Epoch 8/12
+469/469 [==============================] - 23s 48ms/step - loss: 1.3795 - accuracy: 0.6240 - val_loss: 1.1421 - val_accuracy: 0.7894
+Epoch 9/12
+469/469 [==============================] - 23s 48ms/step - loss: 1.2438 - accuracy: 0.6504 - val_loss: 0.9923 - val_accuracy: 0.8049
+Epoch 10/12
+469/469 [==============================] - 22s 48ms/step - loss: 1.1302 - accuracy: 0.6738 - val_loss: 0.8763 - val_accuracy: 0.8176
+Epoch 11/12
+469/469 [==============================] - 23s 48ms/step - loss: 1.0396 - accuracy: 0.6951 - val_loss: 0.7870 - val_accuracy: 0.8298
+Epoch 12/12
+469/469 [==============================] - 22s 48ms/step - loss: 0.9681 - accuracy: 0.7109 - val_loss: 0.7180 - val_accuracy: 0.8381
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x17de69ab0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test loss:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test accuracy:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test loss: 0.7179750800132751
+Test accuracy: 0.838100016117096
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shap</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># select a set of background examples to take an expectation over</span>
+<span class="n">background</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+
+<span class="c1"># explain predictions of the model on three images</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">DeepExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span>
+<span class="c1"># ...or pass tensors directly</span>
+<span class="c1"># e = shap.DeepExplainer((model.layers[0].input, model.layers[-1].output), background)</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>keras is no longer supported, please use tf.keras instead.
+Your TensorFlow version is newer than 2.4.0 and so graph support has been removed in eager mode and some static graphs may not be supported. See PR #1483 for discussion.
+`tf.keras.backend.set_learning_phase` is deprecated and will be removed after 2020-10-11. To update it, simply pass a True/False value to the `training` argument of the `__call__` method of your layer or model.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+/Users/jankirenz/books/deep-learning/docs/keras-mnist-shap.ipynb Cell 11&#39; in &lt;cell line: 11&gt;()
+      &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/keras-mnist-shap.ipynb#ch0000010?line=7&#39;&gt;8&lt;/a&gt; e = shap.DeepExplainer(model, background)
+      &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/keras-mnist-shap.ipynb#ch0000010?line=8&#39;&gt;9&lt;/a&gt; # ...or pass tensors directly
+     &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/keras-mnist-shap.ipynb#ch0000010?line=9&#39;&gt;10&lt;/a&gt; # e = shap.DeepExplainer((model.layers[0].input, model.layers[-1].output), background)
+---&gt; &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/keras-mnist-shap.ipynb#ch0000010?line=10&#39;&gt;11&lt;/a&gt; shap_values = e.shap_values(x_test[1:5])
+
+File /opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/__init__.py:124, in Deep.shap_values(self, X, ranked_outputs, output_rank_order, check_additivity)
+     &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/__init__.py?line=89&#39;&gt;90&lt;/a&gt; def shap_values(self, X, ranked_outputs=None, output_rank_order=&#39;max&#39;, check_additivity=True):
+     &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/__init__.py?line=90&#39;&gt;91&lt;/a&gt;     &quot;&quot;&quot; Return approximate SHAP values for the model applied to the data given by X.
+     &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/__init__.py?line=91&#39;&gt;92&lt;/a&gt; 
+     &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/__init__.py?line=92&#39;&gt;93&lt;/a&gt;     Parameters
+   (...)
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/__init__.py?line=121&#39;&gt;122&lt;/a&gt;         were chosen as &quot;top&quot;.
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/__init__.py?line=122&#39;&gt;123&lt;/a&gt;     &quot;&quot;&quot;
+--&gt; &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/__init__.py?line=123&#39;&gt;124&lt;/a&gt;     return self.explainer.shap_values(X, ranked_outputs, output_rank_order, check_additivity=check_additivity)
+
+File /opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py:308, in TFDeep.shap_values(self, X, ranked_outputs, output_rank_order, check_additivity)
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=305&#39;&gt;306&lt;/a&gt; # run attribution computation graph
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=306&#39;&gt;307&lt;/a&gt; feature_ind = model_output_ranks[j,i]
+--&gt; &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=307&#39;&gt;308&lt;/a&gt; sample_phis = self.run(self.phi_symbolic(feature_ind), self.model_inputs, joint_input)
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=309&#39;&gt;310&lt;/a&gt; # assign the attributions to the right part of the output arrays
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=310&#39;&gt;311&lt;/a&gt; for l in range(len(X)):
+
+File /opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py:365, in TFDeep.run(self, out, model_inputs, X)
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=361&#39;&gt;362&lt;/a&gt;     tf_execute.record_gradient = tf_backprop._record_gradient
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=363&#39;&gt;364&lt;/a&gt;     return final_out
+--&gt; &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=364&#39;&gt;365&lt;/a&gt; return self.execute_with_overridden_gradients(anon)
+
+File /opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py:401, in TFDeep.execute_with_overridden_gradients(self, f)
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=398&#39;&gt;399&lt;/a&gt; # define the computation graph for the attribution values using a custom gradient-like computation
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=399&#39;&gt;400&lt;/a&gt; try:
+--&gt; &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=400&#39;&gt;401&lt;/a&gt;     out = f()
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=401&#39;&gt;402&lt;/a&gt; finally:
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=402&#39;&gt;403&lt;/a&gt;     # reinstate the backpropagatable check
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=403&#39;&gt;404&lt;/a&gt;     if hasattr(tf_gradients_impl, &quot;_IsBackpropagatable&quot;):
+
+File /opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py:361, in TFDeep.run.&lt;locals&gt;.anon()
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=358&#39;&gt;359&lt;/a&gt;     v = tf.constant(data, dtype=self.model_inputs[i].dtype)
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=359&#39;&gt;360&lt;/a&gt;     inputs.append(v)
+--&gt; &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=360&#39;&gt;361&lt;/a&gt; final_out = out(inputs)
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=361&#39;&gt;362&lt;/a&gt; tf_execute.record_gradient = tf_backprop._record_gradient
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py?line=363&#39;&gt;364&lt;/a&gt; return final_out
+
+File /opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py:153, in filter_traceback.&lt;locals&gt;.error_handler(*args, **kwargs)
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py?line=150&#39;&gt;151&lt;/a&gt; except Exception as e:
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py?line=151&#39;&gt;152&lt;/a&gt;   filtered_tb = _process_traceback_frames(e.__traceback__)
+--&gt; &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py?line=152&#39;&gt;153&lt;/a&gt;   raise e.with_traceback(filtered_tb) from None
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py?line=153&#39;&gt;154&lt;/a&gt; finally:
+    &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py?line=154&#39;&gt;155&lt;/a&gt;   del filtered_tb
+
+File /opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py:1147, in func_graph_from_py_func.&lt;locals&gt;.autograph_handler(*args, **kwargs)
+   &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py?line=1144&#39;&gt;1145&lt;/a&gt; except Exception as e:  # pylint:disable=broad-except
+   &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py?line=1145&#39;&gt;1146&lt;/a&gt;   if hasattr(e, &quot;ag_error_metadata&quot;):
+-&gt; &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py?line=1146&#39;&gt;1147&lt;/a&gt;     raise e.ag_error_metadata.to_exception(e)
+   &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py?line=1147&#39;&gt;1148&lt;/a&gt;   else:
+   &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/framework/func_graph.py?line=1148&#39;&gt;1149&lt;/a&gt;     raise
+
+AttributeError: in user code:
+
+    File &quot;/opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py&quot;, line 243, in grad_graph  *
+        out = self.model(shap_rAnD)
+    File &quot;/opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/keras/utils/traceback_utils.py&quot;, line 67, in error_handler  **
+        raise e.with_traceback(filtered_tb) from None
+    File &quot;/opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/deep_tf.py&quot;, line 26, in custom_record_gradient
+        out = tf_backprop._record_gradient(&quot;shap_&quot;+op_name, inputs, attrs, results)
+
+    AttributeError: Exception encountered when calling layer &quot;conv2d&quot; (type Conv2D).
+    
+    module &#39;tensorflow.python.eager.backprop&#39; has no attribute &#39;_record_gradient&#39;
+    
+    Call arguments received:
+      • inputs=tf.Tensor(shape=(200, 28, 28, 1), dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jan Kirenz<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
