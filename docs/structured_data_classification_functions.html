@@ -593,7 +593,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.7.1&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.9.0&#39;
 </pre></div>
 </div>
 </div>
@@ -934,31 +934,6 @@ memory usage: 33.3+ KB
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 303 entries, 0 to 302
-Data columns (total 14 columns):
- #   Column    Non-Null Count  Dtype   
----  ------    --------------  -----   
- 0   age       303 non-null    int32   
- 1   sex       303 non-null    category
- 2   cp        303 non-null    category
- 3   trestbps  303 non-null    int32   
- 4   chol      303 non-null    int32   
- 5   fbs       303 non-null    category
- 6   restecg   303 non-null    category
- 7   thalach   303 non-null    int32   
- 8   exang     303 non-null    category
- 9   oldpeak   303 non-null    float32 
- 10  slope     303 non-null    int32   
- 11  ca        303 non-null    category
- 12  thal      303 non-null    string  
- 13  target    303 non-null    int32   
-dtypes: category(6), float32(1), int32(6), string(1)
-memory usage: 13.5 KB
-</pre></div>
-</div>
-</div>
 </div>
 <ul class="simple">
 <li><p>Finally, we make lists of feature variables for later data preprocessing steps</p></li>
@@ -1079,8 +1054,14 @@ memory usage: 13.5 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-02 15:19:21.460953: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metal device set to: Apple M1 Pro
+
+systemMemory: 16.00 GB
+maxCacheSize: 5.33 GB
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-25 21:01:47.420591: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+2022-05-25 21:01:47.420716: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -&gt; physical PluggableDevice (device: 0, name: METAL, pci bus id: &lt;undefined&gt;)
 </pre></div>
 </div>
 </div>
@@ -1210,6 +1191,23 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-25 21:01:47.564294: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+2022-05-25 21:01:47.619549: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:47.636898: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:47.744597: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:47.761625: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:47.853461: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:47.871638: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:47.961276: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:47.977932: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:48.133227: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:48.150128: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:48.235996: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:48.252309: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="categorical-preprocessing">
@@ -1231,6 +1229,16 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-25 21:01:48.353879: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:48.402477: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:48.447208: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:48.489918: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:48.532795: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:01:48.577768: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1243,6 +1251,11 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
   <span class="n">encoded_categorical_feature</span> <span class="o">=</span> <span class="n">encoding_layer</span><span class="p">(</span><span class="n">categorical_feature</span><span class="p">)</span>
   <span class="n">all_inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">categorical_feature</span><span class="p">)</span>
   <span class="n">encoded_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">encoded_categorical_feature</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-25 21:01:48.644623: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
 </pre></div>
 </div>
 </div>
@@ -1317,34 +1330,37 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">ds_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="n">ds_val</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">ds_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="n">ds_val</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-8/8 [==============================] - 2s 62ms/step - loss: 0.7205 - accuracy: 0.7025 - val_loss: 0.5910 - val_accuracy: 0.7705
+8/8 [==============================] - 0s 18ms/step - loss: 0.4509 - accuracy: 0.8058 - val_loss: 0.4343 - val_accuracy: 0.8033
 Epoch 2/10
-8/8 [==============================] - 0s 6ms/step - loss: 0.6496 - accuracy: 0.6942 - val_loss: 0.5501 - val_accuracy: 0.7705
+8/8 [==============================] - 0s 18ms/step - loss: 0.4510 - accuracy: 0.8017 - val_loss: 0.4256 - val_accuracy: 0.8033
 Epoch 3/10
-8/8 [==============================] - 0s 10ms/step - loss: 0.6126 - accuracy: 0.7438 - val_loss: 0.5152 - val_accuracy: 0.7705
+8/8 [==============================] - 0s 18ms/step - loss: 0.4711 - accuracy: 0.7645 - val_loss: 0.4189 - val_accuracy: 0.8033
 Epoch 4/10
-8/8 [==============================] - 0s 9ms/step - loss: 0.5924 - accuracy: 0.6983 - val_loss: 0.4855 - val_accuracy: 0.7705
+8/8 [==============================] - 0s 17ms/step - loss: 0.4087 - accuracy: 0.8430 - val_loss: 0.4118 - val_accuracy: 0.8033
 Epoch 5/10
-8/8 [==============================] - 0s 6ms/step - loss: 0.5445 - accuracy: 0.7521 - val_loss: 0.4598 - val_accuracy: 0.7869
+8/8 [==============================] - 0s 17ms/step - loss: 0.4074 - accuracy: 0.8306 - val_loss: 0.4069 - val_accuracy: 0.8033
 Epoch 6/10
-8/8 [==============================] - 0s 7ms/step - loss: 0.5121 - accuracy: 0.7397 - val_loss: 0.4381 - val_accuracy: 0.7869
+8/8 [==============================] - 0s 18ms/step - loss: 0.4047 - accuracy: 0.8471 - val_loss: 0.4021 - val_accuracy: 0.8033
 Epoch 7/10
-8/8 [==============================] - 0s 7ms/step - loss: 0.5012 - accuracy: 0.7686 - val_loss: 0.4203 - val_accuracy: 0.7869
+8/8 [==============================] - 0s 17ms/step - loss: 0.4027 - accuracy: 0.8223 - val_loss: 0.3987 - val_accuracy: 0.8033
 Epoch 8/10
-8/8 [==============================] - 0s 7ms/step - loss: 0.4685 - accuracy: 0.7727 - val_loss: 0.4045 - val_accuracy: 0.8197
+8/8 [==============================] - 0s 17ms/step - loss: 0.3566 - accuracy: 0.8595 - val_loss: 0.3950 - val_accuracy: 0.8033
 Epoch 9/10
-8/8 [==============================] - 0s 9ms/step - loss: 0.4368 - accuracy: 0.7934 - val_loss: 0.3905 - val_accuracy: 0.7869
+8/8 [==============================] - 0s 19ms/step - loss: 0.3776 - accuracy: 0.8182 - val_loss: 0.3932 - val_accuracy: 0.8033
 Epoch 10/10
-8/8 [==============================] - 0s 10ms/step - loss: 0.4682 - accuracy: 0.7603 - val_loss: 0.3799 - val_accuracy: 0.7541
+8/8 [==============================] - 0s 19ms/step - loss: 0.3703 - accuracy: 0.8678 - val_loss: 0.3916 - val_accuracy: 0.8033
+CPU times: user 1.68 s, sys: 1.46 s, total: 3.15 s
+Wall time: 1.44 s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fd3be227f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x2d78e8c70&gt;
 </pre></div>
 </div>
 </div>
@@ -1361,8 +1377,8 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/2 [==============================] - 0s 6ms/step - loss: 0.3799 - accuracy: 0.7541
-Accuracy 0.75
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/2 [==============================] - 0s 12ms/step - loss: 0.4445 - accuracy: 0.8033
+Accuracy 0.8
 </pre></div>
 </div>
 </div>
@@ -1384,9 +1400,6 @@ Accuracy 0.75
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-02 16:05:15.684426: W tensorflow/python/util/util.cc:368] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Assets written to: my_hd_classifier/assets
 </pre></div>
 </div>
@@ -1398,6 +1411,24 @@ Accuracy 0.75
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reloaded_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;my_hd_classifier&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-25 21:02:12.129402: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.134110: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.139953: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.144433: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.149780: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.154452: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.159738: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.164296: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.169518: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.173997: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.179220: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.184034: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.189143: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+2022-05-25 21:02:12.193391: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
 </pre></div>
 </div>
 </div>
@@ -1445,6 +1476,14 @@ Accuracy 0.75
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-25 21:02:12.513598: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 1s 552ms/step
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1456,7 +1495,7 @@ Accuracy 0.75
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This particular patient had a 43.9 percent probability of having a heart disease, as evaluated by our model.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This particular patient had a 41.9 percent probability of having a heart disease, as evaluated by our model.
 </pre></div>
 </div>
 </div>
