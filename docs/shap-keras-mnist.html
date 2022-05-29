@@ -394,12 +394,17 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
 <span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">4</span>
 
 <span class="c1"># input image dimensions</span>
 <span class="n">img_rows</span><span class="p">,</span> <span class="n">img_cols</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span>
-
-<span class="c1"># the data, split between train and test sets</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the data, split between train and test sets</span>
 <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="n">K</span><span class="o">.</span><span class="n">image_data_format</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;channels_first&#39;</span><span class="p">:</span>
@@ -488,38 +493,22 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/12
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/4
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-26 22:06:15.310844: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-29 12:45:41.639943: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>469/469 [==============================] - 22s 46ms/step - loss: 2.2797 - accuracy: 0.1539 - val_loss: 2.2381 - val_accuracy: 0.3093
-Epoch 2/12
-469/469 [==============================] - 22s 46ms/step - loss: 2.2149 - accuracy: 0.2711 - val_loss: 2.1579 - val_accuracy: 0.4743
-Epoch 3/12
-469/469 [==============================] - 22s 47ms/step - loss: 2.1320 - accuracy: 0.3712 - val_loss: 2.0515 - val_accuracy: 0.5980
-Epoch 4/12
-469/469 [==============================] - 22s 47ms/step - loss: 2.0209 - accuracy: 0.4515 - val_loss: 1.9086 - val_accuracy: 0.6657
-Epoch 5/12
-469/469 [==============================] - 22s 48ms/step - loss: 1.8797 - accuracy: 0.5095 - val_loss: 1.7313 - val_accuracy: 0.6928
-Epoch 6/12
-469/469 [==============================] - 22s 48ms/step - loss: 1.7178 - accuracy: 0.5513 - val_loss: 1.5311 - val_accuracy: 0.7259
-Epoch 7/12
-469/469 [==============================] - 22s 48ms/step - loss: 1.5430 - accuracy: 0.5890 - val_loss: 1.3274 - val_accuracy: 0.7639
-Epoch 8/12
-469/469 [==============================] - 23s 48ms/step - loss: 1.3795 - accuracy: 0.6240 - val_loss: 1.1421 - val_accuracy: 0.7894
-Epoch 9/12
-469/469 [==============================] - 23s 48ms/step - loss: 1.2438 - accuracy: 0.6504 - val_loss: 0.9923 - val_accuracy: 0.8049
-Epoch 10/12
-469/469 [==============================] - 22s 48ms/step - loss: 1.1302 - accuracy: 0.6738 - val_loss: 0.8763 - val_accuracy: 0.8176
-Epoch 11/12
-469/469 [==============================] - 23s 48ms/step - loss: 1.0396 - accuracy: 0.6951 - val_loss: 0.7870 - val_accuracy: 0.8298
-Epoch 12/12
-469/469 [==============================] - 22s 48ms/step - loss: 0.9681 - accuracy: 0.7109 - val_loss: 0.7180 - val_accuracy: 0.8381
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>469/469 [==============================] - 22s 46ms/step - loss: 2.2694 - accuracy: 0.1701 - val_loss: 2.2287 - val_accuracy: 0.4152
+Epoch 2/4
+469/469 [==============================] - 21s 46ms/step - loss: 2.2012 - accuracy: 0.3040 - val_loss: 2.1440 - val_accuracy: 0.5498
+Epoch 3/4
+469/469 [==============================] - 22s 47ms/step - loss: 2.1128 - accuracy: 0.4123 - val_loss: 2.0299 - val_accuracy: 0.6446
+Epoch 4/4
+469/469 [==============================] - 22s 47ms/step - loss: 1.9928 - accuracy: 0.4859 - val_loss: 1.8767 - val_accuracy: 0.6990
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x17de69ab0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x15f900cd0&gt;
 </pre></div>
 </div>
 </div>
@@ -533,8 +522,8 @@ Epoch 12/12
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test loss: 0.7179750800132751
-Test accuracy: 0.838100016117096
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test loss: 1.8766707181930542
+Test accuracy: 0.6990000009536743
 </pre></div>
 </div>
 </div>
@@ -563,11 +552,11 @@ Your TensorFlow version is newer than 2.4.0 and so graph support has been remove
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
 AttributeError                            Traceback (most recent call last)
-/Users/jankirenz/books/deep-learning/docs/keras-mnist-shap.ipynb Cell 11&#39; in &lt;cell line: 11&gt;()
-      &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/keras-mnist-shap.ipynb#ch0000010?line=7&#39;&gt;8&lt;/a&gt; e = shap.DeepExplainer(model, background)
-      &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/keras-mnist-shap.ipynb#ch0000010?line=8&#39;&gt;9&lt;/a&gt; # ...or pass tensors directly
-     &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/keras-mnist-shap.ipynb#ch0000010?line=9&#39;&gt;10&lt;/a&gt; # e = shap.DeepExplainer((model.layers[0].input, model.layers[-1].output), background)
----&gt; &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/keras-mnist-shap.ipynb#ch0000010?line=10&#39;&gt;11&lt;/a&gt; shap_values = e.shap_values(x_test[1:5])
+/Users/jankirenz/books/deep-learning/docs/shap-keras-mnist.ipynb Cell 12&#39; in &lt;cell line: 11&gt;()
+      &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/shap-keras-mnist.ipynb#ch0000010?line=7&#39;&gt;8&lt;/a&gt; e = shap.DeepExplainer(model, background)
+      &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/shap-keras-mnist.ipynb#ch0000010?line=8&#39;&gt;9&lt;/a&gt; # ...or pass tensors directly
+     &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/shap-keras-mnist.ipynb#ch0000010?line=9&#39;&gt;10&lt;/a&gt; # e = shap.DeepExplainer((model.layers[0].input, model.layers[-1].output), background)
+---&gt; &lt;a href=&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/shap-keras-mnist.ipynb#ch0000010?line=10&#39;&gt;11&lt;/a&gt; shap_values = e.shap_values(x_test[1:5])
 
 File /opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/__init__.py:124, in Deep.shap_values(self, X, ranked_outputs, output_rank_order, check_additivity)
      &lt;a href=&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_deep/__init__.py?line=89&#39;&gt;90&lt;/a&gt; def shap_values(self, X, ranked_outputs=None, output_rank_order=&#39;max&#39;, check_additivity=True):
