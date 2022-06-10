@@ -1599,37 +1599,6 @@ Accuracy 0.2295081913471222
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reloaded_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;my_pet_classifier&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
-<span class="nn">/var/folders/sl/9n0p_v712g9ftpzq9r9c254w0000gn/T/ipykernel_1986/4032032755.py</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">reloaded_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;my_pet_classifier&#39;</span><span class="p">)</span>
-
-<span class="nn">~/opt/anaconda3/envs/tf/lib/python3.8/site-packages/keras/utils/traceback_utils.py</span> in <span class="ni">error_handler</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
-<span class="g g-Whitespace">     </span><span class="mi">66</span>       <span class="n">filtered_tb</span> <span class="o">=</span> <span class="n">_process_traceback_frames</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__traceback__</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">67</span>       <span class="k">raise</span> <span class="n">e</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="n">filtered_tb</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span>     <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">69</span>       <span class="k">del</span> <span class="n">filtered_tb</span>
-
-<span class="nn">~/opt/anaconda3/envs/tf/lib/python3.8/site-packages/keras/saving/save.py</span> in <span class="ni">load_model</span><span class="nt">(filepath, custom_objects, compile, options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">207</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">208</span>           <span class="k">if</span> <span class="ow">not</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">gfile</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">209</span>             <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No file or directory found at </span><span class="si">{</span><span class="n">filepath</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">210</span>           <span class="k">if</span> <span class="n">saving_utils</span><span class="o">.</span><span class="n">is_hdf5_filepath</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> <span class="ow">and</span> <span class="n">h5py</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">211</span>             <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-
-<span class="ne">OSError</span>: No file or directory found at my_pet_classifier
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
     <span class="s2">&quot;sex&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
