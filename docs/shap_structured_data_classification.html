@@ -973,15 +973,6 @@ Accuracy 0.7377049326896667
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>To get a prediction for a new sample, you can simply call the Keras Model.predict method.</p></li>
-<li><p>There are just two things you need to do:</p>
-<ul>
-<li><p>Wrap scalars into a list so as to have a batch dimension (Models only process batches of data, not single samples).</p></li>
-<li><p>Call tf.convert_to_tensor on each feature.</p></li>
-</ul>
-</li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#input_dict = {name: tf.convert_to_tensor([value]) for name, value in sample.items()}</span>
