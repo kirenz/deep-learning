@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Data augmentation &#8212; Deep Learning</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,19 +37,20 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Classification I" href="structured_data_classification_intro.html" />
@@ -63,7 +62,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -72,9 +85,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -92,14 +106,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Welcome
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -260,106 +275,209 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/image_augmentation.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/kirenz/deep-learning"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/image_augmentation.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/image_augmentation.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/image_augmentation.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/kirenz/deep-learning"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/image_augmentation.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/docs/image_augmentation.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
    Overview
@@ -514,12 +632,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Data augmentation</h1>
@@ -690,11 +807,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="data-augmentation">
-<h1>Data augmentation<a class="headerlink" href="#data-augmentation" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-augmentation">
+<h1>Data augmentation<a class="headerlink" href="#data-augmentation" title="Permalink to this headline">#</a></h1>
 <p>Copyright 2020 The TensorFlow Authors.</p>
 <table class="tfo-notebook-buttons" align="left">
   <td>
@@ -726,17 +844,17 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>This tutorial demonstrates data augmentation: a technique to increase the diversity of your training set by applying random (but realistic) transformations, such as image rotation.</p></li>
 <li><p>You will learn how to apply data augmentation in two ways:</p></li>
 <li><p>Use the Keras preprocessing layers, such as <code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Resizing</span></code>, <code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Rescaling</span></code>, <code class="docutils literal notranslate"><span class="pre">tf.keras.layers.RandomFlip</span></code>, and <code class="docutils literal notranslate"><span class="pre">tf.keras.layers.RandomRotation</span></code>.</p></li>
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">tf.image</span></code> methods, such as <code class="docutils literal notranslate"><span class="pre">tf.image.flip_left_right</span></code>, <code class="docutils literal notranslate"><span class="pre">tf.image.rgb_to_grayscale</span></code>, <code class="docutils literal notranslate"><span class="pre">tf.image.adjust_brightness</span></code>, <code class="docutils literal notranslate"><span class="pre">tf.image.central_crop</span></code>, and <code class="docutils literal notranslate"><span class="pre">tf.image.stateless_random*</span></code>.</p></li>
 </ul>
-</div>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -749,9 +867,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="download-a-dataset">
-<h2>Download a dataset<a class="headerlink" href="#download-a-dataset" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="download-a-dataset">
+<h2>Download a dataset<a class="headerlink" href="#download-a-dataset" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>This tutorial uses the <a class="reference external" href="https://www.tensorflow.org/datasets/catalog/tf_flowers">tf_flowers</a> dataset.</p></li>
 <li><p>For convenience, download the dataset using <a class="reference external" href="https://www.tensorflow.org/datasets">TensorFlow Datasets</a>.</p></li>
@@ -821,11 +939,11 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 <img alt="../_images/image_augmentation_13_1.png" src="../_images/image_augmentation_13_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="use-keras-preprocessing-layers">
-<h2>Use Keras preprocessing layers<a class="headerlink" href="#use-keras-preprocessing-layers" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="resizing-and-rescaling">
-<h3>Resizing and rescaling<a class="headerlink" href="#resizing-and-rescaling" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="use-keras-preprocessing-layers">
+<h2>Use Keras preprocessing layers<a class="headerlink" href="#use-keras-preprocessing-layers" title="Permalink to this headline">#</a></h2>
+<section id="resizing-and-rescaling">
+<h3>Resizing and rescaling<a class="headerlink" href="#resizing-and-rescaling" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>You can use the Keras preprocessing layers to resize your images to a consistent shape (with <code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Resizing</span></code>), and to rescale pixel values (with <code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Rescaling</span></code>).</p></li>
 </ul>
@@ -874,9 +992,9 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id1">
-<h3>Data augmentation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id1">
+<h3>Data augmentation<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>You can use the Keras preprocessing layers for data augmentation as well, such as</p>
 <ul>
@@ -942,14 +1060,14 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 </li>
 </ul>
 <p>and others.</p>
-</div>
-<div class="section" id="two-options-to-use-the-keras-preprocessing-layers">
-<h3>Two options to use the Keras preprocessing layers<a class="headerlink" href="#two-options-to-use-the-keras-preprocessing-layers" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="two-options-to-use-the-keras-preprocessing-layers">
+<h3>Two options to use the Keras preprocessing layers<a class="headerlink" href="#two-options-to-use-the-keras-preprocessing-layers" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>There are two ways you can use these preprocessing layers, with important trade-offs.</p></li>
 </ul>
-<div class="section" id="option-1-make-the-preprocessing-layers-part-of-your-model">
-<h4>Option 1: Make the preprocessing layers part of your model<a class="headerlink" href="#option-1-make-the-preprocessing-layers-part-of-your-model" title="Permalink to this headline">¶</a></h4>
+<section id="option-1-make-the-preprocessing-layers-part-of-your-model">
+<h4>Option 1: Make the preprocessing layers part of your model<a class="headerlink" href="#option-1-make-the-preprocessing-layers-part-of-your-model" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
@@ -972,9 +1090,9 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 <ul class="simple">
 <li><p>Note: Data augmentation is inactive at test time so input images will only be augmented during calls to <code class="docutils literal notranslate"><span class="pre">Model.fit</span></code> (not <code class="docutils literal notranslate"><span class="pre">Model.evaluate</span></code> or <code class="docutils literal notranslate"><span class="pre">Model.predict</span></code>).</p></li>
 </ul>
-</div>
-<div class="section" id="option-2-apply-the-preprocessing-layers-to-your-dataset">
-<h4>Option 2: Apply the preprocessing layers to your dataset<a class="headerlink" href="#option-2-apply-the-preprocessing-layers-to-your-dataset" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="option-2-apply-the-preprocessing-layers-to-your-dataset">
+<h4>Option 2: Apply the preprocessing layers to your dataset<a class="headerlink" href="#option-2-apply-the-preprocessing-layers-to-your-dataset" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aug_ds</span> <span class="o">=</span> <span class="n">train_ds</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
@@ -992,10 +1110,10 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 <li><p>You can find an example of the first option in this <a class="reference internal" href="image_classification_from_scratch.html"><span class="doc std std-doc">Image classification</span></a> tutorial.</p></li>
 <li><p>Let’s demonstrate the second option here.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="apply-the-preprocessing-layers-to-the-datasets">
-<h3>Apply the preprocessing layers to the datasets<a class="headerlink" href="#apply-the-preprocessing-layers-to-the-datasets" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="apply-the-preprocessing-layers-to-the-datasets">
+<h3>Apply the preprocessing layers to the datasets<a class="headerlink" href="#apply-the-preprocessing-layers-to-the-datasets" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Configure the training, validation, and test datasets with the Keras preprocessing layers you created earlier.</p></li>
 <li><p>You will also configure the datasets for performance, using parallel reads and buffered prefetching to yield batches from disk without I/O become blocking.</p></li>
@@ -1038,9 +1156,9 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="train-a-model">
-<h3>Train a model<a class="headerlink" href="#train-a-model" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="train-a-model">
+<h3>Train a model<a class="headerlink" href="#train-a-model" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>For completeness, you will now train a sequential model using the datasets you have just prepared.</p></li>
 <li><p>The <a class="reference external" href="https://www.tensorflow.org/guide/keras/sequential_model">Sequential</a> model consists of three convolution blocks (<code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Conv2D</span></code>) with a max pooling layer (<code class="docutils literal notranslate"><span class="pre">tf.keras.layers.MaxPooling2D</span></code>) in each of them.</p></li>
@@ -1124,9 +1242,9 @@ Accuracy 0.6076294183731079
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="custom-data-augmentation">
-<h3>Custom data augmentation<a class="headerlink" href="#custom-data-augmentation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="custom-data-augmentation">
+<h3>Custom data augmentation<a class="headerlink" href="#custom-data-augmentation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>You can also create custom data augmentation layers.</p></li>
 <li><p>This section of the tutorial shows two ways of doing so:</p></li>
@@ -1203,10 +1321,10 @@ Accuracy 0.6076294183731079
 <ul class="simple">
 <li><p>Both of these layers can be used as described in options 1 and 2 above.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="using-tf-image">
-<h2>Using tf.image<a class="headerlink" href="#using-tf-image" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="using-tf-image">
+<h2>Using tf.image<a class="headerlink" href="#using-tf-image" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>The above Keras preprocessing utilities are convenient.</p></li>
 <li><p>But, for finer control, you can write your own data augmentation pipelines or layers using <code class="docutils literal notranslate"><span class="pre">tf.data</span></code> and <code class="docutils literal notranslate"><span class="pre">tf.image</span></code>.</p></li>
@@ -1261,10 +1379,10 @@ Accuracy 0.6076294183731079
 </div>
 </div>
 </div>
-<div class="section" id="id2">
-<h3>Data augmentation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="flip-an-image">
-<h4>Flip an image<a class="headerlink" href="#flip-an-image" title="Permalink to this headline">¶</a></h4>
+<section id="id2">
+<h3>Data augmentation<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<section id="flip-an-image">
+<h4>Flip an image<a class="headerlink" href="#flip-an-image" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Flip an image either vertically or horizontally with <code class="docutils literal notranslate"><span class="pre">tf.image.flip_left_right</span></code>:</p></li>
 </ul>
@@ -1279,9 +1397,9 @@ Accuracy 0.6076294183731079
 <img alt="../_images/image_augmentation_70_0.png" src="../_images/image_augmentation_70_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="grayscale-an-image">
-<h4>Grayscale an image<a class="headerlink" href="#grayscale-an-image" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="grayscale-an-image">
+<h4>Grayscale an image<a class="headerlink" href="#grayscale-an-image" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>You can grayscale an image with <code class="docutils literal notranslate"><span class="pre">tf.image.rgb_to_grayscale</span></code>:</p></li>
 </ul>
@@ -1297,9 +1415,9 @@ Accuracy 0.6076294183731079
 <img alt="../_images/image_augmentation_72_0.png" src="../_images/image_augmentation_72_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="saturate-an-image">
-<h4>Saturate an image<a class="headerlink" href="#saturate-an-image" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="saturate-an-image">
+<h4>Saturate an image<a class="headerlink" href="#saturate-an-image" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Saturate an image with <code class="docutils literal notranslate"><span class="pre">tf.image.adjust_saturation</span></code> by providing a saturation factor:</p></li>
 </ul>
@@ -1314,9 +1432,9 @@ Accuracy 0.6076294183731079
 <img alt="../_images/image_augmentation_74_0.png" src="../_images/image_augmentation_74_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="change-image-brightness">
-<h4>Change image brightness<a class="headerlink" href="#change-image-brightness" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="change-image-brightness">
+<h4>Change image brightness<a class="headerlink" href="#change-image-brightness" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Change the brightness of image with <code class="docutils literal notranslate"><span class="pre">tf.image.adjust_brightness</span></code> by providing a brightness factor:</p></li>
 </ul>
@@ -1331,9 +1449,9 @@ Accuracy 0.6076294183731079
 <img alt="../_images/image_augmentation_76_0.png" src="../_images/image_augmentation_76_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="center-crop-an-image">
-<h4>Center crop an image<a class="headerlink" href="#center-crop-an-image" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="center-crop-an-image">
+<h4>Center crop an image<a class="headerlink" href="#center-crop-an-image" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Crop the image from center up to the image part you desire using <code class="docutils literal notranslate"><span class="pre">tf.image.central_crop</span></code>:</p></li>
 </ul>
@@ -1348,9 +1466,9 @@ Accuracy 0.6076294183731079
 <img alt="../_images/image_augmentation_78_0.png" src="../_images/image_augmentation_78_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="rotate-an-image">
-<h4>Rotate an image<a class="headerlink" href="#rotate-an-image" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="rotate-an-image">
+<h4>Rotate an image<a class="headerlink" href="#rotate-an-image" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Rotate an image by 90 degrees with <code class="docutils literal notranslate"><span class="pre">tf.image.rot90</span></code>:</p></li>
 </ul>
@@ -1365,10 +1483,10 @@ Accuracy 0.6076294183731079
 <img alt="../_images/image_augmentation_80_0.png" src="../_images/image_augmentation_80_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="random-transformations">
-<h3>Random transformations<a class="headerlink" href="#random-transformations" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="random-transformations">
+<h3>Random transformations<a class="headerlink" href="#random-transformations" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Warning: There are two sets of random image operations: <code class="docutils literal notranslate"><span class="pre">tf.image.random*</span></code> and <code class="docutils literal notranslate"><span class="pre">tf.image.stateless_random*</span></code>. Using <code class="docutils literal notranslate"><span class="pre">tf.image.random*</span></code> operations is strongly discouraged as they use the old RNGs from TF 1.x. Instead, please use the random image operations introduced in this tutorial. For more information, refer to <span class="xref myst">Random number generation</span>.</p></li>
 <li><p>Applying random transformations to the images can further help generalize and expand the dataset.</p></li>
@@ -1397,8 +1515,8 @@ Accuracy 0.6076294183731079
 <li><p>Go over examples of using random image operations to transform an image.</p></li>
 <li><p>Demonstrate how to apply random transformations to a training dataset.</p></li>
 </ol>
-<div class="section" id="randomly-change-image-brightness">
-<h4>Randomly change image brightness<a class="headerlink" href="#randomly-change-image-brightness" title="Permalink to this headline">¶</a></h4>
+<section id="randomly-change-image-brightness">
+<h4>Randomly change image brightness<a class="headerlink" href="#randomly-change-image-brightness" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Randomly change the brightness of <code class="docutils literal notranslate"><span class="pre">image</span></code> using <code class="docutils literal notranslate"><span class="pre">tf.image.stateless_random_brightness</span></code> by providing a brightness factor and <code class="docutils literal notranslate"><span class="pre">seed</span></code>. The brightness factor is chosen randomly in the range <code class="docutils literal notranslate"><span class="pre">[-max_delta,</span> <span class="pre">max_delta)</span></code> and is associated with the given <code class="docutils literal notranslate"><span class="pre">seed</span></code>.</p></li>
 </ul>
@@ -1418,9 +1536,9 @@ Accuracy 0.6076294183731079
 <img alt="../_images/image_augmentation_87_2.png" src="../_images/image_augmentation_87_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="randomly-change-image-contrast">
-<h4>Randomly change image contrast<a class="headerlink" href="#randomly-change-image-contrast" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="randomly-change-image-contrast">
+<h4>Randomly change image contrast<a class="headerlink" href="#randomly-change-image-contrast" title="Permalink to this headline">#</a></h4>
 <p>-Randomly change the contrast of <code class="docutils literal notranslate"><span class="pre">image</span></code> using <code class="docutils literal notranslate"><span class="pre">tf.image.stateless_random_contrast</span></code> by providing a contrast range and <code class="docutils literal notranslate"><span class="pre">seed</span></code>. The contrast range is chosen randomly in the interval <code class="docutils literal notranslate"><span class="pre">[lower,</span> <span class="pre">upper]</span></code> and is associated with the given <code class="docutils literal notranslate"><span class="pre">seed</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1438,9 +1556,9 @@ Accuracy 0.6076294183731079
 <img alt="../_images/image_augmentation_90_2.png" src="../_images/image_augmentation_90_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="randomly-crop-an-image">
-<h4>Randomly crop an image<a class="headerlink" href="#randomly-crop-an-image" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="randomly-crop-an-image">
+<h4>Randomly crop an image<a class="headerlink" href="#randomly-crop-an-image" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Randomly crop <code class="docutils literal notranslate"><span class="pre">image</span></code> using <code class="docutils literal notranslate"><span class="pre">tf.image.stateless_random_crop</span></code> by providing target <code class="docutils literal notranslate"><span class="pre">size</span></code> and <code class="docutils literal notranslate"><span class="pre">seed</span></code>. The portion that gets cropped out of <code class="docutils literal notranslate"><span class="pre">image</span></code> is at a randomly chosen offset and is associated with the given <code class="docutils literal notranslate"><span class="pre">seed</span></code>.</p></li>
 </ul>
@@ -1460,10 +1578,10 @@ Accuracy 0.6076294183731079
 <img alt="../_images/image_augmentation_93_2.png" src="../_images/image_augmentation_93_2.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="apply-augmentation-to-a-dataset">
-<h3>Apply augmentation to a dataset<a class="headerlink" href="#apply-augmentation-to-a-dataset" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="apply-augmentation-to-a-dataset">
+<h3>Apply augmentation to a dataset<a class="headerlink" href="#apply-augmentation-to-a-dataset" title="Permalink to this headline">#</a></h3>
 <p>Let’s first download the image dataset again in case they are modified in the previous sections.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1514,8 +1632,8 @@ Accuracy 0.6076294183731079
 </div>
 </div>
 </div>
-<div class="section" id="option-1-using-tf-data-experimental-counter">
-<h4>Option 1: Using tf.data.experimental.Counter<a class="headerlink" href="#option-1-using-tf-data-experimental-counter" title="Permalink to this headline">¶</a></h4>
+<section id="option-1-using-tf-data-experimental-counter">
+<h4>Option 1: Using tf.data.experimental.Counter<a class="headerlink" href="#option-1-using-tf-data-experimental-counter" title="Permalink to this headline">#</a></h4>
 <p>Create a <code class="docutils literal notranslate"><span class="pre">tf.data.experimental.Counter</span></code> object (let’s call it <code class="docutils literal notranslate"><span class="pre">counter</span></code>) and <code class="docutils literal notranslate"><span class="pre">Dataset.zip</span></code> the dataset with <code class="docutils literal notranslate"><span class="pre">(counter,</span> <span class="pre">counter)</span></code>. This will ensure that each image in the dataset gets associated with a unique value (of shape <code class="docutils literal notranslate"><span class="pre">(2,)</span></code>) based on <code class="docutils literal notranslate"><span class="pre">counter</span></code> which later can get passed into the <code class="docutils literal notranslate"><span class="pre">augment</span></code> function as the <code class="docutils literal notranslate"><span class="pre">seed</span></code> value for random transformations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1564,9 +1682,9 @@ Accuracy 0.6076294183731079
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="option-2-using-tf-random-generator">
-<h4>Option 2: Using tf.random.Generator<a class="headerlink" href="#option-2-using-tf-random-generator" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="option-2-using-tf-random-generator">
+<h4>Option 2: Using tf.random.Generator<a class="headerlink" href="#option-2-using-tf-random-generator" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Create a <code class="docutils literal notranslate"><span class="pre">tf.random.Generator</span></code> object with an initial <code class="docutils literal notranslate"><span class="pre">seed</span></code> value. Calling the <code class="docutils literal notranslate"><span class="pre">make_seeds</span></code> function on the same generator object always returns a new, unique <code class="docutils literal notranslate"><span class="pre">seed</span></code> value.</p></li>
 <li><p>Define a wrapper function that: 1) calls the <code class="docutils literal notranslate"><span class="pre">make_seeds</span></code> function; and 2) passes the newly generated <code class="docutils literal notranslate"><span class="pre">seed</span></code> value into the <code class="docutils literal notranslate"><span class="pre">augment</span></code> function for random transformations.</p></li>
@@ -1630,19 +1748,19 @@ Accuracy 0.6076294183731079
 </div>
 </div>
 <p>These datasets can now be used to train a model as shown previously.</p>
-</div>
-</div>
-</div>
-<div class="section" id="next-steps">
-<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">#</a></h2>
 <p>This tutorial demonstrated data augmentation using Keras preprocessing layers and <code class="docutils literal notranslate"><span class="pre">tf.image</span></code>.</p>
 <ul class="simple">
 <li><p>To learn how to include preprocessing layers inside your model, refer to the <span class="xref myst">Image classification</span> tutorial.</p></li>
 <li><p>You may also be interested in learning how preprocessing layers can help you classify text, as shown in the <span class="xref myst">Basic text classification</span> tutorial.</p></li>
 <li><p>You can learn more about <code class="docutils literal notranslate"><span class="pre">tf.data</span></code> in this <span class="xref myst">guide</span>, and you can learn how to configure your input pipelines for performance <span class="xref myst">here</span>.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1666,9 +1784,11 @@ Accuracy 0.6076294183731079
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="image_classification_from_scratch.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1684,24 +1804,28 @@ Accuracy 0.6076294183731079
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jan Kirenz<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Jan Kirenz<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Copyright 2019 The TensorFlow Authors. &#8212; Deep Learning</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,19 +37,20 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -61,7 +60,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -70,9 +83,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -90,14 +104,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Welcome
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -258,106 +273,209 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/data-import-preprocessing.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/kirenz/deep-learning"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/data-import-preprocessing.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/data-import-preprocessing.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/kirenz/deep-learning/blob/main/docs/data-import-preprocessing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/kirenz/deep-learning"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/kirenz/deep-learning/issues/new?title=Issue%20on%20page%20%2Fdocs/data-import-preprocessing.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/docs/data-import-preprocessing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Copyright 2019 The TensorFlow Authors.
@@ -463,12 +581,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Copyright 2019 The TensorFlow Authors.</h1>
@@ -590,14 +707,15 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="copyright-2019-the-tensorflow-authors">
-<h1>Copyright 2019 The TensorFlow Authors.<a class="headerlink" href="#copyright-2019-the-tensorflow-authors" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="load-csv-data">
-<h1>Load CSV data<a class="headerlink" href="#load-csv-data" title="Permalink to this headline">¶</a></h1>
+  <section id="copyright-2019-the-tensorflow-authors">
+<h1>Copyright 2019 The TensorFlow Authors.<a class="headerlink" href="#copyright-2019-the-tensorflow-authors" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="load-csv-data">
+<h1>Load CSV data<a class="headerlink" href="#load-csv-data" title="Permalink to this headline">#</a></h1>
 <table class="tfo-notebook-buttons" align="left">
   <td>
     <a target="_blank" href="https://www.tensorflow.org/tutorials/load_data/csv"><img src="https://www.tensorflow.org/images/tf_logo_32px.png" />View on TensorFlow.org</a>
@@ -618,8 +736,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><strong>Pre-processing it into a form suitable for training.</strong></p></li>
 </ol>
 <p>This tutorial focuses on the loading, and gives some quick examples of preprocessing. For a tutorial that focuses on the preprocessing aspect see the <a class="reference external" href="https://www.tensorflow.org/guide/keras/preprocessing_layers#quick_recipes">preprocessing layers guide</a> and <a class="reference external" href="https://www.tensorflow.org/tutorials/structured_data/preprocessing_layers">tutorial</a>.</p>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -635,9 +753,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="in-memory-data">
-<h2>In memory data<a class="headerlink" href="#in-memory-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="in-memory-data">
+<h2>In memory data<a class="headerlink" href="#in-memory-data" title="Permalink to this headline">#</a></h2>
 <p>For any small CSV dataset the simplest way to train a TensorFlow model on it is to load it into memory as a pandas Dataframe or a NumPy array.</p>
 <p>A relatively simple example is the <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/abalone">abalone dataset</a>.</p>
 <ul class="simple">
@@ -827,9 +945,9 @@ Epoch 10/10
 </div>
 </div>
 <p>You have just seen the most basic way to train a model using CSV data. Next, you will learn how to apply preprocessing to normalize numeric columns.</p>
-</div>
-<div class="section" id="basic-preprocessing">
-<h2>Basic preprocessing<a class="headerlink" href="#basic-preprocessing" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="basic-preprocessing">
+<h2>Basic preprocessing<a class="headerlink" href="#basic-preprocessing" title="Permalink to this headline">#</a></h2>
 <p>It’s good practice to normalize the inputs to your model. The <code class="docutils literal notranslate"><span class="pre">experimental.preprocessing</span></code> layers provide a convenient way to build this normalization into your model.</p>
 <p>The layer will precompute the mean and variance of each column, and use these to normalize the data.</p>
 <p>First you create the layer:</p>
@@ -893,9 +1011,9 @@ Epoch 10/10
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="mixed-data-types">
-<h2>Mixed data types<a class="headerlink" href="#mixed-data-types" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="mixed-data-types">
+<h2>Mixed data types<a class="headerlink" href="#mixed-data-types" title="Permalink to this headline">#</a></h2>
 <p>The “Titanic” dataset contains information about the passengers on the Titanic. The nominal task on this dataset is to predict who survived.</p>
 <p><img alt="The Titanic" src="docs/img/Titanic.jpg" /></p>
 <p>Image <a class="reference external" href="https://commons.wikimedia.org/wiki/File:RMS_Titanic_3.jpg">from Wikimedia</a></p>
@@ -1289,14 +1407,14 @@ tf.Tensor([[-1.826]], shape=(1, 1), dtype=float32)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="using-tf-data">
-<h2>Using tf.data<a class="headerlink" href="#using-tf-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="using-tf-data">
+<h2>Using tf.data<a class="headerlink" href="#using-tf-data" title="Permalink to this headline">#</a></h2>
 <p>In the previous section you relied on the model’s built-in data shuffling and batching while training the model.</p>
 <p>If you need more control over the input data pipeline or need to use data that doesn’t easily fit into memory: use <code class="docutils literal notranslate"><span class="pre">tf.data</span></code>.</p>
 <p>For more examples see the <span class="xref myst">tf.data guide</span>.</p>
-<div class="section" id="on-in-memory-data">
-<h3>On in memory data<a class="headerlink" href="#on-in-memory-data" title="Permalink to this headline">¶</a></h3>
+<section id="on-in-memory-data">
+<h3>On in memory data<a class="headerlink" href="#on-in-memory-data" title="Permalink to this headline">#</a></h3>
 <p>As a first example of applying <code class="docutils literal notranslate"><span class="pre">tf.data</span></code> to CSV data consider the following code to manually slice up the dictionary of features from the previous section. For each index, it takes that index for each feature:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1408,9 +1526,9 @@ Epoch 5/5
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="from-a-single-file">
-<h3>From a single file<a class="headerlink" href="#from-a-single-file" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="from-a-single-file">
+<h3>From a single file<a class="headerlink" href="#from-a-single-file" title="Permalink to this headline">#</a></h3>
 <p>So far this tutorial has worked with in-memory data. <code class="docutils literal notranslate"><span class="pre">tf.data</span></code> is a highly scalable toolkit for building data pipelines, and provides a few functions for dealing loading CSV files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1553,9 +1671,9 @@ label               : [2743 2687 5545 5020  822]
 </div>
 </div>
 <p>Note: If you need to parse those date-time strings in the <code class="docutils literal notranslate"><span class="pre">tf.data</span></code> pipeline you can use <code class="docutils literal notranslate"><span class="pre">tfa.text.parse_time</span></code>.</p>
-</div>
-<div class="section" id="caching">
-<h3>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="caching">
+<h3>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">#</a></h3>
 <p>There is some overhead to parsing the csv data. For small models this can be the bottleneck in training.</p>
 <p>Depending on your use case it may be a good idea to use <code class="docutils literal notranslate"><span class="pre">Dataset.cache</span></code> or <code class="docutils literal notranslate"><span class="pre">data.experimental.snapshot</span></code> so that the csv data is only parsed on the first epoch.</p>
 <p>The main difference between the <code class="docutils literal notranslate"><span class="pre">cache</span></code> and <code class="docutils literal notranslate"><span class="pre">snapshot</span></code> methods is that <code class="docutils literal notranslate"><span class="pre">cache</span></code> files can only be used by the TensorFlow process that created them, but <code class="docutils literal notranslate"><span class="pre">snapshot</span></code> files can be read by other processes.</p>
@@ -1777,9 +1895,9 @@ Wall time: 1.62 s
 </div>
 </div>
 <p>If your data loading is slowed by loading csv files, and <code class="docutils literal notranslate"><span class="pre">cache</span></code> and <code class="docutils literal notranslate"><span class="pre">snapshot</span></code> are insufficient for your use case, consider re-encoding your data into a more streamlined format.</p>
-</div>
-<div class="section" id="multiple-files">
-<h3>Multiple files<a class="headerlink" href="#multiple-files" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="multiple-files">
+<h3>Multiple files<a class="headerlink" href="#multiple-files" title="Permalink to this headline">#</a></h3>
 <p>All the examples so far in this section could easily be done without <code class="docutils literal notranslate"><span class="pre">tf.data</span></code>. One place where <code class="docutils literal notranslate"><span class="pre">tf.data</span></code> can really simplify things is when dealing with collections of files.</p>
 <p>For example, the <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Character+Font+Images">character font images</a> dataset is distributed as a collection of csv files, one per font.</p>
 <p><img alt="Fonts" src="docs/images/csv/fonts.jpg" /></p>
@@ -2262,8 +2380,8 @@ r0c3                : [  1   1   1 255   1   1   1   1   1  74]
 </div>
 </div>
 </div>
-<div class="section" id="optional-packing-fields">
-<h4>Optional: Packing fields<a class="headerlink" href="#optional-packing-fields" title="Permalink to this headline">¶</a></h4>
+<section id="optional-packing-fields">
+<h4>Optional: Packing fields<a class="headerlink" href="#optional-packing-fields" title="Permalink to this headline">#</a></h4>
 <p>You probably don’t want to work with each pixel in separate columns like this. Before trying to use this dataset be sure to pack the pixels into an image-tensor.</p>
 <p>Here is code that parses the column names to build images for each example:</p>
 <div class="cell docutils container">
@@ -2320,19 +2438,19 @@ r0c3                : [  1   1   1 255   1   1   1   1   1  74]
 <img alt="../_images/data-import-preprocessing_107_0.png" src="../_images/data-import-preprocessing_107_0.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="lower-level-functions">
-<h2>Lower level functions<a class="headerlink" href="#lower-level-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="lower-level-functions">
+<h2>Lower level functions<a class="headerlink" href="#lower-level-functions" title="Permalink to this headline">#</a></h2>
 <p>So far this tutorial has focused on the highest level utilities for reading csv data. There are other two APIs that may be helpful for advanced users if your use-case doesn’t fit the basic patterns.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">tf.io.decode_csv</span></code> - a function for parsing lines of text into a list of CSV column tensors.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tf.data.experimental.CsvDataset</span></code> - a lower level csv dataset constructor.</p></li>
 </ul>
 <p>This section recreates functionality provided by <code class="docutils literal notranslate"><span class="pre">make_csv_dataset</span></code>, to demonstrate how this lower level functionality can be used.</p>
-<div class="section" id="tf-io-decode-csv">
-<h3><code class="docutils literal notranslate"><span class="pre">tf.io.decode_csv</span></code><a class="headerlink" href="#tf-io-decode-csv" title="Permalink to this headline">¶</a></h3>
+<section id="tf-io-decode-csv">
+<h3><code class="docutils literal notranslate"><span class="pre">tf.io.decode_csv</span></code><a class="headerlink" href="#tf-io-decode-csv" title="Permalink to this headline">#</a></h3>
 <p>This function decodes a string, or list of strings into a list of columns.</p>
 <p>Unlike <code class="docutils literal notranslate"><span class="pre">make_csv_dataset</span></code> this function does not try to guess column data-types. You specify the column types by providing a list of <code class="docutils literal notranslate"><span class="pre">record_defaults</span></code> containing a value of the correct type, for each column.</p>
 <p>To read the Titanic data <strong>as strings</strong> using <code class="docutils literal notranslate"><span class="pre">decode_csv</span></code> you would say:</p>
@@ -2427,9 +2545,9 @@ type: string, shape: (627,)
 </div>
 </div>
 <p>Note: it is more efficient to call <code class="docutils literal notranslate"><span class="pre">decode_csv</span></code> on large batches of lines than on individual lines of csv text.</p>
-</div>
-<div class="section" id="tf-data-experimental-csvdataset">
-<h3><code class="docutils literal notranslate"><span class="pre">tf.data.experimental.CsvDataset</span></code><a class="headerlink" href="#tf-data-experimental-csvdataset" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="tf-data-experimental-csvdataset">
+<h3><code class="docutils literal notranslate"><span class="pre">tf.data.experimental.CsvDataset</span></code><a class="headerlink" href="#tf-data-experimental-csvdataset" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">tf.data.experimental.CsvDataset</span></code> class provides a minimal CSV <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> interface without the convenience features of the <code class="docutils literal notranslate"><span class="pre">make_csv_dataset</span></code> function: column header parsing, column type-inference, automatic shuffling, file interleaving.</p>
 <p>This constructor follows uses <code class="docutils literal notranslate"><span class="pre">record_defaults</span></code> the same way as <code class="docutils literal notranslate"><span class="pre">io.parse_csv</span></code>:</p>
 <div class="cell docutils container">
@@ -2473,8 +2591,8 @@ type: string, shape: (627,)
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h4>Multiple files<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<section id="id1">
+<h4>Multiple files<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
 <p>To parse the fonts dataset using <code class="docutils literal notranslate"><span class="pre">experimental.CsvDataset</span></code>, you first need to determine the column types for the <code class="docutils literal notranslate"><span class="pre">record_defaults</span></code>. Start by inspecting the first row of one file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2707,9 +2825,9 @@ Epoch 2:
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="performance">
-<h4>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="performance">
+<h4>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">#</a></h4>
 <p>Earlier, it was noted that <code class="docutils literal notranslate"><span class="pre">io.decode_csv</span></code> is more efficient when run on a batch of strings.</p>
 <p>It is possible to take advantage of this fact, when using large batch sizes, to improve CSV loading performance (but try <a class="reference external" href="#caching">caching</a> first).</p>
 <p>With the built-in loader 20, 2048-example batches take about 17s.</p>
@@ -2842,10 +2960,10 @@ Wall time: 1.48 s
 </div>
 <p>For another example of increasing csv performance by using large batches see the <span class="xref myst">overfit and underfit tutorial</span>.</p>
 <p>This sort of approach may work, but consider other options like <code class="docutils literal notranslate"><span class="pre">cache</span></code> and <code class="docutils literal notranslate"><span class="pre">snapshot</span></code>, or re-enncoding your data into a more streamlined format.</p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2869,28 +2987,34 @@ Wall time: 1.48 s
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jan Kirenz<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Jan Kirenz<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
