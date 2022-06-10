@@ -669,7 +669,7 @@ SHAP: 0.40.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-26 21:30:51.211932: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-10 10:02:32.882167: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
 </pre></div>
 </div>
 </div>
@@ -742,6 +742,195 @@ SHAP: 0.40.0
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 242 entries, 0 to 241
+Data columns (total 14 columns):
+ #   Column    Non-Null Count  Dtype  
+---  ------    --------------  -----  
+ 0   age       242 non-null    int64  
+ 1   sex       242 non-null    int64  
+ 2   cp        242 non-null    int64  
+ 3   trestbps  242 non-null    int64  
+ 4   chol      242 non-null    int64  
+ 5   fbs       242 non-null    int64  
+ 6   restecg   242 non-null    int64  
+ 7   thalach   242 non-null    int64  
+ 8   exang     242 non-null    int64  
+ 9   oldpeak   242 non-null    float64
+ 10  slope     242 non-null    int64  
+ 11  ca        242 non-null    int64  
+ 12  thal      242 non-null    object 
+ 13  target    242 non-null    int64  
+dtypes: float64(1), int64(12), object(1)
+memory usage: 26.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric_feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;thalach&#39;</span><span class="p">,</span> <span class="s1">&#39;trestbps&#39;</span><span class="p">,</span>  <span class="s1">&#39;chol&#39;</span><span class="p">,</span> <span class="s1">&#39;oldpeak&#39;</span><span class="p">]</span>
+<span class="n">numeric_features</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">numeric_feature_names</span><span class="p">]</span>
+<span class="n">numeric_features</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>thalach</th>
+      <th>trestbps</th>
+      <th>chol</th>
+      <th>oldpeak</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>63</td>
+      <td>150</td>
+      <td>145</td>
+      <td>233</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>67</td>
+      <td>108</td>
+      <td>160</td>
+      <td>286</td>
+      <td>1.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>187</td>
+      <td>130</td>
+      <td>250</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>41</td>
+      <td>172</td>
+      <td>130</td>
+      <td>204</td>
+      <td>1.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>56</td>
+      <td>178</td>
+      <td>120</td>
+      <td>236</td>
+      <td>0.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric_features</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 242 entries, 0 to 241
+Data columns (total 5 columns):
+ #   Column    Non-Null Count  Dtype  
+---  ------    --------------  -----  
+ 0   age       242 non-null    int64  
+ 1   thalach   242 non-null    int64  
+ 2   trestbps  242 non-null    int64  
+ 3   chol      242 non-null    int64  
+ 4   oldpeak   242 non-null    float64
+dtypes: float64(1), int64(4)
+memory usage: 9.6 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">numeric_features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(242, 5), dtype=float64, numpy=
+array([[ 63. , 150. , 145. , 233. ,   2.3],
+       [ 67. , 108. , 160. , 286. ,   1.5],
+       [ 37. , 187. , 130. , 250. ,   3.5],
+       ...,
+       [ 65. , 127. , 135. , 254. ,   2.8],
+       [ 48. , 150. , 130. , 256. ,   0. ],
+       [ 63. , 154. , 150. , 407. ,   4. ]])&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_dict_2</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">([</span><span class="n">value</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions_2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">/Users/jankirenz/books/deep-learning/docs/structured_data_classification_shap.ipynb Cell 17&#39;</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/structured_data_classification_shap.ipynb#ch0000018?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">predictions_2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/keras/utils/traceback_utils.py:67,</span> in <span class="ni">filter_traceback.&lt;locals&gt;.error_handler</span><span class="nt">(*args, **kwargs)</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/keras/utils/traceback_utils.py?line=64&#39;</span><span class="o">&gt;</span><span class="mi">65</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/keras/utils/traceback_utils.py?line=65&#39;</span><span class="o">&gt;</span><span class="mi">66</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>   <span class="n">filtered_tb</span> <span class="o">=</span> <span class="n">_process_traceback_frames</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__traceback__</span><span class="p">)</span>
+<span class="o">---&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/keras/utils/traceback_utils.py?line=66&#39;</span><span class="o">&gt;</span><span class="mi">67</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>   <span class="k">raise</span> <span class="n">e</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="n">filtered_tb</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/keras/utils/traceback_utils.py?line=67&#39;</span><span class="o">&gt;</span><span class="mi">68</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">finally</span><span class="p">:</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/keras/utils/traceback_utils.py?line=68&#39;</span><span class="o">&gt;</span><span class="mi">69</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>   <span class="k">del</span> <span class="n">filtered_tb</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/framework/constant_op.py:102,</span> in <span class="ni">convert_to_eager_tensor</span><span class="nt">(value, ctx, dtype)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/framework/constant_op.py?line=99&#39;</span><span class="o">&gt;</span><span class="mi">100</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">as_datatype_enum</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/framework/constant_op.py?line=100&#39;</span><span class="o">&gt;</span><span class="mi">101</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">ctx</span><span class="o">.</span><span class="n">ensure_initialized</span><span class="p">()</span>
+<span class="o">--&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/tensorflow/python/framework/constant_op.py?line=101&#39;</span><span class="o">&gt;</span><span class="mi">102</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">EagerTensor</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: Failed to convert a NumPy array to a Tensor (Unsupported object type int).
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">KernelExplainer</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -753,7 +942,7 @@ SHAP: 0.40.0
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
 <span class="nn">/Users/jankirenz/books/deep-learning/docs/structured_data_classification_shap.ipynb Cell 17&#39;</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/structured_data_classification_shap.ipynb#ch0000015?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">KernelExplainer</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/jankirenz/books/deep-learning/docs/structured_data_classification_shap.ipynb#ch0000016?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">KernelExplainer</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span>
 
 <span class="nn">File /opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_kernel.py:69,</span> in <span class="ni">Kernel.__init__</span><span class="nt">(self, model, data, link, **kwargs)</span>
      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///opt/homebrew/Caskroom/miniforge/base/envs/tf2/lib/python3.10/site-packages/shap/explainers/_kernel.py?line=66&#39;</span><span class="o">&gt;</span><span class="mi">67</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_index_ordered</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;keep_index_ordered&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
