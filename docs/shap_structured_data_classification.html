@@ -630,7 +630,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="shap-with-structured-data-classification">
 <h1>SHAP with structured data classification<a class="headerlink" href="#shap-with-structured-data-classification" title="Permalink to this headline">#</a></h1>
 <p><strong>Explainable AI with TensorFlow, Keras and SHAP</strong></p>
-<p><em>This tutorial is mainly based on the Keras tutorial <a class="reference external" href="https://keras.io/examples/structured_data/structured_data_classification_from_scratch/">“Structured data classification from scratch”</a> by François Chollet and <a class="reference external" href="https://shap.readthedocs.io/en/latest/example_notebooks/tabular_examples/neural_networks/Census%20income%20classification%20with%20Keras.html#Census-income-classification-with-Keras">“Census income classification with Keras”</a> by Scott Lundberg.</em></p>
+<p><em>This code tutorial is mainly based on the Keras tutorial <a class="reference external" href="https://keras.io/examples/structured_data/structured_data_classification_from_scratch/">“Structured data classification from scratch”</a> by François Chollet and <a class="reference external" href="https://shap.readthedocs.io/en/latest/example_notebooks/tabular_examples/neural_networks/Census%20income%20classification%20with%20Keras.html#Census-income-classification-with-Keras">“Census income classification with Keras”</a> by Scott Lundberg.</em></p>
 <ul class="simple">
 <li><p>To keep this tutorial simple, we will only use numerical features in our binary classification example.</p></li>
 <li><p>Take a look at <a class="reference internal" href="structured_data_classification_layers.html"><span class="doc std std-doc">Structured data classification II</span></a> to see an example of how to use more advanced Keras data preprocessing layers.</p></li>
@@ -703,7 +703,7 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 </section>
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
-<p>Here’s the description of each feature:</p>
+<p>Here’s the description of the data:</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -864,6 +864,7 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 </div>
 </div>
 </div>
+<p>Let’s visualize our connectivity graph:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> 
@@ -876,52 +877,48 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/15
- 1/19 [&gt;.............................] - ETA: 2s - loss: 0.6155 - accuracy: 0.9231
+ 1/19 [&gt;.............................] - ETA: 2s - loss: 0.7202 - accuracy: 0.2308
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-12 17:00:50.797019: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-17 21:27:28.476252: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19/19 [==============================] - 0s 4ms/step - loss: 0.6545 - accuracy: 0.7107 - val_loss: 0.6483 - val_accuracy: 0.7049
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19/19 [==============================] - 0s 4ms/step - loss: 0.7119 - accuracy: 0.3967 - val_loss: 0.7118 - val_accuracy: 0.4754
 Epoch 2/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.6301 - accuracy: 0.7273 - val_loss: 0.6289 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.6848 - accuracy: 0.5124 - val_loss: 0.6894 - val_accuracy: 0.4590
 Epoch 3/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.6078 - accuracy: 0.7273 - val_loss: 0.6109 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.6650 - accuracy: 0.6157 - val_loss: 0.6705 - val_accuracy: 0.6557
 Epoch 4/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.5867 - accuracy: 0.7273 - val_loss: 0.5950 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.6477 - accuracy: 0.6818 - val_loss: 0.6566 - val_accuracy: 0.6885
 Epoch 5/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.5659 - accuracy: 0.7273 - val_loss: 0.5821 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.6311 - accuracy: 0.7397 - val_loss: 0.6434 - val_accuracy: 0.7377
 Epoch 6/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.5476 - accuracy: 0.7273 - val_loss: 0.5719 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.6161 - accuracy: 0.7479 - val_loss: 0.6301 - val_accuracy: 0.7377
 Epoch 7/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.5307 - accuracy: 0.7273 - val_loss: 0.5631 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.6015 - accuracy: 0.7893 - val_loss: 0.6170 - val_accuracy: 0.7377
 Epoch 8/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.5159 - accuracy: 0.7273 - val_loss: 0.5562 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.5857 - accuracy: 0.7975 - val_loss: 0.6058 - val_accuracy: 0.7377
 Epoch 9/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.5042 - accuracy: 0.7273 - val_loss: 0.5508 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 975us/step - loss: 0.5714 - accuracy: 0.8017 - val_loss: 0.5969 - val_accuracy: 0.7377
 Epoch 10/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.4939 - accuracy: 0.7273 - val_loss: 0.5468 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 990us/step - loss: 0.5581 - accuracy: 0.7975 - val_loss: 0.5867 - val_accuracy: 0.7705
 Epoch 11/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.4860 - accuracy: 0.7273 - val_loss: 0.5440 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.5412 - accuracy: 0.7934 - val_loss: 0.5783 - val_accuracy: 0.7869
 Epoch 12/15
-19/19 [==============================] - 0s 951us/step - loss: 0.4794 - accuracy: 0.7273 - val_loss: 0.5422 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.5260 - accuracy: 0.7893 - val_loss: 0.5705 - val_accuracy: 0.7869
 Epoch 13/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.4737 - accuracy: 0.7273 - val_loss: 0.5412 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.5121 - accuracy: 0.7934 - val_loss: 0.5637 - val_accuracy: 0.7705
 Epoch 14/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.4685 - accuracy: 0.7273 - val_loss: 0.5400 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.4980 - accuracy: 0.8058 - val_loss: 0.5581 - val_accuracy: 0.7869
 Epoch 15/15
-19/19 [==============================] - 0s 1ms/step - loss: 0.4649 - accuracy: 0.7314 - val_loss: 0.5386 - val_accuracy: 0.7213
+19/19 [==============================] - 0s 1ms/step - loss: 0.4860 - accuracy: 0.8099 - val_loss: 0.5534 - val_accuracy: 0.7869
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x283368a00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x1667baad0&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>Configure the model with Keras Model.compile:</p></li>
-</ul>
-<p>Let’s visualize our connectivity graph:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `rankdir=&#39;LR&#39;` is to make the graph horizontal.</span>
@@ -930,7 +927,7 @@ Epoch 15/15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/shap_structured_data_classification_26_0.png" src="../_images/shap_structured_data_classification_26_0.png" />
+<img alt="../_images/shap_structured_data_classification_25_0.png" src="../_images/shap_structured_data_classification_25_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -942,8 +939,8 @@ Epoch 15/15
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/2 [==============================] - 0s 1ms/step - loss: 0.5386 - accuracy: 0.7213
-Accuracy 0.7213114500045776
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/2 [==============================] - 0s 1ms/step - loss: 0.5534 - accuracy: 0.7869
+Accuracy 0.7868852615356445
 </pre></div>
 </div>
 </div>
@@ -952,10 +949,7 @@ Accuracy 0.7213114500045776
 <section id="perform-inference">
 <h2>Perform inference<a class="headerlink" href="#perform-inference" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>The model you have developed can now classify a row from a CSV file directly after you’ve included the preprocessing layers inside the model itself. Let’s demonstrate the process:</p></li>
-</ul>
-<ul class="simple">
-<li><p>Save the heart diseases classification model</p></li>
+<li><p>Let’s save the heart diseases classification model to demonstrate the process of a real world scenario (where we would first save the model and reload it in a different production environment):</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -973,7 +967,7 @@ Accuracy 0.7213114500045776
 </div>
 </div>
 <ul class="simple">
-<li><p>Load model</p></li>
+<li><p>Load the model:</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
