@@ -517,6 +517,11 @@ title="Print to PDF"
      Use the model
     </a>
    </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     Summary
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -561,6 +566,11 @@ title="Print to PDF"
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#use-the-model">
      Use the model
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     Summary
     </a>
    </li>
   </ul>
@@ -871,12 +881,13 @@ Epoch 50/50
 <p>You might have thought 31, but it ended up not exactly there.  Why do you think that is?</p>
 <p>Neural networks deal with probabilities, so it calculated that there is a very high probability that the relationship between x and y is <span class="math notranslate nohighlight">\(y=3x+1\)</span>, but it can’t know for sure with only six data points. Therefore, the result is very close to 31, but not necessarily 31.</p>
 <p>As you work with neural networks, you’ll see that pattern recurring. You will almost always deal with probabilities, not certainties, and will do a little bit of coding to figure out what the result is based on the probabilities.</p>
+</section>
 <hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Summary</span>
-
-<span class="c1"># Import modules</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import modules</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
