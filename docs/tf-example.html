@@ -685,13 +685,8 @@ You probably think that y equals 3 times x plus or minus something. Then, you’
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define neural network</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-05 13:16:23.316110: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
 </pre></div>
 </div>
 </div>
@@ -711,7 +706,8 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile neural network</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> 
+             <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -742,108 +738,113 @@ By the time the training is done, the loss is extremely small, showing that our 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
-1/1 [==============================] - 0s 168ms/step - loss: 40.4891
+1/1 [==============================] - 0s 99ms/step - loss: 78.0524
 Epoch 2/50
-1/1 [==============================] - 0s 2ms/step - loss: 31.8584
+1/1 [==============================] - 0s 1ms/step - loss: 61.4100
 Epoch 3/50
-1/1 [==============================] - 0s 2ms/step - loss: 25.0681
+1/1 [==============================] - 0s 1ms/step - loss: 48.3166
 Epoch 4/50
-1/1 [==============================] - 0s 2ms/step - loss: 19.7257
+1/1 [==============================] - 0s 1ms/step - loss: 38.0152
 Epoch 5/50
-1/1 [==============================] - 0s 2ms/step - loss: 15.5225
+1/1 [==============================] - 0s 1ms/step - loss: 29.9106
 Epoch 6/50
-1/1 [==============================] - 0s 2ms/step - loss: 12.2156
+1/1 [==============================] - 0s 1ms/step - loss: 23.5342
 Epoch 7/50
-1/1 [==============================] - 0s 2ms/step - loss: 9.6138
+1/1 [==============================] - 0s 1ms/step - loss: 18.5175
 Epoch 8/50
-1/1 [==============================] - 0s 2ms/step - loss: 7.5668
+1/1 [==============================] - 0s 1ms/step - loss: 14.5706
 Epoch 9/50
-1/1 [==============================] - 0s 2ms/step - loss: 5.9562
+1/1 [==============================] - 0s 1ms/step - loss: 11.4654
 Epoch 10/50
-1/1 [==============================] - 0s 2ms/step - loss: 4.6890
+1/1 [==============================] - 0s 1ms/step - loss: 9.0222
 Epoch 11/50
-1/1 [==============================] - 0s 2ms/step - loss: 3.6920
+1/1 [==============================] - 0s 1ms/step - loss: 7.1001
 Epoch 12/50
-1/1 [==============================] - 0s 2ms/step - loss: 2.9075
+1/1 [==============================] - 0s 1ms/step - loss: 5.5878
 Epoch 13/50
-1/1 [==============================] - 0s 2ms/step - loss: 2.2903
+1/1 [==============================] - 0s 1ms/step - loss: 4.3979
 Epoch 14/50
-1/1 [==============================] - 0s 2ms/step - loss: 1.8046
+1/1 [==============================] - 0s 2ms/step - loss: 3.4618
 Epoch 15/50
-1/1 [==============================] - 0s 2ms/step - loss: 1.4224
+1/1 [==============================] - 0s 1ms/step - loss: 2.7252
 Epoch 16/50
-1/1 [==============================] - 0s 2ms/step - loss: 1.1217
+1/1 [==============================] - 0s 1ms/step - loss: 2.1457
 Epoch 17/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.8851
+1/1 [==============================] - 0s 1ms/step - loss: 1.6897
 Epoch 18/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.6988
+1/1 [==============================] - 0s 1ms/step - loss: 1.3310
 Epoch 19/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.5523
+1/1 [==============================] - 0s 1ms/step - loss: 1.0487
 Epoch 20/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.4369
+1/1 [==============================] - 0s 1ms/step - loss: 0.8265
 Epoch 21/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.3461
+1/1 [==============================] - 0s 2ms/step - loss: 0.6517
 Epoch 22/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.2746
+1/1 [==============================] - 0s 2ms/step - loss: 0.5142
 Epoch 23/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.2183
+1/1 [==============================] - 0s 1ms/step - loss: 0.4060
 Epoch 24/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.1740
+1/1 [==============================] - 0s 1ms/step - loss: 0.3208
 Epoch 25/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.1390
+1/1 [==============================] - 0s 1ms/step - loss: 0.2537
 Epoch 26/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.1115
+1/1 [==============================] - 0s 1ms/step - loss: 0.2009
 Epoch 27/50
-1/1 [==============================] - 0s 9ms/step - loss: 0.0898
+1/1 [==============================] - 0s 1ms/step - loss: 0.1594
 Epoch 28/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0727
+1/1 [==============================] - 0s 2ms/step - loss: 0.1267
 Epoch 29/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0592
+1/1 [==============================] - 0s 2ms/step - loss: 0.1009
 Epoch 30/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0485
+1/1 [==============================] - 0s 1ms/step - loss: 0.0806
 Epoch 31/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0401
+1/1 [==============================] - 0s 1ms/step - loss: 0.0646
 Epoch 32/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0334
+1/1 [==============================] - 0s 1ms/step - loss: 0.0520
 Epoch 33/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0281
+1/1 [==============================] - 0s 1ms/step - loss: 0.0421
 Epoch 34/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0239
+1/1 [==============================] - 0s 1ms/step - loss: 0.0342
 Epoch 35/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0206
+1/1 [==============================] - 0s 1ms/step - loss: 0.0280
 Epoch 36/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0179
+1/1 [==============================] - 0s 2ms/step - loss: 0.0231
 Epoch 37/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0158
+1/1 [==============================] - 0s 2ms/step - loss: 0.0192
 Epoch 38/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0141
+1/1 [==============================] - 0s 3ms/step - loss: 0.0162
 Epoch 39/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0127
-Epoch 40/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0116
-Epoch 41/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0107
-Epoch 42/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0099
-Epoch 43/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0093
-Epoch 44/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0088
-Epoch 45/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0083
-Epoch 46/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0080
-Epoch 47/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0076
-Epoch 48/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0074
-Epoch 49/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0071
-Epoch 50/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0069
+1/1 [==============================] - 0s 2ms/step - loss: 0.0137
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fbe11836670&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-30 21:11:32.750040: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 40/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0118
+Epoch 41/50
+1/1 [==============================] - 0s 1ms/step - loss: 0.0102
+Epoch 42/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0090
+Epoch 43/50
+1/1 [==============================] - 0s 3ms/step - loss: 0.0080
+Epoch 44/50
+1/1 [==============================] - 0s 2ms/step - loss: 0.0072
+Epoch 45/50
+1/1 [==============================] - 0s 1ms/step - loss: 0.0066
+Epoch 46/50
+1/1 [==============================] - 0s 1ms/step - loss: 0.0060
+Epoch 47/50
+1/1 [==============================] - 0s 995us/step - loss: 0.0056
+Epoch 48/50
+1/1 [==============================] - 0s 1ms/step - loss: 0.0053
+Epoch 49/50
+1/1 [==============================] - 0s 1ms/step - loss: 0.0050
+Epoch 50/50
+1/1 [==============================] - 0s 1ms/step - loss: 0.0047
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x1690a17e0&gt;
 </pre></div>
 </div>
 </div>
@@ -862,7 +863,7 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[31.170954]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[30.722605]]
 </pre></div>
 </div>
 </div>
@@ -880,13 +881,17 @@ Epoch 50/50
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 
-<span class="c1"># Data</span>
+<span class="c1"># Create some data</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
 <span class="c1"># Model definition</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+
+<span class="c1"># Compile model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> 
+              <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">)</span>
 
 <span class="c1"># Model fitting</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -897,7 +902,7 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[31.005653]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[31.594315]]
 </pre></div>
 </div>
 </div>
