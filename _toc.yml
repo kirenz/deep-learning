@@ -6,21 +6,19 @@ parts:
     - file: docs/deep-learning.md  
     - file: docs/tensorflow.md  
     - file: docs/tf-example.ipynb
-    - file: docs/hugging-face.md 
-  - caption: Keras intro
+  - caption: Keras
     chapters:
     - file: docs/keras-sequential.md
     - file: docs/keras-functional.md   
-    - file: docs/keras-preprocessing.md
     - file: docs/keras-tuner.ipynb 
   - caption: Computer vision intro
     chapters:
     - file: docs/fashion-mnist.ipynb
     - file: docs/fashion-mnist-exercises.ipynb  
-    - file: docs/convolutional.md  
-    - file: docs/cnn.ipynb
   - caption: CNN
     chapters:
+    - file: docs/convolutional.md  
+    - file: docs/cnn.ipynb
     - file: docs/mnist-cnn.ipynb   
     - file: docs/mnist-tensorflow.ipynb
     - file: docs/mnist-pytorch.ipynb 
@@ -28,19 +26,23 @@ parts:
     chapters:
     - file: docs/image_classification_from_scratch.ipynb
     - file: docs/image_augmentation.ipynb
- # - caption: Regression
- #   chapters:
- #   - file: docs/regression-structured.md
-  - caption: Structured data
+  - caption: Structured data & preprocessing
     chapters:
+    - file: docs/keras-preprocessing.md
     - file: docs/structured_data_classification_intro.ipynb
     - file: docs/structured_data_classification_functions.ipynb  
+   - caption: Text data
+     chapters:
     - file: docs/keras-imdb.ipynb
+   - caption: Text data
+     chapters:
     - file: docs/keras-time.ipynb
   - caption: Explainable AI
     chapters:
     - file: docs/shap_structured_data_classification.ipynb
- #   - file: docs/     
+  - caption: Advanced Models
+    chapters:
+    - file: docs/hugging-face.md 
   - caption: References
     chapters:
     - file: docs/reference.md
