@@ -33,7 +33,7 @@ parts:
     - file: docs/structured_data_classification_functions.ipynb  
    - caption: Text data
      chapters:
-    - file: docs/keras-imdb.ipynb
+     - file: docs/keras-imdb.ipynb
    - caption: Text data
      chapters:
     - file: docs/keras-time.ipynb
