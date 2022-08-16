@@ -34,7 +34,7 @@ parts:
   - caption: Text data
     chapters:
     - file: docs/keras-imdb.ipynb
-  - caption: Text data
+  - caption: Time series
     chapters:
     - file: docs/keras-time.ipynb
   - caption: Explainable AI
