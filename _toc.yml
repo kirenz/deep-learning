@@ -31,11 +31,11 @@ parts:
     - file: docs/keras-preprocessing.md
     - file: docs/structured_data_classification_intro.ipynb
     - file: docs/structured_data_classification_functions.ipynb  
-   - caption: Text data
-     chapters:
-     - file: docs/keras-imdb.ipynb
-   - caption: Text data
-     chapters:
+  - caption: Text data
+    chapters:
+    - file: docs/keras-imdb.ipynb
+  - caption: Text data
+    chapters:
     - file: docs/keras-time.ipynb
   - caption: Explainable AI
     chapters:
