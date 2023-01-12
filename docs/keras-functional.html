@@ -634,6 +634,12 @@ things you want to predict about the data), or a nonlinear topology. In such cas
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-12 15:23:23.236852: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="simple-example">
@@ -652,6 +658,12 @@ things you want to predict about the data), or a nonlinear topology. In such cas
 
 <span class="c1"># Specify inputs and outputs in the Model constructor</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-12 15:23:32.777679: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </pre></div>
 </div>
 </div>
@@ -717,9 +729,9 @@ _________________________________________________________________
 =================================================================
  my_input (InputLayer)       [(None, 3)]               0         
                                                                  
- dense_6 (Dense)             (None, 64)                256       
+ dense (Dense)               (None, 64)                256       
                                                                  
- dense_7 (Dense)             (None, 10)                650       
+ dense_1 (Dense)             (None, 10)                650       
                                                                  
 =================================================================
 Total params: 906
@@ -831,8 +843,9 @@ encoded)</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4/4 [==============================] - 0s 10ms/step - loss: 86.6427 - priority_loss: 0.3638 - department_loss: 86.2789 - priority_mean_absolute_error: 0.5300 - department_accuracy: 0.2600
-4/4 [==============================] - 0s 3ms/step - loss: 55.1070 - priority_loss: 0.3638 - department_loss: 54.7432 - priority_mean_absolute_error: 0.5300 - department_accuracy: 0.2300
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4/4 [==============================] - 1s 10ms/step - loss: 44.4351 - priority_loss: 0.2803 - department_loss: 44.1549 - priority_mean_absolute_error: 0.4489 - department_accuracy: 0.2500
+4/4 [==============================] - 0s 4ms/step - loss: 80.4360 - priority_loss: 0.3209 - department_loss: 80.1151 - priority_mean_absolute_error: 0.4887 - department_accuracy: 0.0500
+4/4 [==============================] - 0s 3ms/step
 </pre></div>
 </div>
 </div>
@@ -860,8 +873,9 @@ output layers, and pass data via dictionaries.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4/4 [==============================] - 1s 10ms/step - loss: 119.7109 - priority_loss: 0.3638 - department_loss: 119.3471 - priority_mean_absolute_error: 0.5300 - department_accuracy: 0.3900
-4/4 [==============================] - 0s 3ms/step - loss: 102.1632 - priority_loss: 0.3638 - department_loss: 101.7994 - priority_mean_absolute_error: 0.5300 - department_accuracy: 0.5600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4/4 [==============================] - 1s 10ms/step - loss: 76.0689 - priority_loss: 0.3209 - department_loss: 75.7480 - priority_mean_absolute_error: 0.4887 - department_accuracy: 0.1600
+4/4 [==============================] - 0s 4ms/step - loss: 59.7965 - priority_loss: 0.3209 - department_loss: 59.4757 - priority_mean_absolute_error: 0.4887 - department_accuracy: 0.2000
+4/4 [==============================] - 0s 3ms/step
 </pre></div>
 </div>
 </div>
@@ -916,13 +930,13 @@ layer.output</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;keras.engine.input_layer.InputLayer at 0x7fb15a2b68e0&gt;,
- &lt;keras.engine.input_layer.InputLayer at 0x7fb15a2b6910&gt;,
- &lt;keras.engine.input_layer.InputLayer at 0x7fb15a2b6190&gt;,
- &lt;keras.layers.merge.Concatenate at 0x7fb15a2b6b20&gt;,
- &lt;keras.layers.core.dense.Dense at 0x7fb18875e910&gt;,
- &lt;keras.layers.core.dense.Dense at 0x7fb1713447f0&gt;,
- &lt;keras.layers.core.dense.Dense at 0x7fb17134dcd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;keras.engine.input_layer.InputLayer at 0x178b76590&gt;,
+ &lt;keras.engine.input_layer.InputLayer at 0x178b779d0&gt;,
+ &lt;keras.engine.input_layer.InputLayer at 0x178b76e60&gt;,
+ &lt;keras.layers.merging.concatenate.Concatenate at 0x1056cac20&gt;,
+ &lt;keras.layers.core.dense.Dense at 0x178b75b40&gt;,
+ &lt;keras.layers.core.dense.Dense at 0x178b76a10&gt;,
+ &lt;keras.layers.core.dense.Dense at 0x178b763e0&gt;]
 </pre></div>
 </div>
 </div>

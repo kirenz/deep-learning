@@ -672,20 +672,77 @@ You probably think that y equals 3 times x plus or minus something. Then, you’
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot relationship with scatterplot</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">);</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y = 3x + 1&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="n">y</span><span class="p">})</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y = 3x + 1
-</pre></div>
-</div>
-<img alt="../_images/tf-example_6_1.png" src="../_images/tf-example_6_1.png" />
-</div>
+<div class="output text_html">
+<div id="altair-viz-39ab8759178343a69a12f0f566072ee5"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-39ab8759178343a69a12f0f566072ee5") {
+      outputDiv = document.getElementById("altair-viz-39ab8759178343a69a12f0f566072ee5");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.17.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "4.17.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-9103e5c76b5f6cfa1b8d791d17bc6753"}, "mark": "point", "encoding": {"x": {"field": "x", "type": "quantitative"}, "y": {"field": "y", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json", "datasets": {"data-9103e5c76b5f6cfa1b8d791d17bc6753": [{"x": -1.0, "y": -2.0}, {"x": 0.0, "y": 1.0}, {"x": 1.0, "y": 4.0}, {"x": 2.0, "y": 7.0}, {"x": 3.0, "y": 10.0}, {"x": 4.0, "y": 13.0}]}}, {"mode": "vega-lite"});
+</script></div></div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="neural-network">
@@ -697,9 +754,19 @@ You probably think that y equals 3 times x plus or minus something. Then, you’
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import TensorFlow and Keras </span>
-
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TensorFlow version </span><span class="si">{</span><span class="n">tf</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-12 14:33:57.109574: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TensorFlow version 2.11.0
 </pre></div>
 </div>
 </div>
@@ -718,6 +785,12 @@ You probably think that y equals 3 times x plus or minus something. Then, you’
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-12 14:34:44.630059: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </pre></div>
 </div>
 </div>
@@ -769,113 +842,108 @@ By the time the training is done, the loss is extremely small, showing that our 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
-1/1 [==============================] - 0s 99ms/step - loss: 78.0524
+1/1 [==============================] - 0s 258ms/step - loss: 72.6197
 Epoch 2/50
-1/1 [==============================] - 0s 1ms/step - loss: 61.4100
+1/1 [==============================] - 0s 3ms/step - loss: 57.1348
 Epoch 3/50
-1/1 [==============================] - 0s 1ms/step - loss: 48.3166
+1/1 [==============================] - 0s 3ms/step - loss: 44.9520
 Epoch 4/50
-1/1 [==============================] - 0s 1ms/step - loss: 38.0152
+1/1 [==============================] - 0s 4ms/step - loss: 35.3671
 Epoch 5/50
-1/1 [==============================] - 0s 1ms/step - loss: 29.9106
+1/1 [==============================] - 0s 4ms/step - loss: 27.8262
 Epoch 6/50
-1/1 [==============================] - 0s 1ms/step - loss: 23.5342
+1/1 [==============================] - 0s 4ms/step - loss: 21.8933
 Epoch 7/50
-1/1 [==============================] - 0s 1ms/step - loss: 18.5175
+1/1 [==============================] - 0s 4ms/step - loss: 17.2256
 Epoch 8/50
-1/1 [==============================] - 0s 1ms/step - loss: 14.5706
+1/1 [==============================] - 0s 7ms/step - loss: 13.5532
 Epoch 9/50
-1/1 [==============================] - 0s 1ms/step - loss: 11.4654
+1/1 [==============================] - 0s 5ms/step - loss: 10.6640
 Epoch 10/50
-1/1 [==============================] - 0s 1ms/step - loss: 9.0222
+1/1 [==============================] - 0s 4ms/step - loss: 8.3909
 Epoch 11/50
-1/1 [==============================] - 0s 1ms/step - loss: 7.1001
+1/1 [==============================] - 0s 4ms/step - loss: 6.6024
 Epoch 12/50
-1/1 [==============================] - 0s 1ms/step - loss: 5.5878
+1/1 [==============================] - 0s 4ms/step - loss: 5.1954
 Epoch 13/50
-1/1 [==============================] - 0s 1ms/step - loss: 4.3979
+1/1 [==============================] - 0s 3ms/step - loss: 4.0884
 Epoch 14/50
-1/1 [==============================] - 0s 2ms/step - loss: 3.4618
+1/1 [==============================] - 0s 3ms/step - loss: 3.2174
 Epoch 15/50
-1/1 [==============================] - 0s 1ms/step - loss: 2.7252
+1/1 [==============================] - 0s 4ms/step - loss: 2.5321
 Epoch 16/50
-1/1 [==============================] - 0s 1ms/step - loss: 2.1457
+1/1 [==============================] - 0s 3ms/step - loss: 1.9930
 Epoch 17/50
-1/1 [==============================] - 0s 1ms/step - loss: 1.6897
+1/1 [==============================] - 0s 4ms/step - loss: 1.5688
 Epoch 18/50
-1/1 [==============================] - 0s 1ms/step - loss: 1.3310
+1/1 [==============================] - 0s 4ms/step - loss: 1.2350
 Epoch 19/50
-1/1 [==============================] - 0s 1ms/step - loss: 1.0487
+1/1 [==============================] - 0s 3ms/step - loss: 0.9725
 Epoch 20/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.8265
+1/1 [==============================] - 0s 3ms/step - loss: 0.7658
 Epoch 21/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.6517
+1/1 [==============================] - 0s 4ms/step - loss: 0.6033
 Epoch 22/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.5142
+1/1 [==============================] - 0s 5ms/step - loss: 0.4754
 Epoch 23/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.4060
+1/1 [==============================] - 0s 4ms/step - loss: 0.3747
 Epoch 24/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.3208
+1/1 [==============================] - 0s 4ms/step - loss: 0.2955
 Epoch 25/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.2537
+1/1 [==============================] - 0s 4ms/step - loss: 0.2332
 Epoch 26/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.2009
+1/1 [==============================] - 0s 3ms/step - loss: 0.1841
 Epoch 27/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.1594
+1/1 [==============================] - 0s 3ms/step - loss: 0.1455
 Epoch 28/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.1267
+1/1 [==============================] - 0s 3ms/step - loss: 0.1151
 Epoch 29/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.1009
+1/1 [==============================] - 0s 3ms/step - loss: 0.0912
 Epoch 30/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0806
+1/1 [==============================] - 0s 4ms/step - loss: 0.0724
 Epoch 31/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0646
+1/1 [==============================] - 0s 3ms/step - loss: 0.0576
 Epoch 32/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0520
+1/1 [==============================] - 0s 4ms/step - loss: 0.0459
 Epoch 33/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0421
+1/1 [==============================] - 0s 3ms/step - loss: 0.0367
 Epoch 34/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0342
+1/1 [==============================] - 0s 3ms/step - loss: 0.0294
 Epoch 35/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0280
+1/1 [==============================] - 0s 3ms/step - loss: 0.0237
 Epoch 36/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0231
+1/1 [==============================] - 0s 4ms/step - loss: 0.0192
 Epoch 37/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0192
+1/1 [==============================] - 0s 5ms/step - loss: 0.0156
 Epoch 38/50
-1/1 [==============================] - 0s 3ms/step - loss: 0.0162
+1/1 [==============================] - 0s 4ms/step - loss: 0.0128
 Epoch 39/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0137
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-30 21:11:32.750040: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 40/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0118
+1/1 [==============================] - 0s 4ms/step - loss: 0.0106
+Epoch 40/50
+1/1 [==============================] - 0s 5ms/step - loss: 0.0088
 Epoch 41/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0102
+1/1 [==============================] - 0s 4ms/step - loss: 0.0075
 Epoch 42/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0090
+1/1 [==============================] - 0s 4ms/step - loss: 0.0063
 Epoch 43/50
-1/1 [==============================] - 0s 3ms/step - loss: 0.0080
+1/1 [==============================] - 0s 5ms/step - loss: 0.0055
 Epoch 44/50
-1/1 [==============================] - 0s 2ms/step - loss: 0.0072
+1/1 [==============================] - 0s 7ms/step - loss: 0.0048
 Epoch 45/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0066
+1/1 [==============================] - 0s 5ms/step - loss: 0.0042
 Epoch 46/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0060
+1/1 [==============================] - 0s 4ms/step - loss: 0.0038
 Epoch 47/50
-1/1 [==============================] - 0s 995us/step - loss: 0.0056
+1/1 [==============================] - 0s 4ms/step - loss: 0.0034
 Epoch 48/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0053
+1/1 [==============================] - 0s 4ms/step - loss: 0.0031
 Epoch 49/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0050
+1/1 [==============================] - 0s 4ms/step - loss: 0.0028
 Epoch 50/50
-1/1 [==============================] - 0s 1ms/step - loss: 0.0047
+1/1 [==============================] - 0s 4ms/step - loss: 0.0027
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x1690a17e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x15f801db0&gt;
 </pre></div>
 </div>
 </div>
@@ -894,7 +962,8 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[30.722605]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 70ms/step
+[[30.779314]]
 </pre></div>
 </div>
 </div>
@@ -934,7 +1003,8 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[31.594315]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 49ms/step
+[[31.521452]]
 </pre></div>
 </div>
 </div>
